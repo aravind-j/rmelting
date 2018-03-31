@@ -463,34 +463,6 @@ acid duplex.
  \code{bla96} \tab DNA \tab With formamide concentration in mol/L. \tab Blake
  1996 \cr \code{lincorr} \tab DNA \tab With a \% of formamide volume. \tab
  McConaughy et al., 1969; Record 1967; Hutton 1977 }
-
- \tabular{lllll}{ Detective \\\\ Comics       \tab #27 â€“ 881 \tab May 1939
- \tab October 2011               \tab Detective Comics has had \\\\ a varied rate
- of publication from quarterly to monthly and has varied between an anthology
- series and single stories. The first 26 issues did not feature Batman;
- however, issue #26 mentions Batman for the first time. The run included a #0
- issue dated October 1994 and a #1,000,000 issue dated November 1998.\cr
- Batman                 \tab #1 â€“ 713  \tab Spring 1940             \tab
- October 2011               \tab The run included a #0 issue dated October
- 1994 and a #1,000,000 issue dated November 1998.
- \cr World's Finest \\\\ Comics  \tab #1 â€“ 323  \tab Spring 1941
- \tab January 1986               \tab The first issue was published \\\\ under the
- indicia World's Best Comics. The main premise of the series was to be a
- Batman-Superman team-up series. During its run, the title varied from
- quarterly to monthly publication.
- \cr Star-Spangled Comics   \tab #65 â€“ 130 \tab February 1947
- \tab July 1952                  \tab A strip featuring Robin was added to
- the anthology series with issue #65 and ran through to the end of the
- series.
- \cr The Brave and \\\\ the Bold \tab #67 â€“ 200 \tab August / September 1966
- \tab July 1983                  \tab Originally formatted as an \\\\
- anthology/try-out series, The Brave and the Bold became a team-up series
- with issue #50. With issue #67, Batman became the primary character used in
- the series. During its run, the series varied between bi-monthly and monthly
- publication.
- \cr The \\\\ Joker              \tab #1 â€“ 9    \tab May - June 1975
- \tab September â€“ October 1976 \tab Published bi-monthly. \\\\ Issue #10 was
- announced but never released. }
 }
 
 \examples{

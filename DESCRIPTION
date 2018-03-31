@@ -30,12 +30,13 @@ Depends:
     R (>= 3.4.3),
     rJava (>= 0.5-0)
 Imports:
-    rJava
+    rJava,
+    melting5jars
 License: GPL-2 | GPL-3
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.0.1)
 RoxygenNote: 6.0.1
-Imports: melting5jars
 Remotes: github::hrbrmstr/melting5jars
 RdMacros: Rdpack
+URL: https://github.com/aravind-j/rmelting
+BugReports: https://github.com/aravind-j/rmelting/issues
