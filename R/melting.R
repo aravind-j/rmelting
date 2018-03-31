@@ -1,0 +1,784 @@
+
+#'melting
+#'
+#'R interface to the MELTING 5 software for computation of enthalpy and entropy
+#'of the helix-coil transition, and then the melting temperature of a nucleic
+#'acid duplex.
+#'
+#'@section Mandatory arguments: The following are the arguments which are
+#'  mandatory for computation. \itemize{ \item \code{sequence} \item
+#'  \code{comp.sequence}: Mandatory if there are mismatches, inosine(s) or
+#'  hydroxyadenine(s) between the two strands. If not specified, it is computed
+#'  as the complement of \code{sequence}. Self-complementarity in
+#'  \code{sequence} is detected even though there may be (are) dangling end(s)
+#'  and \code{comp.sequence} is computed (see \strong{Self complementary
+#'  sequences}). \item \code{nucleic.acid.conc} \item \code{Na.conc, Mg.conc,
+#'  Tris.conc, K.conc}: At least one cation (Na, Mg, Tris, K) concentration is
+#'  mandatory, the other agents(dNTP, DMSO, formamide) are optional. \item
+#'  \code{hybridisation.type} }
+#'
+#'@section Hybridisation type options: The details of the possible options for
+#'  hybridisation type specified in the argument \code{hybridisation.type} are
+#'  as follows:
+#'
+#'  \tabular{lll}{ \strong{Option} \tab \strong{\code{Sequence}} \tab
+#'  \strong{\code{Complementary sequence}}\cr \code{dnadna} \tab DNA \tab DNA
+#'  \cr \code{rnarna} \tab RNA \tab RNA \cr \code{dnarna} \tab DNA \tab RNA \cr
+#'  \code{rnadna} \tab RNA \tab DNA \cr \code{mrnarna} \tab 2-o-methyl RNA \tab
+#'  RNA \cr \code{rnamrna} \tab RNA \tab 2-o-methyl RNA }
+#'
+#'  This parameter determines the nature of the sequences in the arguments
+#'  \code{sequence} and \code{comp.sequence}.
+#'
+#'@section Ion and agent concentrations: These values are used for different
+#'  correction functions which approximately adjusts for effects of these
+#'  ions(Na, Mg, Tris, K) and/or agents(dNTP, DMSO, formamide) on on
+#'  thermodynamic stability of nucleic acid duplexes. Their concentration limits
+#'  depends on the correction method used. All the concentrations must be in M,
+#'  except for the DMSO (\%) and formamide (\% or M depending on the correction
+#'  method). Note that Tris+ concentration is about half of the total tris
+#'  buffer concentration.
+#'
+#'@section Self complementary sequences: Self complementarity for perfect
+#'  matching sequences or sequences with dangling ends is detected
+#'  automatically. However it can be specified by the argument \code{self}.
+#'
+#'@section Correction factor for nucleic acid concentration: For self
+#'  complementary sequences (Auto detected or specified in \code{self}) it is 1.
+#'  Otherwise it is 4 if the both strands are present in equivalent amount and 1
+#'  if one strand is in excess.
+#'
+#'@section Approximative estimation formulas: The calculation is increasingly
+#'  incorrect when the length of the duplex decreases. Moreover, it does not
+#'  take into account nucleic acid concentration. \tabular{llll}{
+#'  \strong{Formula} \tab \strong{Type} \tab \strong{Limits/Remarks} \tab
+#'  \strong{Reference} \cr \code{ahs01} \tab DNA \tab No mismatch \tab von Ahsen
+#'  et al., 2001 \cr \code{che93} \tab DNA \tab No mismatch; Na=0, Mg=0.0015,
+#'  Tris=0.01, K=0.05 \tab Marmur et al., 1962 \cr \code{che93corr} \tab DNA
+#'  \tab No mismatch; Na=0, Mg=0.0015, Tris=0.01, K=0.05 \tab Marmur et al.,
+#'  1962 \cr \code{marschdot} \tab DNA \tab No mismatch \tab Wetmur 1991; Marmur
+#'  et al., 1962; Chester et al., 1993; Schildkraut et al., 1965; Wahl et al.,
+#'  1987; Britten et al., 1974; Hall et al., 1980\cr \code{owe69} \tab DNA \tab
+#'  No mismatch \tab Owen et al., 1969; Blake 1996; Blake et al., 1998 \cr
+#'  \code{san98} \tab DNA \tab No mismatch \tab SantaLucia 1998; von Ahsen et
+#'  al., 2001 \cr \code{wetdna91}* \tab DNA \tab \tab Wetmur 1991 \cr
+#'  \code{wetrna91}* \tab RNA \tab \tab Wetmur 1991 \cr \code{wetdnarna91}* \tab
+#'  DNA/RNA \tab \tab Wetmur 1991 }
+#'
+#'@section Nearest neighbor models: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{all97}* \tab DNA \tab \tab Allawi et al., 1997 \cr \code{bre86} \tab
+#'  DNA \tab \tab Breslauer et al., 1986 \cr \code{san04} \tab DNA \tab \tab
+#'  SantaLucia et al., 2004 \cr \code{san96} \tab DNA \tab \tab SantaLucia et
+#'  al., 1996 \cr \code{sug96} \tab DNA \tab \tab Sugimoto et al., 1996 \cr
+#'  \code{tan04} \tab DNA \tab \tab Tanaka et al., 2004 \cr \code{fre86} \tab
+#'  RNA \tab \tab Freier et al., 1986 \cr \code{xia98}* \tab RNA \tab \tab Xia
+#'  et al., 1998 \cr \code{sug95}* \tab DNA/RNA \tab \tab SantaLucia et al.,
+#'  1996\cr \code{tur06}* \tab DNA \tab A sodium correction (\code{san04}) is
+#'  automatically applied to convert the entropy (Na = 0.1M) into the entropy
+#'  (Na = 1M) \tab Kierzek et al., 2006 }
+#'
+#'@section GU wobble base pairs effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference}\cr
+#'  \code{tur99}* \tab RNA \tab \tab Mathews et al., 1999 }
+#'
+#'@section Single mismatch effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{allsanpey}* \tab DNA \tab \tab Allawi et al., 1997; Allawi et al.,
+#'  1998a; Allawi et al., 1998b; Allawi et al., 1998; Peyret et al., 1999\cr
+#'  \code{tur06} \tab RNA \tab \tab Lu et al., 2006 \cr \code{zno07}* \tab RNA
+#'  \tab \tab Davis et al., 2007 \cr \code{zno08} \tab RNA \tab At least one
+#'  adjacent GU base pair. \tab Davis et al., 2008 }
+#'
+#'@section Tandem mismatches effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{allsanpey}* \tab DNA \tab Only GT mismatches and TA/TG mismatches.
+#'  \tab Allawi et al., 1997; Allawi et al., 1998a; Allawi et al., 1998b; Allawi
+#'  et al., 1998; Peyret et al., 1999\cr \code{tur99}* \tab RNA \tab No adjacent
+#'  GU or UG base pairs. \tab Mathews et al., 1999 } Tandem mismatches are not
+#'  taken into account by the approximative mode. Note that not all the
+#'  mismatched Crick's pairs have been investigated.
+#'
+#'@section Single dangling end effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{bom00}* \tab DNA \tab NA \tab Bommarito et al., 2000\cr
+#'  \code{sugdna02} \tab DNA \tab Only terminal poly A self complementary
+#'  sequences. \tab Ohmichi et al., 2002 \cr \code{sugrna02} \tab RNA \tab Only
+#'  terminal poly A self complementary sequences. \tab Ohmichi et al., 2002 \cr
+#'  \code{ser08}* \tab RNA \tab Only 3' UA, GU and UG terminal base pairs only
+#'  5' UG and GU terminal base pairs. \tab Miller et al., 2008 } Single dangling
+#'  ends are not taken into account by the approximative mode.
+#'
+#'@section Double dangling end effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{sugdna02}* \tab DNA \tab Only terminal poly A self complementary
+#'  sequences. \tab Ohmichi et al., 2002\cr \code{sugrna02} \tab RNA \tab Only
+#'  terminal poly A self complementary sequences. \tab Ohmichi et al., 2002\cr
+#'  \code{ser05} \tab RNA \tab Depends on the available thermodynamic parameters
+#'  for single dangling end. \tab O'Toole et al., 2005\cr \code{ser06}* \tab RNA
+#'  \tab \tab O'Toole et al., 2006 } Double dangling ends are not taken into
+#'  account by the approximative mode.
+#'
+#'@section Long dangling end effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{sugdna02}* \tab DNA \tab Only terminal poly A self complementary
+#'  sequences.  \tab Ohmichi et al., 2002\cr \code{sugrna02}* \tab RNA \tab Only
+#'  terminal poly A self complementary sequences. \tab Ohmichi et al., 2002 }
+#'  Long dangling ends are not taken into account by the approximative mode.
+#'
+#'@section Internal loop effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{san04}* \tab DNA \tab Missing asymmetry penalty. Not tested with
+#'  experimental results. \tab SantaLucia and Hicks 2004\cr \code{tur06} \tab
+#'  RNA \tab Not tested with experimental results. \tab Lu et al., 2006 \cr
+#'  \code{zno07}* \tab RNA \tab \tab Davis et al., 2007 }  Internal loops are
+#'  not taken into account by the approximative mode.
+#'
+#'@section Single bulge loop effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{tan04}* \tab DNA \tab \tab Tan and Chen 2007 \cr \code{san04} \tab DNA
+#'  \tab Missing closing AT penalty. \tab SantaLucia et al., 2004 \cr
+#'  \code{ser07} \tab RNA \tab Less reliable results. Some missing parameters.
+#'  \tab Blose, Manni, Klapec, Stranger-Jones, Zyra, Sim, Griffith, Long, and
+#'  Serra 2007\cr \code{tur06}* \tab RNA \tab \tab Lu et al., 2006 } Internal
+#'  loops are not taken into account by the approximative mode.
+#'
+#'@section Long bulge loop effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{san04}* \tab DNA \tab Missing closing AT penalty. \tab SantaLucia et
+#'  al., 2004\cr \code{tur06}* \tab RNA \tab Not tested with experimental
+#'  results. \tab Lu et al., 2006 }  Long bulge loops are not taken into account
+#'  by the approximative mode.
+#'
+#'@section CNG repeats effect: \tabular{llll}{ \strong{Model} \tab \strong{Type}
+#'  \tab \strong{Limits/Remarks} \tab \strong{Reference}\cr \code{bro05}*  \tab
+#'  RNA \tab Self complementary sequences. 2 to 7 CNG repeats. \tab Broda et
+#'  al., 2005 } CNG repeats are not taken into account by the approximative
+#'  mode. The contribution of CNG repeats to the thermodynamic of helix-coil
+#'  transition can be computed only for 2 to 7 CNG repeats. N represents a
+#'  single mismatch of type N/N.
+#'
+#'@section Inosine bases effect:  \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{san05}* \tab DNA \tab Missing parameters for tandem base pairs
+#'  containing inosine bases. \tab Watkins Norman E. et al., 2005\cr
+#'  \code{zno07}* \tab RNA \tab Only IU base pairs. \tab Wright et al., 2007 }
+#'
+#'@section Hydroxyadenine bases effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{sug01}* \tab DNA \tab Only 5' GA*C 3'and 5' TA*A 3' contexts. \tab
+#'  Kawakami et al., 2001}  Hydroxyadenine bases (A*) are not taken into account
+#'  by the approximative mode.
+#'
+#'@section Azobenzenes effect effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{asa05}* \tab DNA \tab Less reliable results when the number of cis
+#'  azobenzene increases. \tab Asanuma et al., 2005 } Azobenzenes (X_T for trans
+#'  azobenzenes and X_C for cis azobenzenes) are not taken into account by the
+#'  approximative mode.
+#'
+#'@section Locked nucleic acids effect: \tabular{llll}{ \strong{Model} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{mct04}* \tab DNA \tab \tab McTigue et al., 2004 } Locked nucleic acids
+#'  (AL, GL, TL and CL) are not taken into account by the approximative mode.
+#'
+#'@section Sodium corrections: \tabular{llll}{ \strong{Correcion} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{ahs01} \tab DNA \tab Na>0. \tab von Ahsen et al., 2001 \cr
+#'  \code{kam71} \tab DNA \tab Na>0; Na>=0.069; Na<=1.02. \tab Frank-Kamenetskii
+#'  1971 \cr \code{marschdot} \tab DNA \tab Na>=0.069; Na<=1.02. \tab Marmur et
+#'  al., 1962; Blake et al., 1998\cr \code{owc1904} \tab DNA \tab Na>0. \tab
+#'  Owczarzy et al., 2004 \cr \code{owc2004} \tab DNA \tab Na>0. \tab Owczarzy
+#'  et al., 2004 \cr \code{owc2104} \tab DNA \tab Na>0. \tab Owczarzy et al.,
+#'  2004 \cr \code{owc2204}* \tab DNA \tab Na>0. \tab Owczarzy et al., 2004 \cr
+#'  \code{san96} \tab DNA \tab Na>=0.1. \tab SantaLucia et al., 1996 \cr
+#'  \code{san04} \tab DNA \tab Na>=0.05; Na<=1.1; Oligonucleotides inferior to
+#'  16 bases. \tab SantaLucia et al., 2004 \cr \code{schlif} \tab DNA \tab
+#'  Na>=0.07; Na<=0.12. \tab Schildkraut et al., 1965 \cr \code{tanna06} \tab
+#'  DNA \tab Na>=0.001; Na<=1. \tab Tan et al., 2006 \cr \code{tanna07}* \tab
+#'  RNA \tab Na>=0.003; Na<=1. \tab Tan et al., 2007 \cr \code{wet91} \tab RNA,
+#'  DNA and RNA/DNA \tab Na>0. \tab Wetmur 1991 }
+#'
+#'@section Magnesium corrections: \tabular{llll}{ \strong{Correcion} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{oxcmg08}* \tab DNA \tab Mg>=0.0005; Mg<=0.6. \tab Owczarzy et al.,
+#'  2008\cr \code{tanmg06} \tab DNA \tab Mg>=0.0001; Mg<=1; Oligomer length
+#'  superior to 6 base pairs. \tab Tan et al., 2006 \cr \code{tanmg07}* \tab RNA
+#'  \tab Mg>=0.1; Mg<=0.3. \tab Tan et al., 2007 }
+#'
+#'@section Mixed Sodium and Magnesium corrections: \tabular{llll}{
+#'  \strong{Correcion} \tab \strong{Type} \tab \strong{Limits/Remarks} \tab
+#'  \strong{Reference} \cr \code{oxcmix08}* \tab DNA \tab Mg>=0.0005; Mg<=0.6;
+#'  Na+K+Tris/2>0. \tab Owczarzy et al., 2008\cr \code{tanmix07} \tab DNA and
+#'  RNA \tab Mg>=0.1; Mg<=0.3; Na+K+Tris/2>=0.1; Na+K+Tris/2<=0.3. \tab Tan et
+#'  al., 2007 }
+#'
+#'@section Sodium equivalent concentration methods: \tabular{llll}{
+#'  \strong{Correcion} \tab \strong{Type} \tab \strong{Limits/Remarks} \tab
+#'  \strong{Reference} \cr \code{ahs01}* \tab DNA \tab \tab von Ahsen et al.,
+#'  2001\cr \code{mit96} \tab DNA \tab \tab Mitsuhashi 1996 \cr \code{pey00}
+#'  \tab DNA \tab \tab Peyret 2000 }
+#'
+#'@section DMSO corrections: \tabular{llll}{ \strong{Correcion} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{ahs01} \tab DNA \tab Not tested with experimental results. \tab von
+#'  Ahsen et al., 2001\cr \code{cul76} \tab DNA \tab Not tested with
+#'  experimental results. \tab Cullen et al., 1976 \cr \code{esc80} \tab DNA
+#'  \tab Not tested with experimental results. \tab Escara et al., 1980 \cr
+#'  \code{mus80} \tab DNA \tab Not tested with experimental results. \tab
+#'  Musielski et al., 1981 }
+#'
+#'@section Formamide corrections: \tabular{llll}{ \strong{Correcion} \tab
+#'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
+#'  \code{bla96} \tab DNA \tab With formamide concentration in mol/L. \tab Blake
+#'  1996 \cr \code{lincorr} \tab DNA \tab With a \% of formamide volume. \tab
+#'  McConaughy et al., 1969; Record 1967; Hutton 1977 }
+#'
+#'
+#'@param sequence Sequence (5' to 3') of one strand of the nucleic acid duplex
+#'  as a character string.
+#'@param comp.sequence Complementary sequence (3' to 5') of the nucleic acid
+#'  duplex as a character string.
+#'@param nucleic.acid.conc Concentration of the nucleic acid strand (\eqn{mol
+#'  L^{-1}}{mol/L}) in excess as a numeric value.
+#'@param hybridisation.type  The hybridisation type. Either \code{"dnadna"},
+#'  \code{"rnarna"},  \code{"dnarna"}, \code{"rnadna"}, \code{"mrnarna"} or
+#'  \code{"rnamrna"} (see \strong{Hybridisation type options}).
+#'@param Na.conc Concentration of Na ions (M) as a numeric value (see
+#'  \strong{Ion and agent concentrations}).
+#'@param Mg.conc Concentration of Mg ions (M) as a numeric value (see
+#'  \strong{Ion and agent concentrations}).
+#'@param Tris.conc Concentration of Tris ions (M) as a numeric value  (see
+#'  \strong{Ion and agent concentrations}).
+#'@param K.conc Concentration of K ions (M) as a numeric value (see \strong{Ion
+#'  and agent concentrations}).
+#'@param dNTP.conc Concentration of dNTP (M) as a numeric value (see \strong{Ion
+#'  and agent concentrations}).
+#'@param DMSO.conc Concentration of DMSO (\%) as a numeric value (see
+#'  \strong{Ion and agent concentrations}).
+#'@param formamide.conc Concentration of formamide (M or \% depending on
+#'  correction method) as a numeric value (see \strong{Ion and agent
+#'  concentrations}).
+#'@param size.threshold Sequence length threshold to decide approximative or
+#'  nearest-neighbour approach for computation. Default is 60.
+#'@param self logical. Specifies that \code{sequence} is self complementary and
+#'  \code{complementary sequence} is not required (seed \strong{Self
+#'  complementary sequences}). Default is \code{FALSE}.
+#'@param correction.factor  Correction factor to be used to modulate the effect
+#'  of the nucleic acid concentration (\code{nucleic.acid.conc}) in the
+#'  computation of melting temperature (see \strong{Correction factor for
+#'  nucleic acid concentration}).
+#'@param method.approx Specify the approximative formula to be used for melting
+#'  temperature calculation for sequences of length greater than
+#'  \code{size.threshold}. Either \code{"ahs01"}, \code{"che93"},
+#'  \code{"che93corr"}, \code{"schdot"}, \code{"owe69"}, \code{"san98"},
+#'  \code{"wetdna91"}, \code{"wetrna91"} or \code{"wetdnarna91"} (see
+#'  \strong{Approximative formulas}).
+#'@param method.nn Specify the nearest neighbor model to be used for melting
+#'  temperature calculation for sequences of length lesser than
+#'  \code{size.threshold}. Either \code{"all97"}, \code{"bre86"},
+#'  \code{"san04"}, \code{"san96"}, \code{"sug96"}, \code{"tan04"},
+#'  \code{"fre86"}, \code{"xia98"}, \code{"sug95"} or \code{"tur06"} (see
+#'  \strong{Nearest neighbor models}).
+#'@param method.GU Specify the nearest neighbor model to compute the
+#'  contribution of GU base pairs to the thermodynamic of helix-coil transition.
+#'  Available method is \code{"tur99"} (see \strong{GU wobble base pairs
+#'  effect}).
+#'@param method.singleMM Specify the nearest neighbor model to compute the
+#'  contribution of single mismatch to the thermodynamic of helix-coil
+#'  transition.  Either \code{"allsanpey"}, \code{"tur06"}, \code{"zno07"} or
+#'  \code{"zno08"} (see \strong{Single mismatch effect}).
+#'@param method.tandemMM Specify the nearest neighbor model to compute the
+#'  contribution of tandem mismatches to the thermodynamic of helix-coil
+#'  transition. Either \code{"allsanpey"} or \code{"tur99"} (see \strong{Tandem
+#'  mismatches effect}).
+#'@param method.single.dangle Specify the nearest neighbor model to compute the
+#'  contribution of single dangling end to the thermodynamic of helix-coil
+#'  transition. Either \code{"bom00"}, \code{"sugdna02"}, \code{"sugrna02"} or
+#'  \code{"ser08"} (see \strong{Single dangling end effect}).
+#'@param method.double.dangle Specify the nearest neighbor model to compute the
+#'  contribution of double dangling end to the thermodynamic of helix-coil
+#'  transition. Either \code{"sugdna02"}, \code{"sugrna02"}, \code{"ser05"} or
+#'  \code{"ser06"} (see \strong{Double dangling end effect}).
+#'@param method.long.dangle Specify the nearest neighbor model to compute the
+#'  contribution of long dangling end to the thermodynamic of helix-coil
+#'  transition. Either \code{"sugdna02"} or \code{"sugrna02"} (see \strong{Long
+#'  dangling end effect}).
+#'@param method.internal.loop Specify the nearest neighbor model to compute the
+#'  contribution of internal loop to the thermodynamic of helix-coil transition.
+#'  Either \code{"san04"}, \code{"tur06"} or \code{"zno07"} (see
+#'  \strong{Internal loop effect}).
+#'@param method.single.bulge.loop Specify the nearest neighbor model to compute
+#'  the contribution of single bulge loop to the thermodynamic of helix-coil
+#'  transition. Either \code{"san04"}, \code{"tan04"}, \code{"ser07"} or
+#'  \code{"tur06"} (see \strong{Single bulge loop effect}).
+#'@param method.long.bulge.loop Specify the nearest neighbor model to compute
+#'  the contribution of long bulge loop to the thermodynamic of helix-coil
+#'  transition. Either \code{"san04"} or \code{"tur06"} (see \strong{Long bulge
+#'  loop effect}).
+#'@param method.CNG Specify the nearest neighbor model to compute the
+#'  contribution of CNG repeats to the thermodynamic of helix-coil transition.
+#'  Available method is \code{"bro05"} (see \strong{CNG repeats effect}).
+#'@param method.inosine Specify the pecific nearest neighbor model to compute
+#'  the contribution of inosine bases (I) to the thermodynamic of helix-coil
+#'  transition. Either \code{"san05"} or \code{"zno07"} (see \strong{Inosine
+#'  bases effect}).
+#'@param method.hydroxyadenine Specify the nearest neighbor model to compute the
+#'  contribution of hydroxyadenine bases (A*) to the thermodynamic of helix-coil
+#'  transition. Available method is \code{"sug01"} (see \strong{Hydroxyadenine
+#'  bases effect}).
+#'@param method.azobenzenes Specify the nearest neighbor model to compute the
+#'  contribution of azobenzenes (X_T for trans azobenzenes and X_C for cis
+#'  azobenzenes) to the thermodynamic of helix-coil transition. Available method
+#'  is \code{"asa05"} (see \strong{Azobenzenes effect}).
+#'@param method.locked Specify the nearest neighbor model to compute the
+#'  contribution of locked nucleic acids (AL, GL, TL and CL) to the
+#'  thermodynamic of helix-coil transition. Available method is \code{"mct04"}
+#'  (see \strong{Locked nucleic acids effect}).
+#'@param correction.Na Specify the correction method for Na ions. Either
+#'  \code{"ahs01"}, \code{"kam71"}, \code{"owc1904"}, \code{"owc2004"},
+#'  \code{"owc2104"}, \code{"owc2204"}, \code{"san96"}, \code{"san04"},
+#'  \code{"schlif"}, \code{"tanna06"}, \code{"wetdna91"}, \code{"tanna07"},
+#'  \code{"wetrna91"} or \code{"wetdnarna91"} (see \strong{Sodium corrections}).
+#'@param correction.Mg Specify the correction method for Mg ions. Either
+#'  \code{"owcmg08"}, \code{"tanmg06"} or \code{"tanmg07"} (see
+#'  \strong{Magnesium corrections}).
+#'@param correction.NaMg Specify the correction method for mixed Na and Mg ions.
+#'  Either \code{"owcmix08"}, \code{"tanmix07"} or \code{"tanmix07"} (see
+#'  \strong{Mixed Sodium and Magnesium corrections}).
+#'@param method.Naeq Specify the ion correction which gives a sodium equivalent
+#'  concentration if other cations are present. Either \code{"ahs01"},
+#'  \code{"mit96"} or \code{"pey00"} (see \strong{Sodium equivalent
+#'  concentration methods}).
+#'@param correction.DMSO Specify the correction method for DMSO. Specify the
+#'  correction method for DMSO. Either \code{"ahs01"}, \code{"mus81"},
+#'  \code{"cul76"} or \code{"esc80"} (see \strong{DMSO corrections}).
+#'@param correction.formamide Specify the correction method for formamide.
+#'  Specify the correction method for formamide Either \code{"bla96"} or
+#'  \code{"lincorr"} (see \strong{Formamide corrections}).
+#'
+#'@return
+#'@export
+#'@import melting5jars
+#'@importFrom Rdpack reprompt
+#'@encoding UTF-8
+#'
+#'@references
+#'
+#'\insertRef{marmur_determination_1962}{rmelting}
+#'
+#'\insertRef{schildkraut_dependence_1965}{rmelting}
+#'
+#'\insertRef{record_electrostatic_1967}{rmelting}
+#'
+#'\insertRef{mcconaughy_nucleic_1969}{rmelting}
+#'
+#'\insertRef{owen_determination_1969}{rmelting}
+#'
+#'\insertRef{frank-kamenetskii_simplification_1971}{rmelting}
+#'
+#'\insertRef{britten_analysis_1974}{rmelting}
+#'
+#'\insertRef{cullen_thermal_1976}{rmelting}
+#'
+#'\insertRef{hutton_renaturation_1977}{rmelting}
+#'
+#'\insertRef{casey_rates_1977}{rmelting}
+#'
+#'\insertRef{hall_evolution_1980}{rmelting}
+#'
+#'\insertRef{escara_thermal_1980}{rmelting}
+#'
+#'\insertRef{musielski_influence_1981}{rmelting}
+#'
+#'\insertRef{freier_improved_1986}{rmelting}
+#'
+#'\insertRef{breslauer_predicting_1986}{rmelting}
+#'
+#'\insertRef{wahl_molecular_1987}{rmelting}
+#'
+#'\insertRef{wetmur_dna_1991}{rmelting}
+#'
+#'\insertRef{chester_dimethyl_1993}{rmelting}
+#'
+#'\insertRef{sugimoto_rna/dna_1994}{rmelting}
+#'
+#'\insertRef{sugimoto_thermodynamic_1995}{rmelting}
+#'
+#'\insertRef{santalucia_improved_1996}{rmelting}
+#'
+#'\insertRef{sugimoto_improved_1996}{rmelting}
+#'
+#'\insertRef{blake_thermodynamic_1996}{rmelting}
+#'
+#'\insertRef{blake_denaturation_1996}{rmelting}
+#'
+#'\insertRef{mitsuhashi_technical_1996}{rmelting}
+#'
+#'\insertRef{allawi_thermodynamics_1997}{rmelting}
+#'
+#'\insertRef{santalucia_unified_1998}{rmelting}
+#'
+#'\insertRef{xia_thermodynamic_1998}{rmelting}
+#'
+#'\insertRef{allawi_thermodynamics_1998}{rmelting}
+#'
+#'\insertRef{blake_thermal_1998}{rmelting}
+#'
+#'\insertRef{allawi_nearest_1998}{rmelting}
+#'
+#'\insertRef{allawi_nearest-neighbor_1998}{rmelting}
+#'
+#'\insertRef{mathews_expanded_1999}{rmelting}
+#'
+#'\insertRef{peyret_nearest-neighbor_1999}{rmelting}
+#'
+#'\insertRef{peyret_prediction_2000}{rmelting}
+#'
+#'\insertRef{bommarito_thermodynamic_2000}{rmelting}
+#'
+#'\insertRef{kawakami_thermodynamic_2001}{rmelting}
+#'
+#'\insertRef{von_ahsen_oligonucleotide_2001}{rmelting}
+#'
+#'\insertRef{le_novere_melting_2001}{rmelting}
+#'
+#'\insertRef{ohmichi_long_2002}{rmelting}
+#'
+#'\insertRef{santalucia_thermodynamics_2004}{rmelting}
+#'
+#'\insertRef{tanaka_thermodynamic_2004}{rmelting}
+#'
+#'\insertRef{mctigue_sequence-dependent_2004}{rmelting}
+#'
+#'\insertRef{owczarzy_effects_2004}{rmelting}
+#'
+#'\insertRef{broda_thermodynamic_2005}{rmelting}
+#'
+#'\insertRef{watkins_nearest-neighbor_2005}{rmelting}
+#'
+#'\insertRef{asanuma_clear-cut_2005}{rmelting}
+#'
+#'\insertRef{otoole_stability_2005}{rmelting}
+#'
+#'\insertRef{lu_set_2006}{rmelting}
+#'
+#'\insertRef{kierzek_nearest_2006}{rmelting}
+#'
+#'\insertRef{tan_nucleic_2006}{rmelting}
+#'
+#'\insertRef{otoole_comprehensive_2006}{rmelting}
+#'
+#'\insertRef{tan_rna_2007}{rmelting}
+#'
+#'\insertRef{wright_nearest_2007}{rmelting}
+#'
+#'\insertRef{davis_thermodynamic_2007}{rmelting}
+#'
+#'\insertRef{blose_non-nearest-neighbor_2007}{rmelting}
+#'
+#'\insertRef{badhwar_thermodynamic_2007}{rmelting}
+#'
+#'\insertRef{davis_thermodynamic_2008}{rmelting}
+#'
+#'\insertRef{miller_thermodynamic_2008}{rmelting}
+#'
+#'\insertRef{owczarzy_predicting_2008}{rmelting}
+#'
+#'\insertRef{dumousseau_melting_2012}{rmelting}
+#'
+#' @examples
+#'
+
+melting <- function(sequence, comp.sequence = NULL,
+                    nucleic.acid.conc,
+                    hybridisation.type = c("dnadna", "rnarna", "dnarna",
+                                           "rnadna", "mrnarna", "rnamrna"),
+                    Na.conc, Mg.conc, Tris.conc, K.conc,
+                    dNTP.conc, DMSO.conc, formamide.conc,
+                    size.threshold = 60, self = FALSE, correction.factor,
+                    method.approx = c("ahs01", "che93", "che93corr",
+                                      "marschdot", "owe69", "san98", "wetdna91",
+                                      "wetrna91", "wetdnarna91"),
+                    method.nn = c("all97", "bre86", "san04", "san96", "sug96",
+                                  "tan04", "fre86", "xia98", "sug95", "tur06"),
+                    method.GU = c("tur99"),
+                    method.singleMM, method.tandemMM,
+                    method.single.dangle, method.double.dangle,
+                    method.long.dangle, method.internal.loop,
+                    method.single.bulge.loop, method.long.bulge.loop,
+                    method.CNG, method.inosine, method.hydroxyadenine,
+                    method.azobenzenes, method.locked, correction.Na,
+                    correction.Mg, correction.NaMg, method.Naeq,
+                    correction.DMSO, correction.formamide) {
+
+  ##################################################
+  # Checks for mandatory arguments
+  ##################################################
+
+  #-----------------------------------------------------------------------------
+
+  # Check if mandatory argument sequence is present
+  if (missing(sequence)){
+    stop("The mandatory argument 'sequence' is missing.")
+  }
+
+  # Check if sequence is of type character with unit length
+  if (!is.character(sequence) || length(sequence) != 1){
+    stop("'sequence' should be a character vector of length 1.")
+  }
+
+  #-----------------------------------------------------------------------------
+
+  # Check if mandatory argument nucleic.acid.conc is present
+  if (missing(nucleic.acid.conc)){
+    stop("The mandatory argument 'nucleic.acid.conc' is missing.")
+  }
+
+  # Check if argument nucleic.acid.conc is of type numeric with unit length
+  if (!is.numeric(nucleic.acid.conc) || length(nucleic.acid.conc) != 1){
+    stop("'nucleic.acid.conc' should be a numeric vector of length 1.")
+  }
+
+  #-----------------------------------------------------------------------------
+
+  # Check if mandatory argument hybridisation.type is present
+  if (missing(hybridisation.type)){
+    stop("The mandatory argument 'hybridisation.type' is missing.")
+  }
+
+  # Check argument hybridisation.type
+  hybridisation.type <- match.arg(hybridisation.type)
+
+  # Check if argument hybridisation.type is of type character with unit length
+  if (!is.character(hybridisation.type) || length(hybridisation.type) != 1){
+    stop("'hybridisation.type' should be a character vector of length 1.")
+  }
+
+  #-----------------------------------------------------------------------------
+
+
+  # Check if inosine(s) or hydroxyadenine(s) are present in sequence
+  if(missing(comp.sequence)) {
+    i.check <- grepl("i", sequence,ignore.case=TRUE)
+    ha.check <- grepl("a\\*", sequence,ignore.case=TRUE)
+    if(TRUE %in% c(i.check, ha.check)) {
+      warning("The argument 'comp.sequence' is required if there are inosine(s) [I] or hydroxyadenine(s) [A*] in the 'sequence'")
+    }
+  }
+
+  #-----------------------------------------------------------------------------
+
+  # Check if at least one of the ion concentrations are present
+  ion.check <- c(missing(Na.conc), missing(Mg.conc), missing(Tris.conc),
+                 missing(K.conc))
+  if(!(FALSE %in% ion.check)) {
+    stop("At least one of these arguments specifying ion concentration should be provided:\n'Na.conc', 'Mg.conc', 'Tris.conc', 'K.conc'")
+  }
+
+  # Check if argument nucleic.acid.conc is of type numeric with unit length
+  if(!missing(Na.conc)){
+    if(!is.numeric(Na.conc) || length(Na.conc) != 1){
+      stop("'Na.conc' should be a numeric vector of length 1.")
+    }
+  }
+
+  # Check if argument nucleic.acid.conc is of type numeric with unit length
+  if(!missing(Mg.conc)){
+    if(!is.numeric(Mg.conc) || length(Mg.conc) != 1){
+      stop("'Mg.conc' should be a numeric vector of length 1.")
+    }
+  }
+
+  # Check if argument Tris.conc is of type numeric with unit length
+  if(!missing(Tris.conc)){
+    if(!is.numeric(Tris.conc) || length(Tris.conc) != 1){
+      stop("'Tris.conc' should be a numeric vector of length 1.")
+    }
+  }
+
+  # Check if argument K.conc is of type numeric with unit length
+  if(!missing(K.conc)){
+    if(!is.numeric(K.conc) || length(K.conc) != 1){
+      stop("'K.conc' should be a numeric vector of length 1.")
+    }
+  }
+
+  #-----------------------------------------------------------------------------
+
+
+  ##################################################
+  # Checks for other arguments
+  ##################################################
+
+  #-----------------------------------------------------------------------------
+
+  # Check if argument dNTP.conc is of type numeric with unit length
+  if(!missing(dNTP.conc)){
+    if(!is.numeric(dNTP.conc) || length(dNTP.conc) != 1){
+      stop("'dNTP.conc' should be a numeric vector of length 1.")
+    }
+  }
+
+  # Check if argument DMSO.conc is of type numeric with unit length
+  if(!missing(DMSO.conc)){
+    if(!is.numeric(DMSO.conc) || length(DMSO.conc) != 1){
+      stop("'DMSO.conc' should be a numeric vector of length 1.")
+    }
+  }
+
+  # Check if argument formamide.conc is of type numeric with unit length
+  if(!missing(formamide.conc)){
+    if(!is.numeric(formamide.conc) || length(formamide.conc) != 1){
+      stop("'formamide.conc' should be a numeric vector of length 1.")
+    }
+  }
+
+  #-----------------------------------------------------------------------------
+
+  # Check if argument size.threshold is of type numeric with unit length
+  if(!is.numeric(size.threshold) || length(size.threshold) != 1){
+    stop("'size.threshold' should be a numeric vector of length 1.")
+  }
+
+  #-----------------------------------------------------------------------------
+
+  # Check argument self
+  if(!missing(self)){
+    if(!is.logical(self) || length(self) != 1) {
+      stop("'self' should be logical vector of length 1.")
+    }
+  }
+
+  #-----------------------------------------------------------------------------
+
+  # Check argument correction.factor
+  if(!missing(correction.factor)){
+    if(!is.numeric(correction.factor) || length(correction.factor) != 1) {
+      stop("'correction.factor' should be numeric vector of length 1.")
+    }
+  }
+
+  #-----------------------------------------------------------------------------
+
+  # Check argument method.approx
+  if(!missing(method.approx)){
+    method.approx <- match.arg(method.approx)
+  }
+
+  # Check argument method.nn
+  if(!missing(method.nn)){
+    method.nn <- match.arg(method.nn)
+  }
+
+  #-----------------------------------------------------------------------------
+
+  ##################################################
+  # Build options
+  ##################################################
+
+  missing2 <- function(x) {
+    if(missing(x)) {
+      NA
+    } else{
+      x
+    }
+  }
+
+  eopt <- data.frame(ion_agent = c("Na", "Mg", "Tris", "K",
+                                   "dNTP", "DMSO", "formamide"),
+                     earg = c("Na.conc", "Mg.conc", "Tris.conc", "K.conc",
+                              "dNTPconc", "DMSO.conc", "formamide.conc"),
+                     echeck = c(missing(Na.conc), missing(Mg.conc),
+                                missing(Tris.conc), missing(K.conc),
+                                missing(dNTPconc), missing(DMSO.conc),
+                                missing(formamide.conc)),
+                     eval = c(missing2(Na.conc), missing2(Mg.conc),
+                              missing2(Tris.conc), missing2(K.conc),
+                              missing2(dNTPconc), missing2(DMSO.conc),
+                              missing2(formamide.conc)))
+
+  # eopt <- data.frame(ion_agent = c("Na", "Mg", "Tris", "K",
+  #                                  "dNTP", "DMSO", "formamide"),
+  #                    earg = c("Na.conc", "Mg.conc", "Tris.conc", "K.conc",
+  #                             "dNTPconc", "DMSO.conc", "formamide.conc"),
+  #                    echeck = tf(0.05,0.25),
+  #                    eval = tf2(0.05,0.25))
+
+  eopt <- eopt[eopt$echeck == FALSE,]
+
+  eopts <- paste(paste0(eopt$ion_agent, "=", eopt$eval), collapse=":")
+
+  # Mandatory options 1
+  opts <- c(
+    "-S", sequence,
+    "-H", hybridisation.type,
+    "-P", nucleic.acid.conc,
+    "-E", eopts
+  )
+
+  # Mandatory options 2: comp.sequence
+  if(!missing(comp.sequence)){
+    opts <- c(opts,
+              "-C", comp.sequence)
+  }
+
+  # General options: size.threshold
+  opts <- c(opts, "-T", size.threshold)
+
+  # General options: self
+  if(self) {
+    opts <- c(opts, "-self")
+  }
+
+  # General options: correction.factor
+  if(!missing(correction.factor)){
+    opts <- c(opts, "-F", correction.factor)
+  }
+
+
+
+
+  # Add verbose
+  opts <- c(opts, "-v")
+
+
+
+  ##################################################
+  # Get results
+  ##################################################
+
+
+  meltj <- new(J("melting.Main"))
+  optionManager <- new(J("melting.configuration.OptionManagement"))
+
+  results <- meltj$getMeltingResults(opts, optionManager)
+
+  calculMethod <- results$getCalculMethod()
+
+  enthalpy_cal <- results$getEnthalpy()
+  entropy_cal <- results$getEntropy()
+
+  enthalpy_J <- entropy_J <- NULL
+
+  if (.jinstanceof(calculMethod, J("melting.nearestNeighborModel.NearestNeighborMode"))) {
+    enthalpy_J <- results$getEnergyValueInJ(enthalpy_cal)
+    entropy_J <- results$getEnergyValueInJ(entropy_cal)
+  }
+
+  melting_temp_C <- results$getTm()
+
+  list(
+    enthalpy_cal = enthalpy_cal,
+    entropy_cal = entropy_cal,
+    enthalpy_J = enthalpy_J,
+    entropy_J = entropy_J,
+    melting_temp_C = melting_temp_C
+  ) -> out
+
+  #class(out) <- c("melting_res")
+
+  return(out)
+
+}
+

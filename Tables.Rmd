@@ -1,0 +1,261 @@
+---
+title: "Tables - MELTING 5"
+author: "J. Aravind"
+date: "8 February 2018"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+bibliography: inst/REFERENCES.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment =  "#'")
+library(readxl)
+library(RefManageR)
+
+tabular <- function(df, ...) {
+  stopifnot(is.data.frame(df))
+
+  align <- function(x) if (is.numeric(x)) "r" else "l"
+  col_align <- vapply(df, align, character(1))
+
+  cols <- lapply(df, format, ...)
+  contents <- do.call("paste",
+                      c(cols, list(sep = " \\tab ", collapse = "\\cr\n  ")))
+
+  paste("\\tabular{", paste(col_align, collapse = ""), "}{\n  ",
+        contents, "\n}\n", sep = "")
+}
+```
+
+```{r}
+bib <- ReadBib("inst/REFERENCES.bib")
+ 
+BibOptions(check.entries = FALSE, bib.style = "authoryear", max.names = 1,
+            style = "citation", bibpunct = c("","","(",")",";",","))
+ 
+# Cite(bib, "mathews_expanded_1999")
+```
+
+```{r}
+rmeltingtables <- function(x, strong=1, def="default",
+                           code="Formula", ref = "Reference") {
+  
+  BibOptions(check.entries = FALSE, bib.style = "authoryear", max.names = 1,
+            style = "citation", bibpunct = c("","","(",")",";",","))
+  
+  colnames(x) <- as.character(x[strong,])
+  x[strong,] <- paste0("\\strong{", as.character(x[strong,]),"}", sep="")
+  x[-1,code] <- paste0("\\code{", unlist(x[-1,code]), "}", sep = "")
+  
+  if(!is.null(def)) {
+    ind <- setdiff(which(is.na(x[,def]) %in% FALSE), 1)
+    x[ind,code] <- paste0(unlist(x[ind,code]), unlist(x[ind,def]), sep = "")
+    rm(ind)
+  }
+
+  x[, def] <- NULL
+  
+  y <- unlist(x[-1, ref])
+  y <- gsub("@|\\[|\\]", "", y)
+  
+  y <- strsplit(y, "; ")
+  y <- unlist(lapply(y, function(x) Cite(bib,x)))
+  
+  y <- gsub(", (?=et al\\.)", " ", y, perl=TRUE)
+  y <- gsub("(?<!et al\\.), (?=\\d)", " ", y, perl=TRUE)
+  
+  x[-1, ref] <- unlist(y)
+  
+  cat(tabular(x))
+}
+
+```
+
+
+## Approx.methods
+```{r}
+approx <- read_excel("Tables.xlsx", sheet = "Approx.methods", col_names = F)
+knitr::kable(approx)
+rmeltingtables(approx, strong = 1, def = "default", code = "Formula",
+               ref = "Reference")
+```
+
+## NN.methods
+```{r}
+NN <- read_excel("Tables.xlsx", sheet = "NN.methods", col_names = F)
+knitr::kable(NN)
+rmeltingtables(NN, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+## GU.methods
+```{r}
+GU.methods <- read_excel("Tables.xlsx", sheet = "GU.methods", col_names = F)
+knitr::kable(GU.methods)
+rmeltingtables(GU.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+## singleMM.methods
+```{r}
+singleMM.methods <- read_excel("Tables.xlsx", sheet = "singleMM.methods", col_names = F)
+knitr::kable(singleMM.methods)
+rmeltingtables(singleMM.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+## tandemMM.methods
+```{r}
+tandemMM.methods <- read_excel("Tables.xlsx", sheet = "tandemMM.methods", col_names = F)
+knitr::kable(tandemMM.methods)
+rmeltingtables(tandemMM.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+## single.dangle.methods
+```{r}
+BibOptions(check.entries = FALSE, bib.style = "authoryear", max.names = 1,
+            style = "citation", bibpunct = c("","","(",")",";",","))
+
+single.dangle.methods <- read_excel("Tables.xlsx", sheet = "single.dangle.methods", col_names = F)
+knitr::kable(single.dangle.methods)
+rmeltingtables(single.dangle.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## double.dangle.methods
+```{r}
+double.dangle.methods <- read_excel("Tables.xlsx", sheet = "double.dangle.methods", col_names = F)
+knitr::kable(double.dangle.methods)
+rmeltingtables(double.dangle.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## long.dangle.methods
+```{r}
+long.dangle.methods <- read_excel("Tables.xlsx", sheet = "long.dangle.methods", col_names = F)
+knitr::kable(long.dangle.methods)
+rmeltingtables(long.dangle.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## internal.loop.methods
+```{r}
+internal.loop.methods <- read_excel("Tables.xlsx", sheet = "internal.loop.methods", col_names = F)
+knitr::kable(internal.loop.methods)
+rmeltingtables(internal.loop.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## single.bulge.loop.methods
+```{r}
+single.bulge.loop.methods <- read_excel("Tables.xlsx", sheet = "single.bulge.loop.methods", col_names = F)
+knitr::kable(single.bulge.loop.methods)
+rmeltingtables(single.bulge.loop.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## long.bulge.loop.methods
+```{r}
+long.bulge.loop.methods <- read_excel("Tables.xlsx", sheet = "long.bulge.loop.methods", col_names = F)
+knitr::kable(long.bulge.loop.methods)
+rmeltingtables(long.bulge.loop.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## CNG.methods
+```{r}
+CNG.methods <- read_excel("Tables.xlsx", sheet = "CNG.methods", col_names = F)
+knitr::kable(CNG.methods)
+rmeltingtables(CNG.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## inosine.methods
+```{r}
+inosine.methods <- read_excel("Tables.xlsx", sheet = "inosine.methods", col_names = F)
+knitr::kable(inosine.methods)
+rmeltingtables(inosine.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## hydroxyadenine.methods
+```{r}
+hydroxyadenine.methods <- read_excel("Tables.xlsx", sheet = "hydroxyadenine.methods", col_names = F)
+knitr::kable(hydroxyadenine.methods)
+rmeltingtables(hydroxyadenine.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## azobenzenes.methods
+```{r}
+azobenzenes.methods <- read_excel("Tables.xlsx", sheet = "azobenzenes.methods", col_names = F)
+knitr::kable(azobenzenes.methods)
+rmeltingtables(azobenzenes.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## locked.methods
+```{r}
+locked.methods <- read_excel("Tables.xlsx", sheet = "locked.methods", col_names = F)
+knitr::kable(locked.methods)
+rmeltingtables(locked.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## locked.methods
+```{r}
+locked.methods <- read_excel("Tables.xlsx", sheet = "locked.methods", col_names = F)
+knitr::kable(locked.methods)
+rmeltingtables(locked.methods, strong = 1, def = "default", code = "Model",
+               ref = "Reference")
+```
+
+## na.correction
+```{r}
+na.correction <- read_excel("Tables.xlsx", sheet = "na.correction", col_names = F)
+knitr::kable(na.correction)
+rmeltingtables(na.correction, strong = 1, def = "default", code = "Correcion",
+               ref = "Reference")
+```
+
+## mg.correction
+```{r}
+mg.correction <- read_excel("Tables.xlsx", sheet = "mg.correction", col_names = F)
+knitr::kable(mg.correction)
+rmeltingtables(mg.correction, strong = 1, def = "default", code = "Correcion",
+               ref = "Reference")
+```
+
+## NaMg.correction
+```{r}
+NaMg.correction <- read_excel("Tables.xlsx", sheet = "NaMg.correction", col_names = F)
+knitr::kable(NaMg.correction)
+rmeltingtables(NaMg.correction, strong = 1, def = "default", code = "Correcion",
+               ref = "Reference")
+```
+
+## Naeq.methods
+```{r}
+Naeq.methods <- read_excel("Tables.xlsx", sheet = "Naeq.methods", col_names = F)
+knitr::kable(Naeq.methods)
+rmeltingtables(Naeq.methods, strong = 1, def = "default", code = "Correcion",
+               ref = "Reference")
+```
+
+## DMSO.methods
+```{r}
+DMSO.methods <- read_excel("Tables.xlsx", sheet = "DMSO.methods", col_names = F)
+knitr::kable(DMSO.methods)
+rmeltingtables(DMSO.methods, strong = 1, def = "default", code = "Correcion",
+               ref = "Reference")
+```
+
+## formamide.methods
+```{r}
+formamide.methods <- read_excel("Tables.xlsx", sheet = "formamide.methods", col_names = F)
+knitr::kable(formamide.methods)
+rmeltingtables(formamide.methods, strong = 1, def = "default", code = "Correcion",
+               ref = "Reference")
+```
+
+
+## References
