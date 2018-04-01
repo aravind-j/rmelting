@@ -1,9 +1,10 @@
 
 #'melting
 #'
-#'R interface to the MELTING 5 software for computation of enthalpy and entropy
-#'of the helix-coil transition, and then the melting temperature of a nucleic
-#'acid duplex.
+#'R interface to the
+#'\href{https://www.ebi.ac.uk/biomodels/tools/melting/}{MELTING 5 software} for
+#'computation of enthalpy and entropy of the helix-coil transition, and then the
+#'melting temperature of a nucleic acid duplex.
 #'
 #'@section Mandatory arguments: The following are the arguments which are
 #'  mandatory for computation. \itemize{ \item \code{sequence} \item
@@ -503,14 +504,30 @@ melting <- function(sequence, comp.sequence = NULL,
                     method.nn = c("all97", "bre86", "san04", "san96", "sug96",
                                   "tan04", "fre86", "xia98", "sug95", "tur06"),
                     method.GU = c("tur99"),
-                    method.singleMM, method.tandemMM,
-                    method.single.dangle, method.double.dangle,
-                    method.long.dangle, method.internal.loop,
-                    method.single.bulge.loop, method.long.bulge.loop,
-                    method.CNG, method.inosine, method.hydroxyadenine,
-                    method.azobenzenes, method.locked, correction.Na,
-                    correction.Mg, correction.NaMg, method.Naeq,
-                    correction.DMSO, correction.formamide) {
+                    method.singleMM = c("allsanpey", "tur06", "zno07", "zno08"),
+                    method.tandemMM = c("allsanpey", "tur99"),
+                    method.single.dangle = c("bom00", "sugdna02",
+                                             "sugrna02", "ser08"),
+                    method.double.dangle = c("sugdna02", "sugrna02",
+                                             "ser05", "ser06"),
+                    method.long.dangle = c("sugdna02", "sugrna02"),
+                    method.internal.loop = c("san04", "tur06", "zno07"),
+                    method.single.bulge.loop = c("tan04", "san04",
+                                                 "ser07" ,"tur06"),
+                    method.long.bulge.loop = c("san04", "tur06"),
+                    method.CNG = c("bro05"),
+                    method.inosine = c("san05", "zno07"),
+                    method.hydroxyadenine = c("sug01"),
+                    method.azobenzenes = c("asa05"), method.locked = c("mct04"),
+                    correction.Na = c("ahs01", "kam71", "marschdot", "owc1904",
+                                      "owc2004", "owc2104", "owc2204", "san96",
+                                      "san04", "schlif", "tanna06", "tanna07",
+                                      "wet91"),
+                    correction.Mg = c("oxcmg08", "tanmg06", "tanmg07"),
+                    correction.NaMg = c("oxcmix08", "tanmix07"),
+                    method.Naeq = c("ahs01", "mit96", "pey00"),
+                    correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"),
+                    correction.formamide = c("bla96", "lincorr")) {
 
   ##################################################
   # Checks for mandatory arguments
@@ -673,8 +690,15 @@ melting <- function(sequence, comp.sequence = NULL,
 
   #-----------------------------------------------------------------------------
 
+  # Check argument method.GU
+  if(!missing(method.GU)){
+    method.GU <- match.arg(method.GU)
+  }
+
+  #-----------------------------------------------------------------------------
+
   ##################################################
-  # Build options
+  # Build options - General
   ##################################################
 
   missing2 <- function(x) {
@@ -688,20 +712,20 @@ melting <- function(sequence, comp.sequence = NULL,
   eopt <- data.frame(ion_agent = c("Na", "Mg", "Tris", "K",
                                    "dNTP", "DMSO", "formamide"),
                      earg = c("Na.conc", "Mg.conc", "Tris.conc", "K.conc",
-                              "dNTPconc", "DMSO.conc", "formamide.conc"),
+                              "dNTP.conc", "DMSO.conc", "formamide.conc"),
                      echeck = c(missing(Na.conc), missing(Mg.conc),
                                 missing(Tris.conc), missing(K.conc),
-                                missing(dNTPconc), missing(DMSO.conc),
+                                missing(dNTP.conc), missing(DMSO.conc),
                                 missing(formamide.conc)),
                      eval = c(missing2(Na.conc), missing2(Mg.conc),
                               missing2(Tris.conc), missing2(K.conc),
-                              missing2(dNTPconc), missing2(DMSO.conc),
+                              missing2(dNTP.conc), missing2(DMSO.conc),
                               missing2(formamide.conc)))
 
   # eopt <- data.frame(ion_agent = c("Na", "Mg", "Tris", "K",
   #                                  "dNTP", "DMSO", "formamide"),
   #                    earg = c("Na.conc", "Mg.conc", "Tris.conc", "K.conc",
-  #                             "dNTPconc", "DMSO.conc", "formamide.conc"),
+  #                             "dNTP.conc", "DMSO.conc", "formamide.conc"),
   #                    echeck = tf(0.05,0.25),
   #                    eval = tf2(0.05,0.25))
 
@@ -735,6 +759,27 @@ melting <- function(sequence, comp.sequence = NULL,
   if(!missing(correction.factor)){
     opts <- c(opts, "-F", correction.factor)
   }
+
+
+  ##################################################
+  # Build options - General
+  ##################################################
+
+  # Options: method.approx
+  if(!missing(method.approx)){
+    opts <- c(opts, "-am", method.approx)
+  }
+
+  # Options: method.nn
+  if(!missing(method.nn)){
+    opts <- c(opts, "-nn", method.nn)
+  }
+
+  # Options: method.GU
+  if(!missing(method.GU)){
+    opts <- c(opts, "-GU", method.GU)
+  }
+
 
 
 
