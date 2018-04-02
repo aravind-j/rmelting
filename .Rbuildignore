@@ -8,3 +8,4 @@
 ^melttables\.xlsx$
 ^examples temp\.R$
 ^testResults$
+^rmelting\.pdf$
