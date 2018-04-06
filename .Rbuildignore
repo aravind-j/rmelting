@@ -9,3 +9,4 @@
 ^examples temp\.R$
 ^testResults$
 ^rmelting\.pdf$
+^docs$
