@@ -44,6 +44,18 @@ acid duplex." />
 <![endif]-->
 
 
+<!-- Google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-116683292-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
   </head>
 
   <body>
@@ -109,28 +121,40 @@ of the helix-coil transition, and then the melting temperature of a nucleic
 acid duplex.</p>
     
 
-    <pre class="usage"><span class='fu'>melting</span>(<span class='no'>sequence</span>, <span class='kw'>comp.sequence</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>nucleic.acid.conc</span>,
- <span class='kw'>hybridisation.type</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"dnadna"</span>, <span class='st'>"rnarna"</span>, <span class='st'>"dnarna"</span>, <span class='st'>"rnadna"</span>, <span class='st'>"mrnarna"</span>,
- <span class='st'>"rnamrna"</span>), <span class='no'>Na.conc</span>, <span class='no'>Mg.conc</span>, <span class='no'>Tris.conc</span>, <span class='no'>K.conc</span>, <span class='no'>dNTP.conc</span>, <span class='no'>DMSO.conc</span>,
- <span class='no'>formamide.conc</span>, <span class='kw'>size.threshold</span> <span class='kw'>=</span> <span class='fl'>60</span>, <span class='kw'>self</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>correction.factor</span>,
- <span class='kw'>method.approx</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ahs01"</span>, <span class='st'>"che93"</span>, <span class='st'>"che93corr"</span>, <span class='st'>"marschdot"</span>, <span class='st'>"owe69"</span>,
- <span class='st'>"san98"</span>, <span class='st'>"wetdna91"</span>, <span class='st'>"wetrna91"</span>, <span class='st'>"wetdnarna91"</span>), <span class='kw'>method.nn</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"all97"</span>,
- <span class='st'>"bre86"</span>, <span class='st'>"san04"</span>, <span class='st'>"san96"</span>, <span class='st'>"sug96"</span>, <span class='st'>"tan04"</span>, <span class='st'>"fre86"</span>, <span class='st'>"xia98"</span>, <span class='st'>"sug95"</span>,
- <span class='st'>"tur06"</span>), <span class='kw'>method.GU</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"tur99"</span>), <span class='kw'>method.singleMM</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"allsanpey"</span>, <span class='st'>"tur06"</span>,
- <span class='st'>"zno07"</span>, <span class='st'>"zno08"</span>), <span class='kw'>method.tandemMM</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"allsanpey"</span>, <span class='st'>"tur99"</span>),
- <span class='kw'>method.single.dangle</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bom00"</span>, <span class='st'>"sugdna02"</span>, <span class='st'>"sugrna02"</span>, <span class='st'>"ser08"</span>),
- <span class='kw'>method.double.dangle</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sugdna02"</span>, <span class='st'>"sugrna02"</span>, <span class='st'>"ser05"</span>, <span class='st'>"ser06"</span>),
- <span class='kw'>method.long.dangle</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"sugdna02"</span>, <span class='st'>"sugrna02"</span>), <span class='kw'>method.internal.loop</span> <span class='kw'>=</span>
- <span class='fu'>c</span>(<span class='st'>"san04"</span>, <span class='st'>"tur06"</span>, <span class='st'>"zno07"</span>), <span class='kw'>method.single.bulge.loop</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"tan04"</span>, <span class='st'>"san04"</span>,
- <span class='st'>"ser07"</span> ,<span class='st'>"tur06"</span>), <span class='kw'>method.long.bulge.loop</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"san04"</span>, <span class='st'>"tur06"</span>), <span class='kw'>method.CNG</span>
- <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bro05"</span>), <span class='kw'>method.inosine</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"san05"</span>, <span class='st'>"zno07"</span>), <span class='kw'>method.hydroxyadenine</span> <span class='kw'>=</span>
- <span class='fu'>c</span>(<span class='st'>"sug01"</span>), <span class='kw'>method.azobenzenes</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"asa05"</span>), <span class='kw'>method.locked</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"mct04"</span>),
- <span class='kw'>correction.Na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ahs01"</span>, <span class='st'>"kam71"</span>, <span class='st'>"marschdot"</span>, <span class='st'>"owc1904"</span>, <span class='st'>"owc2004"</span>,
- <span class='st'>"owc2104"</span>, <span class='st'>"owc2204"</span>, <span class='st'>"san96"</span>, <span class='st'>"san04"</span>, <span class='st'>"schlif"</span>, <span class='st'>"tanna06"</span>, <span class='st'>"tanna07"</span>,
- <span class='st'>"wet91"</span>), <span class='kw'>correction.Mg</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"oxcmg08"</span>, <span class='st'>"tanmg06"</span>, <span class='st'>"tanmg07"</span>),
- <span class='kw'>correction.NaMg</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"oxcmix08"</span>, <span class='st'>"tanmix07"</span>), <span class='kw'>method.Naeq</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ahs01"</span>,
- <span class='st'>"mit96"</span>, <span class='st'>"pey00"</span>), <span class='kw'>correction.DMSO</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ahs01"</span>, <span class='st'>"cul76"</span>, <span class='st'>"esc80"</span>, <span class='st'>"mus80"</span>),
- <span class='kw'>correction.formamide</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bla96"</span>, <span class='st'>"lincorr"</span>))</pre>
+    <pre class="usage">melting(sequence, comp.sequence = NULL,
+         nucleic.acid.conc,
+         hybridisation.type = c("dnadna", "rnarna", "dnarna",
+                               "rnadna", "mrnarna", "rnamrna"),
+         Na.conc, Mg.conc, Tris.conc, K.conc,
+         dNTP.conc, DMSO.conc, formamide.conc,
+         size.threshold = 60, self = FALSE, correction.factor,
+         method.approx = c("ahs01", "che93", "che93corr",
+                           "marschdot", "owe69", "san98",
+                           "wetdna91", "wetrna91", "wetdnarna91"),
+         method.nn = c("all97", "bre86", "san04", "san96", "sug96",
+                      "tan04", "fre86", "xia98", "sug95", "tur06"),
+         method.GU = c("tur99"),
+         method.singleMM = c("allsanpey", "tur06", "zno07", "zno08"),
+         method.tandemMM = c("allsanpey", "tur99"),
+         method.single.dangle = c("bom00", "sugdna02", "sugrna02", "ser08"),
+         method.double.dangle = c("sugdna02", "sugrna02", "ser05", "ser06"),
+         method.long.dangle = c("sugdna02", "sugrna02"),
+         method.internal.loop = c("san04", "tur06", "zno07"),
+         method.single.bulge.loop = c("tan04", "san04", "ser07" ,"tur06"),
+         method.long.bulge.loop = c("san04", "tur06"),
+         method.CNG = c("bro05"),
+         method.inosine = c("san05", "zno07"),
+         method.hydroxyadenine = c("sug01"),
+         method.azobenzenes = c("asa05"),
+         method.locked = c("mct04"),
+         correction.Na = c("ahs01", "kam71", "marschdot",
+                           "owc1904", "owc2004", "owc2104", "owc2204",
+                           "san96", "san04", "schlif",
+                           "tanna06", "tanna07", "wet91"),
+         correction.Mg = c("oxcmg08", "tanmg06", "tanmg07"),
+         correction.NaMg = c("oxcmix08", "tanmix07"),
+         method.Naeq = c("ahs01", "mit96", "pey00"),
+         correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"),</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

@@ -1,6 +1,7 @@
 template:
   params:
     bootswatch: flatly
+    ganalytics: UA-116683292-2
 
 navbar:
   type: default
