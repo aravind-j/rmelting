@@ -2,6 +2,9 @@ template:
   params:
     bootswatch: flatly
     ganalytics: UA-116683292-2
+    docsearch:
+      api_key: 8b84820d42f7497ca93d51aa44ae523f
+      index_name: rmelting
 
 navbar:
   type: default
