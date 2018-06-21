@@ -9,3 +9,5 @@
 ^examples temp\.R$
 ^testResults$
 ^rmelting\.pdf$
+^_pkgdown\.yml$
+^docs$
