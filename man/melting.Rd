@@ -38,7 +38,7 @@ melting(sequence, comp.sequence = NULL,
          correction.Mg = c("oxcmg08", "tanmg06", "tanmg07"),
          correction.NaMg = c("oxcmix08", "tanmix07"),
          method.Naeq = c("ahs01", "mit96", "pey00"),
-         correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"),
+         correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"))
 }
 \arguments{
 \item{sequence}{Sequence (5' to 3') of one strand of the nucleic acid duplex
