@@ -31,7 +31,7 @@ devtools::load_all(".")
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-last-release/rmelting)](https://cran.r-project.org/package=rmelting)
 <!-- [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmelting?color=green)](https://CRAN.R-project.org/package=rmelting) -->
 <!-- [![packageversion](https://img.shields.io/badge/Package%20version-0.2.3.3-orange.svg)](https://github.com/aravind-j/rmelting) -->
-[![develVersion](https://img.shields.io/badge/devel%20version-0.2.3.3-orange.svg)](https://github.com/aravind-j/rmelting)
+[![develVersion](https://img.shields.io/badge/devel%20version-`r gsub("Version:\\s*", "", readLines(paste0("https://raw.githubusercontent.com/", "aravind-j/rmelting", "/master/DESCRIPTION"))[grep("Version:", readLines(paste0("https://raw.githubusercontent.com/", "aravind-j/rmelting", "/master/DESCRIPTION")))])`-orange.svg)](https://github.com/aravind-j/rmelting)
 <!-- [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/aravind-j/rmelting/total.svg)] -->
 [![Project Status: WIP](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -77,15 +77,17 @@ citation("rmelting")
 ```
 
 ```{r, echo = FALSE}
+detach("package:rmelting", unload=TRUE)
+suppressPackageStartupMessages(library(rmelting))
 cit <- citation("rmelting")
-yr <- format(Sys.Date(), "%Y")
-cit[1]$year <- yr
-oc <- class(cit)
-
-cit <- unclass(cit)
-attr(cit[[1]],"textVersion") <- gsub("\\(\\)",
-                                     paste("\\(", yr, "\\)", sep = ""),
-                                     attr(cit[[1]],"textVersion"))
-class(cit) <- oc
+# yr <- format(Sys.Date(), "%Y")
+# cit[1]$year <- yr
+# oc <- class(cit)
+# 
+# cit <- unclass(cit)
+# attr(cit[[1]],"textVersion") <- gsub("\\(\\)",
+#                                      paste("\\(", yr, "\\)", sep = ""),
+#                                      attr(cit[[1]],"textVersion"))
+# class(cit) <- oc
 cit
 ```
