@@ -2,27 +2,27 @@ Package: rmelting
 Title: R Interface to MELTING 5
 Version: 0.0.0.9000
 Authors@R: c(
-    person(c("J.", "Aravind"),
-    email = "j.aravind@icar.gov.in",
-    role = c("aut", "cre"),
-    comment = c(ORCID = "0000-0002-4791-442X")),
-    person(c("Krishna", "Kumar G."),
-    email = "krishnaphysioagri@gmail.com ",
-    role = c("aut")),
-    person(c("Bob", "Rudis"),
-    email="bob@rud.is",
-    role=c("ctb"),
-    comment="melting5jars"),
-    person(c("Nicolas Le", "Novère"),
-    email="n.lenovere@gmail.com",
-    role=c("ctb"),
-    comment="MELTING 5 Java Library"),
-    person(c("Marine", "Dumousseau"),
-    role=c("ctb"),
-    comment="MELTING 5 Java Library"),
-    person(c("William John", "Gowers"),
-    role=c("ctb"),
-    comment="MELTING 5 Java Library"))
+    person(given = "J.", family = "Aravind", 
+           email = "j.aravind@icar.gov.in",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-4791-442X")),
+    person(given = "G. K.", family = "Krishna", 
+           email = "krishnaphysioagri@gmail.com ",
+           role = c("aut")),
+    person(given = "Bob", family = "Rudis",
+           email="bob@rud.is",
+           role=c("ctb"),
+           comment="melting5jars"),
+    person(given = "Nicolas Le", family = "Novère",
+           email="n.lenovere@gmail.com",
+           role=c("ctb"),
+           comment="MELTING 5 Java Library"),
+    person(given = "Marine", family = "Dumousseau",
+           role=c("ctb"),
+           comment="MELTING 5 Java Library"),
+    person(given = "William John", family = "Gowers",
+           role=c("ctb"),
+           comment="MELTING 5 Java Library"))
 Description: R interface to the MELTING 5 program
     (https://www.ebi.ac.uk/biomodels/tools/melting/) to compute melting
     temperatures of nucleic acids along with other thermodynamic parameters.
