@@ -19,12 +19,12 @@ v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version-last-release/rmelting)](https://cran.r-project.org/package=rmelting)
 <!-- [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmelting?color=green)](https://CRAN.R-project.org/package=rmelting) -->
 <!-- [![packageversion](https://img.shields.io/badge/Package%20version-0.2.3.3-orange.svg)](https://github.com/aravind-j/rmelting) -->
-[![develVersion](https://img.shields.io/badge/devel%20version-0.2.3.3-orange.svg)](https://github.com/aravind-j/rmelting)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.0.0.9000-orange.svg)](https://github.com/aravind-j/rmelting)
 <!-- [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/aravind-j/rmelting/total.svg)] -->
 [![Project Status:
 WIP](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--06--21-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--08--06-yellowgreen.svg)](/commits/master)
 <!-- [![Rdoc](http://www.rdocumentation.org/badges/version/rmelting)](http://www.rdocumentation.org/packages/rmelting) -->
 <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.841963.svg)](https://doi.org/10.5281/zenodo.841963) -->
 [![Analytics](https://pro-pulsar-193905.appspot.com/UA-116683292-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon)
@@ -78,7 +78,7 @@ citation("rmelting")
     
     To cite package 'rmelting' in publications use:
     
-      J. Aravind and Krishna Kumar G. (NA). rmelting: R Interface to
+      J. Aravind and Kumar G. Krishna (NA). rmelting: R Interface to
       MELTING 5. R package version 0.0.0.9000.
       https://github.com/aravind-j/rmelting
     
@@ -86,8 +86,7 @@ citation("rmelting")
     
       @Manual{,
         title = {rmelting: R Interface to MELTING 5},
-        author = {{J. Aravind} and {Krishna Kumar G.}},
+        author = {{J. Aravind} and Kumar G. Krishna},
         note = {R package version 0.0.0.9000},
         url = {https://github.com/aravind-j/rmelting},
-        year = {2018},
       }

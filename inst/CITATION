@@ -1,4 +1,4 @@
-citHeader("To cite the R package 'ammistability' in publications use:")
+citHeader("To cite the R package 'rmelting' in publications use:")
 
 if(!exists("meta") || is.null(meta)) meta <- packageDescription("rmelting")
 year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
@@ -32,11 +32,11 @@ citEntry(entry  = "Manual",
 							       comment="MELTING 5 Java Library")),
          year = year,
          textVersion = paste(
-           "Ajay, B. C., Aravind, J., and Abdul Fiyaz, R. (",
+           "Aravind, J. and Krishna, G. K. (",
            year, ").  rmelting: R Interface to MELTING 5. ",
-           vers, ", ", "https://ajaygpb.github.io/rmelting/",
+           vers, ", ", "https://aravind-j.github.io/rmelting/",
            ".", sep=""),
-         note = {c(paste(vers), "https://ajaygpb.github.io/rmelting/")})
+         note = {c(paste(vers), "https://aravind-j.github.io/rmelting/")})
 
 citFooter("This free and open-source software implements academic
 research by the authors and co-workers. If you use it, please support

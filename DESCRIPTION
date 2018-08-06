@@ -6,7 +6,7 @@ Authors@R: c(
            email = "j.aravind@icar.gov.in",
            role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4791-442X")),
-    person(given = "G. K.", family = "Krishna", 
+    person(given = c("G.", "K."), family = "Krishna", 
            email = "krishnaphysioagri@gmail.com ",
            role = c("aut")),
     person(given = "Bob", family = "Rudis",
@@ -35,7 +35,7 @@ Imports:
 License: GPL-2 | GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Remotes: github::hrbrmstr/melting5jars
 RdMacros: Rdpack
 URL: https://github.com/aravind-j/rmelting

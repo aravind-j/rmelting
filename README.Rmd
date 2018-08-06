@@ -19,7 +19,7 @@ devtools::load_all(".")
 
 ###### Version : [`r getNamespaceVersion("rmelting")`](https://aravind-j.github.io/rmelting/articles/Introduction.html#version-history); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
 
-##### *J. Aravind^1^ and Krishna Kumar G.^2^*
+##### *J. Aravind^1^ and G. K. Krishna^2^*
 
 1. Division of Germplasm Conservation, ICAR-National Bureau of Plant Genetic Resources, New Delhi
 2. Division of Crop Physiology, ICAR-Indian Agricultural Research Institute, New Delhi
