@@ -1,0 +1,43 @@
+citHeader("To cite the R package 'ammistability' in publications use:")
+
+if(!exists("meta") || is.null(meta)) meta <- packageDescription("rmelting")
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date)
+if (!length(year)) {
+ year <- format(packageDate("rmelting"), "%Y")
+}
+vers <- paste("R package version", meta$Version)
+
+citEntry(entry  = "Manual",
+         title  = "rmelting: R Interface to MELTING 5",
+         author = personList(person(given = "J.", family = "Aravind", 
+									email = "j.aravind@icar.gov.in",
+							        role = c("aut", "cre"),
+							        comment = c(ORCID = "0000-0002-4791-442X")),
+							 person(given = c("G.", "K."), family = "Krishna", 
+							        email = "krishnaphysioagri@gmail.com ",
+							        role = c("aut")),
+							 person(given = "Bob", family = "Rudis",
+							        email="bob@rud.is",
+							        role=c("ctb"),
+							        comment="melting5jars"),
+							 person(given = "Nicolas Le", family = "Novère",
+							        email="n.lenovere@gmail.com",
+							        role=c("ctb"),
+							        comment="MELTING 5 Java Library"),
+							 person(given = "Marine", family = "Dumousseau",
+							        role=c("ctb"),
+							        comment="MELTING 5 Java Library"),
+							 person(given = "William John", family = "Gowers",
+							        role=c("ctb"),
+							       comment="MELTING 5 Java Library")),
+         year = year,
+         textVersion = paste(
+           "Ajay, B. C., Aravind, J., and Abdul Fiyaz, R. (",
+           year, ").  rmelting: R Interface to MELTING 5. ",
+           vers, ", ", "https://ajaygpb.github.io/rmelting/",
+           ".", sep=""),
+         note = {c(paste(vers), "https://ajaygpb.github.io/rmelting/")})
+
+citFooter("This free and open-source software implements academic
+research by the authors and co-workers. If you use it, please support
+the project by citing the package.")
