@@ -11,3 +11,4 @@
 ^rmelting\.pdf$
 ^_pkgdown\.yml$
 ^docs$
+^cran-comments\.md$

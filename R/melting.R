@@ -548,7 +548,6 @@
 #'
 #' @examples
 #'
-
 melting <- function(sequence, comp.sequence = NULL,
                     nucleic.acid.conc,
                     hybridisation.type = c("dnadna", "rnarna", "dnarna",

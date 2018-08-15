@@ -1,9 +1,9 @@
 
-## `rmelting`: R Interface to MELTING 5 <img src="https://raw.githubusercontent.com/aravind-j/rmelting/master/inst/extdata/rmelting.png" align="right" alt="logo" width="173" height = "200" style = "border: none; float: right;">
+## `rmelting`: R Interface to MELTING 5 <img src="https://raw.githubusercontent.com/aravind-j/rmelting/master/inst/extdata/rmelting.png" align="right" alt="logo" width="173" height = "200" style = "padding: 10px; border: none; float: right;">
 
 ###### Version : [0.0.0.9000](https://aravind-j.github.io/rmelting/articles/Introduction.html#version-history); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
 
-##### *J. Aravind<sup>1</sup> and Krishna Kumar G.<sup>2</sup>*
+##### *Aravind, J.<sup>1</sup> and Krishna, G. K.<sup>2</sup>*
 
 1.  Division of Germplasm Conservation, ICAR-National Bureau of Plant
     Genetic Resources, New Delhi
@@ -24,7 +24,7 @@ v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org
 [![Project Status:
 WIP](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--08--06-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--08--15-yellowgreen.svg)](/commits/master)
 <!-- [![Rdoc](http://www.rdocumentation.org/badges/version/rmelting)](http://www.rdocumentation.org/packages/rmelting) -->
 <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.841963.svg)](https://doi.org/10.5281/zenodo.841963) -->
 [![Analytics](https://pro-pulsar-193905.appspot.com/UA-116683292-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon)
@@ -64,29 +64,31 @@ news(package='rmelting')
 
 ## Citing `rmelting`
 
-To cite the methods in the package
-    use:
+To cite the methods in the package use:
 
 ``` r
 citation("rmelting")
 ```
 
-    Warning in citation("rmelting"): no date field in DESCRIPTION file of
-    package 'rmelting'
-    Warning in citation("rmelting"): could not determine year for 'rmelting'
-    from package DESCRIPTION file
-    
-    To cite package 'rmelting' in publications use:
-    
-      J. Aravind and Kumar G. Krishna (NA). rmelting: R Interface to
-      MELTING 5. R package version 0.0.0.9000.
-      https://github.com/aravind-j/rmelting
-    
-    A BibTeX entry for LaTeX users is
-    
-      @Manual{,
-        title = {rmelting: R Interface to MELTING 5},
-        author = {{J. Aravind} and Kumar G. Krishna},
-        note = {R package version 0.0.0.9000},
-        url = {https://github.com/aravind-j/rmelting},
-      }
+``` 
+
+To cite the R package 'rmelting' in publications use:
+
+  Aravind, J. and Krishna, G. K. (2018).  rmelting: R Interface to
+  MELTING 5. R package version 0.0.0.9000,
+  https://aravind-j.github.io/rmelting/.
+
+A BibTeX entry for LaTeX users is
+
+  @Manual{,
+    title = {rmelting: R Interface to MELTING 5},
+    author = {J. Aravind and G. K. Krishna and Bob Rudis and Nicolas Le Novère and Marine Dumousseau and William John Gowers},
+    year = {2018},
+    note = {R package version 0.0.0.9000},
+    note = {https://aravind-j.github.io/rmelting/},
+  }
+
+This free and open-source software implements academic research by
+the authors and co-workers. If you use it, please support the
+project by citing the package.
+```

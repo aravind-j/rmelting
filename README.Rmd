@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## `rmelting`: R Interface to MELTING 5 <img src="https://raw.githubusercontent.com/aravind-j/rmelting/master/inst/extdata/rmelting.png" align="right" alt="logo" width="173" height = "200" style = "border: none; float: right;">
+## `rmelting`: R Interface to MELTING 5 <img src="https://raw.githubusercontent.com/aravind-j/rmelting/master/inst/extdata/rmelting.png" align="right" alt="logo" width="173" height = "200" style = "padding: 10px; border: none; float: right;">
 
 ```{r,echo = FALSE, message = FALSE}
 devtools::load_all(".")
@@ -19,7 +19,7 @@ devtools::load_all(".")
 
 ###### Version : [`r getNamespaceVersion("rmelting")`](https://aravind-j.github.io/rmelting/articles/Introduction.html#version-history); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
 
-##### *J. Aravind^1^ and G. K. Krishna^2^*
+##### *Aravind, J.^1^ and Krishna, G. K.^2^*
 
 1. Division of Germplasm Conservation, ICAR-National Bureau of Plant Genetic Resources, New Delhi
 2. Division of Crop Physiology, ICAR-Indian Agricultural Research Institute, New Delhi
