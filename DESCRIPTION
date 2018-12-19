@@ -1,6 +1,6 @@
 Package: rmelting
 Title: R Interface to MELTING 5
-Version: 0.0.0.9000
+Version: 0.99.1
 Authors@R: c(
     person(given = "J.", family = "Aravind", 
            email = "j.aravind@icar.gov.in",
@@ -27,11 +27,13 @@ Description: R interface to the MELTING 5 program
     (https://www.ebi.ac.uk/biomodels/tools/melting/) to compute melting
     temperatures of nucleic acids along with other thermodynamic parameters.
 Depends:
-    R (>= 3.4.3),
+    R (>= 3.5.0),
     rJava (>= 0.5-0)
 Imports:
+    Rdpack,
     rJava,
     melting5jars
+biocViews: BiomedicalInformatics, Cheminformatics,
 License: GPL-2 | GPL-3
 Encoding: UTF-8
 LazyData: true
