@@ -5,6 +5,7 @@
 ^To do\.R$
 ^Tables\.xlsx$
 ^Tables\.html$
+^Tables\.Rmd$
 ^melttables\.xlsx$
 ^examples temp\.R$
 ^testResults$
