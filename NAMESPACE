@@ -2,4 +2,5 @@
 
 export(melting)
 import(melting5jars)
+import(rJava)
 importFrom(Rdpack,reprompt)
