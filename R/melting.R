@@ -7,40 +7,27 @@
 #'of the helix-coil transition, and then the melting temperature of a nucleic
 #'acid duplex.
 #'
-#'@usage melting(sequence, comp.sequence = NULL,
-#'          nucleic.acid.conc,
-#'          hybridisation.type = c("dnadna", "rnarna", "dnarna",
-#'                                "rnadna", "mrnarna", "rnamrna"),
-#'          Na.conc, Mg.conc, Tris.conc, K.conc,
-#'          dNTP.conc, DMSO.conc, formamide.conc,
-#'          size.threshold = 60, self = FALSE, correction.factor,
-#'          method.approx = c("ahs01", "che93", "che93corr",
-#'                            "marschdot", "owe69", "san98",
-#'                            "wetdna91", "wetrna91", "wetdnarna91"),
-#'          method.nn = c("all97", "bre86", "san04", "san96", "sug96",
-#'                       "tan04", "fre86", "xia98", "sug95", "tur06"),
-#'          method.GU = c("tur99"),
-#'          method.singleMM = c("allsanpey", "tur06", "zno07", "zno08"),
-#'          method.tandemMM = c("allsanpey", "tur99"),
-#'          method.single.dangle = c("bom00", "sugdna02", "sugrna02", "ser08"),
-#'          method.double.dangle = c("sugdna02", "sugrna02", "ser05", "ser06"),
-#'          method.long.dangle = c("sugdna02", "sugrna02"),
-#'          method.internal.loop = c("san04", "tur06", "zno07"),
-#'          method.single.bulge.loop = c("tan04", "san04", "ser07" ,"tur06"),
-#'          method.long.bulge.loop = c("san04", "tur06"),
-#'          method.CNG = c("bro05"),
-#'          method.inosine = c("san05", "zno07"),
-#'          method.hydroxyadenine = c("sug01"),
-#'          method.azobenzenes = c("asa05"),
-#'          method.locked = c("mct04"),
-#'          correction.Na = c("ahs01", "kam71", "marschdot",
-#'                            "owc1904", "owc2004", "owc2104", "owc2204",
-#'                            "san96", "san04", "schlif",
-#'                            "tanna06", "tanna07", "wet91"),
-#'          correction.Mg = c("oxcmg08", "tanmg06", "tanmg07"),
-#'          correction.NaMg = c("oxcmix08", "tanmix07"),
-#'          method.Naeq = c("ahs01", "mit96", "pey00"),
-#'          correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"))
+#'@usage melting(sequence, comp.sequence = NULL, nucleic.acid.conc,
+#'  hybridisation.type = c("dnadna", "rnarna", "dnarna", "rnadna", "mrnarna",
+#'  "rnamrna"), Na.conc, Mg.conc, Tris.conc, K.conc, dNTP.conc, DMSO.conc,
+#'  formamide.conc, size.threshold = 60, self = FALSE, correction.factor,
+#'  method.approx = c("ahs01", "che93", "che93corr", "marschdot", "owe69",
+#'  "san98", "wetdna91", "wetrna91", "wetdnarna91"), method.nn = c("all97",
+#'  "bre86", "san04", "san96", "sug96", "tan04", "fre86", "xia98", "sug95",
+#'  "tur06"), method.GU = c("tur99"), method.singleMM = c("allsanpey", "tur06",
+#'  "zno07", "zno08"), method.tandemMM = c("allsanpey", "tur99"),
+#'  method.single.dangle = c("bom00", "sugdna02", "sugrna02", "ser08"),
+#'  method.double.dangle = c("sugdna02", "sugrna02", "ser05", "ser06"),
+#'  method.long.dangle = c("sugdna02", "sugrna02"), method.internal.loop =
+#'  c("san04", "tur06", "zno07"), method.single.bulge.loop = c("tan04", "san04",
+#'  "ser07" ,"tur06"), method.long.bulge.loop = c("san04", "tur06"), method.CNG
+#'  = c("bro05"), method.inosine = c("san05", "zno07"), method.hydroxyadenine =
+#'  c("sug01"), method.azobenzenes = c("asa05"), method.locked = c("mct04"),
+#'  correction.Na = c("ahs01", "kam71", "marschdot", "owc1904", "owc2004",
+#'  "owc2104", "owc2204", "san96", "san04", "schlif", "tanna06", "tanna07",
+#'  "wet91"), correction.Mg = c("oxcmg08", "tanmg06", "tanmg07"),
+#'  correction.NaMg = c("oxcmix08", "tanmix07"), method.Naeq = c("ahs01",
+#'  "mit96", "pey00"), correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"))
 #'
 #'
 #'@section Mandatory arguments: The following are the arguments which are
@@ -111,15 +98,15 @@
 #'  \code{all97}*\tab DNA\tab \tab Allawi and SantaLucia, 1997\cr
 #'  \code{tur06}*\tab 2'-O-MeRNA/\tab A sodium correction\tab Kierzek et al.,
 #'  2006 \cr \tab RNA\tab (\code{san04}) is \tab \cr \tab \tab automatically
-#'  applied to \tab \cr \tab \tab convert the entropy (Na =\tab \cr \tab \tab 0.1M)
-#'  into the entropy (Na = \tab \cr \tab \tab 1M). \tab \cr \code{bre86} \tab
-#'  DNA\tab \tab Breslauer et al., 1986 \cr \code{san04} \tab DNA\tab \tab
+#'  applied to \tab \cr \tab \tab convert the entropy (Na =\tab \cr \tab \tab
+#'  0.1M) into the entropy (Na = \tab \cr \tab \tab 1M). \tab \cr \code{bre86}
+#'  \tab DNA\tab \tab Breslauer et al., 1986 \cr \code{san04} \tab DNA\tab \tab
 #'  SantaLucia and Hicks, 2004 \cr \code{san96} \tab DNA\tab \tab SantaLucia et
 #'  al., 1996\cr \code{sug96} \tab DNA\tab \tab Sugimoto et al., 1996\cr
 #'  \code{tan04} \tab DNA\tab \tab Tanaka et al., 2004\cr \code{fre86} \tab
-#'  RNA\tab \tab Freier et al., 1986\cr \code{xia98}*\tab RNA\tab \tab Xia et al.,
-#'  1998 \cr \code{sug95}*\tab DNA/ \tab \tab SantaLucia et al., 1996\cr \tab
-#'  RNA\tab \tab }
+#'  RNA\tab \tab Freier et al., 1986\cr \code{xia98}*\tab RNA\tab \tab Xia et
+#'  al., 1998 \cr \code{sug95}*\tab DNA/ \tab \tab SantaLucia et al., 1996\cr
+#'  \tab RNA\tab \tab }
 #'
 #'@section GU wobble base pairs effect: \tabular{llll}{ \strong{Model} \tab
 #'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
@@ -127,35 +114,35 @@
 #'
 #'@section Single mismatch effect: \tabular{llll}{ \strong{Model}\tab
 #'  \strong{Type} \tab \strong{Limits/Remarks}\tab \strong{Reference} \cr
-#'  \code{allsanpey}* \tab DNA\tab \tab Allawi and SantaLucia, 1997;\cr \tab \tab
-#'  \tab Allawi and SantaLucia, 1998;\cr \tab \tab \tab Allawi and SantaLucia,
-#'  1998;\cr \tab \tab \tab Allawi and SantaLucia, \cr \tab \tab \tab 1998; Peyret
-#'  et al., 1999 \cr \code{tur06}\tab RNA\tab \tab Lu et al., 2006 \cr
-#'  \code{zno07}* \tab RNA\tab \tab Davis and Znosko, 2007\cr \code{zno08}\tab
-#'  RNA\tab At least one adjacent GU base \tab Davis and Znosko, 2008\cr
-#'  \tab \tab pair. \tab }
+#'  \code{allsanpey}* \tab DNA\tab \tab Allawi and SantaLucia, 1997;\cr \tab
+#'  \tab \tab Allawi and SantaLucia, 1998;\cr \tab \tab \tab Allawi and
+#'  SantaLucia, 1998;\cr \tab \tab \tab Allawi and SantaLucia, \cr \tab \tab
+#'  \tab 1998; Peyret et al., 1999 \cr \code{tur06}\tab RNA\tab \tab Lu et al.,
+#'  2006 \cr \code{zno07}* \tab RNA\tab \tab Davis and Znosko, 2007\cr
+#'  \code{zno08}\tab RNA\tab At least one adjacent GU base \tab Davis and
+#'  Znosko, 2008\cr \tab \tab pair. \tab }
 #'
 #'@section Tandem mismatches effect: \tabular{llll}{ \strong{Model}\tab
 #'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
 #'  \code{allsanpey}* \tab DNA\tab Only GT mismatches and TA/TG \tab Allawi and
 #'  SantaLucia, 1997;\cr \tab \tab mismatches.\tab Allawi and SantaLucia,
-#'  1998;\cr \tab \tab \tab Allawi and SantaLucia, 1998;\cr \tab \tab \tab Allawi
-#'  and SantaLucia, \cr \tab \tab \tab 1998; Peyret et al., 1999 \cr \code{tur99}*
-#'  \tab RNA\tab No adjacent GU or UG base\tab Mathews et al., 1999\cr \tab \tab
-#'  pairs. \tab } Tandem mismatches are not taken into account by the
-#'  approximative mode. Note that not all the mismatched Crick's pairs have been
-#'  investigated.
+#'  1998;\cr \tab \tab \tab Allawi and SantaLucia, 1998;\cr \tab \tab \tab
+#'  Allawi and SantaLucia, \cr \tab \tab \tab 1998; Peyret et al., 1999 \cr
+#'  \code{tur99}* \tab RNA\tab No adjacent GU or UG base\tab Mathews et al.,
+#'  1999\cr \tab \tab pairs. \tab } Tandem mismatches are not taken into account
+#'  by the approximative mode. Note that not all the mismatched Crick's pairs
+#'  have been investigated.
 #'
 #'@section Single dangling end effect: \tabular{llll}{ \strong{Model}\tab
 #'  \strong{Type} \tab \strong{Limits/Remarks}\tab \strong{Reference} \cr
 #'  \code{bom00}* \tab DNA\tab \tab Bommarito et al., 2000\cr \code{sugdna02}
-#'  \tab DNA\tab Only terminal poly A self \tab Ohmichi et al., 2002\cr \tab \tab
-#'  complementary sequences.\tab \cr \code{sugrna02} \tab RNA\tab Only terminal
-#'  poly A self \tab Ohmichi et al., 2002\cr \tab \tab complementary
+#'  \tab DNA\tab Only terminal poly A self \tab Ohmichi et al., 2002\cr \tab
+#'  \tab complementary sequences.\tab \cr \code{sugrna02} \tab RNA\tab Only
+#'  terminal poly A self \tab Ohmichi et al., 2002\cr \tab \tab complementary
 #'  sequences.\tab \cr \code{ser08}* \tab RNA\tab Only 3' UA, GU and UG \tab
-#'  Miller et al., 2008 \cr \tab \tab terminal base pairs only 5' \tab \cr
-#'  \tab \tab UG and GU terminal base \tab \cr \tab \tab pairs.\tab } Single
-#'  dangling ends are not taken into account by the approximative mode.
+#'  Miller et al., 2008 \cr \tab \tab terminal base pairs only 5' \tab \cr \tab
+#'  \tab UG and GU terminal base \tab \cr \tab \tab pairs.\tab } Single dangling
+#'  ends are not taken into account by the approximative mode.
 #'
 #'@section Double dangling end effect: \tabular{llll}{ \strong{Model} \tab
 #'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
@@ -163,8 +150,8 @@
 #'  2002\cr \tab \tab complementary sequences. \tab \cr \code{sugrna02}\tab
 #'  RNA\tab Only terminal poly A self\tab Ohmichi et al., 2002\cr \tab \tab
 #'  complementary sequences. \tab \cr \code{ser05} \tab RNA\tab Depends on the
-#'  available \tab O'Toole et al., 2005\cr \tab \tab thermodynamic parameters for
-#'  \tab \cr \tab \tab single dangling end. \tab \cr \code{ser06}*\tab
+#'  available \tab O'Toole et al., 2005\cr \tab \tab thermodynamic parameters
+#'  for \tab \cr \tab \tab single dangling end. \tab \cr \code{ser06}*\tab
 #'  RNA\tab \tab O'Toole et al., 2006 } Double dangling ends are not taken into
 #'  account by the approximative mode.
 #'
@@ -190,8 +177,8 @@
 #'  \code{tan04}*\tab DNA\tab \tab Tan and Chen, 2007\cr \code{san04} \tab
 #'  DNA\tab Missing closing AT penalty. \tab SantaLucia and Hicks, 2004\cr
 #'  \code{ser07} \tab RNA\tab Less reliable results. Some \tab Blose et al.,
-#'  2007\cr \tab \tab missing parameters. \tab \cr \code{tur06}*\tab RNA\tab \tab
-#'  Lu et al., 2006 } Internal loops are not taken into account by the
+#'  2007\cr \tab \tab missing parameters. \tab \cr \code{tur06}*\tab RNA\tab
+#'  \tab Lu et al., 2006 } Internal loops are not taken into account by the
 #'  approximative mode.
 #'
 #'@section Long bulge loop effect: \tabular{llll}{ \strong{Model} \tab
@@ -203,8 +190,8 @@
 #'
 #'@section CNG repeats effect: \tabular{llll}{ \strong{Model} \tab \strong{Type}
 #'  \tab \strong{Limits/Remarks}\tab \strong{Reference}\cr \code{bro05}*\tab
-#'  RNA\tab Self complementary sequences. \tab Broda et al., 2005 \cr \tab \tab 2
-#'  to 7 CNG repeats. \tab } CNG repeats are not taken into account by the
+#'  RNA\tab Self complementary sequences. \tab Broda et al., 2005 \cr \tab \tab
+#'  2 to 7 CNG repeats. \tab } CNG repeats are not taken into account by the
 #'  approximative mode. The contribution of CNG repeats to the thermodynamic of
 #'  helix-coil transition can be computed only for 2 to 7 CNG repeats. N
 #'  represents a single mismatch of type N/N.
@@ -212,9 +199,9 @@
 #'@section Inosine bases effect:  \tabular{llll}{ \strong{Model} \tab
 #'  \strong{Type} \tab \strong{Limits/Remarks}\tab \strong{Reference} \cr
 #'  \code{san05}*\tab DNA\tab Missing parameters for tandem \tab Watkins and
-#'  SantaLucia, 2005\cr \tab \tab base pairs containing inosine \tab \cr \tab \tab
-#'  bases.\tab \cr \code{zno07}*\tab RNA\tab Only IU base pairs. \tab Wright et
-#'  al., 2007 }
+#'  SantaLucia, 2005\cr \tab \tab base pairs containing inosine \tab \cr \tab
+#'  \tab bases.\tab \cr \code{zno07}*\tab RNA\tab Only IU base pairs. \tab
+#'  Wright et al., 2007 }
 #'
 #'@section Hydroxyadenine bases effect: \tabular{llll}{ \strong{Model} \tab
 #'  \strong{Type} \tab \strong{Limits/Remarks}\tab \strong{Reference}\cr
@@ -234,40 +221,42 @@
 #'  \code{mct04}*\tab DNA\tab \tab McTigue et al., 2004 } Locked nucleic acids
 #'  (AL, GL, TL and CL) are not taken into account by the approximative mode.
 #'
-#'@section Sodium corrections: \tabular{llll}{ \strong{Correcion} \tab
+#'@section Ion corrections:
+#'
+#'  \subsection{Sodium corrections}{\tabular{llll}{ \strong{Correcion} \tab
 #'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
 #'  \code{ahs01} \tab DNA\tab Na>0.\tab von Ahsen et al., 2001\cr
 #'  \code{schlif}\tab DNA\tab Na>=0.07; Na<=0.12.\tab Schildkraut and Lifson,
 #'  1965\cr \code{tanna06} \tab DNA\tab Na>=0.001; Na<=1.\tab Tan and Chen,
 #'  2006\cr \code{tanna07}*\tab RNA\tab Na>=0.003; Na<=1.\tab Tan and Chen,
 #'  2007\cr \tab or \tab \tab \cr \tab 2'-O-MeRNA/RNA \tab \tab \cr \code{wet91}
-#'  \tab RNA, \tab Na>0.\tab Wetmur, 1991\cr \tab DNA\tab \tab \cr \tab
-#'  and\tab \tab \cr \tab RNA/DNA\tab \tab \cr \code{kam71} \tab DNA\tab Na>0;
+#'  \tab RNA, \tab Na>0.\tab Wetmur, 1991\cr \tab DNA\tab \tab \cr \tab and\tab
+#'  \tab \cr \tab RNA/DNA\tab \tab \cr \code{kam71} \tab DNA\tab Na>0;
 #'  Na>=0.069; Na<=1.02. \tab Frank-Kamenetskii, 1971 \cr \code{marschdot} \tab
-#'  DNA\tab Na>=0.069; Na<=1.02. \tab Marmur and Doty, 1962; Blake\cr
-#'  \tab \tab \tab and Delcourt, 1998\cr \code{owc1904} \tab DNA\tab Na>0.\tab
-#'  Owczarzy et al., 2004 \cr \code{owc2004} \tab DNA\tab Na>0.\tab Owczarzy et
-#'  al., 2004 \cr \code{owc2104} \tab DNA\tab Na>0.\tab Owczarzy et al., 2004
-#'  \cr \code{owc2204}*\tab DNA\tab Na>0.\tab Owczarzy et al., 2004 \cr
-#'  \code{san96} \tab DNA\tab Na>=0.1. \tab SantaLucia et al., 1996 \cr
-#'  \code{san04} \tab DNA\tab Na>=0.05; Na<=1.1; \tab SantaLucia and Hicks,
-#'  2004; \cr \tab \tab Oligonucleotides inferior to \tab SantaLucia, 1998\cr
-#'  \tab \tab 16 bases.\tab }
+#'  DNA\tab Na>=0.069; Na<=1.02. \tab Marmur and Doty, 1962; Blake\cr \tab \tab
+#'  \tab and Delcourt, 1998\cr \code{owc1904} \tab DNA\tab Na>0.\tab Owczarzy et
+#'  al., 2004 \cr \code{owc2004} \tab DNA\tab Na>0.\tab Owczarzy et al., 2004
+#'  \cr \code{owc2104} \tab DNA\tab Na>0.\tab Owczarzy et al., 2004 \cr
+#'  \code{owc2204}*\tab DNA\tab Na>0.\tab Owczarzy et al., 2004 \cr \code{san96}
+#'  \tab DNA\tab Na>=0.1. \tab SantaLucia et al., 1996 \cr \code{san04} \tab
+#'  DNA\tab Na>=0.05; Na<=1.1; \tab SantaLucia and Hicks, 2004; \cr \tab \tab
+#'  Oligonucleotides inferior to \tab SantaLucia, 1998\cr \tab \tab 16
+#'  bases.\tab }}
 #'
-#'@section Magnesium corrections: \tabular{llll}{ \strong{Correcion} \tab
+#'  \subsection{Magnesium corrections}{\tabular{llll}{ \strong{Correcion} \tab
 #'  \strong{Type} \tab \strong{Limits/Remarks}\tab \strong{Reference}\cr
 #'  \code{owcmg08}*\tab DNA\tab Mg>=0.0005; Mg<=0.6.\tab Owczarzy et al.,
 #'  2008\cr \code{tanmg06} \tab DNA\tab Mg>=0.0001; Mg<=1; Oligomer \tab Tan and
 #'  Chen, 2006 \cr \tab \tab length superior to 6 base \tab \cr \tab \tab
 #'  pairs.\tab \cr \code{tanmg07}*\tab RNA\tab Mg>=0.1; Mg<=0.3. \tab Tan and
-#'  Chen, 2007 }
+#'  Chen, 2007 }}
 #'
-#'@section Mixed Sodium and Magnesium corrections: \tabular{llll}{
+#'  \subsection{Mixed Sodium and Magnesium corrections}{\tabular{llll}{
 #'  \strong{Correcion} \tab \strong{Type} \tab \strong{Limits/Remarks} \tab
 #'  \strong{Reference}\cr \code{owcmix08}* \tab DNA\tab Mg>=0.0005; Mg<=0.6;
 #'  \tab Owczarzy et al., 2008\cr \tab \tab Na+K+Tris/2>0. \tab \cr
 #'  \code{tanmix07}\tab DNA\tab Mg>=0.1; Mg<=0.3;\tab Tan and Chen, 2007 \cr
-#'  \tab and\tab Na+K+Tris/2>=0.1;\tab \cr \tab RNA\tab Na+K+Tris/2<=0.3.\tab }
+#'  \tab and\tab Na+K+Tris/2>=0.1;\tab \cr \tab RNA\tab Na+K+Tris/2<=0.3.\tab }}
 #'
 #'@section Sodium equivalent concentration methods: \tabular{llll}{
 #'  \strong{Correcion} \tab \strong{Type} \tab \strong{Limits/Remarks} \tab
@@ -278,12 +267,12 @@
 #'@section DMSO corrections: \tabular{llll}{ \strong{Correcion} \tab
 #'  \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference}\cr
 #'  \code{ahs01} \tab DNA\tab Not tested with experimental \tab von Ahsen et
-#'  al., 2001 \cr \tab \tab results. \tab \cr \code{cul76} \tab DNA\tab Not tested
-#'  with experimental \tab Cullen and Bick, 1976\cr \tab \tab results. \tab \cr
-#'  \code{esc80} \tab DNA\tab Not tested with experimental \tab Escara and
-#'  Hutton, 1980\cr \tab \tab results. \tab \cr \code{mus80} \tab DNA\tab Not
-#'  tested with experimental \tab Musielski et al., 1981 \cr \tab \tab results.
-#'  \tab }
+#'  al., 2001 \cr \tab \tab results. \tab \cr \code{cul76} \tab DNA\tab Not
+#'  tested with experimental \tab Cullen and Bick, 1976\cr \tab \tab results.
+#'  \tab \cr \code{esc80} \tab DNA\tab Not tested with experimental \tab Escara
+#'  and Hutton, 1980\cr \tab \tab results. \tab \cr \code{mus80} \tab DNA\tab
+#'  Not tested with experimental \tab Musielski et al., 1981 \cr \tab \tab
+#'  results. \tab }
 #'
 #'@section Formamide corrections: \tabular{llll}{ \strong{Correcion} \tab
 #'  \strong{Type} \tab \strong{Limits/Remarks}\tab \strong{Reference} \cr
@@ -297,8 +286,8 @@
 #'@param comp.sequence Complementary sequence (3' to 5') of the nucleic acid
 #'  duplex as a character string.
 #'@param nucleic.acid.conc Concentration of the nucleic acid strand
-#'  (\ifelse{html}{mol L<sup>-1</sup>}{\eqn{\textrm{mol L}^{-1}}}) in excess as
-#'  a numeric value.
+#'  (\ifelse{html}{\out{mol L<sup>-1</sup>}}{\eqn{\textrm{mol L}^{-1}}}) in
+#'  excess as a numeric value.
 #'@param hybridisation.type  The hybridisation type. Either \code{"dnadna"},
 #'  \code{"rnarna"},  \code{"dnarna"}, \code{"rnadna"}, \code{"mrnarna"} or
 #'  \code{"rnamrna"} (see \strong{Hybridisation type options}).
@@ -393,17 +382,16 @@
 #'  contribution of locked nucleic acids (AL, GL, TL and CL) to the
 #'  thermodynamic of helix-coil transition. Available method is \code{"mct04"}
 #'  (see \strong{Locked nucleic acids effect}).
-#'@param correction.Na Specify the correction method for Na ions. Either
-#'  \code{"ahs01"}, \code{"kam71"}, \code{"owc1904"}, \code{"owc2004"},
-#'  \code{"owc2104"}, \code{"owc2204"}, \code{"san96"}, \code{"san04"},
-#'  \code{"schlif"}, \code{"tanna06"}, \code{"wetdna91"}, \code{"tanna07"},
-#'  \code{"wetrna91"} or \code{"wetdnarna91"} (see \strong{Sodium corrections}).
-#'@param correction.Mg Specify the correction method for Mg ions. Either
-#'  \code{"owcmg08"}, \code{"tanmg06"} or \code{"tanmg07"} (see
-#'  \strong{Magnesium corrections}).
-#'@param correction.NaMg Specify the correction method for mixed Na and Mg ions.
-#'  Either \code{"owcmix08"}, \code{"tanmix07"} or \code{"tanmix07"} (see
-#'  \strong{Mixed Sodium and Magnesium corrections}).
+#'@param correction.ion Specify the correction method for ions. Either one of
+#'  the following: \itemize {\item{Na corrections}{\code{"ahs01"},
+#'  \code{"kam71"}, \code{"owc1904"}, \code{"owc2004"}, \code{"owc2104"},
+#'  \code{"owc2204"}, \code{"san96"}, \code{"san04"}, \code{"schlif"},
+#'  \code{"tanna06"}, \code{"wetdna91"}, \code{"tanna07"}, \code{"wetrna91"} or
+#'  \code{"wetdnarna91"} (see \strong{Sodium corrections})} \item{Mg
+#'  corrections}{\code{"owcmg08"}, \code{"tanmg06"} or \code{"tanmg07"} (see
+#'  \strong{Magnesium corrections})} \item{Mixed Na Mg
+#'  corrections}{\code{"owcmix08"}, \code{"tanmix07"} or \code{"tanmix07"} (see
+#'  \strong{Mixed Sodium and Magnesium corrections})} }.
 #'@param method.Naeq Specify the ion correction which gives a sodium equivalent
 #'  concentration if other cations are present. Either \code{"ahs01"},
 #'  \code{"mit96"} or \code{"pey00"} (see \strong{Sodium equivalent
@@ -576,12 +564,12 @@ melting <- function(sequence, comp.sequence = NULL,
                     method.inosine = c("san05", "zno07"),
                     method.hydroxyadenine = c("sug01"),
                     method.azobenzenes = c("asa05"), method.locked = c("mct04"),
-                    correction.Na = c("ahs01", "kam71", "marschdot", "owc1904",
-                                      "owc2004", "owc2104", "owc2204", "san96",
-                                      "san04", "schlif", "tanna06", "tanna07",
-                                      "wet91"),
-                    correction.Mg = c("oxcmg08", "tanmg06", "tanmg07"),
-                    correction.NaMg = c("oxcmix08", "tanmix07"),
+                    correction.ion = c("ahs01", "kam71", "marschdot",
+                                       "owc1904", "owc2004", "owc2104",
+                                       "owc2204", "san96", "san04", "schlif",
+                                       "tanna06", "tanna07", "wet91",
+                                       "oxcmg08", "tanmg06", "tanmg07",
+                                       "oxcmix08", "tanmix07"),
                     method.Naeq = c("ahs01", "mit96", "pey00"),
                     correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"),
                     correction.formamide = c("bla96", "lincorr")) {
@@ -838,14 +826,9 @@ melting <- function(sequence, comp.sequence = NULL,
   }
 
 
-
-
-
   # Add verbose
   # opts <- c(opts, "-O", "test.txt")
-  opts <- c(opts, "-v")
-
-
+  # opts <- c(opts, "-v")
 
 
   ##################################################
