@@ -1,7 +1,7 @@
 
 ## `rmelting`: R Interface to MELTING 5 <img src="https://raw.githubusercontent.com/aravind-j/rmelting/master/inst/extdata/rmelting.png" align="right" alt="logo" width="173" height = "200" style = "padding: 10px; border: none; float: right;">
 
-###### Version : [0.0.0.9000](https://aravind-j.github.io/rmelting/articles/Introduction.html#version-history); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
+###### Version : [0.99.1](https://aravind-j.github.io/rmelting/); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
 
 ##### *Aravind, J.<sup>1</sup> and Krishna, G. K.<sup>2</sup>*
 
@@ -24,7 +24,7 @@ v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org
 [![Project Status:
 WIP](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2018--11--19-yellowgreen.svg)](/commits/master)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2018--12--20-yellowgreen.svg)](/commits/master)
 <!-- [![Rdoc](http://www.rdocumentation.org/badges/version/rmelting)](http://www.rdocumentation.org/packages/rmelting) -->
 <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.841963.svg)](https://doi.org/10.5281/zenodo.841963) -->
 [![Analytics](https://pro-pulsar-193905.appspot.com/UA-116683292-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon)
@@ -82,7 +82,7 @@ A BibTeX entry for LaTeX users is
 
   @Manual{,
     title = {rmelting: R Interface to MELTING 5},
-    author = {J. Aravind and G. K. Krishna and Bob Rudis and Nicolas Le Novère and Marine Dumousseau and William John Gowers},
+    author = {J. Aravind and G. K. Krishna},
     year = {2018},
     note = {R package version 0.0.0.9000},
     note = {https://aravind-j.github.io/rmelting/},

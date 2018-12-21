@@ -17,7 +17,7 @@ devtools::load_all(".")
 
 ```
 
-###### Version : [`r getNamespaceVersion("rmelting")`](https://aravind-j.github.io/rmelting/articles/Introduction.html#version-history); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
+###### Version : [`r getNamespaceVersion("rmelting")`](https://aravind-j.github.io/rmelting/); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
 
 ##### *Aravind, J.^1^ and Krishna, G. K.^2^*
 
