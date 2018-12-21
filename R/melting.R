@@ -7,28 +7,41 @@
 #' of the helix-coil transition, and then the melting temperature of a nucleic
 #' acid duplex.
 #'
-#' @usage melting(sequence, comp.sequence = NULL, nucleic.acid.conc,
-#'   hybridisation.type = c("dnadna", "rnarna", "dnarna", "rnadna", "mrnarna",
-#'   "rnamrna"), Na.conc, Mg.conc, Tris.conc, K.conc, dNTP.conc, DMSO.conc,
-#'   formamide.conc, size.threshold = 60, self = FALSE, correction.factor,
-#'   method.approx = c("ahs01", "che93", "che93corr", "marschdot", "owe69",
-#'   "san98", "wetdna91", "wetrna91", "wetdnarna91"), method.nn = c("all97",
-#'   "bre86", "san04", "san96", "sug96", "tan04", "fre86", "xia98", "sug95",
-#'   "tur06"), method.GU = c("tur99"), method.singleMM = c("allsanpey", "tur06",
-#'   "zno07", "zno08"), method.tandemMM = c("allsanpey", "tur99"),
-#'   method.single.dangle = c("bom00", "sugdna02", "sugrna02", "ser08"),
-#'   method.double.dangle = c("sugdna02", "sugrna02", "ser05", "ser06"),
-#'   method.long.dangle = c("sugdna02", "sugrna02"), method.internal.loop =
-#'   c("san04", "tur06", "zno07"), method.single.bulge.loop = c("tan04", "san04",
-#'   "ser07" ,"tur06"), method.long.bulge.loop = c("san04", "tur06"), method.CNG
-#'   = c("bro05"), method.inosine = c("san05", "zno07"), method.hydroxyadenine =
-#'   c("sug01"), method.azobenzenes = c("asa05"), method.locked = c("mct04"),
-#'   correction.Na = c("ahs01", "kam71", "marschdot", "owc1904", "owc2004",
-#'   "owc2104", "owc2204", "san96", "san04", "schlif", "tanna06", "tanna07",
-#'   "wet91"), correction.Mg = c("oxcmg08", "tanmg06", "tanmg07"),
-#'   correction.NaMg = c("oxcmix08", "tanmix07"), method.Naeq = c("ahs01",
-#'   "mit96", "pey00"), correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"))
-#'
+#' @usage melting(sequence, comp.sequence = NULL,
+#'         nucleic.acid.conc,
+#'         hybridisation.type = c("dnadna", "rnarna", "dnarna",
+#'                                "rnadna", "mrnarna", "rnamrna"),
+#'         Na.conc, Mg.conc, Tris.conc, K.conc,
+#'         dNTP.conc, DMSO.conc, formamide.conc,
+#'         size.threshold = 60, self = FALSE, correction.factor,
+#'         method.approx = c("ahs01", "che93", "che93corr",
+#'                           "marschdot", "owe69", "san98",
+#'                           "wetdna91", "wetrna91", "wetdnarna91"),
+#'         method.nn = c("all97", "bre86", "san04", "san96", "sug96",
+#'                       "tan04", "fre86", "xia98", "sug95", "tur06"),
+#'         method.GU = c("tur99", "ser12"),
+#'         method.singleMM = c("allsanpey", "tur06", "zno07", "zno08"),
+#'         method.tandemMM = c("allsanpey", "tur99"),
+#'         method.single.dangle = c("bom00", "sugdna02", "sugrna02", "ser08"),
+#'         method.double.dangle = c("sugdna02", "sugrna02", "ser05", "ser06"),
+#'         method.long.dangle = c("sugdna02", "sugrna02"),
+#'         method.internal.loop = c("san04", "tur06", "zno07"),
+#'         method.single.bulge.loop = c("tan04", "san04", "ser07" ,"tur06"),
+#'         method.long.bulge.loop = c("san04", "tur06"),
+#'         method.CNG = c("bro05"),
+#'         method.inosine = c("san05", "zno07"),
+#'         method.hydroxyadenine = c("sug01"),
+#'         method.azobenzenes = c("asa05"),
+#'         method.locked = c("mct04"),
+#'         correction.ion = c("ahs01", "kam71", "marschdot",
+#'                            "owc1904", "owc2004", "owc2104",
+#'                            "owc2204", "san96", "san04", "schlif",
+#'                            "tanna06", "tanna07", "wet91",
+#'                            "oxcmg08", "tanmg06", "tanmg07",
+#'                            "oxcmix08", "tanmix07"),
+#'         method.Naeq = c("ahs01", "mit96", "pey00"),
+#'         correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"),
+#'         correction.formamide = c("bla96", "lincorr"))
 #'
 #' @section Mandatory arguments: The following are the arguments which are
 #'   mandatory for computation. \itemize{ \item \code{sequence} \item
@@ -405,7 +418,7 @@
 #'   \strong{Nearest neighbor models}).
 #' @param method.GU Specify the nearest neighbor model to compute the
 #'   contribution of GU base pairs to the thermodynamic of helix-coil transition.
-#'   Available method is \code{"tur99"} (see \strong{GU wobble base pairs
+#'   Either \code{"tur99"} or \code{"ser12"} (see \strong{GU wobble base pairs
 #'   effect}).
 #' @param method.singleMM Specify the nearest neighbor model to compute the
 #'   contribution of single mismatch to the thermodynamic of helix-coil
