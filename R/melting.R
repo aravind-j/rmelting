@@ -1040,6 +1040,91 @@ melting <- function(sequence, comp.sequence = NULL,
     opts <- c(opts, "-GU", method.GU)
   }
 
+  # Options: method.singleMM
+  if (!missing(method.singleMM)) {
+    opts <- c(opts, "-sinMM", method.singleMM)
+  }
+
+  # Options: method.tandemMM
+  if (!missing(method.tandemMM)) {
+    opts <- c(opts, "-tanMM", method.tandemMM)
+  }
+
+  # Options: method.single.dangle
+  if (!missing(method.single.dangle)) {
+    opts <- c(opts, "-sinDE", method.single.dangle)
+  }
+
+  # Options: method.double.dangle
+  if (!missing(method.double.dangle)) {
+    opts <- c(opts, "-secDE", method.double.dangle)
+  }
+
+  # Options: method.long.dangle
+  if (!missing(method.long.dangle)) {
+    opts <- c(opts, "-longDE", method.long.dangle)
+  }
+
+  # Options: method.internal.loop
+  if (!missing(method.internal.loop)) {
+    opts <- c(opts, "-intLP", method.internal.loop)
+  }
+
+  # Options: method.single.bulge.loop
+  if (!missing(method.single.bulge.loop)) {
+    opts <- c(opts, "-sinBU", method.single.bulge.loop)
+  }
+
+  # Options: method.long.bulge.loop
+  if (!missing(method.long.bulge.loop)) {
+    opts <- c(opts, "-lonBU", method.long.bulge.loop)
+  }
+
+  # Options: method.CNG
+  if (!missing(method.CNG)) {
+    opts <- c(opts, "-CNG", method.CNG)
+  }
+
+  # Options: method.inosine
+  if (!missing(method.inosine)) {
+    opts <- c(opts, "-ino", method.inosine)
+  }
+
+  # Options: method.hydroxyadenine
+  if (!missing(method.hydroxyadenine)) {
+    opts <- c(opts, "-ha", method.hydroxyadenine)
+  }
+
+  # Options: method.azobenzenes
+  if (!missing(method.azobenzenes)) {
+    opts <- c(opts, "-azo", method.azobenzenes)
+  }
+
+  # Options: method.locked
+  if (!missing(method.locked)) {
+    opts <- c(opts, "-lck", method.locked)
+  }
+
+  # Options: correction.ion
+  if (!missing(correction.ion)) {
+    opts <- c(opts, "-ion", correction.ion)
+  }
+
+  # Options: method.Naeq
+  if (!missing(method.Naeq)) {
+    opts <- c(opts, "-naeq", method.Naeq)
+  }
+
+  # Options: correction.DMSO
+  if (!missing(correction.DMSO)) {
+    opts <- c(opts, "-DMSO", correction.DMSO)
+  }
+
+  # Options: correction.formamide
+  if (!missing(correction.formamide)) {
+    opts <- c(opts, "-for", correction.formamide)
+  }
+
 
   # Add verbose
   # opts <- c(opts, "-O", "test.txt")
