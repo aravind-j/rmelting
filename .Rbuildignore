@@ -1,3 +1,5 @@
+^README\.Rmd$
+^README\.html$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^Release\.R$
