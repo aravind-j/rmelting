@@ -1,3 +1,5 @@
+^testing\.pdf$
+^testing\.Rmd$
 ^README\.Rmd$
 ^README\.html$
 ^.*\.Rproj$
