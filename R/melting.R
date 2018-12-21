@@ -1240,6 +1240,8 @@ melting <- function(sequence, comp.sequence = NULL,
 
   attr(out, "command") <- paste(opts, collapse = " ")
 
+  print(out$Results$`Melting temperature (C)`)
+
   return(out)
 
 }
