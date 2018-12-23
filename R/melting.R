@@ -495,7 +495,6 @@
 #' @return
 #' @export
 #' @import rJava
-#' @import melting5jars
 #' @importFrom Rdpack reprompt
 #' @encoding UTF-8
 #'

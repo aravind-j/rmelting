@@ -2,6 +2,5 @@
 
 S3method(print,melting)
 export(melting)
-import(melting5jars)
 import(rJava)
 importFrom(Rdpack,reprompt)
