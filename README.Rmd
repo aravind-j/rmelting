@@ -41,14 +41,19 @@ devtools::load_all(".")
 [![Analytics](https://pro-pulsar-193905.appspot.com/UA-116683292-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon)
 
 ***
-
-## Warning
-
-Package is not stable at present. It is under development. Please use only after release of stable version.
+## Description
+`r gsub("\\n", " ", packageDescription("germinationmetrics", fields = "Description"))`
 
 ## Installation
+<!-- The package can be installed from CRAN as follows:
 
-### Install development version from Github
+```{r, eval=FALSE}
+install.packages('germinationmetrics', dependencies=TRUE)
+```
+-->
+
+The development version can be installed from github as follows:
+
 ```{r, eval=FALSE}
 devtools::install_github("aravind-j/rmelting")
 ```
@@ -68,6 +73,14 @@ news(package='rmelting')
 ```
 
 ## Links
+
+<!-- [CRAN page](https://cran.r-project.org/package=germinationmetrics) -->
+
+[Github page](https://github.com/aravind-j/germinationmetrics)
+
+[Documentation website](https://aravind-j.github.io/germinationmetrics/)
+
+<!-- [Zenodo DOI](https://doi.org/10.5281/zenodo.1219630) -->
 
 ## Citing `rmelting`
 To cite the methods in the package use:
