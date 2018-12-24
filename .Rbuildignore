@@ -1,3 +1,6 @@
+^Tutorial\.toc$
+^Tutorial\.aux$
+^Tutorial\.tex$
 ^testing\.pdf$
 ^testing\.Rmd$
 ^README\.Rmd$

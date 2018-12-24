@@ -1,0 +1,368 @@
+---
+title: "Computation of melting temperature of nucleic acid duplexes with `rmelting`"
+author: "Aravind, J.^1^ and Krishna, G. K.^2^"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    dev: cairo_pdf
+    fig_caption: no
+    number_sections: yes
+    toc: no
+  html_document:
+    number_sections: yes
+    toc: yes
+documentclass: article
+classoption: table, twoside
+header-includes:
+  - \usepackage{fancyhdr}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \pagestyle{fancy}
+  - \fancyhead[LO]{Computation of melting temperature of nucleic acid duplexes with \texttt{rmelting}}
+  - \fancyhead[ER]{\slshape  \nouppercase{\leftmark}}
+  - \usepackage{hyperref}
+  - \hypersetup{colorlinks=true}
+  - \hypersetup{linktoc=all}
+  - \hypersetup{linkcolor=blue}
+  - \usepackage{pdflscape}
+  - \usepackage{booktabs}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+  - \renewcommand\thesection{\arabic{section}}
+csl: frontiers.csl
+bibliography: REFERENCES.bib
+vignette: |
+  %\VignetteIndexEntry{Tutorial}
+  %\usepackage[utf8]{inputenc}
+  %\VignetteEngine{knitr::rmarkdown_notangle}
+---
+
+
+```{r, echo=FALSE}
+out_type <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+
+r = getOption("repos")
+r["CRAN"] = "https://cran.rstudio.com/"
+#r["CRAN"] = "https://cloud.r-project.org/"
+#r["CRAN"] = "https://ftp.iitm.ac.in/cran/"
+options(repos = r)
+```
+
+
+```{r, results='asis', echo=FALSE}
+switch(out_type,
+    html = {cat("<p>1. Division of Germplasm Conservation, ICAR-National Bureau of Plant Genetic Resources, New Delhi.</p>
+
+<p>2. Division of Genetics, ICAR-Indian Agricultural Research Institute, New Delhi.</p>")},
+    latex = cat("\\begin{center}
+1. Division of Germplasm Conservation, ICAR-National Bureau of Plant Genetic Resources, New Delhi.
+
+2. Division of Crop Physiology, ICAR-Indian Agricultural Research Institute, New Delhi.
+
+\\end{center}" )
+)
+```
+
+\begin{center}
+\vspace{6pt}
+\hrule
+\end{center}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readxl)
+
+#  x <- read_excel("vignettes/Tables.xlsx", sheet = "Approx.methods", col_names = T)
+rmeltingtables <- function(file, sheet, def="default",
+                           code="Formula", ref = "Reference") {
+  
+  if (requireNamespace("readxl", quietly = TRUE)) {
+    
+    x <- read_excel(path = file, sheet = sheet, col_names = TRUE)
+    
+    x[,code] <- paste0("`", unlist(x[,code]), "`", sep = "")
+  
+  if(!is.null(def)) {
+    ind <- which(is.na(x[,def]) %in% FALSE)
+    x[ind,code] <- paste0(unlist(x[ind,code]), unlist(x[ind,def]), sep = "")
+    rm(ind)
+  }
+
+  x[, def] <- NULL
+  
+  x[, ref] <- gsub("\\[|\\]", "", unlist(x[, ref]))
+  x[, ref] <- gsub(";", ",", unlist(x[, ref]))
+  x[, "Limits/Remarks"] <- gsub("(\\\\code\\{)(.+)(\\})", "`\\2`", unlist(x[, "Limits/Remarks"]))
+  
+  # x <- data.frame(x)
+  
+  pander::pander(x, style='multiline',
+               split.cell = c(13, 10, 20, 20),
+               justify = c('left'), split.table = Inf, keep.line.breaks = TRUE,
+               use.hyphening = FALSE, missing = "")
+
+} else {
+  print("Package 'readxl' is required to generate this table.")
+}
+}
+```
+
+\tableofcontents
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+  \vspace{-10pt}
+  \begin{center}
+    \includegraphics[width=0.33\textwidth]{`r system.file("extdata", "rmelting.png", package = "rmelting")`}
+  \end{center}
+    \vspace{-10pt}
+\end{wrapfigure}
+
+<img src="https://raw.githubusercontent.com/aravind-j/rmelting/master/inst/extdata/rmelting.png" align="right" alt="logo" width="173" height = "200" style = "padding: 10px; border: none; float: right;">
+
+# Introduction
+
+The `R` package `rmelting` is an interface to the [MELTING 5](https://www.ebi.ac.uk/biomodels/tools/melting/) program [@le_novere_melting_2001; @dumousseau_melting_2012]  to compute melting temperatures of nucleic acid duplexes (DNA/DNA, DNA/RNA, RNA/RNA or 2'-O-MeRNA/RNA) along with other thermodynamic parameters such as hybridisation enthalpy and entropy.
+
+Melting temperatures are computed by Nearest-neighbour methods for short sequences or approximative estimation formulae for long sequences. Apart from these, several corrections are availabel to take into account the presence of Cations (Na, Tris, K and Mg) or denaturing agents (DMSO and formamide).
+
+## Installation
+The package can be installed using the following functions:
+
+```{r, eval=FALSE}
+# Install development version from Github
+devtools::install_github("aravind-j/rmelting")
+
+```
+
+Then the package can be loaded using the function
+```{r, message=FALSE}
+library(rmelting)
+```
+
+# Basic usage
+
+Melting temperatures are computed in `rmelting` throught the core function `melting` which takes a number of arguments (see `?melting`). The following are the essential arguments which are
+mandatory for computation.
+
+* `sequence`
+    + 5' to 3' sequence of one strand of the nucleic acid duplex as a character string.  Recognises A, C, G, T, U, I, X_C, X_T, A*, AL, TL, GL and CL (**Table 1**). U and T are not considered identical.
+
+\rowcolors{2}{gray!10}{white}
+\renewcommand{\arraystretch}{1.3}
+
+**Table 1**: Recognized sequences
+```{r, echo=FALSE}
+if (requireNamespace("readxl", quietly = TRUE)) {
+  ntides <- read_excel("Tables.xlsx", sheet = "MELTING", col_names = T)
+  knitr::kable(ntides)
+} else {
+  print("Package 'readxl' is required to generate this table.")
+}
+```
+    
+* `Comp.sequence`
+    + Mandatory if there are mismatches, inosine(s) or hydroxyadenine(s) between the two strands. If not specified, it is computed as the complement of `sequence`. Self-complementarity in `sequence` is detected even though there may be (are) dangling end(s) and `comp.sequence` is computed.
+
+* `nucleic.acid.conc`
+    + In molar concentration (M or mol L^-1^).
+    
+* `Na.conc, Mg.conc, Tris.conc, K.conc`
+    + At least one cation (Na, Mg, Tris, K) concentration is mandatory, the other agents(dNTP, DMSO, formamide) are optional.
+    
+* `hybridisation.type`
+    + The possible options for hybridisation type are as follows (**Table 2**).
+
+\rowcolors{2}{gray!10}{white}
+\renewcommand{\arraystretch}{1.3}
+
+**Table 2**: Hybridisation type options
+```{r, echo=FALSE}
+if (requireNamespace("readxl", quietly = TRUE)) {
+  hybtype <- read_excel("Tables.xlsx", sheet = "HybType", col_names = T)
+  hybtype$Option <- paste("`", hybtype$Option, "`", "")
+  knitr::kable(hybtype)
+} else {
+  print("Package 'readxl' is required to generate this table.")
+}
+```
+
+With these arguments, the melting temperature can be computed as follows.
+
+```{r}
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1)
+```
+
+Only the melting temperature is given as a console output. However, the output can be assigned to an object which contains the details of the environment, options and the thermodynamics results as a list.
+
+```{r}
+# Get output as list
+out <- melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+               hybridisation.type = "dnadna", Na.conc = 1)
+# Environment output
+out$Environment
+# Options used
+out$Options
+# Thermodynamics results
+out$Results
+
+```
+
+The command for the MELTING 5 java version is saved as an attribute in the list `out` and can be retrieved as follows.
+
+```{r}
+# Command for MELTING 5
+attributes(out)$command
+```
+
+# Melting temperature computation
+
+Melting temperature is computed by either approximative or nearest neighbour methods according to the length of the oligonucleotide sequences. For longer sequences (longer than the threshold value, the threshold value set by `size.threshold` with the default value 60) approximative method is used, while for others, nearest neighbour method is used. 
+
+## Approximative methods
+
+The approximative method for computation can be specified by the argument `am.method`. The available methods are given in **Table 3**.
+
+\rowcolors{2}{gray!10}{white}
+\renewcommand{\arraystretch}{1.3}
+
+**Table 3**: Details of approximative methods
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "Approx.methods",
+               def = "default", code = "Formula", ref = "Reference")
+```
+
+```{r}
+# Long Nucleotide sequence
+DNAseq <- c("TCTAATGTGCTGTTAGATGTATCCAGAGATAGCCGAGCATAAACTTCAACACACGAGACGTTGATTGGATTTAACCATAG")
+RNAseq <- c("UUAAUCUCCGUCAUCUUUAAGCCGUGGAGAGACUGUAGACUUGAACAGGGGUAAGCGGAGGCACGUAGGAUUCACAUCAU")
+
+# Approximative method - default
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1)
+
+# Approximative method - wetdna91 (DNA/DNA)
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1,
+        method.approx = "wetdna91")
+
+# Approximative method - ahs01 (DNA/DNA)
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1,
+        method.approx = "ahs01")
+
+# Approximative method - che93 (DNA/DNA)
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1,
+        method.approx = "che93")
+
+# Approximative method - che93corr (DNA/DNA)
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1,
+        method.approx = "che93corr")
+
+# Approximative method - marschdot (DNA/DNA)
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1,
+        method.approx = "marschdot")
+
+# Approximative method - owe69 (DNA/DNA)
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1,
+        method.approx = "owe69")
+
+# Approximative method - san98 (DNA/DNA)
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1,
+        method.approx = "san98")
+
+# Approximative method - wetrna91 (RNA/RNA)
+melting(sequence = RNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "rnarna", Na.conc = 1,
+        method.approx = "wetrna91")
+
+# Approximative method - wetdnarna91 (DNA/RNA)
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnarna", Na.conc = 1,
+        method.approx = "wetdnarna91")
+```
+
+## Nearest neighbour methods
+
+\rowcolors{2}{gray!10}{white}
+\renewcommand{\arraystretch}{1.3}
+
+**Table 4**: Details of nearest neighbour methods
+```{r, echo=FALSE, eval=TRUE}
+rmeltingtables(file = "Tables.xlsx", sheet = "NN.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+```{r}
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "bre86")
+```
+
+```{r}
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "san04")
+```
+
+```{r}
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "san96")
+```
+
+```{r}
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "sug96")
+```
+
+# Corrections
+
+## Nucleic acid concentration
+
+## Ion Concentration
+
+### Na
+
+### Mg
+
+### Na Mg
+
+### NaEq
+
+## Denaturing agent concentration
+
+### DMSO
+
+## Formamide
+
+## Batch
+
+## Citing `rmelting`
+
+```{r, echo = FALSE, collapse = TRUE}
+detach("package:rmelting", unload=TRUE)
+suppressPackageStartupMessages(library(rmelting))
+cit <- citation("rmelting")
+# yr <- format(Sys.Date(), "%Y")
+# cit[1]$year <- yr
+# oc <- class(cit)
+# 
+# cit <- unclass(cit)
+# attr(cit[[1]],"textVersion") <- gsub("\\(\\)",
+#                                      paste("\\(", yr, "\\)", sep = ""),
+#                                      attr(cit[[1]],"textVersion"))
+# class(cit) <- oc
+cit
+```
+
+## Session Info
+
+```{r}
+sessionInfo()
+```
+
+## References
