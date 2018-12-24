@@ -32,6 +32,13 @@ Depends:
     rJava (>= 0.5-0)
 Imports:
     Rdpack
+Suggests:
+    readxl,
+    knitr,
+    rmarkdown,
+    reshape2,
+    pander,
+    testthat
 biocViews: BiomedicalInformatics, Cheminformatics,
 License: GPL-2 | GPL-3
 Encoding: UTF-8
@@ -40,5 +47,3 @@ RoxygenNote: 6.1.1
 RdMacros: Rdpack
 URL: https://github.com/aravind-j/rmelting
 BugReports: https://github.com/aravind-j/rmelting/issues
-Suggests: 
-    testthat
