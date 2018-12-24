@@ -47,3 +47,4 @@ RoxygenNote: 6.1.1
 RdMacros: Rdpack
 URL: https://github.com/aravind-j/rmelting
 BugReports: https://github.com/aravind-j/rmelting/issues
+VignetteBuilder: knitr
