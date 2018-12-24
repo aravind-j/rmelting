@@ -6,7 +6,28 @@ template:
       api_key: 8b84820d42f7497ca93d51aa44ae523f
       index_name: rmelting
 
-navbar:
-  type: default
+development:
+  mode: unreleased
 
 url: https://aravind-j.github.io/rmelting/
+
+navbar:
+  title: rmelting
+  type: default
+  left:
+    - icon: fa-home fa-lg
+      text: Home
+      href: index.html
+    - icon: fa-code
+      text: Reference
+      href: reference/index.html
+    - icon: fa-file-o
+      text: Introduction
+      href: articles/Tutorial.html
+    - icon: fa-newspaper-o
+      text: News
+      href: news/index.html
+  right:
+    - icon: fa-github-alt
+      text: Github
+      href: https://github.com/aravind-j/rmelting
