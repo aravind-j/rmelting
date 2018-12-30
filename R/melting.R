@@ -1080,7 +1080,7 @@ melting <- function(sequence, comp.sequence = NULL,
 
   # Options: method.long.dangle
   if (!missing(method.long.dangle)) {
-    opts <- c(opts, "-longDE", method.long.dangle)
+    opts <- c(opts, "-lonDE", method.long.dangle)
   }
 
   # Options: method.internal.loop
@@ -1152,7 +1152,6 @@ melting <- function(sequence, comp.sequence = NULL,
   ##################################################
   # Get results
   ##################################################
-
 
   meltj <- new(J("melting.Main"))
   optionManager <- new(J("melting.configuration.OptionManagement"))
