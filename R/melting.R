@@ -88,7 +88,7 @@
 #'   = TRUE}.
 #'
 #' @section Correction factor for nucleic acid concentration: For self
-#'   complementary sequences (Auto detected or specified in \code{self}) it is
+#'   complementary sequences (Auto detected or specified by \code{force.self}) it is
 #'   1. Otherwise it is 4 if the both strands are present in equivalent amount
 #'   and 1 if one strand is in excess.
 #'
