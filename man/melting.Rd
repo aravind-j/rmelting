@@ -24,9 +24,9 @@ melting(sequence, comp.sequence = NULL, nucleic.acid.conc,
   method.azobenzenes = c("asa05"), method.locked = c("mct04"), correction.ion
   = c("ahs01", "kam71", "marschdot", "owc1904", "owc2004", "owc2104",
   "owc2204", "san96", "san04", "schlif", "tanna06", "tanna07", "wet91",
-  "oxcmg08", "tanmg06", "tanmg07", "oxcmix08", "tanmix07"), method.Naeq =
+  "owcmg08", "tanmg06", "tanmg07", "owcmix08", "tanmix07"), method.Naeq =
   c("ahs01", "mit96", "pey00"), correction.DMSO = c("ahs01", "cul76",
-  "esc80", "mus80"), correction.formamide = c("bla96", "lincorr"))
+  "esc80", "mus81"), correction.formamide = c("bla96", "lincorr"))
 }
 \arguments{
 \item{sequence}{Sequence (5' to 3') of one strand of the nucleic acid duplex
@@ -536,7 +536,7 @@ nucleic acid duplex.
   al., 2001 \cr \tab \tab results. \tab \cr \code{cul76} \tab DNA\tab Not
   tested with experimental \tab Cullen and Bick, 1976\cr \tab \tab results.
   \tab \cr \code{esc80} \tab DNA\tab Not tested with experimental \tab Escara
-  and Hutton, 1980\cr \tab \tab results. \tab \cr \code{mus80} \tab DNA\tab
+  and Hutton, 1980\cr \tab \tab results. \tab \cr \code{mus81} \tab DNA\tab
   Not tested with experimental \tab Musielski et al., 1981 \cr \tab \tab
   results. \tab } * Default correction method for computation.
 
