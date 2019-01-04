@@ -11,5 +11,8 @@
 print.melting <- function(x, ...){
 
   print(x$Results$`Melting temperature (C)`)
+  if (!is.na(x$Message)) {
+    message(x$Message)
+  }
 
 }

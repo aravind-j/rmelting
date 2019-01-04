@@ -1178,104 +1178,188 @@ melting <- function(sequence, comp.sequence = NULL,
   meltj <- new(J("melting.Main"))
   optionManager <- new(J("melting.configuration.OptionManagement"))
 
-  results <- meltj$getMeltingResults(opts, optionManager)
+  #results <- meltj$getMeltingResults(opts, optionManager)
+  msge <- ""
+  msgw <- ""
 
-  # Get environment
-  env <- optionManager$createEnvironment(opts)
-  envir_melt <- list(`Sequence` = env$getSequences()$getSequence(),
-                     `Complementary sequence` = env$getSequences()$getComplementary(),
-                     `Nucleic acid concentration (M)` = env$getNucleotides(),
-                     `Hybridization type` = env$getHybridization(),
-                     `Na concentration (M)` = env$getNa(),
-                     `Mg concentration (M)` = env$getMg(),
-                     `Tris concentration (M)` = env$getTris(),
-                     `K concentration (M)` = env$getK(),
-                     `dNTP concentration (M)` = env$getDNTP(),
-                     `DMSO concentration (%)` = env$getDMSO(),
-                     `Formamide concentration (M or %)` = env$getFormamide(),
-                     `Self complementarity` = env$isSelfComplementarity(),
-                     `Correction factor` = env$getFactor())
+  # Check for error
+  possibleError <- tryCatch(
 
-  # Get options
-  opt_names <- c("-tan", "-P",  "-S", "-T", "-DMSO", "-secDE", "-ino", "-sinBU",
-                 "-lonDE", "-lck",  "-self", "-am", "-sinDE", "-azo", "-lonBU",
-                 "-naeq", "-intLP",  "-ha", "-for", "-nn", "-NNPath", "-C",
-                 "-E", "-F", "-sinMM", "-H", "-mode", "-GU", "-CNG", "-ion")
-  opt_names <- setdiff(opt_names, "-NNPath")
-  opts_melt <- env$getOptions()
-  keySet <- .jrcall(opts_melt, "keySet")
-  opts_iter <- .jrcall(keySet,"iterator")
-  # opts_melt2 <- list()
-  opts_melt2 <- vector(length = length(opt_names), mode = "list")
-  names(opts_melt2) <- opt_names
+    meltj$getMeltingResults(opts, optionManager),
 
-  while (.jrcall(opts_iter,"hasNext")) {
-    key <- .jrcall(opts_iter,"next");
-    opts_melt2[[key]] <- .jrcall(opts_melt,"get",key)
+    error = function(e) e,
+    warning = function(c) w)
+
+  # Catch error message
+  if (inherits(possibleError, "error")) {
+    msge <- possibleError$message
+
+    if (msge != "") {
+      msge <- paste("ERROR:", msge)
+    }
+
+    envir_melt <- list(`Sequence` = NA,
+                       `Complementary sequence` = NA,
+                       `Nucleic acid concentration (M)` = NA,
+                       `Hybridization type` = NA,
+                       `Na concentration (M)` = NA,
+                       `Mg concentration (M)` = NA,
+                       `Tris concentration (M)` = NA,
+                       `K concentration (M)` = NA,
+                       `dNTP concentration (M)` = NA,
+                       `DMSO concentration (%)` = NA,
+                       `Formamide concentration (M or %)` = NA,
+                       `Self complementarity` = NA,
+                       `Correction factor` = NA)
+
+    options_melt <- list(`Approximative formula` = NA,
+                         `Nearest neighbour model` = NA,
+                         `GU model` = NA,
+                         `Single mismatch model` = NA,
+                         `Tandem mismatch model` = NA,
+                         `Single dangling end model` = NA,
+                         `Double dangling end model` = NA,
+                         `Long dangling end model` = NA,
+                         `Internal loop model` = NA,
+                         `Single bulge loop model` = NA,
+                         `Long bulge loop model` = NA,
+                         `CNG repeats model` = NA,
+                         `Inosine bases model` = NA,
+                         `Hydroxyadenine bases model` = NA,
+                         `Azobenzenes model` = NA,
+                         `Locked nucleic acids model` = NA,
+                         `Ion correction method` = NA,
+                         `Na equivalence correction method` = NA,
+                         `DMSO correction method` = NA,
+                         `Formamide correction method` = NA,
+                         Mode = NA)
+
+    results_melt <- list(`Enthalpy (cal)` = NA,
+                         `Entropy (cal)` = NA,
+                         `Enthalpy (J)` = NA,
+                         `Entropy (J)` = NA,
+                         `Melting temperature (C)` = NA)
   }
 
+  # Catch warning message
+  if (inherits(possibleError, "warning")) {
+    msgw <- possibleError$message
 
-  # Fetch calculation method
-  calculMethod <- results$getCalculMethod()
+    if (msgw != "") {
+      msgw <- paste("WARNING:", msgw)
+    }
+  }
 
-  if (.jinstanceof(calculMethod, J("melting.nearestNeighborModel.NearestNeighborMode"))) {
-    am <- NA_character_
-    nn <- opts_melt2$`-nn`
+  if (inherits(possibleError, "error") | inherits(possibleError, "warning")) {
+    msg <- paste(msge, msgw, sep = "\n")
+
   } else {
-    am <- opts_melt2$`-am`
-    nn <- NA_character_
+    results <- possibleError
+
+    # Get environment
+    env <- optionManager$createEnvironment(opts)
+    envir_melt <- list(`Sequence` = env$getSequences()$getSequence(),
+                       `Complementary sequence` = env$getSequences()$getComplementary(),
+                       `Nucleic acid concentration (M)` = env$getNucleotides(),
+                       `Hybridization type` = env$getHybridization(),
+                       `Na concentration (M)` = env$getNa(),
+                       `Mg concentration (M)` = env$getMg(),
+                       `Tris concentration (M)` = env$getTris(),
+                       `K concentration (M)` = env$getK(),
+                       `dNTP concentration (M)` = env$getDNTP(),
+                       `DMSO concentration (%)` = env$getDMSO(),
+                       `Formamide concentration (M or %)` = env$getFormamide(),
+                       `Self complementarity` = env$isSelfComplementarity(),
+                       `Correction factor` = env$getFactor())
+
+    # Get options
+    opt_names <- c("-tan", "-P",  "-S", "-T", "-DMSO", "-secDE", "-ino", "-sinBU",
+                   "-lonDE", "-lck",  "-self", "-am", "-sinDE", "-azo", "-lonBU",
+                   "-naeq", "-intLP",  "-ha", "-for", "-nn", "-NNPath", "-C",
+                   "-E", "-F", "-sinMM", "-H", "-mode", "-GU", "-CNG", "-ion")
+    opt_names <- setdiff(opt_names, "-NNPath")
+    opts_melt <- env$getOptions()
+    keySet <- .jrcall(opts_melt, "keySet")
+    opts_iter <- .jrcall(keySet,"iterator")
+    # opts_melt2 <- list()
+    opts_melt2 <- vector(length = length(opt_names), mode = "list")
+    names(opts_melt2) <- opt_names
+
+    while (.jrcall(opts_iter,"hasNext")) {
+      key <- .jrcall(opts_iter,"next");
+      opts_melt2[[key]] <- .jrcall(opts_melt,"get",key)
+    }
+
+
+    # Fetch calculation method
+    calculMethod <- results$getCalculMethod()
+
+    if (.jinstanceof(calculMethod, J("melting.nearestNeighborModel.NearestNeighborMode"))) {
+      am <- NA_character_
+      nn <- opts_melt2$`-nn`
+    } else {
+      am <- opts_melt2$`-am`
+      nn <- NA_character_
+    }
+
+    options_melt <- list(`Approximative formula` = am,
+                         `Nearest neighbour model` = nn,
+                         `GU model` = opts_melt2$`-GU`,
+                         `Single mismatch model` = opts_melt2$`-sinMM`,
+                         `Tandem mismatch model` = opts_melt2$`-tan`,
+                         `Single dangling end model` = opts_melt2$`-sinDE`,
+                         `Double dangling end model` = opts_melt2$`-secDE`,
+                         `Long dangling end model` = opts_melt2$`-lonDE`,
+                         `Internal loop model` = opts_melt2$`-intLP`,
+                         `Single bulge loop model` = opts_melt2$`-sinBU`,
+                         `Long bulge loop model` = opts_melt2$`-lonBU`,
+                         `CNG repeats model` = opts_melt2$CNG,
+                         `Inosine bases model` = opts_melt2$`-ino`,
+                         `Hydroxyadenine bases model` = opts_melt2$`-ha`,
+                         `Azobenzenes model` = opts_melt2$`-azo`,
+                         `Locked nucleic acids model` = opts_melt2$`-lck`,
+                         `Ion correction method` = opts_melt2$`-ion`,
+                         `Na equivalence correction method` = opts_melt2$`-naeq`,
+                         `DMSO correction method` = opts_melt2$`-DMSO`,
+                         `Formamide correction method` = opts_melt2$`-for`,
+                         Mode = opts_melt2$`-mode`)
+
+    # Fetch enthalpy and entropy for nearest-neighbour methods
+    if (.jinstanceof(calculMethod, J("melting.nearestNeighborModel.NearestNeighborMode"))) {
+      enthalpy_cal <- results$getEnthalpy()
+      entropy_cal <- results$getEntropy()
+
+      enthalpy_J <- entropy_J <- NULL
+      enthalpy_J <- results$getEnergyValueInJ(enthalpy_cal)
+      entropy_J <- results$getEnergyValueInJ(entropy_cal)
+    } else {# NA for approximative methods
+      enthalpy_cal <- NA_integer_
+      entropy_cal <- NA_integer_
+      enthalpy_J <- NA_integer_
+      entropy_J <- NA_integer_
+    }
+
+    melting_temp_C <- results$getTm()
+
+    # Get melting results
+    results_melt <- list(`Enthalpy (cal)` = enthalpy_cal,
+                         `Entropy (cal)` = entropy_cal,
+                         `Enthalpy (J)` = enthalpy_J,
+                         `Entropy (J)` = entropy_J,
+                         `Melting temperature (C)` = melting_temp_C)
+
+    msg <- paste(msge, msgw, sep = "\n")
   }
 
-  options_melt <- list(`Approximative formula` = am,
-                       `Nearest neighbour model` = nn,
-                       `GU model` = opts_melt2$`-GU`,
-                       `Single mismatch model` = opts_melt2$`-sinMM`,
-                       `Tandem mismatch model` = opts_melt2$`-tan`,
-                       `Single dangling end model` = opts_melt2$`-sinDE`,
-                       `Double dangling end model` = opts_melt2$`-secDE`,
-                       `Long dangling end model` = opts_melt2$`-lonDE`,
-                       `Internal loop model` = opts_melt2$`-intLP`,
-                       `Single bulge loop model` = opts_melt2$`-sinBU`,
-                       `Long bulge loop model` = opts_melt2$`-lonBU`,
-                       `CNG repeats model` = opts_melt2$CNG,
-                       `Inosine bases model` = opts_melt2$`-ino`,
-                       `Hydroxyadenine bases model` = opts_melt2$`-ha`,
-                       `Azobenzenes model` = opts_melt2$`-azo`,
-                       `Locked nucleic acids model` = opts_melt2$`-lck`,
-                       `Ion correction method` = opts_melt2$`-ion`,
-                       `Na equivalence correction method` = opts_melt2$`-naeq`,
-                       `DMSO correction method` = opts_melt2$`-DMSO`,
-                       `Formamide correction method` = opts_melt2$`-for`,
-                       Mode = opts_melt2$`-mode`)
-
-  # Fetch enthalpy and entropy for nearest-neighbour methods
-  if (.jinstanceof(calculMethod, J("melting.nearestNeighborModel.NearestNeighborMode"))) {
-    enthalpy_cal <- results$getEnthalpy()
-    entropy_cal <- results$getEntropy()
-
-    enthalpy_J <- entropy_J <- NULL
-    enthalpy_J <- results$getEnergyValueInJ(enthalpy_cal)
-    entropy_J <- results$getEnergyValueInJ(entropy_cal)
-  } else {# NA for approximative methods
-    enthalpy_cal <- NA_integer_
-    entropy_cal <- NA_integer_
-    enthalpy_J <- NA_integer_
-    entropy_J <- NA_integer_
+  if (msg == "\n") {
+    msg <- NA
   }
-
-  melting_temp_C <- results$getTm()
-
-  # Get melting results
-  results_melt <- list(`Enthalpy (cal)` = enthalpy_cal,
-                       `Entropy (cal)` = entropy_cal,
-                       `Enthalpy (J)` = enthalpy_J,
-                       `Entropy (J)` = entropy_J,
-                       `Melting temperature (C)` = melting_temp_C)
 
   out <- list(Environment = envir_melt,
               Options = replace(options_melt,
                                 sapply(options_melt, is.null), NA_character_),
-              Results = results_melt)
+              Results = results_melt,
+              Message = msg)
 
   attr(out, "command") <- paste(opts, collapse = " ")
 
