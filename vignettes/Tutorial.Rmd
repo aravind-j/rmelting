@@ -1152,7 +1152,7 @@ For self complementary sequences (auto detected or specified by `force.self`) it
 
 ## Ion corrections
 
-Melting temperature is computed initially for $[\textnormal{Na}^{+}]$ = 1 M, after which a correction for the presence of cations ($[\textnormal{Na}^{+}]$, $[\textnormal{K}^{+}]$, $[\textnormal{Tris}^{+}]$ and $[\textnormal{Mg}^{+}]$) is applied either directly on the computed melting temperature or on the computed entropy.
+Melting temperature is computed initially for $[\textrm{Na}^{+}]$ = 1 M, after which a correction for the presence of cations ($[\textrm{Na}^{+}]$, $[\textrm{K}^{+}]$, $[\textrm{Tris}^{+}]$ and $[\textrm{Mg}^{+}]$) is applied either directly on the computed melting temperature or on the computed entropy.
 
 Th correction methods for cation concentration can be specified by the argument `correction.ion`.
 
@@ -1377,16 +1377,16 @@ melting(sequence = "UACGCGUCAAUAACGCUA",
         Na.conc = 0.069, Mg.conc = 0.0015, correction.ion = "tanmix07")
 ```
 
-The ion correction by @owczarzy_predicting_2008 is used by default according to the $\frac{[\textnormal{Mg}^{2+}]^{0.5}}{[\textnormal{Mon}^{+}]}$ ratio, where $[\textnormal{Mon}^{+}] = \textnormal{Na}^{+}]+[\textnormal{Tris}^{+}]+[\textnormal{K}^{+}]$.
+The ion correction by @owczarzy_predicting_2008 is used by default according to the $\frac{[\textrm{Mg}^{2+}]^{0.5}}{[\textrm{Mon}^{+}]}$ ratio, where $[\textrm{Mon}^{+}] = \textrm{Na}^{+}]+[\textrm{Tris}^{+}]+[\textrm{K}^{+}]$.
 
 If,
 
-* $[\textnormal{K}^{+}] = 0$, default sodium correction is used;
+* $[\textrm{K}^{+}] = 0$, default sodium correction is used;
 * Ratio $<$ 0.22, default sodium correction is used;
 * 0.22 $\leq$ Ratio $<$ 6, default mixed Na and Mg correction is used and
 * Ratio $\geq$ 6,default magnesium correction is used.
 
-Note that $[\textnormal{Tris}^{+}]$ is about half of the total tris buffer concentration. 
+Note that $[\textrm{Tris}^{+}]$ is about half of the total tris buffer concentration. 
 
 ### Sodium equivalent concentration methods
 
