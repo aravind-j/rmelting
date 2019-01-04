@@ -17,9 +17,12 @@ header-includes:
   - \usepackage{fancyhdr}
   - \usepackage{wrapfig}
   - \usepackage{float}
-  - \pagestyle{fancy}
-  - \fancyhead[LO]{Computation of melting temperature of nucleic acid duplexes with \texttt{rmelting}}
-  - \fancyhead[ER]{\slshape  \nouppercase{\leftmark}}
+  - \pagestyle{fancyplain}
+  - \fancyhf{}
+  - \fancyhead[LE]{ \fancyplain{}{Computation of melting temperature of nucleic acid duplexes with \texttt{rmelting}} }
+  - \fancyhead[RO]{ \fancyplain{}{\slshape \nouppercase{\leftmark}} }
+  - \fancyfoot[LE]{ \fancyplain{}{\thepage} }
+  - \fancyfoot[RO]{ \fancyplain{}{\thepage} }
   - \usepackage{hyperref}
   - \hypersetup{colorlinks=true}
   - \hypersetup{linktoc=all}
@@ -83,7 +86,7 @@ rmeltingtables <- function(file, sheet, def="default",
     
     x[,code] <- paste0("`", unlist(x[,code]), "`", sep = "")
   
-  if(!is.null(def)) {
+  if (!is.null(def)) {
     ind <- which(is.na(x[,def]) %in% FALSE)
     x[ind,code] <- paste0(unlist(x[ind,code]), unlist(x[ind,def]), sep = "")
     rm(ind)
@@ -97,11 +100,10 @@ rmeltingtables <- function(file, sheet, def="default",
   
   # x <- data.frame(x)
   
-  pander::pander(x, style='multiline',
+  pander::pander(x, style = 'multiline',
                split.cell = c(13, 10, 20, 20),
-               justify = c('left'), split.table = Inf, keep.line.breaks = TRUE,
+               justify = c('left'), split.table = Inf, keep.line.breaks = FALSE,
                use.hyphening = FALSE, missing = "")
-
 } else {
   print("Package 'readxl' is required to generate this table.")
 }
@@ -126,7 +128,7 @@ The `R` package `rmelting` is an interface to the [MELTING 5](https://www.ebi.ac
 
 Melting temperatures are computed by Nearest-neighbour methods for short sequences or approximative estimation formulae for long sequences. Apart from these, several corrections are availabel to take into account the presence of Cations (Na, Tris, K and Mg) or denaturing agents (DMSO and formamide).
 
-## Installation
+# Installation
 The package can be installed using the following functions:
 
 ```{r, eval=FALSE}
@@ -147,9 +149,6 @@ mandatory for computation.
 
 * `sequence`
     + 5' to 3' sequence of one strand of the nucleic acid duplex as a character string.  Recognises A, C, G, T, U, I, X_C, X_T, A*, AL, TL, GL and CL (**Table 1**). U and T are not considered identical.
-
-\rowcolors{2}{gray!10}{white}
-\renewcommand{\arraystretch}{1.3}
 
 **Table 1**: Recognized sequences
 ```{r, echo=FALSE}
@@ -172,9 +171,6 @@ if (requireNamespace("readxl", quietly = TRUE)) {
     
 * `hybridisation.type`
     + The possible options for hybridisation type are as follows (**Table 2**).
-
-\rowcolors{2}{gray!10}{white}
-\renewcommand{\arraystretch}{1.3}
 
 **Table 2**: Hybridisation type options
 ```{r, echo=FALSE}
@@ -222,10 +218,7 @@ Melting temperature is computed by either approximative or nearest neighbour met
 
 ## Approximative methods
 
-The approximative method for computation can be specified by the argument `am.method`. The available methods are given in **Table 3**.
-
-\rowcolors{2}{gray!10}{white}
-\renewcommand{\arraystretch}{1.3}
+The approximative method for computation can be specified by the argument `method.approx`. The available methods are given in **Table 3**.
 
 **Table 3**: Details of approximative methods
 ```{r, echo=FALSE}
@@ -233,12 +226,34 @@ rmeltingtables(file = "Tables.xlsx", sheet = "Approx.methods",
                def = "default", code = "Formula", ref = "Reference")
 ```
 
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:TCTAATGTGCTGTTAGATGTATCCAGAGATAGCCGAGCATAAACTTCAACACACGAGACGTTGATTGGATTTAACCATAG
+        ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    DNA:AGATTACACGACAATCTACATAGGTCTCTATCGGCTCGTATTTGAAGTTGTGTGCTCTGCAACTAACCTAAATTGGTATC
+
+    RNA:UUAAUCUCCGUCAUCUUUAAGCCGUGGAGAGACUGUAGACUUGAACAGGGGUAAGCGGAGGCACGUAGGAUUCACAUCAU
+        ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    RNA:AAUUAGAGGCAGUAGAAAUUCGGCACCUCUCUGACAUCUGAACUUGUCCCCAUUCGCCUCCGUGCAUCCUAAGUGUAGUA
+    
+    DNA:TCTAATGTGCTGTTAGATGTATCCAGAGATAGCCGAGCATAAACTTCAACACACGAGACGTTGATTGGATTTAACCATAG
+        ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    RNA:AGAUUACACGACAAUCUACAUAGGUCUCUAUCGGCUCGUAUUUGAAGUUGUGUGCUCUGCAACUAACCUAAAUUGGUAUC
+    
+```
+
 ```{r}
 # Long Nucleotide sequence
 DNAseq <- c("TCTAATGTGCTGTTAGATGTATCCAGAGATAGCCGAGCATAAACTTCAACACACGAGACGTTGATTGGATTTAACCATAG")
 RNAseq <- c("UUAAUCUCCGUCAUCUUUAAGCCGUGGAGAGACUGUAGACUUGAACAGGGGUAAGCGGAGGCACGUAGGAUUCACAUCAU")
 
-# Approximative method - default
+# Approximative method - default (DNA/DNA)
 melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
         hybridisation.type = "dnadna", Na.conc = 1)
 
@@ -262,10 +277,10 @@ melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
         hybridisation.type = "dnadna", Na.conc = 1,
         method.approx = "che93corr")
 
-# Approximative method - marschdot (DNA/DNA)
+# Approximative method - schdot (DNA/DNA)
 melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
         hybridisation.type = "dnadna", Na.conc = 1,
-        method.approx = "marschdot")
+        method.approx = "schdot")
 
 # Approximative method - owe69 (DNA/DNA)
 melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
@@ -277,10 +292,18 @@ melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
         hybridisation.type = "dnadna", Na.conc = 1,
         method.approx = "san98")
 
+# Approximative method - default (RNA/RNA)
+melting(sequence = RNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "rnarna", Na.conc = 1)
+
 # Approximative method - wetrna91 (RNA/RNA)
 melting(sequence = RNAseq, nucleic.acid.conc = 2e-06,
         hybridisation.type = "rnarna", Na.conc = 1,
         method.approx = "wetrna91")
+
+# Approximative method - wetdnarna91 (DNA/RNA)
+melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnarna", Na.conc = 1)
 
 # Approximative method - wetdnarna91 (DNA/RNA)
 melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
@@ -290,61 +313,1219 @@ melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
 
 ## Nearest neighbour methods
 
-\rowcolors{2}{gray!10}{white}
-\renewcommand{\arraystretch}{1.3}
+### Perfectly matching sequences
 
-**Table 4**: Details of nearest neighbour methods
-```{r, echo=FALSE, eval=TRUE}
+The nearest neighbour model for computation in case of perfectly matching sequences can be specified by the argument `method.nn`. The available methods are given in **Table 4**.
+
+**Table 4**: Details of nearest neighbour methods for perfectly matching sequences
+
+```{r, echo=FALSE}
 rmeltingtables(file = "Tables.xlsx", sheet = "NN.methods",
                def = "default", code = "Model", ref = "Reference")
 ```
 
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:CAGTGAGACAGCAATGGTCG
+        ||||||||||||||||||||
+    DNA:GTCACTCTGTCGTTACCAGC
+
+    RNA:CAGUGAGACAGCAAUGGUCG
+        ||||||||||||||||||||
+    RNA:GUCACUCUGUCGUUACCAGC
+    
+    DNA:CAGTGAGACAGCAATGGTCG
+        ||||||||||||||||||||
+    RNA:GUCACUCUGUCGUUACCAGC
+    
+```
+
 ```{r}
+# Nearest neighbour method - default (DNA/DNA: No Self-Complimentarity)
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1)
+
+# Nearest neighbour method - all97 (DNA/DNA: No Self-Complimentarity)
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "all97")
+
+# Nearest neighbour method - bre86 (DNA/DNA: No Self-Complimentarity)
 melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
         hybridisation.type = "dnadna", Na.conc = 1, method.nn = "bre86")
-```
 
-```{r}
+# Nearest neighbour method - san04 (DNA/DNA: No Self-Complimentarity)
 melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
         hybridisation.type = "dnadna", Na.conc = 1, method.nn = "san04")
-```
 
-```{r}
+# Nearest neighbour method - san96 (DNA/DNA: No Self-Complimentarity)
 melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
         hybridisation.type = "dnadna", Na.conc = 1, method.nn = "san96")
+
+# Nearest neighbour method - sug96 (DNA/DNA: No Self-Complimentarity)
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "sug96")
+
+# Nearest neighbour method - tan04 (DNA/DNA: No Self-Complimentarity)
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "tan04")
+
+# Nearest neighbour method - default (RNA/RNA: No Self-Complimentarity)
+melting(sequence = "CAGUGAGACAGCAAUGGUCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "rnarna", Na.conc = 1)
+
+# Nearest neighbour method - xia98 (RNA/RNA: No Self-Complimentarity)
+melting(sequence = "CAGUGAGACAGCAAUGGUCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "rnarna", Na.conc = 1, method.nn = "xia98")
+
+# Nearest neighbour method - fre86 (RNA/RNA: No Self-Complimentarity)
+melting(sequence = "CAGUGAGACAGCAAUGGUCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "rnarna", Na.conc = 1, method.nn = "fre86")
+
+# Nearest neighbour method - default (mRNA/RNA: No Self-Complimentarity)
+melting(sequence = "CAGUGAGACAGCAAUGGUCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "mrnarna", Na.conc = 1)
+
+# Nearest neighbour method - tur06 (mRNA/RNA: No Self-Complimentarity)
+melting(sequence = "CAGUGAGACAGCAAUGGUCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "mrnarna", Na.conc = 1, method.nn = "tur06")
+
+# Nearest neighbour method - default (DNA/RNA: No Self-Complimentarity)
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnarna", Na.conc = 1)
+
+# Nearest neighbour method - sug95 (DNA/RNA: No Self-Complimentarity)
+melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnarna", Na.conc = 1, method.nn = "sug95")
+```
+
+Self complementarity for perfect matching sequences or sequences with dangling ends is detected automatically. However it can be enforced by the argument `force.self = TRUE`.
+
+_**Examples**_
+
+```
+    DNA:CATATGGCCATATG
+        ||||||||||||||
+    DNA:GTATACCGGTATAC
+
+    RNA:AUGUACAU
+        ||||||||
+    RNA:UACAUGUA
 ```
 
 ```{r}
-melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+# Nearest neighbour method - default (DNA/DNA: Self-Complimentarity)
+melting(sequence = "CATATGGCCATATG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1)
+
+# Nearest neighbour method - all97 (DNA/DNA: Self-Complimentarity)
+melting(sequence = "CATATGGCCATATG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "all97")
+
+# Nearest neighbour method - bre86 (DNA/DNA: Self-Complimentarity)
+melting(sequence = "CATATGGCCATATG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "bre86")
+
+# Nearest neighbour method - san04 (DNA/DNA: Self-Complimentarity)
+melting(sequence = "CATATGGCCATATG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "san04")
+
+# Nearest neighbour method - san96 (DNA/DNA: Self-Complimentarity)
+melting(sequence = "CATATGGCCATATG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "san96")
+
+# Nearest neighbour method - sug96 (DNA/DNA: Self-Complimentarity)
+melting(sequence = "CATATGGCCATATG", nucleic.acid.conc = 2e-06,
         hybridisation.type = "dnadna", Na.conc = 1, method.nn = "sug96")
+
+# Nearest neighbour method - tan04 (DNA/DNA: Self-Complimentarity)
+melting(sequence = "CATATGGCCATATG", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "dnadna", Na.conc = 1, method.nn = "tan04")
+
+# Nearest neighbour method - default (RNA/RNA: Self-Complimentarity)
+melting(sequence = "AUGUACAU", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "rnarna", Na.conc = 1)
+
+# Nearest neighbour method - xia98 (RNA/RNA: Self-Complimentarity)
+melting(sequence = "AUGUACAU", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "rnarna", Na.conc = 1, method.nn = "xia98")
+
+# Nearest neighbour method - fre86 (RNA/RNA: Self-Complimentarity)
+melting(sequence = "AUGUACAU", nucleic.acid.conc = 2e-06,
+        hybridisation.type = "rnarna", Na.conc = 1, method.nn = "fre86")
+
+```
+
+
+### GU wobble base pairs effect
+
+The nearest neighbour model for computation in case of sequences with GU wobble base pairs can be specified by the argument `method.GU`. The available methods are given in **Table 5**.
+
+**Table 5**: Details of methods for sequences with GU wobble base pairs
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "GU.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    RNA:CCAGCGUCCU
+        ||||||||||
+    RNA:GGTCGCAGGA
+```
+
+```{r}
+# GU wobble base pairs effect - default (RNA/RNA)
+melting(sequence = "CCAGCGUCCU", nucleic.acid.conc = 0.0001,
+        hybridisation.type = "rnarna", Na.conc = 1)
+
+# GU wobble base pairs effect - ser12 (RNA/RNA)
+melting(sequence = "CCAGCGUCCU", nucleic.acid.conc = 0.0001,
+        hybridisation.type = "rnarna", Na.conc = 1, method.GU = "ser12")
+
+# GU wobble base pairs effect - tur99 (RNA/RNA)
+melting(sequence = "CCAGCGUCCU", nucleic.acid.conc = 0.0001,
+        hybridisation.type = "rnarna", Na.conc = 1, method.GU = "tur99")
+```
+
+### Single mismatch effect
+
+The nearest neighbour model for computation in case of sequences with a single mismatch can be specified by the argument `method.singleMM`. The available methods are given in **Table 6**.
+
+**Table 6**: Details of methods for sequences with single mismatch
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "singleMM.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+
+_**Examples**_
+
+```
+    DNA:CAACTTGATATTAATA
+        |||||||| |||||||
+    DNA:GTTGAACTCTAATTAT
+
+    RNA:GACAGGCUG
+        |||| ||||
+    RNA:CUGUGCGAC
+        
+    DNA:CCATAACTACC
+        |||| ||||||
+    RNA:GGUAAUGAUGG
+```
+
+```{r}
+# Single mismatch effect - default (DNA/DNA)
+melting(sequence = "CAACTTGATATTAATA", comp.sequence = "GTTGAACTCTAATTAT",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna", Na.conc = 1)
+
+# Single mismatch effect - allsanpey (DNA/DNA)
+melting(sequence = "CAACTTGATATTAATA", comp.sequence = "GTTGAACTCTAATTAT",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna",
+        Na.conc = 1, method.singleMM = "allsanpey")
+
+# Single mismatch effect - default (RNA/RNA)
+melting(sequence = "GACAGGCUG", comp.sequence = "CUGUGCGAC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna", Na.conc = 1)
+
+# Single mismatch effect - zno07 (RNA/RNA)
+melting(sequence = "GACAGGCUG", comp.sequence = "CUGUGCGAC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.singleMM = "zno07")
+
+# Single mismatch effect - zno08 (RNA/RNA)
+melting(sequence = "CAGUACGUC", comp.sequence = "GUCGGGCAG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.singleMM = "zno08")
+
+# Single mismatch effect - tur06 (RNA/RNA)
+melting(sequence = "GACAGGCUG", comp.sequence = "CUGUGCGAC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.singleMM = "tur06")
+
+# Single mismatch effect - default (DNA/RNA)
+melting(sequence = "CCATAACTACC", comp.sequence = "GGUAAUGAUGG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnarna", Na.conc = 1)
+
+# Single mismatch effect - wat11 (DNA/RNA)
+melting(sequence = "CCATAACTACC", comp.sequence = "GGUAAUGAUGG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnarna",
+        Na.conc = 1, method.singleMM = "wat11")
+```
+
+### Tandem mismatches effect
+
+The nearest neighbour model for computation in case of sequences with tandem mismatches can be specified by the argument `method.tandemMM`. The available methods are given in **Table 7**.
+
+**Table 7**: Details of methods for sequences with tandem mismatches
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "tandemMM.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:GACGTTGGAC
+        ||||  ||||
+    DNA:CTGCGGCCTG
+
+    RNA:GAGCGGAG
+        |||  |||
+    RNA:CUCCACUC
+```
+
+```{r}
+# Tandem mismatches effect - default (DNA/DNA)
+melting(sequence = "GACGTTGGAC", comp.sequence = "CTGCGGCCTG",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna", Na.conc = 1)
+
+# Tandem mismatches effect - allsanpey (DNA/DNA)
+melting(sequence = "GACGTTGGAC", comp.sequence = "CTGCGGCCTG",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna",
+        Na.conc = 1, method.tandemMM = "allsanpey")
+
+# Tandem mismatches effect - default (RNA/RNA)
+melting(sequence = "GAGCGGAG", comp.sequence = "CUCCACUC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna", Na.conc = 1)
+
+# Tandem mismatches effect -  tur06 (RNA/RNA)
+melting(sequence = "GAGCGGAG", comp.sequence = "CUCCACUC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.tandemMM = "tur99")
+```
+
+### Single dangling end effect
+
+The nearest neighbour model for computation in case of sequences with a single dangling end can be specified by the argument `method.single.dangle`. The available methods are given in **Table 8**.
+
+**Table 8**: Details of methods for sequences with single dangling end
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "single.dangle.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:-GTAGCTACA
+         |||||||| 
+    DNA:ACATCGATG-
+
+    RNA:-GGCGCUG
+         |||||||
+    RNA: CCGCGAC
+        
+    DNA:-GGCGCUG
+         |||||||
+    RNA: CCGCGAC
+```
+
+```{r}
+# Single dangling end effect - default (DNA/DNA)
+melting(sequence = "-GTAGCTACA",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Single dangling end effect - bom00 (DNA/DNA)
+melting(sequence = "-GTAGCTACA",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna",
+        Na.conc = 1, method.single.dangle = "bom00")
+
+# Single dangling end effect - sugdna02 (DNA/DNA)
+melting(sequence = "-GTAGCTACA",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna",
+        Na.conc = 1, method.single.dangle = "sugdna02")
+
+# Single dangling end effect - default (RNA/RNA)
+melting(sequence = "-GGCGCUG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1)
+
+# Single dangling end effect -  ser08 (RNA/RNA)
+melting(sequence = "-GGCGCUG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.single.dangle = "ser08")
+
+# Single dangling end effect -  sugrna02 (RNA/RNA)
+melting(sequence = "-GGCGCUG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.single.dangle = "sugrna02")
+```
+
+### Double dangling end effect
+
+The nearest neighbour model for computation in case of sequences with a double or secondary dangling ends can be specified by the argument `method.double.dangle`. The available methods are given in **Table 9**.
+
+**Table 9**: Details of methods for sequences with double dangling ends
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "double.dangle.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:--ATGCATAA
+          ||||||
+    DNA:AATACGTA–-
+
+    RNA:–-AUGCAUAA
+          ||||||
+    RNA:AAUACGUA–-
+```
+
+```{r}
+# Double dangling end effect - default (DNA/DNA)
+melting(sequence = "--ATGCATAA",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Double dangling end effect - sugdna02 (DNA/DNA)
+melting(sequence = "--ATGCATAA",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna",
+        Na.conc = 1, method.double.dangle = "sugdna02")
+
+# Double dangling end effect - default (RNA/RNA)
+melting(sequence = "--AUGCAUAA",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1)
+
+# Double dangling end effect -  ser06 (RNA/RNA)
+melting(sequence = "--AUGCAUAA",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.double.dangle = "ser06")
+
+# Double dangling end effect -  sugrna02 (RNA/RNA)
+melting(sequence = "--AUGCAUAA",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.double.dangle = "sugrna02")
+
+# Double dangling end effect -  ser05 (RNA/RNA)
+melting(sequence = "--AUGCAUAA",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.double.dangle = "ser05")
+```
+
+### Long dangling end effect
+
+The nearest neighbour model for computation in case of sequences with a double or secondary dangling ends can be specified by the argument `method.long.dangle`. The available methods are given in **Table 10**.
+
+**Table 10**: Details of methods for sequences with long dangling ends
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "long.dangle.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:—---GCATATGCAAAA
+            |||||||| 
+    DNA:AAAACGTATACG—---
+
+    RNA:AAAAGCAUAUGC----
+            ||||||||
+    RNA:—---CGUAUACGAAAA
+```
+
+```{r}
+# Long dangling end effect - default (DNA/DNA)
+melting(sequence = "----GCATATGCAAAA",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Long dangling end effect - sugdna02 (DNA/DNA)
+melting(sequence = "----GCATATGCAAAA",
+        nucleic.acid.conc = 0.0004, hybridisation.type = "dnadna",
+        Na.conc = 1, method.long.dangle = "sugdna02")
+
+# Long dangling end effect - default (RNA/RNA)
+melting(sequence = "AAAAGCAUAUGC----",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1)
+
+# Long dangling end effect -  sugrna02 (RNA/RNA)
+melting(sequence = "AAAAGCAUAUGC----",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.long.dangle = "sugrna02")
+```
+
+### Internal loop effect
+
+The nearest neighbour model for computation in case of sequences with an internal loop (more than two adjacent mismatches) can be specified by the argument `method.internal.loop`. The available methods are given in **Table 11**.
+
+**Table 11**: Details of methods for sequences with internal loops
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "internal.loop.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:GCGATTGGCACTTTGGTGAAC
+        |||||    ||||||||||||
+    DNA:CGCTACATATGAAACCACTTG
+
+    RNA:GACAC-GCUG
+        ||||  ||||
+    RNA:CUGUAUCGAC
+```
+
+```{r}
+# Internal loop effect - default (DNA/DNA)
+melting(sequence = "GCGATTGGCACTTTGGTGAAC", comp.sequence = "CGCTACATATGAAACCACTTG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Internal loop effect - san04 (DNA/DNA)
+melting(sequence = "GCGATTGGCACTTTGGTGAAC", comp.sequence = "CGCTACATATGAAACCACTTG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.internal.loop = "san04")
+
+# Internal loop effect - default (RNA/RNA)
+melting(sequence = "GACAC-GCUG", comp.sequence = "CUGUAUCGAC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1)
+
+# Internal loop effect -  zno07 (RNA/RNA)
+melting(sequence = "GACAC-GCUG", comp.sequence = "CUGUAUCGAC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.internal.loop = "zno07")
+
+# Internal loop effect -  tur06 (RNA/RNA)
+melting(sequence = "GACAC-GCUG", comp.sequence = "CUGUAUCGAC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.internal.loop = "tur06")
+```
+
+### Single bulge loop effect
+
+The nearest neighbour model for computation in case of sequences with a single bulge loop can be specified by the argument `method.single.bulge.loop`. The available methods are given in **Table 12**.
+
+**Table 12**: Details of methods for sequences with single bulge loop
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "single.bulge.loop.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:TCGATTAGCGACACAGG
+        |||||||| ||||||||
+    DNA:AGCTAATC-CTGTGTCC
+
+    RNA:GACUCUGUC
+        |||| ||||
+    RNA:CUGA-ACAG
+```
+
+```{r}
+# Single bulge loop effect - default (DNA/DNA)
+melting(sequence = "TCGATTAGCGACACAGG", comp.sequence = "AGCTAATC-CTGTGTCC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Single bulge loop effect - tan04 (DNA/DNA)
+melting(sequence = "TCGATTAGCGACACAGG", comp.sequence = "AGCTAATC-CTGTGTCC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.single.bulge.loop = "tan04")
+
+# Single bulge loop effect - san04 (DNA/DNA)
+melting(sequence = "TCGATTAGCGACACAGG", comp.sequence = "AGCTAATC-CTGTGTCC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.single.bulge.loop = "san04")
+
+# Single bulge loop effect - default (RNA/RNA)
+melting(sequence = "GACUCUGUC", comp.sequence = "CUGA-ACAG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1)
+
+# Single bulge loop effect -  tur06 (RNA/RNA)
+melting(sequence = "GACUCUGUC", comp.sequence = "CUGA-ACAG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.single.bulge.loop = "tur06")
+
+# Single bulge loop effect -  ser07 (RNA/RNA)
+melting(sequence = "GACUCUGUC", comp.sequence = "CUGA-ACAG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.single.bulge.loop = "ser07")
+```
+
+### Long bulge loop effect
+
+The nearest neighbour model for computation in case of sequences with long bulge loop can be specified by the argument `method.long.bulge.loop`. The available methods are given in **Table 13**.
+
+**Table 13**: Details of methods for sequences with long bulge loop
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "long.bulge.loop.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:ATATGACGCCACAGCG
+        |||||   ||||||||
+    DNA:TATAC—--GGTGTCGC
+
+    RNA:AUAUGACGCCACAGCG
+        |||||   ||||||||
+    RNA:UAUAC—--GGUGUCGC
+```
+
+```{r}
+# Long bulge loop effect - default (DNA/DNA)
+melting(sequence = "ATATGACGCCACAGCG", comp.sequence = "TATAC---GGTGTCGC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Long bulge loop effect - san04 (DNA/DNA)
+melting(sequence = "ATATGACGCCACAGCG", comp.sequence = "TATAC---GGTGTCGC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.long.bulge.loop = "san04")
+
+# Long bulge loop effect - default (RNA/RNA)
+melting(sequence = "AUAUGACGCCACAGCG", comp.sequence = "UAUAC---GGUGUCGC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1)
+
+# Long bulge loop effect -  tur06 (RNA/RNA)
+melting(sequence = "AUAUGACGCCACAGCG", comp.sequence = "UAUAC---GGUGUCGC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.long.bulge.loop = "tur06")
+```
+
+### CNG repeats effect
+
+The nearest neighbour model for computation in case of sequences with CNG repeats can be specified by the argument `method.CNG`. The available methods are given in **Table 14**.
+
+**Table 14**: Details of methods for sequences with CNG repeats
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "CNG.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    RNA:GCGGCGGCGGC
+        |||||||||||
+    RNA:CGCCGCCGCCG
+```
+
+```{r}
+# CNG repeats effect - default (RNA/RNA)
+melting(sequence = "GCGGCGGCGGC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1)
+
+# CNG repeats effect -  bro05 (RNA/RNA)
+melting(sequence = "GCGGCGGCGGC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.CNG = "bro05")
+```
+
+### Inosine bases effect
+
+The nearest neighbour model for computation in case of sequences with inosine bases (I) can be specified by the argument `method.inosine`. The available methods are given in **Table 15**.
+
+**Table 15**: Details of methods for sequences with inosine bases
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "inosine.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+    DNA:CCGICTGTIGCG
+        ||| |||| |||
+    DNA:GGCCGACACCGC
+
+    RNA:GCAICGC
+        ||| |||
+    RNA:CGUUGCG
+```
+
+```{r}
+# Inosine bases effect - default (DNA/DNA)
+melting(sequence = "CCGICTGTIGCG", comp.sequence = "GGCCGACACCGC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Inosine bases effect - san05 (DNA/DNA)
+melting(sequence = "CCGICTGTIGCG", comp.sequence = "GGCCGACACCGC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.inosine = "san05")
+
+# Inosine bases effect - default (RNA/RNA)
+melting(sequence = "GCAICGC", comp.sequence = "CGUUGCG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1)
+
+# Inosine bases effect -  zno07 (RNA/RNA)
+melting(sequence = "GCAICGC", comp.sequence = "CGUUGCG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "rnarna",
+        Na.conc = 1, method.inosine = "zno07")
+```
+
+### Hydroxyadenine bases effect
+
+The nearest neighbour model for computation in case of sequences with hydroxyadenine bases can be specified by the argument `method.hydroxyadenine`. The available methods are given in **Table 16**.
+
+**Table 16**: Details of methods for sequences with hydroxyadenine bases
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "hydroxyadenine.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+               \*
+    DNA:AGAAATGACACGGTG
+        |||||||||||||||
+    DNA:TCTTTACCGTGCCAC
+```
+
+```{r}
+# Hydroxyadenine bases effect - default (DNA/DNA)
+melting(sequence = "AGAAATGA*CACGGTG", comp.sequence = "TCTTTACCGTGCCAC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Hydroxyadenine bases effect - sug01 (DNA/DNA)
+melting(sequence = "AGAAATGA*CACGGTG", comp.sequence = "TCTTTACCGTGCCAC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.hydroxyadenine = "sug01")
+```
+
+### Azobenzenes effect
+
+The nearest neighbour model for computation in case of sequences with azobenzenes (X_T for trans azobenzenes and X_C for cis azobenzenes) can be specified by the argument `method.azobenzenes`. The available methods are given in **Table 17**.
+
+**Table 17**: Details of methods for sequences with azobenzenes
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "azobenzenes.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+          C    C    C    C    C
+    DNA:CTXTTAAXGAAGXGAGAXTATAXCC
+        || |||| |||| |||| |||| ||
+    DNA:GA AATT CTTC CTCT ATAT GG
+```
+
+```{r}
+# Azobenzenes effect - default (DNA/DNA)
+melting(sequence = "CTX_CTTAAX_CGAAGX_CGAGAX_CTATAX_CCC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Azobenzenes effect - asa05 (DNA/DNA)
+melting(sequence = "CTX_CTTAAX_CGAAGX_CGAGAX_CTATAX_CCC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.azobenzenes = "asa05")
+```
+
+### Locked nucleic acids effect
+
+The nearest neighbour model for computation in case of sequences with locked nucleic acids can be specified by the argument `method.locked`. The available methods are given in **Table 18**.
+
+**Table 18**: Details of methods for sequences with locked nucleic acids
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "locked.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+             L  
+    DNA:CCATTGCTACC
+        |||||||||||
+    DNA:GGTAACGATGG
+```
+
+```{r}
+# Locked nucleic acids effect - default (DNA/DNA)
+melting(sequence = "CCATTLGCTACC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Locked nucleic acids effect - sug01 (DNA/DNA)
+melting(sequence = "CCATTLGCTACC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.locked = "mct04")
 ```
 
 # Corrections
 
+Once the melting temperature is computed, a correction is applied to it according to the concentration of nucleic acids, cations and/or denaturing agents.
+
 ## Nucleic acid concentration
 
-## Ion Concentration
+For self complementary sequences (auto detected or specified by `force.self`) it is 1. Otherwise it is 4 if the both strands are present in equivalent amount and 1 if one strand is in excess. 
 
-### Na
+## Ion corrections
 
-### Mg
+Melting temperature is computed initially for $[\textnormal{Na}^{+}]$ = 1 M, after which a correction for the presence of cations ($[\textnormal{Na}^{+}]$, $[\textnormal{K}^{+}]$, $[\textnormal{Tris}^{+}]$ and $[\textnormal{Mg}^{+}]$) is applied either directly on the computed melting temperature or on the computed entropy.
 
-### Na Mg
+Th correction methods for cation concentration can be specified by the argument `correction.ion`.
 
-### NaEq
+### Sodium corrections
 
-## Denaturing agent concentration
+The available correction methods for sodium concentration are given in **Table 19**.
 
-### DMSO
+**Table 19**: Details of the corrections for sodium concentration
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "na.correction",
+               def = "default", code = "Correction", ref = "Reference")
+```
 
-## Formamide
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
 
-## Batch
+```{r}
+# Na correction - default (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069)
 
-## Citing `rmelting`
+# Na correction - owc2204 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "owc2204")
+
+# Na correction - ahs01 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "ahs01")
+
+# Na correction - kam71 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "kam71")
+
+# Na correction - marschdot (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "marschdot")
+
+# Na correction - owc1904 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "owc1904")
+
+# Na correction - owc2004 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "owc2004")
+
+# Na correction - owc2104 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "owc2104")
+
+# Na correction - san96 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "san96")
+
+# Na correction - san04 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "san04")
+
+# Na correction - schlif (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "schlif")
+
+# Na correction - tanna06 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "tanna06")
+
+# Na correction - wet91 (DNA/DNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, correction.ion = "wet91")
+
+# Na correction - default (RNA/RNA)
+melting(sequence = "CCAGCCAGUCUCUCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "rnarna",
+        Na.conc = 0.069)
+
+# Na correction -  tanna07 (RNA/RNA)
+melting(sequence = "CCAGCCAGUCUCUCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "rnarna",
+        Na.conc = 0.069, correction.ion = "tanna07")
+
+# Na correction -  wet91 (RNA/RNA)
+melting(sequence = "CCAGCCAGUCUCUCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "rnarna",
+        Na.conc = 0.069, correction.ion = "wet91")
+
+# Na correction - default (mRNA/RNA)
+melting(sequence = "UACGCGUCAAUAACGCUA",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "mrnarna",
+        Na.conc = 0.069)
+
+# Na correction -  tanna07 (mRNA/RNA)
+melting(sequence = "UACGCGUCAAUAACGCUA",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "mrnarna",
+        Na.conc = 0.069, correction.ion = "tanna07")
+
+# Na correction - default (DNA/RNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnarna",
+        Na.conc = 0.069)
+
+# Na correction - wet91 (DNA/RNA)
+melting(sequence = "CCAGCCAGTCTCTCC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnarna",
+        Na.conc = 0.069, correction.ion = "wet91")
+```
+
+### Magnesium corrections
+
+The available correction methods for magnesium concentration are given in **Table 20**.
+
+**Table 20**: Details of the corrections for magnesium concentration
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "mg.correction",
+               def = "default", code = "Correction", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+```{r}
+# Mg correction - default (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Mg.conc = 0.0015)
+
+# Mg correction - owcmg08 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Mg.conc = 0.0015, correction.ion = "owcmg08")
+
+# Mg correction - tanmg06 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Mg.conc = 0.0015, correction.ion = "tanmg06")
+
+# Mg correction - default (RNA/RNA)
+melting(sequence = "CAGCCUCGUCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "rnarna",
+        Mg.conc = 0.0015)
+
+# Mg correction -  tanmg07 (RNA/RNA)
+melting(sequence = "CAGCCUCGUCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "rnarna",
+        Mg.conc = 0.0015, correction.ion = "tanmg07")
+
+# Mg correction - default (mRNA/RNA)
+melting(sequence = "UACGCGUCAAUAACGCUA",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "mrnarna",
+        Mg.conc = 0.0015)
+
+# Mg correction -  tanmg07 (mRNA/RNA)
+melting(sequence = "UACGCGUCAAUAACGCUA",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "mrnarna",
+        Mg.conc = 0.0015, correction.ion = "tanmg07")
+```
+
+### Mixed Sodium and Magnesium corrections
+
+The available correction methods for mixed sodium magnesium concentration are given in **Table 21**.
+
+**Table 21**: Details of the corrections for mixed sodium and magnesium concentration
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "NaMg.correction",
+               def = "default", code = "Correction", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+```{r}
+# Mixed Na & Mg correction - default (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, Mg.conc = 0.0015)
+
+# Mixed Na & Mg correction - owcmix08 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, Mg.conc = 0.0015, correction.ion = "owcmix08")
+
+# Mixed Na & Mg correction - tanmix07 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, Mg.conc = 0.0015, correction.ion = "tanmix07")
+
+# Mixed Na & Mg correction - default (RNA/RNA)
+melting(sequence = "CAGCCUCGUCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "rnarna",
+        Na.conc = 0.069, Mg.conc = 0.0015)
+
+# Mixed Na & Mg correction - tanmix07 (RNA/RNA)
+melting(sequence = "CAGCCUCGUCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "rnarna",
+        Na.conc = 0.069, Mg.conc = 0.0015, correction.ion = "tanmix07")
+
+# Mixed Na & Mg correction - default (mRNA/RNA)
+melting(sequence = "UACGCGUCAAUAACGCUA",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "mrnarna",
+        Na.conc = 0.069, Mg.conc = 0.0015)
+
+# Mixed Na & Mg correction - tanmix07 (mRNA/RNA)
+melting(sequence = "UACGCGUCAAUAACGCUA",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "mrnarna",
+        Na.conc = 0.069, Mg.conc = 0.0015, correction.ion = "tanmix07")
+```
+
+The ion correction by @owczarzy_predicting_2008 is used by default according to the $\frac{[\textnormal{Mg}^{2+}]^{0.5}}{[\textnormal{Mon}^{+}]}$ ratio, where $[\textnormal{Mon}^{+}] = \textnormal{Na}^{+}]+[\textnormal{Tris}^{+}]+[\textnormal{K}^{+}]$.
+
+If,
+
+* $[\textnormal{K}^{+}] = 0$, default sodium correction is used;
+* Ratio $<$ 0.22, default sodium correction is used;
+* 0.22 $\leq$ Ratio $<$ 6, default mixed Na and Mg correction is used and
+* Ratio $\geq$ 6,default magnesium correction is used.
+
+Note that $[\textnormal{Tris}^{+}]$ is about half of the total tris buffer concentration. 
+
+### Sodium equivalent concentration methods
+
+The available correction methods for mixed sodium magnesium concentration are given in **Table 22**.
+
+**Table 22**: Details of the methods for computation of sodium equivalent concentration in the presence of other ions
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "Naeq.methods",
+               def = "default", code = "Correction", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+```{r}
+# Na equivalent concentration method - default (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, Mg.conc = 0.0015)
+
+# Na equivalent concentration method - ahs01 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, Mg.conc = 0.0015, method.Naeq = "ahs01")
+
+# Na equivalent concentration method - mit96 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, Mg.conc = 0.0015, method.Naeq = "mit96")
+
+# Na equivalent concentration method - pey00 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 0.069, Mg.conc = 0.0015, method.Naeq = "pey00")
+```
+
+## Denaturing agent corrections
+
+These include melting temperature corrections for concentration of formamide and DMSO.
+
+### DMSO corrections
+
+The available correction methods for DMSO concentration are given in **Table 23**.
+
+**Table 23**: Details of the corrections for DMSO concentration
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "DMSO.methods",
+               def = "default", code = "Correction", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+```{r}
+# DMSO correction - default (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 1, DMSO.conc = 10)
+
+# DMSO correction - ahs01 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 1, DMSO.conc = 10, correction.DMSO = "ahs01")
+
+# DMSO correction - cul76 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 1, DMSO.conc = 10, correction.DMSO = "cul76")
+
+# DMSO correction - esc80 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 1, DMSO.conc = 10, correction.DMSO = "esc80")
+
+# DMSO correction - mus80 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 1, DMSO.conc = 10, correction.DMSO = "mus81")
+```
+
+### Formamide corrections
+
+The available correction methods for formamide concentration are given in **Table 24**.
+
+**Table 24**: Details of the corrections for formamide concentration
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "formamide.methods",
+               def = "default", code = "Correction", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+```{r}
+# Formamide correction - default (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 1, formamide.conc = 0.06)
+
+# Formamide correction - bla96 (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 1, formamide.conc = 0.06, correction.formamide = "bla96")
+
+# Formamide correction - lincorr (DNA/DNA)
+melting(sequence = "CAGCCTCGTCGCAGC",
+        nucleic.acid.conc = 0.000002, hybridisation.type = "dnadna",
+        Na.conc = 1, formamide.conc = 10, correction.formamide = "lincorr")
+```
+
+# Equivalent options in MELTING 5
+
+The options in MELTING 5 command line equivalent to the arguments in `rmelting` are given in **Table 25**.
+
+**Table 24**: Arguments in `rmelting` and their equivalent options in MELTING 5 command line.
+```{r, echo=FALSE}
+options <- read_excel("Tables.xlsx", sheet = "commands", col_names = T)[1:34, c(2,1)]
+options$`MELTING 5` <- paste("-", options$`MELTING 5`, sep = "")
+options$rmelting <- paste("`", options$rmelting, "`", sep = "")
+colnames(options) <- c("`rmelting`", "MELTING 5 (command line)")
+knitr::kable(options)
+```
+
+# Batch
+
+# Further reading
+
+Further details about algorithm, formulae and methods are available in the [MELTING 5 documentation](https://www.ebi.ac.uk/biomodels-static/tools/melting/melting5-doc/melting.html).
+
+# Citing `rmelting`
 
 ```{r, echo = FALSE, collapse = TRUE}
-detach("package:rmelting", unload=TRUE)
+detach("package:rmelting", unload = TRUE)
 suppressPackageStartupMessages(library(rmelting))
 cit <- citation("rmelting")
 # yr <- format(Sys.Date(), "%Y")
@@ -359,10 +1540,10 @@ cit <- citation("rmelting")
 cit
 ```
 
-## Session Info
+# Session Info
 
 ```{r}
 sessionInfo()
 ```
 
-## References
+# References
