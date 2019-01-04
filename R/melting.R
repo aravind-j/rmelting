@@ -101,9 +101,9 @@
 #'   = TRUE}.
 #'
 #' @section Correction factor for nucleic acid concentration: For self
-#'   complementary sequences (Auto detected or specified by \code{force.self}) it is
-#'   1. Otherwise it is 4 if the both strands are present in equivalent amount
-#'   and 1 if one strand is in excess.
+#'   complementary sequences (Auto detected or specified by \code{force.self})
+#'   it is 1. Otherwise it is 4 if the both strands are present in equivalent
+#'   amount and 1 if one strand is in excess.
 #'
 #' @section Approximative estimation formulas: \tabular{llll}{
 #'   \strong{Formula}\tab \strong{Type} \tab \strong{Limits/Remarks}\tab
@@ -515,7 +515,14 @@
 #'   Specify the correction method for formamide Either \code{"bla96"} or
 #'   \code{"lincorr"} (see \strong{Formamide corrections}).
 #'
-#' @return
+#' @return A list with the following components: \item{\code{Environment}}{A
+#'   list with details about the melting temperature computation environment.}
+#'   \item{\code{Options}}{A list with details about the options (default or
+#'   user specified) used for melting temperature computation.}
+#'   \item{\code{Results}}{A list with the results of the melting temperature
+#'   computation including the enthalpy and entropy in case of nearest neighbour
+#'   methods.} \item{\code{Message}}{Error and/or Warning messages, if any.}
+#'
 #' @export
 #' @import rJava
 #' @importFrom Rdpack reprompt
@@ -662,6 +669,7 @@
 #'
 #' # For more detailed examples refer the vignette.
 #' \dontrun{
+#'
 #' browseVignettes(package = 'rmelting')
 #' }
 #'
@@ -1366,9 +1374,6 @@ melting <- function(sequence, comp.sequence = NULL,
   # Set Class
   class(out) <- "melting"
 
-  # print.melting(out)
-
   return(out)
-
 }
 

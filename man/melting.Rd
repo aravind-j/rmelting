@@ -198,6 +198,15 @@ correction method for DMSO. Either \code{"ahs01"}, \code{"mus81"},
 Specify the correction method for formamide Either \code{"bla96"} or
 \code{"lincorr"} (see \strong{Formamide corrections}).}
 }
+\value{
+A list with the following components: \item{\code{Environment}}{A
+  list with details about the melting temperature computation environment.}
+  \item{\code{Options}}{A list with details about the options (default or
+  user specified) used for melting temperature computation.}
+  \item{\code{Results}}{A list with the results of the melting temperature
+  computation including the enthalpy and entropy in case of nearest neighbour
+  methods.} \item{\code{Message}}{Error and/or Warning messages, if any.}
+}
 \description{
 R interface to the
 \href{https://www.ebi.ac.uk/biomodels/tools/melting/}{MELTING 5 software} (Le
@@ -274,9 +283,9 @@ nucleic acid duplex.
 
 \section{Correction factor for nucleic acid concentration}{
  For self
-  complementary sequences (Auto detected or specified by \code{force.self}) it is
-  1. Otherwise it is 4 if the both strands are present in equivalent amount
-  and 1 if one strand is in excess.
+  complementary sequences (Auto detected or specified by \code{force.self})
+  it is 1. Otherwise it is 4 if the both strands are present in equivalent
+  amount and 1 if one strand is in excess.
 }
 
 \section{Approximative estimation formulas}{
@@ -582,6 +591,7 @@ melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
 
 # For more detailed examples refer the vignette.
 \dontrun{
+
 browseVignettes(package = 'rmelting')
 }
 
