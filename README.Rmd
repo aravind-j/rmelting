@@ -42,13 +42,13 @@ devtools::load_all(".")
 
 ***
 ## Description
-`r gsub("\\n", " ", packageDescription("germinationmetrics", fields = "Description"))`
+`r gsub("\\n", " ", packageDescription("rmelting", fields = "Description"))`
 
 ## Installation
 <!-- The package can be installed from CRAN as follows:
 
 ```{r, eval=FALSE}
-install.packages('germinationmetrics', dependencies=TRUE)
+install.packages('rmelting', dependencies=TRUE)
 ```
 -->
 
@@ -74,11 +74,11 @@ news(package='rmelting')
 
 ## Links
 
-<!-- [CRAN page](https://cran.r-project.org/package=germinationmetrics) -->
+<!-- [CRAN page](https://cran.r-project.org/package=rmelting) -->
 
-[Github page](https://github.com/aravind-j/germinationmetrics)
+[Github page](https://github.com/aravind-j/rmelting)
 
-[Documentation website](https://aravind-j.github.io/germinationmetrics/)
+[Documentation website](https://aravind-j.github.io/rmelting/)
 
 <!-- [Zenodo DOI](https://doi.org/10.5281/zenodo.1219630) -->
 
