@@ -1,11 +1,12 @@
-test_that("tests for method.approx", {
+context("Approximative methods are OK")
+
+test_that("tests for method.approx - DNA/DNA", {
   DNAseq <- c("TCTAATGTGCTGTTAGATGTATCCAGAGATAGCCGAGCATAAACTTCAACACACGAGACGTTGATTGGATTTAACCATAG")
-  RNAseq <- c("UUAAUCUCCGUCAUCUUUAAGCCGUGGAGAGACUGUAGACUUGAACAGGGGUAAGCGGAGGCACGUAGGAUUCACAUCAU")
 
   expect_equal(melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
                        hybridisation.type = "dnadna",
                        Na.conc = 1)$Results$`Melting temperature (C)`,
-               87.82455, tolerance=1e-5, label = "default")
+               87.82455, tolerance=1e-5, label = "DNA/DNA default")
 
   expect_equal(melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
                        hybridisation.type = "dnadna", Na.conc = 1,
@@ -41,11 +42,29 @@ test_that("tests for method.approx", {
                        hybridisation.type = "dnadna", Na.conc = 1,
                        method.approx = "san98")$Results$`Melting temperature (C)`,
                86.9, tolerance=1e-5, label = "san98")
+})
+
+test_that("tests for method.approx - RNA/RNA", {
+  RNAseq <- c("UUAAUCUCCGUCAUCUUUAAGCCGUGGAGAGACUGUAGACUUGAACAGGGGUAAGCGGAGGCACGUAGGAUUCACAUCAU")
+
+  expect_equal(melting(sequence = RNAseq, nucleic.acid.conc = 2e-06,
+                       hybridisation.type = "rnarna",
+                       Na.conc = 1)$Results$`Melting temperature (C)`,
+               101.1745, tolerance=1e-5, label = "RNA/RNA default")
 
   expect_equal(melting(sequence = RNAseq, nucleic.acid.conc = 2e-06,
                        hybridisation.type = "rnarna", Na.conc = 1,
                        method.approx = "wetrna91")$Results$`Melting temperature (C)`,
                101.1745, tolerance=1e-5, label = "wetrna91")
+})
+
+test_that("tests for method.approx - DNA/RNA", {
+  DNAseq <- c("TCTAATGTGCTGTTAGATGTATCCAGAGATAGCCGAGCATAAACTTCAACACACGAGACGTTGATTGGATTTAACCATAG")
+
+  expect_equal(melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
+                       hybridisation.type = "dnarna",
+                       Na.conc = 1)$Results$`Melting temperature (C)`,
+               88.92455, tolerance=1e-5, label = "DNA/RNA default")
 
   expect_equal(melting(sequence = DNAseq, nucleic.acid.conc = 2e-06,
                        hybridisation.type = "dnarna", Na.conc = 1,
