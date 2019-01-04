@@ -7,28 +7,41 @@
 #' entropy of the helix-coil transition, and then the melting temperature of a
 #' nucleic acid duplex.
 #'
-#' @usage melting(sequence, comp.sequence = NULL, nucleic.acid.conc,
-#'   hybridisation.type = c("dnadna", "rnarna", "dnarna", "rnadna", "mrnarna",
-#'   "rnamrna"), Na.conc, Mg.conc, Tris.conc, K.conc, dNTP.conc, DMSO.conc,
-#'   formamide.conc, size.threshold = 60, force.self = FALSE, correction.factor,
-#'   method.approx = c("ahs01", "che93", "che93corr", "schdot", "owe69",
-#'   "san98", "wetdna91", "wetrna91", "wetdnarna91"), method.nn = c("all97",
-#'   "bre86", "san04", "san96", "sug96", "tan04", "fre86", "xia98", "sug95",
-#'   "tur06"), method.GU = c("tur99", "ser12"), method.singleMM = c("allsanpey",
-#'   "tur06", "zno07", "zno08", "wat11"), method.tandemMM = c("allsanpey",
-#'   "tur99"), method.single.dangle = c("bom00", "sugdna02", "sugrna02",
-#'   "ser08"), method.double.dangle = c("sugdna02", "sugrna02", "ser05",
-#'   "ser06"), method.long.dangle = c("sugdna02", "sugrna02"),
-#'   method.internal.loop = c("san04", "tur06", "zno07"),
-#'   method.single.bulge.loop = c("tan04", "san04", "ser07" ,"tur06"),
-#'   method.long.bulge.loop = c("san04", "tur06"), method.CNG = c("bro05"),
-#'   method.inosine = c("san05", "zno07"), method.hydroxyadenine = c("sug01"),
-#'   method.azobenzenes = c("asa05"), method.locked = c("mct04"), correction.ion
-#'   = c("ahs01", "kam71", "marschdot", "owc1904", "owc2004", "owc2104",
-#'   "owc2204", "san96", "san04", "schlif", "tanna06", "tanna07", "wet91",
-#'   "owcmg08", "tanmg06", "tanmg07", "owcmix08", "tanmix07"), method.Naeq =
-#'   c("ahs01", "mit96", "pey00"), correction.DMSO = c("ahs01", "cul76",
-#'   "esc80", "mus81"), correction.formamide = c("bla96", "lincorr"))
+#' @usage melting(sequence, comp.sequence = NULL,
+#'         nucleic.acid.conc,
+#'         hybridisation.type = c("dnadna", "rnarna", "dnarna",
+#'                                "rnadna", "mrnarna", "rnamrna"),
+#'         Na.conc, Mg.conc, Tris.conc, K.conc,
+#'         dNTP.conc, DMSO.conc, formamide.conc,
+#'         size.threshold = 60, force.self = FALSE, correction.factor,
+#'         method.approx = c("ahs01", "che93", "che93corr",
+#'                           "schdot", "owe69", "san98",
+#'                           "wetdna91", "wetrna91", "wetdnarna91"),
+#'         method.nn = c("all97", "bre86", "san04", "san96", "sug96",
+#'                       "tan04", "fre86", "xia98", "sug95", "tur06"),
+#'         method.GU = c("tur99", "ser12"),
+#'         method.singleMM = c("allsanpey", "tur06", "zno07", "zno08"),
+#'         method.tandemMM = c("allsanpey", "tur99"),
+#'         method.single.dangle = c("bom00", "sugdna02", "sugrna02", "ser08"),
+#'         method.double.dangle = c("sugdna02", "sugrna02", "ser05", "ser06"),
+#'         method.long.dangle = c("sugdna02", "sugrna02"),
+#'         method.internal.loop = c("san04", "tur06", "zno07"),
+#'         method.single.bulge.loop = c("tan04", "san04", "ser07" ,"tur06"),
+#'         method.long.bulge.loop = c("san04", "tur06"),
+#'         method.CNG = c("bro05"),
+#'         method.inosine = c("san05", "zno07"),
+#'         method.hydroxyadenine = c("sug01"),
+#'         method.azobenzenes = c("asa05"),
+#'         method.locked = c("mct04"),
+#'         correction.ion = c("ahs01", "kam71", "marschdot",
+#'                            "owc1904", "owc2004", "owc2104",
+#'                            "owc2204", "san96", "san04", "schlif",
+#'                            "tanna06", "tanna07", "wet91",
+#'                            "owcmg08", "tanmg06", "tanmg07",
+#'                            "owcmix08", "tanmix07"),
+#'         method.Naeq = c("ahs01", "mit96", "pey00"),
+#'         correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"),
+#'         correction.formamide = c("bla96", "lincorr"))
 #'
 #' @section Mandatory arguments: The following are the arguments which are
 #'   mandatory for computation. \describe{ \item{\code{sequence}}{5' to 3'
@@ -465,7 +478,7 @@
 #' @param method.CNG Specify the nearest neighbor model to compute the
 #'   contribution of CNG repeats to the thermodynamic of helix-coil transition.
 #'   Available method is \code{"bro05"} (see \strong{CNG repeats effect}).
-#' @param method.inosine Specify the pecific nearest neighbor model to compute
+#' @param method.inosine Specify the specific nearest neighbor model to compute
 #'   the contribution of inosine bases (I) to the thermodynamic of helix-coil
 #'   transition. Either \code{"san05"} or \code{"zno07"} (see \strong{Inosine
 #'   bases effect}).
@@ -642,6 +655,15 @@
 #'    5}.
 #'
 #' @examples
+#'
+#' # Basic usage
+#' melting(sequence = "CAGTGAGACAGCAATGGTCG", nucleic.acid.conc = 2e-06,
+#'         hybridisation.type = "dnadna", Na.conc = 1)
+#'
+#' # For more detailed examples refer the vignette.
+#' \dontrun{
+#' browseVignettes(package = 'rmelting')
+#' }
 #'
 melting <- function(sequence, comp.sequence = NULL,
                     nucleic.acid.conc,
