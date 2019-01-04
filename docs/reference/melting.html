@@ -11,15 +11,15 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js" integrity="sha256-hIvIxeqhGZF+VVeM55k0mJvWpQ6gTkWk3Emc+NmowYA=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
 <!-- sticky kit -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
@@ -31,7 +31,7 @@
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
 <link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
@@ -40,15 +40,16 @@
 
 <meta property="og:description" content="R interface to the
 MELTING 5 software (Le
-Novère, 2001; Dumousseau et al., 2012) for computation of enthalpy and entropy
-of the helix-coil transition, and then the melting temperature of a nucleic
-acid duplex." />
+Novère, 2001; Dumousseau et al., 2012) for computation of enthalpy and
+entropy of the helix-coil transition, and then the melting temperature of a
+nucleic acid duplex." />
 <meta name="twitter:card" content="summary" />
 
 
 
 <!-- mathjax -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -82,7 +83,7 @@ acid duplex." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rmelting</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.1</span>
       </span>
     </div>
 
@@ -92,26 +93,43 @@ acid duplex." />
   <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
+    Home
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/index.html">
+    <span class="fa fa-code"></span>
+     
+    Reference
+  </a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../articles/Tutorial.html">
+    <span class="fa fa-file-o"></span>
+     
+    Introduction
+  </a>
+</li>
+<li>
+  <a href="../news/index.html">
+    <span class="fa fa-newspaper-o"></span>
+     
+    News
+  </a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/aravind-j/rmelting">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fa fa-github-alt"></span>
      
+    Github
   </a>
 </li>
       </ul>
       
-      <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form navbar-right hidden-xs hidden-sm" role="search">
         <div class="form-group">
           <input type="search" class="form-control" name="search-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
         </div>
@@ -136,46 +154,47 @@ acid duplex." />
     
     <p>R interface to the
 <a href='https://www.ebi.ac.uk/biomodels/tools/melting/'>MELTING 5 software</a> (Le
-Novère, 2001; Dumousseau et al., 2012) for computation of enthalpy and entropy
-of the helix-coil transition, and then the melting temperature of a nucleic
-acid duplex.</p>
+Novère, 2001; Dumousseau et al., 2012) for computation of enthalpy and
+entropy of the helix-coil transition, and then the melting temperature of a
+nucleic acid duplex.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>melting</span>(<span class='no'>sequence</span>, <span class='kw'>comp.sequence</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-         <span class='no'>nucleic.acid.conc</span>,
-         <span class='kw'>hybridisation.type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"dnadna"</span>, <span class='st'>"rnarna"</span>, <span class='st'>"dnarna"</span>,
+        <span class='no'>nucleic.acid.conc</span>,
+        <span class='kw'>hybridisation.type</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"dnadna"</span>, <span class='st'>"rnarna"</span>, <span class='st'>"dnarna"</span>,
                                <span class='st'>"rnadna"</span>, <span class='st'>"mrnarna"</span>, <span class='st'>"rnamrna"</span>),
-         <span class='no'>Na.conc</span>, <span class='no'>Mg.conc</span>, <span class='no'>Tris.conc</span>, <span class='no'>K.conc</span>,
-         <span class='no'>dNTP.conc</span>, <span class='no'>DMSO.conc</span>, <span class='no'>formamide.conc</span>,
-         <span class='kw'>size.threshold</span> <span class='kw'>=</span> <span class='fl'>60</span>, <span class='kw'>self</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>correction.factor</span>,
-         <span class='kw'>method.approx</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"ahs01"</span>, <span class='st'>"che93"</span>, <span class='st'>"che93corr"</span>,
-                           <span class='st'>"marschdot"</span>, <span class='st'>"owe69"</span>, <span class='st'>"san98"</span>,
-                           <span class='st'>"wetdna91"</span>, <span class='st'>"wetrna91"</span>, <span class='st'>"wetdnarna91"</span>),
-         <span class='kw'>method.nn</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"all97"</span>, <span class='st'>"bre86"</span>, <span class='st'>"san04"</span>, <span class='st'>"san96"</span>, <span class='st'>"sug96"</span>,
+        <span class='no'>Na.conc</span>, <span class='no'>Mg.conc</span>, <span class='no'>Tris.conc</span>, <span class='no'>K.conc</span>,
+        <span class='no'>dNTP.conc</span>, <span class='no'>DMSO.conc</span>, <span class='no'>formamide.conc</span>,
+        <span class='kw'>size.threshold</span> <span class='kw'>=</span> <span class='fl'>60</span>, <span class='kw'>force.self</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>correction.factor</span>,
+        <span class='kw'>method.approx</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"ahs01"</span>, <span class='st'>"che93"</span>, <span class='st'>"che93corr"</span>,
+                          <span class='st'>"schdot"</span>, <span class='st'>"owe69"</span>, <span class='st'>"san98"</span>,
+                          <span class='st'>"wetdna91"</span>, <span class='st'>"wetrna91"</span>, <span class='st'>"wetdnarna91"</span>),
+        <span class='kw'>method.nn</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"all97"</span>, <span class='st'>"bre86"</span>, <span class='st'>"san04"</span>, <span class='st'>"san96"</span>, <span class='st'>"sug96"</span>,
                       <span class='st'>"tan04"</span>, <span class='st'>"fre86"</span>, <span class='st'>"xia98"</span>, <span class='st'>"sug95"</span>, <span class='st'>"tur06"</span>),
-         <span class='kw'>method.GU</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"tur99"</span>),
-         <span class='kw'>method.singleMM</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"allsanpey"</span>, <span class='st'>"tur06"</span>, <span class='st'>"zno07"</span>, <span class='st'>"zno08"</span>),
-         <span class='kw'>method.tandemMM</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"allsanpey"</span>, <span class='st'>"tur99"</span>),
-         <span class='kw'>method.single.dangle</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bom00"</span>, <span class='st'>"sugdna02"</span>, <span class='st'>"sugrna02"</span>, <span class='st'>"ser08"</span>),
-         <span class='kw'>method.double.dangle</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sugdna02"</span>, <span class='st'>"sugrna02"</span>, <span class='st'>"ser05"</span>, <span class='st'>"ser06"</span>),
-         <span class='kw'>method.long.dangle</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sugdna02"</span>, <span class='st'>"sugrna02"</span>),
-         <span class='kw'>method.internal.loop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"san04"</span>, <span class='st'>"tur06"</span>, <span class='st'>"zno07"</span>),
-         <span class='kw'>method.single.bulge.loop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"tan04"</span>, <span class='st'>"san04"</span>, <span class='st'>"ser07"</span> ,<span class='st'>"tur06"</span>),
-         <span class='kw'>method.long.bulge.loop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"san04"</span>, <span class='st'>"tur06"</span>),
-         <span class='kw'>method.CNG</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bro05"</span>),
-         <span class='kw'>method.inosine</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"san05"</span>, <span class='st'>"zno07"</span>),
-         <span class='kw'>method.hydroxyadenine</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sug01"</span>),
-         <span class='kw'>method.azobenzenes</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"asa05"</span>),
-         <span class='kw'>method.locked</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"mct04"</span>),
-         <span class='kw'>correction.Na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"ahs01"</span>, <span class='st'>"kam71"</span>, <span class='st'>"marschdot"</span>,
-                           <span class='st'>"owc1904"</span>, <span class='st'>"owc2004"</span>, <span class='st'>"owc2104"</span>, <span class='st'>"owc2204"</span>,
-                           <span class='st'>"san96"</span>, <span class='st'>"san04"</span>, <span class='st'>"schlif"</span>,
-                           <span class='st'>"tanna06"</span>, <span class='st'>"tanna07"</span>, <span class='st'>"wet91"</span>),
-         <span class='kw'>correction.Mg</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"oxcmg08"</span>, <span class='st'>"tanmg06"</span>, <span class='st'>"tanmg07"</span>),
-         <span class='kw'>correction.NaMg</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"oxcmix08"</span>, <span class='st'>"tanmix07"</span>),
-         <span class='kw'>method.Naeq</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"ahs01"</span>, <span class='st'>"mit96"</span>, <span class='st'>"pey00"</span>),
-         <span class='kw'>correction.DMSO</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"ahs01"</span>, <span class='st'>"cul76"</span>, <span class='st'>"esc80"</span>, <span class='st'>"mus80"</span>))</pre>
+        <span class='kw'>method.GU</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"tur99"</span>, <span class='st'>"ser12"</span>),
+        <span class='kw'>method.singleMM</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"allsanpey"</span>, <span class='st'>"tur06"</span>, <span class='st'>"zno07"</span>, <span class='st'>"zno08"</span>),
+        <span class='kw'>method.tandemMM</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"allsanpey"</span>, <span class='st'>"tur99"</span>),
+        <span class='kw'>method.single.dangle</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bom00"</span>, <span class='st'>"sugdna02"</span>, <span class='st'>"sugrna02"</span>, <span class='st'>"ser08"</span>),
+        <span class='kw'>method.double.dangle</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sugdna02"</span>, <span class='st'>"sugrna02"</span>, <span class='st'>"ser05"</span>, <span class='st'>"ser06"</span>),
+        <span class='kw'>method.long.dangle</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sugdna02"</span>, <span class='st'>"sugrna02"</span>),
+        <span class='kw'>method.internal.loop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"san04"</span>, <span class='st'>"tur06"</span>, <span class='st'>"zno07"</span>),
+        <span class='kw'>method.single.bulge.loop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"tan04"</span>, <span class='st'>"san04"</span>, <span class='st'>"ser07"</span> ,<span class='st'>"tur06"</span>),
+        <span class='kw'>method.long.bulge.loop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"san04"</span>, <span class='st'>"tur06"</span>),
+        <span class='kw'>method.CNG</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bro05"</span>),
+        <span class='kw'>method.inosine</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"san05"</span>, <span class='st'>"zno07"</span>),
+        <span class='kw'>method.hydroxyadenine</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"sug01"</span>),
+        <span class='kw'>method.azobenzenes</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"asa05"</span>),
+        <span class='kw'>method.locked</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"mct04"</span>),
+        <span class='kw'>correction.ion</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"ahs01"</span>, <span class='st'>"kam71"</span>, <span class='st'>"marschdot"</span>,
+                           <span class='st'>"owc1904"</span>, <span class='st'>"owc2004"</span>, <span class='st'>"owc2104"</span>,
+                           <span class='st'>"owc2204"</span>, <span class='st'>"san96"</span>, <span class='st'>"san04"</span>, <span class='st'>"schlif"</span>,
+                           <span class='st'>"tanna06"</span>, <span class='st'>"tanna07"</span>, <span class='st'>"wet91"</span>,
+                           <span class='st'>"owcmg08"</span>, <span class='st'>"tanmg06"</span>, <span class='st'>"tanmg07"</span>,
+                           <span class='st'>"owcmix08"</span>, <span class='st'>"tanmix07"</span>),
+        <span class='kw'>method.Naeq</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"ahs01"</span>, <span class='st'>"mit96"</span>, <span class='st'>"pey00"</span>),
+        <span class='kw'>correction.DMSO</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"ahs01"</span>, <span class='st'>"cul76"</span>, <span class='st'>"esc80"</span>, <span class='st'>"mus80"</span>),
+        <span class='kw'>correction.formamide</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"bla96"</span>, <span class='st'>"lincorr"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,7 +202,8 @@ acid duplex.</p>
     <tr>
       <th>sequence</th>
       <td><p>Sequence (5' to 3') of one strand of the nucleic acid duplex
-as a character string.</p></td>
+as a character string (<strong>Note:</strong> Uridine and thymidine are not
+considered as identical).</p></td>
     </tr>
     <tr>
       <th>comp.sequence</th>
@@ -192,9 +212,9 @@ duplex as a character string.</p></td>
     </tr>
     <tr>
       <th>nucleic.acid.conc</th>
-      <td><p>Concentration of the nucleic acid strand
-(mol L&lt;sup&gt;-1&lt;/sup&gt;) in excess as
-a numeric value.</p></td>
+      <td><p>Concentration of the nucleic acid strand (M or
+mol L<sup>-1</sup>) in
+excess as a numeric value.</p></td>
     </tr>
     <tr>
       <th>hybridisation.type</th>
@@ -204,38 +224,38 @@ a numeric value.</p></td>
     </tr>
     <tr>
       <th>Na.conc</th>
-      <td><p>Concentration of Na ions (M) as a numeric value (see
+      <td><p>Concentration of Na ions (M) as a positive numeric value (see
 <strong>Ion and agent concentrations</strong>).</p></td>
     </tr>
     <tr>
       <th>Mg.conc</th>
-      <td><p>Concentration of Mg ions (M) as a numeric value (see
+      <td><p>Concentration of Mg ions (M) as a positive numeric value (see
 <strong>Ion and agent concentrations</strong>).</p></td>
     </tr>
     <tr>
       <th>Tris.conc</th>
-      <td><p>Concentration of Tris ions (M) as a numeric value  (see
-<strong>Ion and agent concentrations</strong>).</p></td>
+      <td><p>Concentration of Tris ions (M) as a positive numeric value
+(see <strong>Ion and agent concentrations</strong>).</p></td>
     </tr>
     <tr>
       <th>K.conc</th>
-      <td><p>Concentration of K ions (M) as a numeric value (see <strong>Ion
-and agent concentrations</strong>).</p></td>
+      <td><p>Concentration of K ions (M) as a positive numeric value (see
+<strong>Ion and agent concentrations</strong>).</p></td>
     </tr>
     <tr>
       <th>dNTP.conc</th>
-      <td><p>Concentration of dNTP (M) as a numeric value (see <strong>Ion
-and agent concentrations</strong>).</p></td>
+      <td><p>Concentration of dNTP (M) as a positive numeric value (see
+<strong>Ion and agent concentrations</strong>).</p></td>
     </tr>
     <tr>
       <th>DMSO.conc</th>
-      <td><p>Concentration of DMSO (%) as a numeric value (see
+      <td><p>Concentration of DMSO (%) as a positive numeric value (see
 <strong>Ion and agent concentrations</strong>).</p></td>
     </tr>
     <tr>
       <th>formamide.conc</th>
       <td><p>Concentration of formamide (M or % depending on
-correction method) as a numeric value (see <strong>Ion and agent
+correction method) as a positive numeric value (see <strong>Ion and agent
 concentrations</strong>).</p></td>
     </tr>
     <tr>
@@ -244,10 +264,10 @@ concentrations</strong>).</p></td>
 nearest-neighbour approach for computation. Default is 60.</p></td>
     </tr>
     <tr>
-      <th>self</th>
-      <td><p>logical. Specifies that <code>sequence</code> is self complementary and
-<code>complementary sequence</code> is not required (seed <strong>Self
-complementary sequences</strong>). Default is <code>FALSE</code>.</p></td>
+      <th>force.self</th>
+      <td><p>logical. Enforces that <code>sequence</code> is self
+complementary and <code>complementary sequence</code> is not required (seed
+<strong>Self complementary sequences</strong>). Default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>correction.factor</th>
@@ -268,25 +288,25 @@ temperature calculation for sequences of length greater than
     <tr>
       <th>method.nn</th>
       <td><p>Specify the nearest neighbor model to be used for melting
-temperature calculation for sequences of length lesser than
-<code>size.threshold</code>. Either <code>"all97"</code>, <code>"bre86"</code>,
+temperature calculation for perfectly matching sequences of length lesser
+than <code>size.threshold</code>. Either <code>"all97"</code>, <code>"bre86"</code>,
 <code>"san04"</code>, <code>"san96"</code>, <code>"sug96"</code>, <code>"tan04"</code>,
 <code>"fre86"</code>, <code>"xia98"</code>, <code>"sug95"</code> or <code>"tur06"</code> (see
-<strong>Nearest neighbor models</strong>).</p></td>
+<strong>Perfectly matching sequences</strong>).</p></td>
     </tr>
     <tr>
       <th>method.GU</th>
       <td><p>Specify the nearest neighbor model to compute the
-contribution of GU base pairs to the thermodynamic of helix-coil transition.
-Available method is <code>"tur99"</code> (see <strong>GU wobble base pairs
-effect</strong>).</p></td>
+contribution of GU base pairs to the thermodynamic of helix-coil
+transition. Either <code>"tur99"</code> or <code>"ser12"</code> (see <strong>GU wobble
+base pairs effect</strong>).</p></td>
     </tr>
     <tr>
       <th>method.singleMM</th>
       <td><p>Specify the nearest neighbor model to compute the
 contribution of single mismatch to the thermodynamic of helix-coil
-transition.  Either <code>"allsanpey"</code>, <code>"tur06"</code>, <code>"zno07"</code> or
-<code>"zno08"</code> (see <strong>Single mismatch effect</strong>).</p></td>
+transition.  Either <code>"allsanpey"</code>, <code>"tur06"</code>, <code>"zno07"</code>
+<code>"zno08"</code>  or <code>"wat11"</code> (see <strong>Single mismatch effect</strong>).</p></td>
     </tr>
     <tr>
       <th>method.tandemMM</th>
@@ -319,8 +339,8 @@ dangling end effect</strong>).</p></td>
     <tr>
       <th>method.internal.loop</th>
       <td><p>Specify the nearest neighbor model to compute the
-contribution of internal loop to the thermodynamic of helix-coil transition.
-Either <code>"san04"</code>, <code>"tur06"</code> or <code>"zno07"</code> (see
+contribution of internal loop to the thermodynamic of helix-coil
+transition. Either <code>"san04"</code>, <code>"tur06"</code> or <code>"zno07"</code> (see
 <strong>Internal loop effect</strong>).</p></td>
     </tr>
     <tr>
@@ -345,24 +365,24 @@ Available method is <code>"bro05"</code> (see <strong>CNG repeats effect</strong
     </tr>
     <tr>
       <th>method.inosine</th>
-      <td><p>Specify the pecific nearest neighbor model to compute
+      <td><p>Specify the specific nearest neighbor model to compute
 the contribution of inosine bases (I) to the thermodynamic of helix-coil
 transition. Either <code>"san05"</code> or <code>"zno07"</code> (see <strong>Inosine
 bases effect</strong>).</p></td>
     </tr>
     <tr>
       <th>method.hydroxyadenine</th>
-      <td><p>Specify the nearest neighbor model to compute the
-contribution of hydroxyadenine bases (A*) to the thermodynamic of helix-coil
-transition. Available method is <code>"sug01"</code> (see <strong>Hydroxyadenine
-bases effect</strong>).</p></td>
+      <td><p>Specify the nearest neighbor model to compute
+the contribution of hydroxyadenine bases (A*) to the thermodynamic of
+helix-coil transition. Available method is <code>"sug01"</code> (see
+<strong>Hydroxyadenine bases effect</strong>).</p></td>
     </tr>
     <tr>
       <th>method.azobenzenes</th>
       <td><p>Specify the nearest neighbor model to compute the
 contribution of azobenzenes (X_T for trans azobenzenes and X_C for cis
-azobenzenes) to the thermodynamic of helix-coil transition. Available method
-is <code>"asa05"</code> (see <strong>Azobenzenes effect</strong>).</p></td>
+azobenzenes) to the thermodynamic of helix-coil transition. Available
+method is <code>"asa05"</code> (see <strong>Azobenzenes effect</strong>).</p></td>
     </tr>
     <tr>
       <th>method.locked</th>
@@ -372,24 +392,16 @@ thermodynamic of helix-coil transition. Available method is <code>"mct04"</code>
 (see <strong>Locked nucleic acids effect</strong>).</p></td>
     </tr>
     <tr>
-      <th>correction.Na</th>
-      <td><p>Specify the correction method for Na ions. Either
-<code>"ahs01"</code>, <code>"kam71"</code>, <code>"owc1904"</code>, <code>"owc2004"</code>,
-<code>"owc2104"</code>, <code>"owc2204"</code>, <code>"san96"</code>, <code>"san04"</code>,
-<code>"schlif"</code>, <code>"tanna06"</code>, <code>"wetdna91"</code>, <code>"tanna07"</code>,
-<code>"wetrna91"</code> or <code>"wetdnarna91"</code> (see <strong>Sodium corrections</strong>).</p></td>
-    </tr>
-    <tr>
-      <th>correction.Mg</th>
-      <td><p>Specify the correction method for Mg ions. Either
-<code>"owcmg08"</code>, <code>"tanmg06"</code> or <code>"tanmg07"</code> (see
-<strong>Magnesium corrections</strong>).</p></td>
-    </tr>
-    <tr>
-      <th>correction.NaMg</th>
-      <td><p>Specify the correction method for mixed Na and Mg ions.
-Either <code>"owcmix08"</code>, <code>"tanmix07"</code> or <code>"tanmix07"</code> (see
-<strong>Mixed Sodium and Magnesium corrections</strong>).</p></td>
+      <th>correction.ion</th>
+      <td><p>Specify the correction method for ions. Either one of
+the following:</p><ul>
+<li><p>Mg
+corrections<code>"owcmg08"</code>, <code>"tanmg06"</code> or <code>"tanmg07"</code> (see
+<strong>Magnesium corrections</strong>)</p></li>
+<li><p>Mixed Na Mg
+corrections<code>"owcmix08"</code>, <code>"tanmix07"</code> or <code>"tanmix07"</code> (see
+<strong>Mixed Sodium and Magnesium corrections</strong>)</p></li>
+</ul><p>.</p></td>
     </tr>
     <tr>
       <th>method.Naeq</th>
@@ -412,529 +424,701 @@ Specify the correction method for formamide Either <code>"bla96"</code> or
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A list with the following components:</p>
+<dt><code>Environment</code></dt><dd><p>A
+  list with details about the melting temperature computation environment.</p></dd>
+  <dt><code>Options</code></dt><dd><p>A list with details about the options (default or
+  user specified) used for melting temperature computation.</p></dd>
+  <dt><code>Results</code></dt><dd><p>A list with the results of the melting temperature
+  computation including the enthalpy and entropy in case of nearest neighbour
+  methods.</p></dd> <dt><code>Message</code></dt><dd><p>Error and/or Warning messages, if any.</p></dd>
+
+    
     <h2 class="hasAnchor" id="mandatory-arguments"><a class="anchor" href="#mandatory-arguments"></a>Mandatory arguments</h2>
 
     <p>The following are the arguments which are
- mandatory for computation.</p><ul>
-<li><p><code>sequence</code></p></li>
-<li><p><code>comp.sequence</code>: Mandatory if there are mismatches, inosine(s) or
- hydroxyadenine(s) between the two strands. If not specified, it is computed
- as the complement of <code>sequence</code>. Self-complementarity in
- <code>sequence</code> is detected even though there may be (are) dangling end(s)
- and <code>comp.sequence</code> is computed (see <strong>Self complementary
- sequences</strong>).</p></li>
-<li><p><code>nucleic.acid.conc</code></p></li>
-<li><p><code>Na.conc, Mg.conc,
- Tris.conc, K.conc</code>: At least one cation (Na, Mg, Tris, K) concentration is
- mandatory, the other agents(dNTP, DMSO, formamide) are optional.</p></li>
-<li><p><code>hybridisation.type</code></p></li>
-</ul>
+  mandatory for computation.</p><dl class='dl-horizontal'>
+<dt><code>sequence</code></dt><dd><p>5' to 3'
+  sequence of one strand of the nucleic acid duplex as a character string.
+  Recognises A, C, G, T, U, I, X_C, X_T, A*, AL, TL, GL and CL. U and T are
+  not considered identical (see <strong>Recognized nucleotides</strong>).</p></dd>
+  <dt><code>comp.sequence</code></dt><dd><p>Mandatory if there are mismatches, inosine(s)
+  or hydroxyadenine(s) between the two strands. If not specified, it is
+  computed as the complement of <code>sequence</code>. Self-complementarity in
+  <code>sequence</code> is detected even though there may be (are) dangling end(s)
+  and <code>comp.sequence</code> is computed (see <strong>Self complementary
+  sequences</strong>).</p></dd> <dt><code>nucleic.acid.conc</code></dt><dd><p>See <strong>Correction factor
+  for nucleic acid concentration.</strong></p></dd> <dt><code>Na.conc, Mg.conc, Tris.conc,
+  K.conc</code></dt><dd><p>At least one cation (Na, Mg, Tris, K) concentration is mandatory,
+  the other agents(dNTP, DMSO, formamide) are optional (see <strong>Ion and
+  agent concentrations</strong>).</p></dd> <dt><code>hybridisation.type</code></dt><dd><p>See
+  <strong>Hybridisation type options.</strong></p></dd> </dl>
+    
+    <h2 class="hasAnchor" id="recognized-nucleotides"><a class="anchor" href="#recognized-nucleotides"></a>Recognized nucleotides</h2>
+
+    <p></p><table class='table'>
+<tr><td></td><td><strong>Code</strong></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td></tr>
+<tr><td></td><td>A</td></tr>
+<tr><td>Adenine</td><td>C</td></tr>
+<tr><td>Cytosine</td><td>G</td></tr>
+<tr><td>Guanine</td><td></td></tr>
+<tr><td>T</td><td>Thymine</td></tr>
+<tr><td>U</td><td>Uracil</td></tr>
+<tr><td>I</td><td>Inosine</td></tr>
+<tr><td>X_C</td><td>Trans</td></tr>
+<tr><td>azobenzenes</td><td>X_T</td></tr>
+<tr><td>Cis azobenzenes</td><td>A*</td></tr>
+<tr><td>Hydroxyadenine</td><td>AL</td></tr>
+<tr><td></td><td>Locked nucleic acid</td></tr>
+<tr><td>TL</td><td>"</td></tr>
+<tr><td>GL</td><td>"</td></tr>
+<tr><td>CL</td><td>"</td></tr>
+</table>
+    <p>U and T are not considered identical.</p>
     
     <h2 class="hasAnchor" id="hybridisation-type-options"><a class="anchor" href="#hybridisation-type-options"></a>Hybridisation type options</h2>
 
     <p>The details of the possible options for
- hybridisation type specified in the argument <code>hybridisation.type</code> are
- as follows:</p>
+  hybridisation type specified in the argument <code>hybridisation.type</code> are
+  as follows:</p>
 <p></p><table class='table'>
-<tr><td><strong>Option</strong></td><td><strong><code>Sequence</code></strong></td><td><strong><code>Complementary sequence</code></strong></td></tr>
-<tr><td><code>dnadna</code></td><td>DNA</td><td>DNA</td></tr>
-<tr><td><code>rnarna</code></td><td>RNA</td><td>RNA</td></tr>
-<tr><td><code>dnarna</code></td><td>DNA</td><td>RNA</td></tr>
-<tr><td><code>rnadna</code></td><td>RNA</td><td>DNA</td></tr>
-<tr><td><code>mrnarna</code></td><td>2-o-methyl RNA</td><td>RNA</td></tr>
-<tr><td><code>rnamrna</code></td><td>RNA</td><td>2-o-methyl RNA</td></tr>
+<tr><td></td><td><strong>Option</strong></td><td></td></tr>
+<tr><td></td><td><strong><code>Sequence</code></strong></td><td></td></tr>
+<tr><td></td><td></td><td><strong><code>Complementary sequence</code></strong></td></tr>
+<tr><td></td><td></td><td><code>dnadna</code></td></tr>
+<tr><td></td><td>DNA</td><td>DNA</td></tr>
+<tr><td></td><td></td><td><code>rnarna</code></td></tr>
+<tr><td></td><td>RNA</td><td>RNA</td></tr>
+<tr><td></td><td><code>dnarna</code></td><td></td></tr>
+<tr><td>DNA</td><td>RNA</td><td></td></tr>
+<tr><td></td><td><code>rnadna</code></td><td></td></tr>
+<tr><td>RNA</td><td>DNA</td><td></td></tr>
+<tr><td><code>mrnarna</code></td><td></td><td>2-o-methyl RNA</td></tr>
+<tr><td></td><td>RNA</td><td></td></tr>
+<tr><td><code>rnamrna</code></td><td></td><td>RNA</td></tr>
+<tr><td>2-o-methyl RNA</td><td></td><td><strong>Option</strong></td></tr>
 </table>
     <p>This parameter determines the nature of the sequences in the arguments
- <code>sequence</code> and <code>comp.sequence</code>.</p>
+  <code>sequence</code> and <code>comp.sequence</code>.</p>
     
     <h2 class="hasAnchor" id="ion-and-agent-concentrations"><a class="anchor" href="#ion-and-agent-concentrations"></a>Ion and agent concentrations</h2>
 
-    <p>These values are used for different
- correction functions which approximately adjusts for effects of these
- ions(Na, Mg, Tris, K) and/or agents(dNTP, DMSO, formamide) on on
- thermodynamic stability of nucleic acid duplexes. Their concentration limits
- depends on the correction method used. All the concentrations must be in M,
- except for the DMSO (%) and formamide (% or M depending on the correction
- method). Note that Tris+ concentration is about half of the total tris
- buffer concentration.</p>
+    <p>Ion concentrations are specified by
+  the arguments <code>Na.conc</code>, <code>Mg.conc</code>, <code>Tris.conc</code> and
+  <code>K.conc</code>, while agent concentrations are specified by the arguments
+  <code>dNTP.conc</code>, <code>DMSO.conc</code> and <code>formamide.conc</code>.</p>
+<p>These values are used for different correction functions which
+  approximately adjusts for effects of these ions (Na, Mg, Tris, K) and/or
+  agents (dNTP, DMSO, formamide) on on thermodynamic stability of nucleic
+  acid duplexes. Their concentration limits depends on the correction method
+  used. All the concentrations must be in M, except for the DMSO (%) and
+  formamide (% or M depending on the correction method). Note that
+  [Tris<sup>+</sup>] is
+  about half of the total tris buffer concentration.</p>
     
     <h2 class="hasAnchor" id="self-complementary-sequences"><a class="anchor" href="#self-complementary-sequences"></a>Self complementary sequences</h2>
 
     <p>Self complementarity for perfect
- matching sequences or sequences with dangling ends is detected
- automatically. However it can be specified by the argument <code>self</code>.</p>
+  matching sequences or sequences with dangling ends is detected
+  automatically. However it can be enforced by the argument <code>force.self
+  = TRUE</code>.</p>
     
     <h2 class="hasAnchor" id="correction-factor-for-nucleic-acid-concentration"><a class="anchor" href="#correction-factor-for-nucleic-acid-concentration"></a>Correction factor for nucleic acid concentration</h2>
 
     <p>For self
- complementary sequences (Auto detected or specified in <code>self</code>) it is 1.
- Otherwise it is 4 if the both strands are present in equivalent amount and 1
- if one strand is in excess.</p>
+  complementary sequences (Auto detected or specified by <code>force.self</code>)
+  it is 1. Otherwise it is 4 if the both strands are present in equivalent
+  amount and 1 if one strand is in excess.</p>
     
     <h2 class="hasAnchor" id="approximative-estimation-formulas"><a class="anchor" href="#approximative-estimation-formulas"></a>Approximative estimation formulas</h2>
 
-    <p>The calculation is increasingly
- incorrect when the length of the duplex decreases. Moreover, it does not
- take into account nucleic acid concentration.</p><table class='table'>
-<tr><td><strong>Formula</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>ahs01</code></td><td>DNA</td><td>No mismatch</td><td>von Ahsen et
- al., 2001</td></tr>
-<tr><td><code>che93</code></td><td>DNA</td><td>No mismatch; Na=0, Mg=0.0015,</td><td>Marmur and Doty, 1962</td></tr>
+    <p></p><table class='table'>
+<tr><td></td><td></td><td><strong>Formula</strong></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td></td></tr>
+<tr><td><strong>Reference</strong></td><td></td><td></td><td><code>ahs01</code></td></tr>
+<tr><td></td><td>DNA</td><td>No mismatch</td><td>von Ahsen</td></tr>
+<tr><td>et al., 2001</td><td></td><td><code>che93</code></td><td></td></tr>
+<tr><td>DNA</td><td>No mismatch; Na=0, Mg=0.0015,</td><td></td><td>Marmur and Doty, 1962</td></tr>
 <tr><td></td><td></td><td>Tris=0.01, K=0.05</td><td></td></tr>
-<tr><td><code>che93corr</code></td><td>DNA</td><td>No mismatch; Na=0, Mg=0.0015,</td><td>Marmur and
- Doty, 1962</td></tr>
+<tr><td></td><td></td><td><code>che93corr</code></td><td></td></tr>
+<tr><td>DNA</td><td>No mismatch; Na=0, Mg=0.0015,</td><td>Marmur and</td><td>Doty, 1962</td></tr>
 <tr><td></td><td></td><td>Tris=0.01, K=0.05</td><td></td></tr>
-<tr><td><code>marschdot</code></td><td>DNA</td><td>No mismatch</td><td>Wetmur, 1991; Marmur and</td></tr>
-<tr><td></td><td></td><td></td><td>Doty,
- 1962; Chester and</td></tr>
+<tr><td></td><td><code>schdot</code></td><td></td><td></td></tr>
+<tr><td>DNA</td><td>No mismatch</td><td>Wetmur, 1991; Marmur and</td><td></td></tr>
+<tr><td></td><td></td><td>Doty,</td><td>1962; Chester and</td></tr>
 <tr><td></td><td></td><td></td><td>Marshak, 1993; Schildkraut</td></tr>
-<tr><td></td><td></td><td></td><td>and Lifson, 1965; Wahl et</td></tr>
-<tr><td></td><td></td><td></td><td>al., 1987; Britten et al.,</td></tr>
-<tr><td></td><td></td><td></td><td>1974; Hall et al., 1980</td></tr>
-<tr><td><code>owe69</code></td><td>DNA</td><td>No
- mismatch</td><td>Owen et al., 1969;</td></tr>
-<tr><td></td><td></td><td></td><td>Frank-Kamenetskii, 1971;</td></tr>
-<tr><td></td><td></td><td></td><td>Blake, 1996; Blake and</td></tr>
-<tr><td></td><td></td><td></td><td>Delcourt, 1998</td></tr>
-<tr><td><code>san98</code></td><td>DNA</td><td>No mismatch</td><td>SantaLucia, 1998; von Ahsen</td></tr>
-<tr><td></td><td></td><td></td><td>et al., 2001</td></tr>
-<tr><td><code>wetdna91</code>*</td><td>DNA</td><td></td><td>Wetmur,
- 1991</td></tr>
-<tr><td><code>wetrna91</code>*</td><td>RNA</td><td></td><td>Wetmur, 1991</td></tr>
-<tr><td><code>wetdnarna91</code>*</td><td>DNA/RNA</td><td></td><td>Wetmur, 1991</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td>and Lifson, 1965; Wahl et</td><td></td><td></td><td></td></tr>
+<tr><td>al., 1987; Britten et</td><td>al.,</td><td></td><td></td></tr>
+<tr><td></td><td>1974; Hall et al., 1980</td><td></td><td><code>owe69</code></td></tr>
+<tr><td></td><td>DNA</td><td></td><td>No mismatch</td></tr>
+<tr><td>Owen et al., 1969;</td><td></td><td></td><td></td></tr>
+<tr><td>Frank-Kamenetskii,</td><td>1971;</td><td></td><td></td></tr>
+<tr><td></td><td>Blake, 1996; Blake and</td><td></td><td></td></tr>
+<tr><td></td><td></td><td>Delcourt, 1998</td><td></td></tr>
+<tr><td><code>san98</code></td><td></td><td>DNA</td><td>No mismatch</td></tr>
+<tr><td>SantaLucia,</td><td>1998; von Ahsen</td><td></td><td></td></tr>
+<tr><td></td><td>et al., 2001</td><td></td><td><code>wetdna91</code></td></tr>
+<tr><td>*</td><td></td><td>DNA</td><td></td></tr>
+<tr><td>Wetmur, 1991</td><td></td><td><code>wetrna91</code></td><td>*</td></tr>
+<tr><td>RNA</td><td></td><td>Wetmur,</td><td>1991</td></tr>
+<tr><td></td><td><code>wetdnarna91</code></td><td>*</td><td>DNA/RNA</td></tr>
+<tr><td></td><td>Wetmur, 1991</td><td></td><td></td></tr>
 </table>
+<p>* Default
+  formula for computation.</p>
+<p>Note that calculation is increasingly incorrect when the length of the
+  duplex decreases. Further, it does not take into account nucleic acid
+  concentration.</p>
     
     <h2 class="hasAnchor" id="nearest-neighbor-models"><a class="anchor" href="#nearest-neighbor-models"></a>Nearest neighbor models</h2>
 
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>all97</code>*</td><td>DNA</td><td></td><td>Allawi and SantaLucia, 1997</td></tr>
-<tr><td><code>tur06</code>*</td><td>2'-O-MeRNA/</td><td>A sodium correction</td><td>Kierzek et al.,
- 2006</td></tr>
-<tr><td></td><td>RNA</td><td>(<code>san04</code>) is</td><td></td></tr>
-<tr><td></td><td></td><td>automatically
- applied to</td><td></td></tr>
-<tr><td></td><td></td><td>convert the entropy (Na =</td><td></td></tr>
-<tr><td></td><td></td><td>0.1M)
- into the entropy (Na =</td><td></td></tr>
+    
+    <p></p><h3>Perfectly matching sequences</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>all97</code></td></tr>
+<tr><td>*</td><td>DNA</td><td></td><td>Allawi and SantaLucia, 1997</td></tr>
+<tr><td></td><td></td><td><code>tur06</code></td><td>*</td></tr>
+<tr><td>2'-O-MeRNA/</td><td>A sodium correction</td><td>Kierzek et al.,</td><td>2006</td></tr>
+<tr><td></td><td>RNA</td><td>(</td><td><code>san04</code></td></tr>
+<tr><td>) is</td><td></td><td></td><td></td></tr>
+<tr><td>automatically</td><td>applied to</td><td></td><td></td></tr>
+<tr><td></td><td>convert the entropy (Na =</td><td></td><td></td></tr>
+<tr><td></td><td></td><td>0.1M) into the entropy (Na =</td><td></td></tr>
 <tr><td></td><td></td><td>1M).</td><td></td></tr>
-<tr><td><code>bre86</code></td><td>DNA</td><td></td><td>Breslauer et al., 1986</td></tr>
-<tr><td><code>san04</code></td><td>DNA</td><td></td><td>SantaLucia and Hicks, 2004</td></tr>
-<tr><td><code>san96</code></td><td>DNA</td><td></td><td>SantaLucia et
- al., 1996</td></tr>
-<tr><td><code>sug96</code></td><td>DNA</td><td></td><td>Sugimoto et al., 1996</td></tr>
-<tr><td><code>tan04</code></td><td>DNA</td><td></td><td>Tanaka et al., 2004</td></tr>
-<tr><td><code>fre86</code></td><td>RNA</td><td></td><td>Freier et al., 1986</td></tr>
-<tr><td><code>xia98</code>*</td><td>RNA</td><td></td><td>Xia et al.,
- 1998</td></tr>
-<tr><td><code>sug95</code>*</td><td>DNA/</td><td></td><td>SantaLucia et al., 1996</td></tr>
-<tr><td></td><td>RNA</td><td></td><td></td></tr>
+<tr><td></td><td><code>bre86</code></td><td></td><td></td></tr>
+<tr><td>DNA</td><td></td><td>Breslauer et al., 1986</td><td></td></tr>
+<tr><td><code>san04</code></td><td></td><td>DNA</td><td></td></tr>
+<tr><td></td><td>SantaLucia and Hicks, 2004</td><td></td><td><code>san96</code></td></tr>
+<tr><td></td><td>DNA</td><td></td><td>SantaLucia et</td></tr>
+<tr><td>al., 1996</td><td></td><td><code>sug96</code></td><td></td></tr>
+<tr><td>DNA</td><td></td><td>Sugimoto et al., 1996</td><td></td></tr>
+<tr><td></td><td><code>tan04</code></td><td></td><td>DNA</td></tr>
+<tr><td></td><td>Tanaka et al., 2004</td><td></td><td><code>fre86</code></td></tr>
+<tr><td></td><td></td><td>RNA</td><td></td></tr>
+<tr><td>Freier et al., 1986</td><td></td><td><code>xia98</code></td><td>*</td></tr>
+<tr><td>RNA</td><td></td><td>Xia et</td><td>al., 1998</td></tr>
+<tr><td></td><td><code>sug95</code></td><td>*</td><td>DNA/</td></tr>
+<tr><td></td><td>SantaLucia et al., 1996</td><td></td><td></td></tr>
+<tr><td>RNA</td><td></td><td></td><td></td></tr>
 </table>
-    
-    <h2 class="hasAnchor" id="gu-wobble-base-pairs-effect"><a class="anchor" href="#gu-wobble-base-pairs-effect"></a>GU wobble base pairs effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>tur99</code>*</td><td>RNA</td><td></td><td>Mathews et al., 1999</td></tr>
+ * Default model for computation.
+    <p></p><h3>GU wobble base pairs effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>tur99</code></td></tr>
+<tr><td></td><td>RNA</td><td></td><td>Mathews et al., 1999</td></tr>
+<tr><td></td><td><code>ser12</code></td><td>*</td><td></td></tr>
+<tr><td>RNA</td><td></td><td>Chen et al., 2012</td><td></td></tr>
 </table>
-    
-    <h2 class="hasAnchor" id="single-mismatch-effect"><a class="anchor" href="#single-mismatch-effect"></a>Single mismatch effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>allsanpey</code>*</td><td>DNA</td><td></td><td>Allawi and SantaLucia, 1997;</td></tr>
-<tr><td></td><td></td><td></td><td>Allawi and SantaLucia, 1998;</td></tr>
-<tr><td></td><td></td><td></td><td>Allawi and SantaLucia,
- 1998;</td></tr>
-<tr><td></td><td></td><td></td><td>Allawi and SantaLucia,</td></tr>
-<tr><td></td><td></td><td></td><td>1998; Peyret
- et al., 1999</td></tr>
-<tr><td><code>tur06</code></td><td>RNA</td><td></td><td>Lu et al., 2006</td></tr>
-<tr><td><code>zno07</code>*</td><td>RNA</td><td></td><td>Davis and Znosko, 2007</td></tr>
-<tr><td><code>zno08</code></td><td>RNA</td><td>At least one adjacent GU base</td><td>Davis and Znosko, 2008</td></tr>
-<tr><td></td><td></td><td>pair.</td><td></td></tr>
+ * Default model for computation.
+    GU base pairs are not taken into account by the approximative mode.
+    <p></p><h3>Single mismatch effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits.Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>allsanpey</code></td></tr>
+<tr><td>*</td><td>DNA</td><td></td><td>Allawi and SantaLucia, 1997;</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td>Allawi and SantaLucia, 1998;</td><td></td><td></td><td></td></tr>
+<tr><td>Allawi and</td><td>SantaLucia, 1998;</td><td></td><td></td></tr>
+<tr><td></td><td>Allawi and SantaLucia, 1998;</td><td></td><td></td></tr>
+<tr><td></td><td></td><td>Peyret et al., 1999</td><td></td></tr>
+<tr><td><code>wat11</code></td><td>*</td><td>DNA/RNA</td><td></td></tr>
+<tr><td></td><td>Watkins et al., 2011</td><td></td><td><code>tur06</code></td></tr>
+<tr><td></td><td>RNA</td><td></td><td>Lu et al., 2006</td></tr>
+<tr><td></td><td></td><td><code>zno07</code></td><td>*</td></tr>
+<tr><td>RNA</td><td></td><td>Davis and Znosko, 2007</td><td></td></tr>
+<tr><td></td><td><code>zno08</code></td><td></td><td>RNA</td></tr>
+<tr><td>At least one adjacent GU base</td><td>Davis and</td><td>Znosko, 2008</td><td></td></tr>
+<tr><td></td><td>pair.</td><td></td><td></td></tr>
 </table>
-    
-    <h2 class="hasAnchor" id="tandem-mismatches-effect"><a class="anchor" href="#tandem-mismatches-effect"></a>Tandem mismatches effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>allsanpey</code>*</td><td>DNA</td><td>Only GT mismatches and TA/TG</td><td>Allawi and
- SantaLucia, 1997;</td></tr>
-<tr><td></td><td></td><td>mismatches.</td><td>Allawi and SantaLucia,
- 1998;</td></tr>
-<tr><td></td><td></td><td></td><td>Allawi and SantaLucia, 1998;</td></tr>
-<tr><td></td><td></td><td></td><td>Allawi
- and SantaLucia,</td></tr>
-<tr><td></td><td></td><td></td><td>1998; Peyret et al., 1999</td></tr>
-<tr><td><code>tur99</code>*</td><td>RNA</td><td>No adjacent GU or UG base</td><td>Mathews et al., 1999</td></tr>
-<tr><td></td><td></td><td>pairs.</td><td></td></tr>
+ * Default model for computation.
+    Single mismatches are not taken into account by the approximative mode.
+    <p></p><h3>Tandem mismatches effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits.Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>allsanpey</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Only GT mismatches and TA/TG</td><td>Allawi</td></tr>
+<tr><td>and SantaLucia, 1997;</td><td></td><td></td><td>mismatches.</td></tr>
+<tr><td>Allawi and SantaLucia,</td><td>1998;</td><td></td><td></td></tr>
+<tr><td></td><td>Allawi and SantaLucia, 1998;</td><td></td><td></td></tr>
+<tr><td></td><td></td><td>Allawi and SantaLucia, 1998;</td><td></td></tr>
+<tr><td></td><td></td><td>Peyret et al., 1999</td><td></td></tr>
+<tr><td></td><td><code>tur99</code></td><td>*</td><td>RNA</td></tr>
+<tr><td>No adjacent GU or UG base</td><td>Mathews et al.,</td><td>1999; Lu et</td><td></td></tr>
+<tr><td></td><td>pairs.</td><td>al., 2006</td><td></td></tr>
 </table>
-<p>Tandem mismatches are not taken into account by the
- approximative mode. Note that not all the mismatched Crick's pairs have been
- investigated.</p>
-    
-    <h2 class="hasAnchor" id="single-dangling-end-effect"><a class="anchor" href="#single-dangling-end-effect"></a>Single dangling end effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>bom00</code>*</td><td>DNA</td><td></td><td>Bommarito et al., 2000</td></tr>
-<tr><td><code>sugdna02</code></td><td>DNA</td><td>Only terminal poly A self</td><td>Ohmichi et al., 2002</td></tr>
+ * Default model for
+  computation.
+    Tandem mismatches are not taken into account by the approximative mode.
+  Note that not all the mismatched Crick's pairs have been investigated.
+    <p></p><h3>Single dangling end effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits.Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>bom00</code></td></tr>
+<tr><td>*</td><td>DNA</td><td></td><td>Bommarito et al., 2000</td></tr>
+<tr><td></td><td><code>sugdna02</code></td><td></td><td></td></tr>
+<tr><td>DNA</td><td>Only terminal poly A self</td><td>Ohmichi et al., 2002</td><td></td></tr>
 <tr><td></td><td></td><td>complementary sequences.</td><td></td></tr>
-<tr><td><code>sugrna02</code></td><td>RNA</td><td>Only terminal
- poly A self</td><td>Ohmichi et al., 2002</td></tr>
-<tr><td></td><td></td><td>complementary
- sequences.</td><td></td></tr>
-<tr><td><code>ser08</code>*</td><td>RNA</td><td>Only 3' UA, GU and UG</td><td>Miller et al., 2008</td></tr>
-<tr><td></td><td></td><td>terminal base pairs only 5'</td><td></td></tr>
+<tr><td></td><td><code>sugrna02</code></td><td></td><td>RNA</td></tr>
+<tr><td>Only</td><td>terminal poly A self</td><td>Ohmichi et al., 2002</td><td></td></tr>
+<tr><td></td><td>complementary</td><td>sequences.</td><td></td></tr>
+<tr><td></td><td><code>ser08</code></td><td>*</td><td>RNA</td></tr>
+<tr><td>Only 3' UA, GU and UG</td><td></td><td>O'Toole et al., 2006; Miller</td><td></td></tr>
+<tr><td></td><td>terminal base pairs only 5'</td><td></td><td>et al., 2008</td></tr>
 <tr><td></td><td></td><td>UG and GU terminal base</td><td></td></tr>
-<tr><td></td><td></td><td>pairs.</td><td></td></tr>
+<tr><td></td><td></td><td></td><td>pairs.</td></tr>
+<tr><td></td><td></td><td><strong>Model</strong></td><td></td></tr>
 </table>
-<p>Single
- dangling ends are not taken into account by the approximative mode.</p>
-    
-    <h2 class="hasAnchor" id="double-dangling-end-effect"><a class="anchor" href="#double-dangling-end-effect"></a>Double dangling end effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>sugdna02</code>*</td><td>DNA</td><td>Only terminal poly A self</td><td>Ohmichi et al.,
- 2002</td></tr>
-<tr><td></td><td></td><td>complementary sequences.</td><td></td></tr>
-<tr><td><code>sugrna02</code></td><td>RNA</td><td>Only terminal poly A self</td><td>Ohmichi et al., 2002</td></tr>
-<tr><td></td><td></td><td>complementary sequences.</td><td></td></tr>
-<tr><td><code>ser05</code></td><td>RNA</td><td>Depends on the
- available</td><td>O'Toole et al., 2005</td></tr>
-<tr><td></td><td></td><td>thermodynamic parameters for</td><td></td></tr>
-<tr><td></td><td></td><td>single dangling end.</td><td></td></tr>
-<tr><td><code>ser06</code>*</td><td>RNA</td><td></td><td>O'Toole et al., 2006</td></tr>
+ * Default model for computation.
+    Single dangling ends are not taken into account by the approximative mode.
+    <p></p><h3>Double dangling end effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>sugdna02</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Only terminal poly A self</td><td>Ohmichi et al.,</td></tr>
+<tr><td>2002</td><td></td><td></td><td>complementary sequences.</td></tr>
+<tr><td></td><td></td><td><code>sugrna02</code></td><td></td></tr>
+<tr><td></td><td>RNA</td><td>Only terminal poly A self</td><td>Ohmichi et al., 2002</td></tr>
+<tr><td></td><td></td><td></td><td>complementary sequences.</td></tr>
+<tr><td></td><td></td><td><code>ser05</code></td><td></td></tr>
+<tr><td>RNA</td><td>Depends on the</td><td>available</td><td>O'Toole et al., 2005</td></tr>
+<tr><td></td><td></td><td>thermodynamic parameters</td><td>for</td></tr>
+<tr><td></td><td></td><td></td><td>single dangling end.</td></tr>
+<tr><td></td><td></td><td><code>ser06</code></td><td>*</td></tr>
+<tr><td></td><td>RNA</td><td></td><td>O'Toole et al., 2006</td></tr>
 </table>
-<p>Double dangling ends are not taken into
- account by the approximative mode.</p>
-    
-    <h2 class="hasAnchor" id="long-dangling-end-effect"><a class="anchor" href="#long-dangling-end-effect"></a>Long dangling end effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>sugdna02</code>*</td><td>DNA</td><td>Only terminal poly A self</td><td>Ohmichi et al.,
- 2002</td></tr>
-<tr><td></td><td></td><td>complementary sequences.</td><td></td></tr>
-<tr><td><code>sugrna02</code>*</td><td>RNA</td><td>Only terminal poly A self</td><td>Ohmichi et al., 2002</td></tr>
-<tr><td></td><td></td><td>complementary sequences.</td><td></td></tr>
+ * Default model for computation.
+    Double dangling ends are not taken into account by the approximative mode.
+    <p></p><h3>Long dangling end effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>sugdna02</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Only terminal poly A self</td><td>Ohmichi et</td></tr>
+<tr><td>al., 2002</td><td></td><td></td><td>complementary sequences.</td></tr>
+<tr><td></td><td></td><td><code>sugrna02</code></td><td>*</td></tr>
+<tr><td></td><td>RNA</td><td>Only terminal poly A self</td><td>Ohmichi et al., 2002</td></tr>
+<tr><td></td><td></td><td></td><td>complementary sequences.</td></tr>
+<tr><td></td><td></td><td><strong>Model</strong></td><td></td></tr>
 </table>
-<p>Long dangling ends are not taken into account
- by the approximative mode.</p>
-    
-    <h2 class="hasAnchor" id="internal-loop-effect"><a class="anchor" href="#internal-loop-effect"></a>Internal loop effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>san04</code>*</td><td>DNA</td><td>Missing asymmetry penalty.</td><td>SantaLucia and
- Hicks, 2004</td></tr>
-<tr><td></td><td></td><td>Not tested with experimental</td><td></td></tr>
-<tr><td></td><td></td><td>results.</td><td></td></tr>
-<tr><td><code>tur06</code></td><td>RNA</td><td>Not tested with experimental</td><td>Lu et al., 2006</td></tr>
-<tr><td></td><td></td><td>results.</td><td></td></tr>
-<tr><td><code>zno07</code>*</td><td>RNA</td><td></td><td>Davis and Znosko, 2007</td></tr>
+ * Default model for computation.
+    Long dangling ends are not taken into account by the approximative mode.
+    <p></p><h3>Internal loop effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits.Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>san04</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Missing asymmetry penalty.</td><td>SantaLucia and</td></tr>
+<tr><td>Hicks, 2004</td><td></td><td></td><td>Not tested with experimental</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td>results.</td><td></td><td></td><td><code>tur06</code></td></tr>
+<tr><td></td><td>RNA</td><td>Not tested with experimental</td><td></td></tr>
+<tr><td>Lu et al., 2006</td><td></td><td></td><td>results.</td></tr>
+<tr><td></td><td></td><td><code>zno07</code></td><td>*</td></tr>
+<tr><td>RNA</td><td></td><td>Only for 1x2 loop.</td><td>Badhwar et al., 2007</td></tr>
 </table>
-<p>Internal loops are not taken into
- account by the approximative mode.</p>
-    
-    <h2 class="hasAnchor" id="single-bulge-loop-effect"><a class="anchor" href="#single-bulge-loop-effect"></a>Single bulge loop effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>tan04</code>*</td><td>DNA</td><td></td><td>Tan and Chen, 2007</td></tr>
-<tr><td><code>san04</code></td><td>DNA</td><td>Missing closing AT penalty.</td><td>SantaLucia and Hicks, 2004</td></tr>
-<tr><td><code>ser07</code></td><td>RNA</td><td>Less reliable results. Some</td><td>Blose et al.,
- 2007</td></tr>
-<tr><td></td><td></td><td>missing parameters.</td><td></td></tr>
-<tr><td><code>tur06</code>*</td><td>RNA</td><td></td><td>Lu et al., 2006</td></tr>
+ * Default model for
+  computation.
+    Internal loops are not taken into account by the approximative mode.
+    <p></p><h3>Single bulge loop effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>tan04</code></td></tr>
+<tr><td>*</td><td>DNA</td><td></td><td>Tan and Chen, 2007</td></tr>
+<tr><td></td><td><code>san04</code></td><td></td><td></td></tr>
+<tr><td>DNA</td><td>Missing closing AT penalty.</td><td>SantaLucia and Hicks, 2004</td><td></td></tr>
+<tr><td></td><td><code>ser07</code></td><td></td><td>RNA</td></tr>
+<tr><td>Less reliable results. Some</td><td>Blose et al.,</td><td>2007</td><td></td></tr>
+<tr><td></td><td>missing parameters.</td><td></td><td></td></tr>
+<tr><td><code>tur06</code></td><td>*</td><td>RNA</td><td></td></tr>
+<tr><td></td><td>Lu et al., 2006</td><td></td><td><strong>Model</strong></td></tr>
 </table>
-<p>Internal loops are not taken into account by the
- approximative mode.</p>
-    
-    <h2 class="hasAnchor" id="long-bulge-loop-effect"><a class="anchor" href="#long-bulge-loop-effect"></a>Long bulge loop effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>san04</code>*</td><td>DNA</td><td>Missing closing AT penalty.</td><td>SantaLucia and
- Hicks, 2004</td></tr>
-<tr><td><code>tur06</code>*</td><td>RNA</td><td>Not tested with experimental</td><td>Lu et al., 2006</td></tr>
-<tr><td></td><td></td><td>results.</td><td></td></tr>
+ * Default model for computation.
+    Single bulge loops are not taken into account by the approximative mode.
+    <p></p><h3>Long bulge loop effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits.Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>san04</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Missing closing AT penalty.</td><td>SantaLucia and</td></tr>
+<tr><td>Hicks, 2004</td><td></td><td><code>tur06</code></td><td>*</td></tr>
+<tr><td>RNA</td><td>Not tested with experimental</td><td></td><td>Mathews et al., 1999; Lu et</td></tr>
+<tr><td></td><td></td><td>results.</td><td>al., 2006</td></tr>
 </table>
-<p>Long bulge loops are not taken
- into account by the approximative mode.</p>
-    
-    <h2 class="hasAnchor" id="cng-repeats-effect"><a class="anchor" href="#cng-repeats-effect"></a>CNG repeats effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>bro05</code>*</td><td>RNA</td><td>Self complementary sequences.</td><td>Broda et al., 2005</td></tr>
-<tr><td></td><td></td><td>2
- to 7 CNG repeats.</td><td></td></tr>
+ *
+  Default model for computation.
+    Long bulge loops are not taken into account by the approximative mode.
+    <p></p><h3>CNG repeats effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>bro05</code></td></tr>
+<tr><td>*</td><td>RNA</td><td>Self complementary sequences.</td><td>Broda et al.,</td></tr>
+<tr><td>2005</td><td></td><td></td><td>2 to 7 CNG repeats.</td></tr>
+<tr><td></td><td></td><td><strong>Model</strong></td><td></td></tr>
 </table>
-<p>CNG repeats are not taken into account by the
- approximative mode. The contribution of CNG repeats to the thermodynamic of
- helix-coil transition can be computed only for 2 to 7 CNG repeats. N
- represents a single mismatch of type N/N.</p>
-    
-    <h2 class="hasAnchor" id="inosine-bases-effect"><a class="anchor" href="#inosine-bases-effect"></a>Inosine bases effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>san05</code>*</td><td>DNA</td><td>Missing parameters for tandem</td><td>Watkins and
- SantaLucia, 2005</td></tr>
-<tr><td></td><td></td><td>base pairs containing inosine</td><td></td></tr>
-<tr><td></td><td></td><td>bases.</td><td></td></tr>
-<tr><td><code>zno07</code>*</td><td>RNA</td><td>Only IU base pairs.</td><td>Wright et
- al., 2007</td></tr>
+ * Default model for
+  computation.
+    CNG repeats are not taken into account by the approximative mode. The
+  contribution of CNG repeats to the thermodynamic of helix-coil transition
+  can be computed only for 2 to 7 CNG repeats. N represents a single mismatch
+  of type N/N.
+    <p></p><h3>Inosine bases effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>san05</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Missing parameters for tandem</td><td>Watkins and</td></tr>
+<tr><td>SantaLucia, 2005</td><td></td><td></td><td>base pairs containing inosine</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td>bases.</td><td></td><td></td><td><code>zno07</code></td></tr>
+<tr><td>*</td><td>RNA</td><td>Only IU base pairs.</td><td></td></tr>
+<tr><td>Wright et al., 2007</td><td></td><td><strong>Model</strong></td><td></td></tr>
 </table>
-    
-    <h2 class="hasAnchor" id="hydroxyadenine-bases-effect"><a class="anchor" href="#hydroxyadenine-bases-effect"></a>Hydroxyadenine bases effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>sug01</code>*</td><td>DNA</td><td>Only 5' GA*C 3'and 5' TA*A 3'</td><td>Kawakami et
- al., 2001</td></tr>
-<tr><td></td><td></td><td>contexts.</td><td></td></tr>
+ * Default model for computation.
+    Inosine bases (I) are not taken into account by the approximative mode.
+    <p></p><h3>Hydroxyadenine bases effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>sug01</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Only 5' GA*C 3'and 5' TA*A 3'</td><td>Kawakami et</td></tr>
+<tr><td>al., 2001</td><td></td><td></td><td>contexts.</td></tr>
+<tr><td></td><td></td><td><strong>Model</strong></td><td></td></tr>
 </table>
-<p>Hydroxyadenine bases (A*) are not
- taken into account by the approximative mode.</p>
-    
-    <h2 class="hasAnchor" id="azobenzenes-effect-effect"><a class="anchor" href="#azobenzenes-effect-effect"></a>Azobenzenes effect effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>asa05</code>*</td><td>DNA</td><td>Less reliable results when</td><td>Asanuma et al.,
- 2005</td></tr>
-<tr><td></td><td></td><td>the number of cis azobenzene</td><td></td></tr>
-<tr><td></td><td></td><td>increases.</td><td></td></tr>
+ * Default model for computation.
+    Hydroxyadenine bases (A*) are not taken into account by the approximative
+  mode.
+    <p></p><h3>Azobenzenes effect effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>asa05</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Less reliable results when</td><td>Asanuma et al.,</td></tr>
+<tr><td>2005</td><td></td><td></td><td>the number of cis azobenzene</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td>increases.</td><td></td><td></td><td><strong>Model</strong></td></tr>
 </table>
-<p>Azobenzenes (X_T for trans azobenzenes and X_C for cis azobenzenes)
- are not taken into account by the approximative mode.</p>
-    
-    <h2 class="hasAnchor" id="locked-nucleic-acids-effect"><a class="anchor" href="#locked-nucleic-acids-effect"></a>Locked nucleic acids effect</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>mct04</code>*</td><td>DNA</td><td></td><td>McTigue et al., 2004</td></tr>
+ * Default model for computation.
+    Azobenzenes (X_T for trans azobenzenes and X_C for cis azobenzenes) are not
+  taken into account by the approximative mode.
+    <p></p><h3>Locked nucleic acids effect</h3>
+<table class='table'>
+<tr><td></td><td><strong>Model</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>mct04</code></td></tr>
+<tr><td>*</td><td>DNA</td><td></td><td>McTigue et al., 2004</td></tr>
 </table>
-<p>Locked nucleic acids
- (AL, GL, TL and CL) are not taken into account by the approximative mode.</p>
+ * Default model for
+  computation.
+    Locked nucleic acids (AL, GL, TL and CL) are not taken into account by the
+  approximative mode.
     
-    <h2 class="hasAnchor" id="sodium-corrections"><a class="anchor" href="#sodium-corrections"></a>Sodium corrections</h2>
+    <h2 class="hasAnchor" id="ion-corrections"><a class="anchor" href="#ion-corrections"></a>Ion corrections</h2>
 
-    <p></p><table class='table'>
-<tr><td><strong>Correcion</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>ahs01</code></td><td>DNA</td><td>Na&gt;0.</td><td>von Ahsen et al., 2001</td></tr>
-<tr><td><code>schlif</code></td><td>DNA</td><td>Na&gt;=0.07; Na&lt;=0.12.</td><td>Schildkraut and Lifson,
- 1965</td></tr>
-<tr><td><code>tanna06</code></td><td>DNA</td><td>Na&gt;=0.001; Na&lt;=1.</td><td>Tan and Chen,
- 2006</td></tr>
-<tr><td><code>tanna07</code>*</td><td>RNA</td><td>Na&gt;=0.003; Na&lt;=1.</td><td>Tan and Chen,
- 2007</td></tr>
-<tr><td></td><td>or</td><td></td><td></td></tr>
-<tr><td></td><td>2'-O-MeRNA/RNA</td><td></td><td></td></tr>
-<tr><td><code>wet91</code></td><td>RNA,</td><td>Na&gt;0.</td><td>Wetmur, 1991</td></tr>
-<tr><td></td><td>DNA</td><td></td><td></td></tr>
-<tr><td></td><td>and</td><td></td><td></td></tr>
-<tr><td></td><td>RNA/DNA</td><td></td><td></td></tr>
-<tr><td><code>kam71</code></td><td>DNA</td><td>Na&gt;0;
- Na&gt;=0.069; Na&lt;=1.02.</td><td>Frank-Kamenetskii, 1971</td></tr>
-<tr><td><code>marschdot</code></td><td>DNA</td><td>Na&gt;=0.069; Na&lt;=1.02.</td><td>Marmur and Doty, 1962; Blake</td></tr>
-<tr><td></td><td></td><td></td><td>and Delcourt, 1998</td></tr>
-<tr><td><code>owc1904</code></td><td>DNA</td><td>Na&gt;0.</td><td>Owczarzy et al., 2004</td></tr>
-<tr><td><code>owc2004</code></td><td>DNA</td><td>Na&gt;0.</td><td>Owczarzy et
- al., 2004</td></tr>
-<tr><td><code>owc2104</code></td><td>DNA</td><td>Na&gt;0.</td><td>Owczarzy et al., 2004</td></tr>
-<tr><td><code>owc2204</code>*</td><td>DNA</td><td>Na&gt;0.</td><td>Owczarzy et al., 2004</td></tr>
-<tr><td><code>san96</code></td><td>DNA</td><td>Na&gt;=0.1.</td><td>SantaLucia et al., 1996</td></tr>
-<tr><td><code>san04</code></td><td>DNA</td><td>Na&gt;=0.05; Na&lt;=1.1;</td><td>SantaLucia and Hicks,
- 2004;</td></tr>
-<tr><td></td><td></td><td>Oligonucleotides inferior to</td><td>SantaLucia, 1998</td></tr>
-<tr><td></td><td></td><td>16 bases.</td><td></td></tr>
+    
+    <p></p><h3>Sodium corrections</h3>
+<table class='table'>
+<tr><td></td><td><strong>Correction</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits.Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>ahs01</code></td></tr>
+<tr><td></td><td>DNA</td><td>Na&gt;0.</td><td>von Ahsen et al., 2001</td></tr>
+<tr><td></td><td></td><td><code>schlif</code></td><td></td></tr>
+<tr><td>DNA</td><td>Na&gt;=0.07; Na&lt;=0.12.</td><td>Schildkraut and</td><td>Lifson, 1965</td></tr>
+<tr><td></td><td><code>tanna06</code></td><td></td><td>DNA</td></tr>
+<tr><td>Na&gt;=0.001; Na&lt;=1.</td><td>Tan and</td><td>Chen, 2006</td><td></td></tr>
+<tr><td><code>tanna07</code></td><td>*</td><td>RNA</td><td>Na&gt;=0.003; Na&lt;=1.</td></tr>
+<tr><td>Tan and</td><td>Chen, 2007</td><td></td><td>or</td></tr>
+<tr><td></td><td></td><td></td><td>2'-O-MeRNA/RNA</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+<tr><td><code>wet91</code></td><td></td><td>RNA,</td><td>Na&gt;0.</td></tr>
+<tr><td>Wetmur, 1991</td><td></td><td>DNA</td><td></td></tr>
+<tr><td></td><td></td><td></td><td>and</td></tr>
+<tr><td></td><td></td><td></td><td>RNA/DNA</td></tr>
+<tr><td></td><td></td><td></td><td><code>kam71</code></td></tr>
+<tr><td></td><td>DNA</td><td></td><td>Na&gt;0; Na&gt;=0.069; Na&lt;=1.02.</td></tr>
+<tr><td>Frank-Kamenetskii, 1971</td><td></td><td></td><td><code>marschdot</code></td></tr>
+<tr><td></td><td>DNA</td><td>Na&gt;=0.069; Na&lt;=1.02.</td><td>Marmur and Doty,</td></tr>
+<tr><td>1962; Blake</td><td></td><td></td><td></td></tr>
+<tr><td>and Delcourt, 1998</td><td></td><td><code>owc1904</code></td><td></td></tr>
+<tr><td></td><td>DNA</td><td>Na&gt;0. (equation 19)</td><td>Owczarzy et al., 2004</td></tr>
+<tr><td></td><td><code>owc2004</code></td><td></td><td></td></tr>
+<tr><td>DNA</td><td>Na&gt;0. (equation 20)</td><td>Owczarzy et al., 2004</td><td></td></tr>
+<tr><td></td><td><code>owc2104</code></td><td></td><td>DNA</td></tr>
+<tr><td>Na&gt;0. (equation 21)</td><td>Owczarzy et al., 2004</td><td></td><td></td></tr>
+<tr><td><code>owc2204</code></td><td>*</td><td>DNA</td><td>Na&gt;0. (equation 22)</td></tr>
+<tr><td>Owczarzy et al.,</td><td>2004</td><td></td><td><code>san96</code></td></tr>
+<tr><td></td><td>DNA</td><td>Na&gt;=0.1.</td><td>SantaLucia et al., 1996</td></tr>
+<tr><td></td><td></td><td><code>san04</code></td><td></td></tr>
+<tr><td>DNA</td><td>Na&gt;=0.05; Na&lt;=1.1;</td><td>SantaLucia and</td><td>Hicks, 2004;</td></tr>
+<tr><td></td><td></td><td>Oligonucleotides inferior to</td><td>SantaLucia,</td></tr>
+<tr><td>1998</td><td></td><td></td><td>16 bases.</td></tr>
+<tr><td></td><td></td><td><strong>Correction</strong></td><td></td></tr>
 </table>
-    
-    <h2 class="hasAnchor" id="magnesium-corrections"><a class="anchor" href="#magnesium-corrections"></a>Magnesium corrections</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Correcion</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>owcmg08</code>*</td><td>DNA</td><td>Mg&gt;=0.0005; Mg&lt;=0.6.</td><td>Owczarzy et al.,
- 2008</td></tr>
-<tr><td><code>tanmg06</code></td><td>DNA</td><td>Mg&gt;=0.0001; Mg&lt;=1; Oligomer</td><td>Tan and
- Chen, 2006</td></tr>
+<p>* Default correction method for
+  computation.</p>
+<p></p><h3>Magnesium corrections</h3>
+<table class='table'>
+<tr><td></td><td><strong>Correction</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>owcmg08</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Mg&gt;=0.0005; Mg&lt;=0.6.</td><td>Owczarzy et al.,</td></tr>
+<tr><td>2008</td><td></td><td><code>tanmg06</code></td><td></td></tr>
+<tr><td>DNA</td><td>Mg&gt;=0.0001; Mg&lt;=1; Oligomer</td><td>Tan</td><td>and Chen, 2006</td></tr>
 <tr><td></td><td></td><td>length superior to 6 base</td><td></td></tr>
-<tr><td></td><td></td><td>pairs.</td><td></td></tr>
-<tr><td><code>tanmg07</code>*</td><td>RNA</td><td>Mg&gt;=0.1; Mg&lt;=0.3.</td><td>Tan and
- Chen, 2007</td></tr>
+<tr><td></td><td></td><td></td><td>pairs.</td></tr>
+<tr><td></td><td></td><td><code>tanmg07</code></td><td>*</td></tr>
+<tr><td>RNA</td><td>Mg&gt;=0.1; Mg&lt;=0.3.</td><td>Tan and</td><td>Chen, 2007</td></tr>
 </table>
+<p>* Default correction method for computation.</p>
+<p></p><h3>Mixed Sodium and Magnesium corrections</h3>
+<table class='table'>
+<tr><td></td><td></td><td><strong>Correction</strong></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits.Remarks</strong></td><td></td><td></td><td></td></tr>
+<tr><td><strong>Reference</strong></td><td></td><td></td><td><code>owcmix08</code></td></tr>
+<tr><td>*</td><td>DNA</td><td>Mg&gt;=0.0005; Mg&lt;=0.6;</td><td></td></tr>
+<tr><td>Owczarzy et al., 2008</td><td></td><td></td><td>Na+K+Tris/2&gt;0.</td></tr>
+<tr><td></td><td></td><td></td><td><code>tanmix07</code></td></tr>
+<tr><td></td><td>DNA,</td><td>Mg&gt;=0.1; Mg&lt;=0.3;</td><td>Tan and Chen, 2007</td></tr>
+<tr><td></td><td></td><td>RNA</td><td>Na+K+Tris/2&gt;=0.1;</td></tr>
+<tr><td></td><td></td><td>or</td><td>Na+K+Tris/2&lt;=0.3.</td></tr>
+<tr><td></td><td></td><td></td><td>2'-O-MeRNA/RNA</td></tr>
+<tr><td></td><td></td><td></td><td></td></tr>
+</table>
+<p>* Default correction method for
+  computation.</p>
+<p>The ion correction by Owczarzy et al. (2008) is used by default according
+  to the [Mg<sup>2+</sup>]<sup>0.5</sup> &frasl;
+  [Mon<sup>+</sup>]
+   ratio, where [Mon<sup>+</sup>] = [Na<sup>+</sup>]
+  &plus; [Tris<sup>+</sup>] &plus; [K<sup>+</sup>]
+  .</p>
+<p>If,</p><dl class='dl-horizontal'>
+  <dt>[Mon<sup>+</sup>]
+  = 0</dt><dd><p>Default sodium correction is used.</p></dd> <dt>Ratio &lt; 0.22,</dt><dd><p>Default
+  sodium correction is used.</p></dd> <dt>0.22 &lt;= Ratio &lt; 6</dt><dd><p>Default mixed Na and
+  Mg correction is used.</p></dd> <dt>Ratio &gt;= 6</dt><dd><p>Default magnesium correction is
+  used.</p></dd> </dl>
+    <p>Note that
+  [Tris<sup>+</sup>] is
+  about half of the total tris buffer concentration.</p>
+<p></p><h3>Sodium equivalent concentration methods</h3>
+<table class='table'>
+<tr><td></td><td></td><td><strong>Correction</strong></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td></td></tr>
+<tr><td><strong>Reference</strong></td><td></td><td></td><td><code>ahs01</code></td></tr>
+<tr><td>*</td><td>DNA</td><td></td><td>von Ahsen et al.,</td></tr>
+<tr><td>2001</td><td></td><td><code>mit96</code></td><td></td></tr>
+<tr><td>DNA</td><td></td><td>Mitsuhashi, 1996</td><td></td></tr>
+<tr><td><code>pey00</code></td><td></td><td></td><td>DNA</td></tr>
+<tr><td></td><td>Peyret, 2000</td><td></td><td></td></tr>
+</table>
+ * Default correction method for
+  computation.
+    For the other types of hybridization, the DNA default correction is used.
+  If there are other cations when an approximative approach is used, a sodium
+  equivalence is automatically computed. In case of nearest neighbor
+  approach, the sodium equivalence will be used only if a sodium correction
+  is specified by the argument <code>correction.ion</code>.
     
-    <h2 class="hasAnchor" id="mixed-sodium-and-magnesium-corrections"><a class="anchor" href="#mixed-sodium-and-magnesium-corrections"></a>Mixed Sodium and Magnesium corrections</h2>
+    <h2 class="hasAnchor" id="denaturing-agent-corrections"><a class="anchor" href="#denaturing-agent-corrections"></a>Denaturing agent corrections</h2>
 
-    <p></p><table class='table'>
-<tr><td><strong>Correcion</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>owcmix08</code>*</td><td>DNA</td><td>Mg&gt;=0.0005; Mg&lt;=0.6;</td><td>Owczarzy et al., 2008</td></tr>
-<tr><td></td><td></td><td>Na+K+Tris/2&gt;0.</td><td></td></tr>
-<tr><td><code>tanmix07</code></td><td>DNA</td><td>Mg&gt;=0.1; Mg&lt;=0.3;</td><td>Tan and Chen, 2007</td></tr>
-<tr><td></td><td>and</td><td>Na+K+Tris/2&gt;=0.1;</td><td></td></tr>
-<tr><td></td><td>RNA</td><td>Na+K+Tris/2&lt;=0.3.</td><td></td></tr>
-</table>
     
-    <h2 class="hasAnchor" id="sodium-equivalent-concentration-methods"><a class="anchor" href="#sodium-equivalent-concentration-methods"></a>Sodium equivalent concentration methods</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Correcion</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>ahs01</code>*</td><td>DNA</td><td></td><td>von Ahsen et al.,
- 2001</td></tr>
-<tr><td><code>mit96</code></td><td>DNA</td><td></td><td>Mitsuhashi, 1996</td></tr>
-<tr><td><code>pey00</code></td><td>DNA</td><td></td><td>Peyret, 2000</td></tr>
-</table>
-    
-    <h2 class="hasAnchor" id="dmso-corrections"><a class="anchor" href="#dmso-corrections"></a>DMSO corrections</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Correcion</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>ahs01</code></td><td>DNA</td><td>Not tested with experimental</td><td>von Ahsen et
- al., 2001</td></tr>
+    <p></p><h3>DMSO corrections</h3>
+<table class='table'>
+<tr><td></td><td><strong>Correction</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>ahs01*</code></td></tr>
+<tr><td></td><td>DNA</td><td>Not tested with experimental</td><td>von Ahsen et</td></tr>
+<tr><td>al., 2001</td><td></td><td></td><td>results.</td></tr>
+<tr><td></td><td></td><td><code>cul76</code></td><td></td></tr>
+<tr><td>DNA</td><td>Not</td><td>tested with experimental</td><td>Cullen and Bick, 1976</td></tr>
 <tr><td></td><td></td><td>results.</td><td></td></tr>
-<tr><td><code>cul76</code></td><td>DNA</td><td>Not tested
- with experimental</td><td>Cullen and Bick, 1976</td></tr>
+<tr><td></td><td></td><td><code>esc80</code></td><td></td></tr>
+<tr><td>DNA</td><td>Not tested with experimental</td><td>Escara</td><td>and Hutton, 1980</td></tr>
 <tr><td></td><td></td><td>results.</td><td></td></tr>
-<tr><td><code>esc80</code></td><td>DNA</td><td>Not tested with experimental</td><td>Escara and
- Hutton, 1980</td></tr>
-<tr><td></td><td></td><td>results.</td><td></td></tr>
-<tr><td><code>mus80</code></td><td>DNA</td><td>Not
- tested with experimental</td><td>Musielski et al., 1981</td></tr>
+<tr><td></td><td><code>mus81</code></td><td></td><td>DNA</td></tr>
+<tr><td></td><td>Not tested with experimental</td><td>Musielski et al., 1981</td><td></td></tr>
 <tr><td></td><td></td><td>results.</td><td></td></tr>
 </table>
-    
-    <h2 class="hasAnchor" id="formamide-corrections"><a class="anchor" href="#formamide-corrections"></a>Formamide corrections</h2>
-
-    <p></p><table class='table'>
-<tr><td><strong>Correcion</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr>
-<tr><td><code>bla96</code></td><td>DNA</td><td>With formamide concentration</td><td>Blake, 1996</td></tr>
-<tr><td></td><td></td><td>in mol/L.</td><td></td></tr>
-<tr><td><code>lincorr</code></td><td>DNA</td><td>With a <!-- % of -->
- formamide volume.</td><td>McConaughy et al., 1969;</td></tr>
-<tr><td></td><td></td><td></td><td>Record,
- 1967; Casey and</td></tr>
-<tr><td></td><td></td><td></td><td>Davidson, 1977; Hutton, 1977</td></tr>
+ * Default correction method for computation.
+    For the other types of hybridization, the DNA default correction is used.
+  If there is DMSO when an approximative approach is used, a DMSO correction
+  is automatically computed. In case of nearest neighbor approach and
+  approximative approach, the DMSO correction will be used only if a sodium
+  correction is specified by the argument <code>correction.ion</code>.
+    <p></p><h3>Formamide corrections</h3>
+<table class='table'>
+<tr><td></td><td><strong>Correction</strong></td><td></td><td></td></tr>
+<tr><td></td><td><strong>Type</strong></td><td></td><td></td></tr>
+<tr><td><strong>Limits/Remarks</strong></td><td></td><td></td><td><strong>Reference</strong></td></tr>
+<tr><td></td><td></td><td></td><td><code>bla96*</code></td></tr>
+<tr><td></td><td>DNA</td><td>With formamide concentration</td><td>Blake, 1996</td></tr>
+<tr><td></td><td></td><td></td><td>in mol/L.</td></tr>
+<tr><td></td><td></td><td><code>lincorr</code></td><td></td></tr>
+<tr><td>DNA</td><td>With a</td><td><!-- % of --></td><td></td></tr>
+<tr><td>formamide volume.</td><td>McConaughy et al., 1969;</td><td></td><td></td></tr>
+<tr><td></td><td>Record,</td><td>1967; Casey and</td><td></td></tr>
+<tr><td></td><td></td><td>Davidson, 1977; Hutton, 1977</td><td></td></tr>
 </table>
+ * Default
+  correction method for computation.
+    For the other types of hybridization, the DNA default correction is used.
+  If there is formamide when an approximative approach is used, a formamide
+  correction is automatically computed. In case of nearest neighbor approach
+  and approximative approach, the formamide correction will be used only if a
+  sodium correction is specified by the argument <code>correction.ion</code>.
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Marmur J, Doty P (1962).
 &#8220;Determination of the base composition of deoxyribonucleic acid from its thermal denaturation temperature.&#8221;
 <em>Journal of Molecular Biology</em>, <b>5</b>(1), 109--118.
-doi: <a href='http://doi.org/10.1016/S0022-2836(62)80066-7'>10.1016/S0022-2836(62)80066-7</a>
+doi: <a href='https://doi.org/10.1016/S0022-2836(62)80066-7'>10.1016/S0022-2836(62)80066-7</a>
 .</p>
 <p>Schildkraut C, Lifson S (1965).
 &#8220;Dependence of the melting temperature of DNA on salt concentration.&#8221;
 <em>Biopolymers</em>, <b>3</b>(2), 195--208.
-doi: <a href='http://doi.org/10.1002/bip.360030207'>10.1002/bip.360030207</a>
+doi: <a href='https://doi.org/10.1002/bip.360030207'>10.1002/bip.360030207</a>
 .</p>
 <p>Record MT (1967).
 &#8220;Electrostatic effects on polynucleotide transitions. I. Behavior at neutral pH.&#8221;
 <em>Biopolymers</em>, <b>5</b>(10), 975--992.
-doi: <a href='http://doi.org/10.1002/bip.1967.360051010'>10.1002/bip.1967.360051010</a>
+doi: <a href='https://doi.org/10.1002/bip.1967.360051010'>10.1002/bip.1967.360051010</a>
 .</p>
 <p>McConaughy BL, Laird C, McCarthy BJ (1969).
 &#8220;Nucleic acid reassociation in formamide.&#8221;
 <em>Biochemistry</em>, <b>8</b>(8), 3289--3295.
-doi: <a href='http://doi.org/10.1021/bi00836a024'>10.1021/bi00836a024</a>
+doi: <a href='https://doi.org/10.1021/bi00836a024'>10.1021/bi00836a024</a>
 .</p>
 <p>Owen R, Hill L, Lapage S (1969).
 &#8220;Determination of DNA base compositions from melting profiles in dilute buffers.&#8221;
 <em>Biopolymers</em>, <b>7</b>(4), 503--516.
-doi: <a href='http://doi.org/10.1002/bip.1969.360070408'>10.1002/bip.1969.360070408</a>
+doi: <a href='https://doi.org/10.1002/bip.1969.360070408'>10.1002/bip.1969.360070408</a>
 .</p>
 <p>Frank-Kamenetskii MD (1971).
 &#8220;Simplification of the empirical relationship between melting temperature of DNA, its GC content and concentration of sodium ions in solution.&#8221;
 <em>Biopolymers</em>, <b>10</b>(12), 2623--2624.
-doi: <a href='http://doi.org/10.1002/bip.360101223'>10.1002/bip.360101223</a>
+doi: <a href='https://doi.org/10.1002/bip.360101223'>10.1002/bip.360101223</a>
 .</p>
 <p>Britten RJ, Graham DE, Neufeld BR (1974).
 &#8220;Analysis of repeating DNA sequences by reassociation.&#8221;
 <em>Methods in Enzymology</em>, <b>29</b>, 363--418.
-doi: <a href='http://doi.org/10.1016/0076-6879(74)29033-5'>10.1016/0076-6879(74)29033-5</a>
+doi: <a href='https://doi.org/10.1016/0076-6879(74)29033-5'>10.1016/0076-6879(74)29033-5</a>
 .</p>
 <p>Cullen BR, Bick MD (1976).
 &#8220;Thermal denaturation of DNA from bromodeoxyuridine substituted cells.&#8221;
 <em>Nucleic Acids Research</em>, <b>3</b>(1), 49--62.
-doi: <a href='http://doi.org/10.1093/nar/3.1.49'>10.1093/nar/3.1.49</a>
+doi: <a href='https://doi.org/10.1093/nar/3.1.49'>10.1093/nar/3.1.49</a>
 .</p>
 <p>Hutton JR (1977).
 &#8220;Renaturation kinetics and thermal stability of DNA in aqueous solutions of formamide and urea.&#8221;
 <em>Nucleic Acids Research</em>, <b>4</b>(10), 3537--3555.
-doi: <a href='http://doi.org/10.1093/nar/4.10.3537'>10.1093/nar/4.10.3537</a>
+doi: <a href='https://doi.org/10.1093/nar/4.10.3537'>10.1093/nar/4.10.3537</a>
 .</p>
 <p>Casey J, Davidson N (1977).
 &#8220;Rates of formation and thermal stabilities of RNA:DNA and DNA:DNA duplexes at high concentrations of formamide.&#8221;
 <em>Nucleic Acids Research</em>, <b>4</b>(5), 1539--1552.
-doi: <a href='http://doi.org/10.1093/nar/4.5.1539'>10.1093/nar/4.5.1539</a>
+doi: <a href='https://doi.org/10.1093/nar/4.5.1539'>10.1093/nar/4.5.1539</a>
 .</p>
 <p>Hall TJ, Grula JW, Davidson EH, Britten RJ (1980).
 &#8220;Evolution of sea urchin non-repetitive DNA.&#8221;
 <em>Journal of Molecular Evolution</em>, <b>16</b>(2), 95--110.
-doi: <a href='http://doi.org/10.1007/BF01731580'>10.1007/BF01731580</a>
+doi: <a href='https://doi.org/10.1007/BF01731580'>10.1007/BF01731580</a>
 .</p>
 <p>Escara JF, Hutton JR (1980).
 &#8220;Thermal stability and renaturation of DNA in dimethyl sulfoxide solutions: Acceleration of the renaturation rate.&#8221;
 <em>Biopolymers</em>, <b>19</b>(7), 1315--1327.
-doi: <a href='http://doi.org/10.1002/bip.1980.360190708'>10.1002/bip.1980.360190708</a>
+doi: <a href='https://doi.org/10.1002/bip.1980.360190708'>10.1002/bip.1980.360190708</a>
 .</p>
 <p>Musielski H, Mann W, Laue R, Michel S (1981).
 &#8220;Influence of dimethylsulfoxide on transcription by bacteriophage T3-induced RNA polymerase.&#8221;
 <em>Zeitschrift fur allgemeine Mikrobiologie</em>, <b>21</b>(6), 447--456.
-doi: <a href='http://doi.org/10.1002/jobm.19810210606'>10.1002/jobm.19810210606</a>
+doi: <a href='https://doi.org/10.1002/jobm.19810210606'>10.1002/jobm.19810210606</a>
 .</p>
 <p>Freier SM, Kierzek R, Jaeger JA, Sugimoto N, Caruthers MH, Neilson T, Turner DH (1986).
 &#8220;Improved free-energy parameters for predictions of RNA duplex stability.&#8221;
 <em>Proceedings of the National Academy of Sciences</em>, <b>83</b>(24), 9373.
-<a href='http://www.pnas.org/content/83/24/9373.abstract'>http://www.pnas.org/content/83/24/9373.abstract</a>.</p>
+doi: <a href='https://doi.org/10.1073/pnas.83.24.9373'>10.1073/pnas.83.24.9373</a>
+, <a href='http://www.pnas.org/content/83/24/9373.abstract'>http://www.pnas.org/content/83/24/9373.abstract</a>.</p>
 <p>Breslauer KJ, Frank R, Blocker H, Marky LA (1986).
 &#8220;Predicting DNA duplex stability from the base sequence.&#8221;
 <em>Proceedings of the National Academy of Sciences</em>, <b>83</b>(11), 3746.
-<a href='http://www.pnas.org/content/83/11/3746.abstract'>http://www.pnas.org/content/83/11/3746.abstract</a>.</p>
+doi: <a href='https://doi.org/10.1073/pnas.83.11.3746'>10.1073/pnas.83.11.3746</a>
+, <a href='http://www.pnas.org/content/83/11/3746.abstract'>http://www.pnas.org/content/83/11/3746.abstract</a>.</p>
 <p>Wahl GM, Barger SL, Kimmel AR (1987).
 &#8220;Molecular hybridization of immobilized nucleic acids: Theoretical concepts and practical considerations.&#8221;
 <em>Methods in Enzymology</em>, <b>152</b>, 399--407.
-doi: <a href='http://doi.org/10.1016/0076-6879(87)52046-8'>10.1016/0076-6879(87)52046-8</a>
+doi: <a href='https://doi.org/10.1016/0076-6879(87)52046-8'>10.1016/0076-6879(87)52046-8</a>
 .</p>
 <p>Wetmur JG (1991).
 &#8220;DNA probes: Applications of the principles of nucleic acid hybridization.&#8221;
 <em>Critical Reviews in Biochemistry and Molecular Biology</em>, <b>26</b>(3-4), 227--259.
-doi: <a href='http://doi.org/10.3109/10409239109114069'>10.3109/10409239109114069</a>
+doi: <a href='https://doi.org/10.3109/10409239109114069'>10.3109/10409239109114069</a>
 .</p>
 <p>Chester N, Marshak D (1993).
 &#8220;Dimethyl sulfoxide-mediated primer Tm reduction: A method for analyzing the role of renaturation temperature in the polymerase chain reaction.&#8221;
 <em>Analytical Biochemistry</em>, <b>209</b>(2), 284--290.
-doi: <a href='http://doi.org/10.1006/abio.1993.1121'>10.1006/abio.1993.1121</a>
+doi: <a href='https://doi.org/10.1006/abio.1993.1121'>10.1006/abio.1993.1121</a>
 .</p>
 <p>Sugimoto N, Katoh M, Nakano S, Ohmichi T, Sasaki M (1994).
 &#8220;RNA/DNA hybrid duplexes with identical nearest-neighbor base-pairs have identical stability.&#8221;
 <em>FEBS Letters</em>, <b>354</b>(1), 74--78.
-doi: <a href='http://doi.org/10.1016/0014-5793(94)01098-6'>10.1016/0014-5793(94)01098-6</a>
+doi: <a href='https://doi.org/10.1016/0014-5793(94)01098-6'>10.1016/0014-5793(94)01098-6</a>
 .</p>
 <p>Sugimoto N, Nakano S, Katoh M, Matsumura A, Nakamuta H, Ohmichi T, Yoneyama M, Sasaki M (1995).
 &#8220;Thermodynamic parameters to predict stability of RNA/DNA hybrid duplexes.&#8221;
 <em>Biochemistry</em>, <b>34</b>(35), 11211--11216.
-doi: <a href='http://doi.org/10.1021/bi00035a029'>10.1021/bi00035a029</a>
+doi: <a href='https://doi.org/10.1021/bi00035a029'>10.1021/bi00035a029</a>
 .</p>
 <p>SantaLucia J, Allawi HT, Seneviratne PA (1996).
 &#8220;Improved nearest-neighbor parameters for predicting DNA duplex stability.&#8221;
 <em>Biochemistry</em>, <b>35</b>(11), 3555--3562.
-doi: <a href='http://doi.org/10.1021/bi951907q'>10.1021/bi951907q</a>
+doi: <a href='https://doi.org/10.1021/bi951907q'>10.1021/bi951907q</a>
 .</p>
 <p>Sugimoto N, Nakano S, Yoneyama M, Honda K (1996).
 &#8220;Improved thermodynamic parameters and helix initiation factor to predict stability of DNA duplexes.&#8221;
 <em>Nucleic Acids Research</em>, <b>24</b>(22), 4501--4505.
-doi: <a href='http://doi.org/10.1093/nar/24.22.4501'>10.1093/nar/24.22.4501</a>
+doi: <a href='https://doi.org/10.1093/nar/24.22.4501'>10.1093/nar/24.22.4501</a>
 .</p>
 <p>Blake RD, Delcourt SG (1996).
 &#8220;Thermodynamic effects of formamide on DNA stability.&#8221;
 <em>Nucleic Acids Research</em>, <b>24</b>(11), 2095--2103.
-doi: <a href='http://doi.org/10.1093/nar/24.11.2095'>10.1093/nar/24.11.2095</a>
+doi: <a href='https://doi.org/10.1093/nar/24.11.2095'>10.1093/nar/24.11.2095</a>
 .</p>
 <p>Blake RD (1996).
 &#8220;Denaturation of DNA.&#8221;
@@ -943,64 +1127,66 @@ VCH Verlagsgesellschaft, Weinheim, Germany.</p>
 <p>Mitsuhashi M (1996).
 &#8220;Technical report: Part 1. Basic requirements for designing optimal oligonucleotide probe sequences.&#8221;
 <em>Journal of Clinical Laboratory Analysis</em>, <b>10</b>(5), 277--284.
-doi: <a href='http://doi.org/10.1002/(sici)1098-2825(1996)10:5&lt;277::aid-jcla8&gt;3.0.co;2-5'>10.1002/(sici)1098-2825(1996)10:5&lt;277::aid-jcla8&gt;3.0.co;2-5</a>
+doi: <a href='https://doi.org/10/cw9bn6'>10/cw9bn6</a>
 .</p>
 <p>Allawi HT, SantaLucia J (1997).
-&#8220;Thermodynamics and NMR of internal G-T mismatches in dna.&#8221;
+&#8220;Thermodynamics and NMR of internal G&middot;T mismatches in dna.&#8221;
 <em>Biochemistry</em>, <b>36</b>(34), 10581--10594.
-doi: <a href='http://doi.org/10.1021/bi962590c'>10.1021/bi962590c</a>
+doi: <a href='https://doi.org/10.1021/bi962590c'>10.1021/bi962590c</a>
 .</p>
 <p>SantaLucia J (1998).
 &#8220;A unified view of polymer, dumbbell, and oligonucleotide DNA nearest-neighbor thermodynamics.&#8221;
 <em>Proceedings of the National Academy of Sciences</em>, <b>95</b>(4), 1460.
-<a href='http://www.pnas.org/content/95/4/1460.abstract'>http://www.pnas.org/content/95/4/1460.abstract</a>.</p>
+doi: <a href='https://doi.org/10.1073/pnas.95.4.1460'>10.1073/pnas.95.4.1460</a>
+, <a href='http://www.pnas.org/content/95/4/1460.abstract'>http://www.pnas.org/content/95/4/1460.abstract</a>.</p>
 <p>Xia T, SantaLucia J, Burkard ME, Kierzek R, Schroeder SJ, Jiao X, Cox C, Turner DH (1998).
 &#8220;Thermodynamic parameters for an expanded nearest-neighbor model for formation of RNA duplexes with Watson-Crick base pairs.&#8221;
 <em>Biochemistry</em>, <b>37</b>(42), 14719--14735.
-doi: <a href='http://doi.org/10.1021/bi9809425'>10.1021/bi9809425</a>
+doi: <a href='https://doi.org/10.1021/bi9809425'>10.1021/bi9809425</a>
 .</p>
 <p>Allawi HT, SantaLucia J (1998).
-&#8220;Thermodynamics of internal C-T mismatches in DNA.&#8221;
+&#8220;Thermodynamics of internal C&middot;T mismatches in DNA.&#8221;
 <em>Nucleic Acids Research</em>, <b>26</b>(11), 2694--2701.
-doi: <a href='http://doi.org/10.1093/nar/26.11.2694'>10.1093/nar/26.11.2694</a>
+doi: <a href='https://doi.org/10.1093/nar/26.11.2694'>10.1093/nar/26.11.2694</a>
 .</p>
 <p>Blake RD, Delcourt SG (1998).
 &#8220;Thermal stability of DNA.&#8221;
 <em>Nucleic Acids Research</em>, <b>26</b>(14), 3323--3332.
-doi: <a href='http://doi.org/10.1093/nar/26.14.3323'>10.1093/nar/26.14.3323</a>
+doi: <a href='https://doi.org/10.1093/nar/26.14.3323'>10.1093/nar/26.14.3323</a>
 .</p>
 <p>Allawi HT, SantaLucia J (1998).
-&#8220;Nearest neighbor thermodynamic parameters for internal G-A mismatches in DNA.&#8221;
+&#8220;Nearest neighbor thermodynamic parameters for internal G&middot;A mismatches in DNA.&#8221;
 <em>Biochemistry</em>, <b>37</b>(8), 2170--2179.
-doi: <a href='http://doi.org/10.1021/bi9724873'>10.1021/bi9724873</a>
+doi: <a href='https://doi.org/10.1021/bi9724873'>10.1021/bi9724873</a>
 .</p>
 <p>Allawi HT, SantaLucia J (1998).
-&#8220;Nearest-neighbor thermodynamics of internal A-C mismatches in dna: sequence dependence and pH effects.&#8221;
+&#8220;Nearest-neighbor thermodynamics of internal A&middot;C mismatches in dna: sequence dependence and pH effects.&#8221;
 <em>Biochemistry</em>, <b>37</b>(26), 9435--9444.
-doi: <a href='http://doi.org/10.1021/bi9803729'>10.1021/bi9803729</a>
+doi: <a href='https://doi.org/10.1021/bi9803729'>10.1021/bi9803729</a>
 .</p>
 <p>Mathews DH, Sabina J, Zuker M, Turner DH (1999).
 &#8220;Expanded sequence dependence of thermodynamic parameters improves prediction of RNA secondary structure.&#8221;
 <em>Journal of Molecular Biology</em>, <b>288</b>(5), 911--940.
-doi: <a href='http://doi.org/10.1006/jmbi.1999.2700'>10.1006/jmbi.1999.2700</a>
+doi: <a href='https://doi.org/10.1006/jmbi.1999.2700'>10.1006/jmbi.1999.2700</a>
 .</p>
 <p>Peyret N, Seneviratne PA, Allawi HT, SantaLucia J (1999).
-&#8220;Nearest-Neighbor Thermodynamics and NMR of DNA Sequences with Internal A-A, C-C, G-G, and T-T Mismatches.&#8221;
+&#8220;Nearest-Neighbor Thermodynamics and NMR of DNA Sequences with Internal A&middot;A, C&middot;C, G&middot;G, and T&middot;T Mismatches.&#8221;
 <em>Biochemistry</em>, <b>38</b>(12), 3468--3477.
-doi: <a href='http://doi.org/10.1021/bi9825091'>10.1021/bi9825091</a>
+doi: <a href='https://doi.org/10.1021/bi9825091'>10.1021/bi9825091</a>
 .</p>
 <p>Peyret N (2000).
-<em>Prediction of nucleic acid hybridization: Parameters and algorithms.</em>.
-PhD thesis, Wayne State University, Detroit, MI.</p>
+<em>Prediction of nucleic acid hybridization: Parameters and algorithms</em>.
+Ph.D. Thesis, Wayne State University, Detroit, MI.
+<a href='http://elibrary.wayne.edu/record=2760965'>http://elibrary.wayne.edu/record=2760965</a>.</p>
 <p>Bommarito S, Peyret N, SantaLucia J (2000).
 &#8220;Thermodynamic parameters for DNA sequences with dangling ends.&#8221;
 <em>Nucleic Acids Research</em>, <b>28</b>(9), 1929--1934.
-doi: <a href='http://doi.org/10.1093/nar/28.9.1929'>10.1093/nar/28.9.1929</a>
+doi: <a href='https://doi.org/10.1093/nar/28.9.1929'>10.1093/nar/28.9.1929</a>
 .</p>
 <p>Kawakami J, Kamiya H, Yasuda K, Fujiki H, Kasai H, Sugimoto N (2001).
 &#8220;Thermodynamic stability of base pairs between 2-hydroxyadenine and incoming nucleotides as a determinant of nucleotide incorporation specificity during replication.&#8221;
 <em>Nucleic Acids Research</em>, <b>29</b>(16), 3289--3296.
-doi: <a href='http://doi.org/10.1093/nar/29.16.3289'>10.1093/nar/29.16.3289</a>
+doi: <a href='https://doi.org/10.1093/nar/29.16.3289'>10.1093/nar/29.16.3289</a>
 .</p>
 <p>von
 Ahsen N, Wittwer CT, Schutz E (2001).
@@ -1010,122 +1196,145 @@ Ahsen N, Wittwer CT, Schutz E (2001).
 <p>Le Novere N (2001).
 &#8220;MELTING, computing the melting temperature of nucleic acid duplex.&#8221;
 <em>Bioinformatics</em>, <b>17</b>(12), 1226--1227.
-doi: <a href='http://doi.org/10.1093/bioinformatics/17.12.1226'>10.1093/bioinformatics/17.12.1226</a>
+doi: <a href='https://doi.org/10.1093/bioinformatics/17.12.1226'>10.1093/bioinformatics/17.12.1226</a>
 .</p>
 <p>Ohmichi T, Nakano S, Miyoshi D, Sugimoto N (2002).
 &#8220;Long RNA dangling end has large energetic contribution to duplex stability.&#8221;
 <em>Journal of the American Chemical Society</em>, <b>124</b>(35), 10367--10372.
-doi: <a href='http://doi.org/10.1021/ja0255406'>10.1021/ja0255406</a>
+doi: <a href='https://doi.org/10.1021/ja0255406'>10.1021/ja0255406</a>
 .</p>
 <p>SantaLucia J, Hicks D (2004).
 &#8220;The thermodynamics of DNA structural motifs.&#8221;
 <em>Annual Review of Biophysics and Biomolecular Structure</em>, <b>33</b>(1), 415--440.
-doi: <a href='http://doi.org/10.1146/annurev.biophys.32.110601.141800'>10.1146/annurev.biophys.32.110601.141800</a>
+doi: <a href='https://doi.org/10.1146/annurev.biophys.32.110601.141800'>10.1146/annurev.biophys.32.110601.141800</a>
 .</p>
 <p>Tanaka F, Kameda A, Yamamoto M, Ohuchi A (2004).
 &#8220;Thermodynamic parameters based on a nearest-neighbor model for DNA sequences with a single-bulge loop.&#8221;
 <em>Biochemistry</em>, <b>43</b>(22), 7143--7150.
-doi: <a href='http://doi.org/10.1021/bi036188r'>10.1021/bi036188r</a>
+doi: <a href='https://doi.org/10.1021/bi036188r'>10.1021/bi036188r</a>
 .</p>
 <p>McTigue PM, Peterson RJ, Kahn JD (2004).
 &#8220;Sequence-dependent thermodynamic parameters for locked nucleic acid (LNA)-DNA duplex formation.&#8221;
 <em>Biochemistry</em>, <b>43</b>(18), 5388--5405.
-doi: <a href='http://doi.org/10.1021/bi035976d'>10.1021/bi035976d</a>
+doi: <a href='https://doi.org/10.1021/bi035976d'>10.1021/bi035976d</a>
 .</p>
 <p>Owczarzy R, You Y, Moreira BG, Manthey JA, Huang L, Behlke MA, Walder JA (2004).
 &#8220;Effects of sodium ions on DNA duplex oligomers: Improved predictions of melting temperatures.&#8221;
 <em>Biochemistry</em>, <b>43</b>(12), 3537--3554.
-doi: <a href='http://doi.org/10.1021/bi034621r'>10.1021/bi034621r</a>
+doi: <a href='https://doi.org/10.1021/bi034621r'>10.1021/bi034621r</a>
 .</p>
 <p>Broda M, Kierzek E, Gdaniec Z, Kulinski T, Kierzek R (2005).
 &#8220;Thermodynamic stability of RNA structures formed by CNG trinucleotide repeats. Implication for prediction of RNA structure.&#8221;
 <em>Biochemistry</em>, <b>44</b>(32), 10873--10882.
-doi: <a href='http://doi.org/10.1021/bi0502339'>10.1021/bi0502339</a>
+doi: <a href='https://doi.org/10.1021/bi0502339'>10.1021/bi0502339</a>
 .</p>
 <p>Watkins NE, SantaLucia J (2005).
 &#8220;Nearest-neighbor thermodynamics of deoxyinosine pairs in DNA duplexes.&#8221;
 <em>Nucleic Acids Research</em>, <b>33</b>(19), 6258--6267.
-doi: <a href='http://doi.org/10.1093/nar/gki918'>10.1093/nar/gki918</a>
+doi: <a href='https://doi.org/10.1093/nar/gki918'>10.1093/nar/gki918</a>
 .</p>
 <p>Asanuma H, Matsunaga D, Komiyama M (2005).
 &#8220;Clear-cut photo-regulation of the formation and dissociation of the DNA duplex by modified oligonucleotide involving multiple azobenzenes.&#8221;
 <em>Nucleic Acids Symposium Series</em>, 35--36.
-doi: <a href='http://doi.org/10.1093/nass/49.1.35'>10.1093/nass/49.1.35</a>
+doi: <a href='https://doi.org/10.1093/nass/49.1.35'>10.1093/nass/49.1.35</a>
 .</p>
 <p>O'Toole AS, Miller S, Serra MJ (2005).
 &#8220;Stability of 3' double nucleotide overhangs that model the 3' ends of siRNA.&#8221;
 <em>RNA</em>, <b>11</b>(4), 512--516.
-doi: <a href='http://doi.org/10.1261/rna.7254905'>10.1261/rna.7254905</a>
+doi: <a href='https://doi.org/10.1261/rna.7254905'>10.1261/rna.7254905</a>
 .</p>
 <p>Lu ZJ, Turner DH, Mathews DH (2006).
 &#8220;A set of nearest neighbor parameters for predicting the enthalpy change of RNA secondary structure formation.&#8221;
 <em>Nucleic Acids Research</em>, <b>34</b>(17), 4912--4924.
-doi: <a href='http://doi.org/10.1093/nar/gkl472'>10.1093/nar/gkl472</a>
+doi: <a href='https://doi.org/10.1093/nar/gkl472'>10.1093/nar/gkl472</a>
 .</p>
 <p>Kierzek E, Mathews DH, Ciesielska A, Turner DH, Kierzek R (2006).
 &#8220;Nearest neighbor parameters for Watson-Crick complementary heteroduplexes formed between 2'-O-methyl RNA and RNA oligonucleotides.&#8221;
 <em>Nucleic Acids Research</em>, <b>34</b>(13), 3609--3614.
-doi: <a href='http://doi.org/10.1093/nar/gkl232'>10.1093/nar/gkl232</a>
+doi: <a href='https://doi.org/10.1093/nar/gkl232'>10.1093/nar/gkl232</a>
 .</p>
 <p>Tan Z, Chen S (2006).
 &#8220;Nucleic acid helix stability: Effects of salt concentration, cation valence and size, and chain length.&#8221;
 <em>Biophysical Journal</em>, <b>90</b>(4), 1175--1190.
-doi: <a href='http://doi.org/10.1529/biophysj.105.070904'>10.1529/biophysj.105.070904</a>
+doi: <a href='https://doi.org/10.1529/biophysj.105.070904'>10.1529/biophysj.105.070904</a>
 .</p>
 <p>O'Toole AS, Miller S, Haines N, Zink MC, Serra MJ (2006).
 &#8220;Comprehensive thermodynamic analysis of 3' double-nucleotide overhangs neighboring Watson-Crick terminal base pairs.&#8221;
 <em>Nucleic Acids Research</em>, <b>34</b>(11), 3338--3344.
-doi: <a href='http://doi.org/10.1093/nar/gkl428'>10.1093/nar/gkl428</a>
+doi: <a href='https://doi.org/10.1093/nar/gkl428'>10.1093/nar/gkl428</a>
 .</p>
 <p>Tan Z, Chen S (2007).
 &#8220;RNA helix stability in mixed Na(+)/Mg(2+) solution.&#8221;
 <em>Biophysical Journal</em>, <b>92</b>(10), 3615--3632.
-doi: <a href='http://doi.org/10.1529/biophysj.106.100388'>10.1529/biophysj.106.100388</a>
+doi: <a href='https://doi.org/10.1529/biophysj.106.100388'>10.1529/biophysj.106.100388</a>
 .</p>
 <p>Wright DJ, Rice JL, Yanker DM, Znosko BM (2007).
-&#8220;Nearest neighbor parameters for inosine-uridine pairs in RNA duplexes.&#8221;
+&#8220;Nearest neighbor parameters for inosine&middot;uridine pairs in RNA duplexes.&#8221;
 <em>Biochemistry</em>, <b>46</b>(15), 4625--4634.
-doi: <a href='http://doi.org/10.1021/bi0616910'>10.1021/bi0616910</a>
+doi: <a href='https://doi.org/10.1021/bi0616910'>10.1021/bi0616910</a>
 .</p>
 <p>Davis AR, Znosko BM (2007).
 &#8220;Thermodynamic characterization of single mismatches found in naturally occurring RNA.&#8221;
 <em>Biochemistry</em>, <b>46</b>(46), 13425--13436.
-doi: <a href='http://doi.org/10.1021/bi701311c'>10.1021/bi701311c</a>
+doi: <a href='https://doi.org/10.1021/bi701311c'>10.1021/bi701311c</a>
 .</p>
 <p>Blose JM, Manni ML, Klapec KA, Stranger-Jones Y, Zyra AC, Sim V, Griffith CA, Long JD, Serra MJ (2007).
 &#8220;Non-nearest-neighbor dependence of stability for RNA bulge loops based on the complete set of group i single nucleotide bulge loops.&#8221;
 <em>Biochemistry</em>, <b>46</b>(51), 15123--15135.
-doi: <a href='http://doi.org/10.1021/bi700736f'>10.1021/bi700736f</a>
+doi: <a href='https://doi.org/10.1021/bi700736f'>10.1021/bi700736f</a>
 .</p>
 <p>Badhwar J, Karri S, Cass CK, Wunderlich EL, Znosko BM (2007).
 &#8220;Thermodynamic characterization of RNA duplexes containing naturally occurring 1 * 2 nucleotide internal loops.&#8221;
 <em>Biochemistry</em>, <b>46</b>(50), 14715--14724.
-doi: <a href='http://doi.org/10.1021/bi701024w'>10.1021/bi701024w</a>
+doi: <a href='https://doi.org/10.1021/bi701024w'>10.1021/bi701024w</a>
 .</p>
 <p>Davis AR, Znosko BM (2008).
 &#8220;Thermodynamic characterization of naturally occurring RNA single mismatches with G-U nearest neighbors.&#8221;
 <em>Biochemistry</em>, <b>47</b>(38), 10178--10187.
-doi: <a href='http://doi.org/10.1021/bi800471z'>10.1021/bi800471z</a>
+doi: <a href='https://doi.org/10.1021/bi800471z'>10.1021/bi800471z</a>
 .</p>
 <p>Miller S, Jones LE, Giovannitti K, Piper D, Serra MJ (2008).
 &#8220;Thermodynamic analysis of 5' and 3' single- and 3' double-nucleotide overhangs neighboring wobble terminal base pairs.&#8221;
 <em>Nucleic Acids Research</em>, <b>36</b>(17), 5652--5659.
-doi: <a href='http://doi.org/10.1093/nar/gkn525'>10.1093/nar/gkn525</a>
+doi: <a href='https://doi.org/10.1093/nar/gkn525'>10.1093/nar/gkn525</a>
 .</p>
 <p>Owczarzy R, Moreira BG, You Y, Behlke MA, Walder JA (2008).
 &#8220;Predicting stability of DNA duplexes in solutions containing magnesium and monovalent cations.&#8221;
 <em>Biochemistry</em>, <b>47</b>(19), 5336--5353.
-doi: <a href='http://doi.org/10.1021/bi702363u'>10.1021/bi702363u</a>
+doi: <a href='https://doi.org/10.1021/bi702363u'>10.1021/bi702363u</a>
 .</p>
+<p>Watkins NE, Kennelly WJ, Tsay MJ, Tuin A, Swenson L, Lee H, Morosyuk S, Hicks DA, SantaLucia J (2011).
+&#8220;Thermodynamic contributions of single internal rA&middot;dA, rC&middot;dC, rG&middot;dG and rU&middot;dT mismatches in RNA/DNA duplexes.&#8221;
+<em>Nucleic Acids Research</em>, <b>39</b>(5), 1894--1902.
+doi: <a href='https://doi.org/10/cdm4jh'>10/cdm4jh</a>
+, <a href='https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkq905'>https://academic.oup.com/nar/article-lookup/doi/10.1093/nar/gkq905</a>.</p>
+<p>Chen JL, Dishler AL, Kennedy SD, Yildirim I, Liu B, Turner DH, Serra MJ (2012).
+&#8220;Testing the nearest neighbor model for canonical rna base pairs: Revision of GU parameters.&#8221;
+<em>Biochemistry</em>, <b>51</b>(16), 3508--3522.
+doi: <a href='https://doi.org/10.1021/bi3002709'>10.1021/bi3002709</a>
+, <a href='http://pubs.acs.org/doi/10.1021/bi3002709'>http://pubs.acs.org/doi/10.1021/bi3002709</a>.</p>
 <p>Dumousseau M, Rodriguez N, Juty N, Le Novere N (2012).
 &#8220;MELTING, a flexible platform to predict the melting temperatures of nucleic acids.&#8221;
 <em>BMC Bioinformatics</em>, <b>13</b>, 101.
-doi: <a href='http://doi.org/10.1186/1471-2105-13-101'>10.1186/1471-2105-13-101</a>
+doi: <a href='https://doi.org/10.1186/1471-2105-13-101'>10.1186/1471-2105-13-101</a>
 .</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>For more details about algorithm, formulae and methods, see the
+  documentation for
+  <a href='https://www.ebi.ac.uk/biomodels-static/tools/melting/melting5-doc/melting.html'>MELTING
+   5</a>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
+<span class='co'># Basic usage</span>
+<span class='fu'>melting</span>(<span class='kw'>sequence</span> <span class='kw'>=</span> <span class='st'>"CAGTGAGACAGCAATGGTCG"</span>, <span class='kw'>nucleic.acid.conc</span> <span class='kw'>=</span> <span class='fl'>2e-06</span>,
+        <span class='kw'>hybridisation.type</span> <span class='kw'>=</span> <span class='st'>"dnadna"</span>, <span class='kw'>Na.conc</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] 73.35168</div><div class='input'>
+# For more detailed examples refer the vignette.
+</div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/browseVignettes'>browseVignettes</a></span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>'rmelting'</span>)</div><div class='output co'>#&gt; <span class='message'>No vignettes found by browseVignettes(package = "rmelting")</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -1133,7 +1342,11 @@ doi: <a href='http://doi.org/10.1186/1471-2105-13-101'>10.1186/1471-2105-13-101<
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#mandatory-arguments">Mandatory arguments</a></li>
+
+      <li><a href="#recognized-nucleotides">Recognized nucleotides</a></li>
 
       <li><a href="#hybridisation-type-options">Hybridisation type options</a></li>
 
@@ -1147,47 +1360,13 @@ doi: <a href='http://doi.org/10.1186/1471-2105-13-101'>10.1186/1471-2105-13-101<
 
       <li><a href="#nearest-neighbor-models">Nearest neighbor models</a></li>
 
-      <li><a href="#gu-wobble-base-pairs-effect">GU wobble base pairs effect</a></li>
+      <li><a href="#ion-corrections">Ion corrections</a></li>
 
-      <li><a href="#single-mismatch-effect">Single mismatch effect</a></li>
-
-      <li><a href="#tandem-mismatches-effect">Tandem mismatches effect</a></li>
-
-      <li><a href="#single-dangling-end-effect">Single dangling end effect</a></li>
-
-      <li><a href="#double-dangling-end-effect">Double dangling end effect</a></li>
-
-      <li><a href="#long-dangling-end-effect">Long dangling end effect</a></li>
-
-      <li><a href="#internal-loop-effect">Internal loop effect</a></li>
-
-      <li><a href="#single-bulge-loop-effect">Single bulge loop effect</a></li>
-
-      <li><a href="#long-bulge-loop-effect">Long bulge loop effect</a></li>
-
-      <li><a href="#cng-repeats-effect">CNG repeats effect</a></li>
-
-      <li><a href="#inosine-bases-effect">Inosine bases effect</a></li>
-
-      <li><a href="#hydroxyadenine-bases-effect">Hydroxyadenine bases effect</a></li>
-
-      <li><a href="#azobenzenes-effect-effect">Azobenzenes effect effect</a></li>
-
-      <li><a href="#locked-nucleic-acids-effect">Locked nucleic acids effect</a></li>
-
-      <li><a href="#sodium-corrections">Sodium corrections</a></li>
-
-      <li><a href="#magnesium-corrections">Magnesium corrections</a></li>
-
-      <li><a href="#mixed-sodium-and-magnesium-corrections">Mixed Sodium and Magnesium corrections</a></li>
-
-      <li><a href="#sodium-equivalent-concentration-methods">Sodium equivalent concentration methods</a></li>
-
-      <li><a href="#dmso-corrections">DMSO corrections</a></li>
-
-      <li><a href="#formamide-corrections">Formamide corrections</a></li>
+      <li><a href="#denaturing-agent-corrections">Denaturing agent corrections</a></li>
 
       <li><a href="#references">References</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
@@ -1201,14 +1380,13 @@ doi: <a href='http://doi.org/10.1186/1471-2105-13-101'>10.1186/1471-2105-13-101<
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
-
       </footer>
    </div>
 
   
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.js" integrity="sha256-GKvGqXDznoRYHCwKXGnuchvKSwmx9SRMrZOTh2g4Sb0=" crossorigin="anonymous"></script>
 <script>
   docsearch({
     
