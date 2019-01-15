@@ -6,7 +6,7 @@ test_that("tests for method.inosine - DNA/DNA", {
                        nucleic.acid.conc = 0.0001,
                        hybridisation.type = "dnadna",
                        Na.conc = 1)$Results$`Melting temperature (C)`,
-               65.36853, tolerance=1e-5, label = "DNA/DNA default")
+               65.36853, tolerance = 1e-5, label = "DNA/DNA default")
 
   expect_equal(melting(sequence = "CCGICTGTIGCG",
                        comp.sequence = "GGCCGACACCGC",
@@ -14,7 +14,7 @@ test_that("tests for method.inosine - DNA/DNA", {
                        hybridisation.type = "dnadna",
                        Na.conc = 1,
                        method.inosine = "san05")$Results$`Melting temperature (C)`,
-               65.36853, tolerance=1e-5, label = "san05")
+               65.36853, tolerance = 1e-5, label = "san05")
 })
 
 test_that("tests for method.inosine - RNA/RNA", {
@@ -23,7 +23,7 @@ test_that("tests for method.inosine - RNA/RNA", {
                        nucleic.acid.conc = 0.0001,
                        hybridisation.type = "rnarna",
                        Na.conc = 1)$Results$`Melting temperature (C)`,
-               46.75042, tolerance=1e-5, label = "RNA/RNA default")
+               46.75042, tolerance = 1e-5, label = "RNA/RNA default")
 
   expect_equal(melting(sequence = "GCAICGC",
                        comp.sequence = "CGUUGCG",
@@ -31,5 +31,5 @@ test_that("tests for method.inosine - RNA/RNA", {
                        hybridisation.type = "rnarna",
                        Na.conc = 1,
                        method.inosine = "zno07")$Results$`Melting temperature (C)`,
-               46.75042, tolerance=1e-5, label = "zno07")
+               46.75042, tolerance = 1e-5, label = "zno07")
 })

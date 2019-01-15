@@ -696,7 +696,7 @@ melting <- function(sequence, comp.sequence = NULL,
                     method.long.dangle = c("sugdna02", "sugrna02"),
                     method.internal.loop = c("san04", "tur06", "zno07"),
                     method.single.bulge.loop = c("tan04", "san04",
-                                                 "ser07" ,"tur06"),
+                                                 "ser07", "tur06"),
                     method.long.bulge.loop = c("san04", "tur06"),
                     method.CNG = c("bro05"),
                     method.inosine = c("san05", "zno07"),
@@ -760,10 +760,11 @@ melting <- function(sequence, comp.sequence = NULL,
 
   # Check if inosine(s) or hydroxyadenine(s) are present in sequence
   if (missing(comp.sequence)) {
-    i.check <- grepl("i", sequence,ignore.case = TRUE)
-    ha.check <- grepl("a\\*", sequence,ignore.case = TRUE)
+    i.check <- grepl("i", sequence, ignore.case = TRUE)
+    ha.check <- grepl("a\\*", sequence, ignore.case = TRUE)
     if (TRUE %in% c(i.check, ha.check)) {
-      stop("The argument 'comp.sequence' is required if there are inosine(s) [I] or hydroxyadenine(s) [A*] in the 'sequence'")
+      stop(paste("The argument 'comp.sequence' is required if there are",
+                 "inosine(s) [I] or hydroxyadenine(s) [A*] in the 'sequence'"))
     }
   }
 
@@ -773,7 +774,9 @@ melting <- function(sequence, comp.sequence = NULL,
   ion.check <- c(missing(Na.conc), missing(Mg.conc), missing(Tris.conc),
                  missing(K.conc))
   if (!(FALSE %in% ion.check)) {
-    stop("At least one of these arguments specifying ion concentration should be provided:\n'Na.conc', 'Mg.conc', 'Tris.conc', 'K.conc'")
+    stop(paste("At least one of these arguments specifying ion concentration",
+               "should be provided:",
+               "\n'Na.conc', 'Mg.conc', 'Tris.conc', 'K.conc'"))
   }
 
   # Check if argument nucleic.acid.conc is of type numeric with unit length
@@ -1031,7 +1034,7 @@ melting <- function(sequence, comp.sequence = NULL,
   #                    echeck = tf(0.05,0.25),
   #                    eval = tf2(0.05,0.25))
 
-  eopt <- eopt[eopt$echeck == FALSE,]
+  eopt <- eopt[eopt$echeck == FALSE, ]
 
   eopts <- paste(paste0(eopt$ion_agent, "=", eopt$eval), collapse = ":")
 
@@ -1281,28 +1284,30 @@ melting <- function(sequence, comp.sequence = NULL,
                        `Correction factor` = env$getFactor())
 
     # Get options
-    opt_names <- c("-tan", "-P",  "-S", "-T", "-DMSO", "-secDE", "-ino", "-sinBU",
-                   "-lonDE", "-lck",  "-self", "-am", "-sinDE", "-azo", "-lonBU",
-                   "-naeq", "-intLP",  "-ha", "-for", "-nn", "-NNPath", "-C",
-                   "-E", "-F", "-sinMM", "-H", "-mode", "-GU", "-CNG", "-ion")
+    opt_names <- c("-tan", "-P",  "-S", "-T", "-DMSO", "-secDE", "-ino",
+                   "-sinBU", "-lonDE", "-lck",  "-self", "-am", "-sinDE",
+                   "-azo", "-lonBU", "-naeq", "-intLP",  "-ha", "-for", "-nn",
+                   "-NNPath", "-C", "-E", "-F", "-sinMM", "-H", "-mode", "-GU",
+                   "-CNG", "-ion")
     opt_names <- setdiff(opt_names, "-NNPath")
     opts_melt <- env$getOptions()
     keySet <- .jrcall(opts_melt, "keySet")
-    opts_iter <- .jrcall(keySet,"iterator")
+    opts_iter <- .jrcall(keySet, "iterator")
     # opts_melt2 <- list()
     opts_melt2 <- vector(length = length(opt_names), mode = "list")
     names(opts_melt2) <- opt_names
 
-    while (.jrcall(opts_iter,"hasNext")) {
-      key <- .jrcall(opts_iter,"next");
-      opts_melt2[[key]] <- .jrcall(opts_melt,"get",key)
+    while (.jrcall(opts_iter, "hasNext")) {
+      key <- .jrcall(opts_iter, "next")
+      opts_melt2[[key]] <- .jrcall(opts_melt, "get", key)
     }
 
 
     # Fetch calculation method
     calculMethod <- results$getCalculMethod()
 
-    if (.jinstanceof(calculMethod, J("melting.nearestNeighborModel.NearestNeighborMode"))) {
+    if (.jinstanceof(calculMethod,
+                     J("melting.nearestNeighborModel.NearestNeighborMode"))) {
       am <- NA_character_
       nn <- opts_melt2$`-nn`
     } else {
@@ -1333,7 +1338,8 @@ melting <- function(sequence, comp.sequence = NULL,
                          Mode = opts_melt2$`-mode`)
 
     # Fetch enthalpy and entropy for nearest-neighbour methods
-    if (.jinstanceof(calculMethod, J("melting.nearestNeighborModel.NearestNeighborMode"))) {
+    if (.jinstanceof(calculMethod,
+                     J("melting.nearestNeighborModel.NearestNeighborMode"))) {
       enthalpy_cal <- results$getEnthalpy()
       entropy_cal <- results$getEntropy()
 
@@ -1365,7 +1371,9 @@ melting <- function(sequence, comp.sequence = NULL,
 
   out <- list(Environment = envir_melt,
               Options = replace(options_melt,
-                                sapply(options_melt, is.null), NA_character_),
+                                vapply(options_melt, is.null,
+                                       logical(length = 1)),
+                                NA_character_),
               Results = results_melt,
               Message = msg)
 
@@ -1376,4 +1384,3 @@ melting <- function(sequence, comp.sequence = NULL,
 
   return(out)
 }
-
