@@ -39,12 +39,14 @@ Suggests:
     reshape2,
     pander,
     testthat
+SystemRequirements: Java
 biocViews: BiomedicalInformatics, Cheminformatics,
 License: GPL-2 | GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 RdMacros: Rdpack
-URL: https://github.com/aravind-j/rmelting
+URL: https://github.com/aravind-j/rmelting,
+     https://aravind-j.github.io/PGRdup/
 BugReports: https://github.com/aravind-j/rmelting/issues
 VignetteBuilder: knitr
