@@ -20,7 +20,7 @@
 #'         method.nn = c("all97", "bre86", "san04", "san96", "sug96",
 #'                       "tan04", "fre86", "xia98", "sug95", "tur06"),
 #'         method.GU = c("tur99", "ser12"),
-#'         method.singleMM = c("allsanpey", "tur06", "zno07", "zno08"),
+#'         method.singleMM = c("allsanpey", "tur06", "zno07", "zno08", "wat11"),
 #'         method.tandemMM = c("allsanpey", "tur99"),
 #'         method.single.dangle = c("bom00", "sugdna02", "sugrna02", "ser08"),
 #'         method.double.dangle = c("sugdna02", "sugrna02", "ser05", "ser06"),
@@ -40,7 +40,7 @@
 #'                            "owcmg08", "tanmg06", "tanmg07",
 #'                            "owcmix08", "tanmix07"),
 #'         method.Naeq = c("ahs01", "mit96", "pey00"),
-#'         correction.DMSO = c("ahs01", "cul76", "esc80", "mus80"),
+#'         correction.DMSO = c("ahs01", "cul76", "esc80", "mus81"),
 #'         correction.formamide = c("bla96", "lincorr"))
 #'
 #' @section Mandatory arguments: The following are the arguments which are
