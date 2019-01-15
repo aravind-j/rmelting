@@ -1,2 +1,5 @@
 *.html
 *.R
+Tutorial.tex
+Tutorial.aux
+Tutorial.out
