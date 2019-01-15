@@ -1516,7 +1516,37 @@ colnames(options) <- c("`rmelting`", "MELTING 5 (command line)")
 knitr::kable(options)
 ```
 
-# Batch
+# Batch computation
+
+Melting temperature for multiple nucleic acid duplexes can be computed using the `meltingBatch` function.
+
+```{r}
+sequence <- c("CAAAAAG", "CAAAAAAG", "TTTTATAATAAA", "CCATCGCTACC",
+              "CAAACAAAG", "CCATTGCTACC", "CAAAAAAAG", "GTGAAC", "AAAAAAAA",
+              "CAACTTGATATTATTA", "CAAATAAAG", "GCGAGC", "GGGACC",
+              "CAAAGAAAG", "CTGACAAGTGTC", "GCGAAAAGCG")
+
+meltingBatch(sequence, nucleic.acid.conc = 0.0004,
+             hybridisation.type = "dnadna", Na.conc = 1)
+```
+
+Complementary sequences are computed by default, but need to be specified in case of mismatches, inosine(s) or hydroxyadenine(s) between the two strands.
+
+```{r}
+seq <- c("GCAUACG", "CAGUAGGUC", "CGCUCGC", "GAGUGGAG", "GACAGGCUG",
+         "CAGUACGUC", "GACAUCCUG", "GACCACCUG", "CAGAAUGUC", "GCGUCGC",
+         "CGUCCGG", "GACUCUCUG", "CAGCUGGUC", "GACUAGCUG", "CUCUGCUC",
+         "GCGUCCG", "GUCCGCG", "CGAUCAC", "GACUACCUG", "GACGAUCUG")
+
+comp.seq <- c("CGUUUGC", "GUCGGCCAG", "GCGUGCG", "CUCUUCUC", "CUGUGCGAC",
+              "GUCGGGCAG", "CUGUUGGAC", "CUGGGGGAC", "GUCUGGCAG", "CGCUGCG",
+              "GCUGGCC", "CUGAUAGAC", "GUCGUUCAG", "CUGAGCGAC", "GAGUUGAG",
+              "CGCUGGC", "CUGGCGC", "GCUUGUG", "CUGAGGGAC", "CUGCCAGAC")
+
+meltingBatch(sequence = seq, comp.seq = comp.seq, nucleic.acid.conc = 0.0004,
+             hybridisation.type = "rnarna", Na.conc = 1,
+             method.singleMM = "tur06")
+```
 
 # Further reading
 
