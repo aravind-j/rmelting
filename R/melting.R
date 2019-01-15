@@ -525,6 +525,7 @@
 #' @export
 #' @import rJava
 #' @importFrom Rdpack reprompt
+#' @importFrom methods new
 #' @encoding UTF-8
 #'
 #' @references
