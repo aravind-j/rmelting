@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{melting}
 \alias{melting}
-\title{melting}
+\title{Compute melting temperature of a nucleic acid duplex}
 \usage{
 melting(sequence, comp.sequence = NULL,
         nucleic.acid.conc,
@@ -208,11 +208,10 @@ A list with the following components: \item{\code{Environment}}{A
   methods.} \item{\code{Message}}{Error and/or Warning messages, if any.}
 }
 \description{
-R interface to the
+Compute the enthalpy and entropy of helix-coil transition, and then the
+melting temperature of a nucleic acid duplex with the
 \href{https://www.ebi.ac.uk/biomodels/tools/melting/}{MELTING 5 software} (Le
-Novère, 2001; Dumousseau et al., 2012) for computation of enthalpy and
-entropy of the helix-coil transition, and then the melting temperature of a
-nucleic acid duplex.
+Novère, 2001; Dumousseau et al., 2012).
 }
 \section{Mandatory arguments}{
  The following are the arguments which are
