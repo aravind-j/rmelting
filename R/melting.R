@@ -525,7 +525,6 @@
 #' @export
 #' @import rJava
 #' @importFrom Rdpack reprompt
-#' @importFrom methods new
 #' @encoding UTF-8
 #'
 #' @references
@@ -1186,8 +1185,8 @@ melting <- function(sequence, comp.sequence = NULL,
   # Get results
   ##################################################
 
-  meltj <- new(J("melting.Main"))
-  optionManager <- new(J("melting.configuration.OptionManagement"))
+  meltj <- rJava::new(J("melting.Main"))
+  optionManager <- rJava::new(J("melting.configuration.OptionManagement"))
 
   #results <- meltj$getMeltingResults(opts, optionManager)
   msge <- ""
