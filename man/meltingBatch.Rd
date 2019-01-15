@@ -2,7 +2,7 @@
 % Please edit documentation in R/meltingBatch.R
 \name{meltingBatch}
 \alias{meltingBatch}
-\title{Compute melting temperature of a multiple nucleic acid duplexes in batch}
+\title{Compute melting temperature of multiple nucleic acid duplexes in batch}
 \usage{
 meltingBatch(sequence, comp.sequence = NULL, environment.out = TRUE,
   options.out = TRUE, message.out = TRUE, ...)
@@ -37,7 +37,8 @@ A data frame of the melting temperature computation results along
   respectively.
 }
 \description{
-Compute melting temperature of a multiple nucleic acid duplexes in batch
+Compute the enthalpy and entropy of helix-coil transition, and then the
+melting temperature of multiple nucleic acid duplexes in batch.
 }
 \examples{
 sequence <- c("CAAAAAG", "CAAAAAAG", "TTTTATAATAAA", "CCATCGCTACC",

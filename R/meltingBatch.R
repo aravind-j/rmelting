@@ -1,5 +1,8 @@
 
-#' Compute melting temperature of a multiple nucleic acid duplexes in batch
+#' Compute melting temperature of multiple nucleic acid duplexes in batch
+#'
+#' Compute the enthalpy and entropy of helix-coil transition, and then the
+#' melting temperature of multiple nucleic acid duplexes in batch.
 #'
 #' @param sequence A character vector of 5' to 3' sequences of one strand of the
 #'   nucleic acid duplex (\strong{Note:} Uridine and thymidine are not
