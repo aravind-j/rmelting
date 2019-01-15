@@ -75,8 +75,6 @@ meltingBatch <- function(sequence, comp.sequence = NULL,
       stop("'sequence' and 'comp.sequence' are not of equal length.")
     }
 
-    inp <- data.frame(sequence, comp.sequence, stringsAsFactors = FALSE)
-
     out <- t(data.frame(lapply(mapply(melting, sequence = sequence,
                                       comp.sequence = comp.sequence,
                                       MoreArgs = ..., SIMPLIFY = FALSE),
