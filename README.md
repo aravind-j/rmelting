@@ -1,7 +1,7 @@
 
 ## `rmelting`: R Interface to MELTING 5 <img src="https://raw.githubusercontent.com/aravind-j/rmelting/master/inst/extdata/rmelting.png" align="right" alt="logo" width="173" height = "200" style = "padding: 10px; border: none; float: right;">
 
-###### Version : [0.99.4](https://aravind-j.github.io/rmelting/); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
+###### Version : [0.99.5](https://aravind-j.github.io/rmelting/); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
 
 ##### *Aravind, J.<sup>1</sup> and Krishna, G. K.<sup>2</sup>*
 
@@ -13,13 +13,13 @@
 -----
 
 [![minimal R
-version](https://img.shields.io/badge/R%3E%3D-3.0.2-6666ff.svg)](https://cran.r-project.org/)
+version](https://img.shields.io/badge/R%3E%3D-3.6-6666ff.svg)](https://cran.r-project.org/)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <!-- [[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-last-release/rmelting)](https://cran.r-project.org/package=rmelting) -->
 <!-- [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmelting?color=green)](https://CRAN.R-project.org/package=rmelting) -->
 <!-- [![packageversion](https://img.shields.io/badge/Package%20version-0.2.3.3-orange.svg)](https://github.com/aravind-j/rmelting) -->
-[![develVersion](https://img.shields.io/badge/devel%20version-0.99.3-orange.svg)](https://github.com/aravind-j/rmelting)
+[![develVersion](https://img.shields.io/badge/devel%20version-0.99.5-orange.svg)](https://github.com/aravind-j/rmelting)
 <!-- [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/aravind-j/rmelting/total.svg)] -->
 [![Project Status:
 WIP](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
@@ -94,7 +94,7 @@ citation("rmelting")
 To cite the R package 'rmelting' in publications use:
 
   Aravind, J. and Krishna, G. K. (2019).  rmelting: R Interface to
-  MELTING 5. R package version 0.99.4,
+  MELTING 5. R package version 0.99.5,
   https://aravind-j.github.io/rmelting/.
 
 A BibTeX entry for LaTeX users is
@@ -103,7 +103,7 @@ A BibTeX entry for LaTeX users is
     title = {rmelting: R Interface to MELTING 5},
     author = {J. Aravind and G. K. Krishna},
     year = {2019},
-    note = {R package version 0.99.4},
+    note = {R package version 0.99.5},
     note = {https://aravind-j.github.io/rmelting/},
   }
 
