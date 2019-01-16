@@ -1,5 +1,6 @@
 *.html
 *.R
+.Rhistory
 Tutorial.tex
 Tutorial.aux
 Tutorial.out

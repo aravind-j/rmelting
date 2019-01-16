@@ -2,6 +2,7 @@ inst/doc
 .Rproj.user
 .Rhistory
 .RData
+rmelting.Rproj
 Release.R
 To do.R
 MELTING5.1.1.tar.gz
@@ -13,6 +14,6 @@ Tables.Rmd
 README.Rmd
 README.html
 testing.Rmd
-Tutorial.tex
-Tutorial.aux
-Tutorial.toc
+vignettes/Tutorial.tex
+vignettes/Tutorial.aux
+vignettes/Tutorial.toc
