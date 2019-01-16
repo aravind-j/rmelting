@@ -1,6 +1,6 @@
 Package: rmelting
 Title: R Interface to MELTING 5
-Version: 0.99.1
+Version: 0.99.2
 Authors@R: c(
     person(given = "J.", family = "Aravind", 
            email = "j.aravind@icar.gov.in",

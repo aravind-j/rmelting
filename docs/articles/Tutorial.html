@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rmelting</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.1</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.2</span>
       </span>
     </div>
 
@@ -104,7 +104,7 @@
                         <h4 class="author">Aravind, J.<sup>1</sup> and Krishna, G. K.<sup>2</sup>
 </h4>
             
-            <h4 class="date">2019-01-15</h4>
+            <h4 class="date">2019-01-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/aravind-j/rmelting/blob/master/vignettes/Tutorial.Rmd"><code>vignettes/Tutorial.Rmd</code></a></small>
       <div class="hidden name"><code>Tutorial.Rmd</code></div>
@@ -137,7 +137,8 @@
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>The package can be installed using the following functions:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Install development version from Github</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"aravind-j/rmelting"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">require</a></span>(<span class="st">'devtools'</span>)) <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">'devtools'</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"aravind-j/rmelting"</span>)</a></code></pre></div>
 <p>Then the package can be loaded using the function</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rmelting)</a></code></pre></div>
 </div>

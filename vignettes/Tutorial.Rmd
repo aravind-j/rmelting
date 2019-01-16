@@ -133,6 +133,7 @@ The package can be installed using the following functions:
 
 ```{r, eval=FALSE}
 # Install development version from Github
+if (!require('devtools')) install.packages('devtools')
 devtools::install_github("aravind-j/rmelting")
 
 ```
