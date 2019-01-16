@@ -1,5 +1,10 @@
 # rmelting  0.99.3
 
+* Fixed minor BiocCheck warnings.
+* Subscribed to mailing list.
+
+# rmelting  0.99.3
+
 * Fixed gitignore issue
 
 # rmelting  0.99.2
