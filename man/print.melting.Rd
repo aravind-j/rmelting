@@ -11,6 +11,9 @@
 
 \item{...}{Unused}
 }
+\value{
+The melting temperature value (degree Celsius) in the console.
+}
 \description{
 \code{print.melting} prints to console the melting temperature value from an object of
 class \code{melting}.

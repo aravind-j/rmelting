@@ -7,6 +7,8 @@
 #' @param ... Unused
 #' @seealso \code{\link[rmelting]{melting}}
 #'
+#' @return The melting temperature value (degree Celsius) in the console.
+#'
 #' @export
 print.melting <- function(x, ...){
 
