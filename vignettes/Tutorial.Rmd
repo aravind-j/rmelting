@@ -76,7 +76,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(readxl)
 
-#  x <- read_excel("vignettes/Tables.xlsx", sheet = "Approx.methods", col_names = T)
+#  x <- read_excel("vignettes/Tables.xlsx", sheet = "Approx.methods", col_names = TRUE)
 rmeltingtables <- function(file, sheet, def="default",
                            code="Formula", ref = "Reference") {
   
@@ -154,7 +154,7 @@ mandatory for computation.
 **Table 1**: Recognized sequences
 ```{r, echo=FALSE}
 if (requireNamespace("readxl", quietly = TRUE)) {
-  ntides <- read_excel("Tables.xlsx", sheet = "MELTING", col_names = T)
+  ntides <- read_excel("Tables.xlsx", sheet = "MELTING", col_names = TRUE)
   knitr::kable(ntides)
 } else {
   print("Package 'readxl' is required to generate this table.")
@@ -176,7 +176,7 @@ if (requireNamespace("readxl", quietly = TRUE)) {
 **Table 2**: Hybridisation type options
 ```{r, echo=FALSE}
 if (requireNamespace("readxl", quietly = TRUE)) {
-  hybtype <- read_excel("Tables.xlsx", sheet = "HybType", col_names = T)
+  hybtype <- read_excel("Tables.xlsx", sheet = "HybType", col_names = TRUE)
   hybtype$Option <- paste("`", hybtype$Option, "`", "")
   knitr::kable(hybtype)
 } else {
@@ -1510,7 +1510,7 @@ The options in MELTING 5 command line equivalent to the arguments in `rmelting` 
 
 **Table 24**: Arguments in `rmelting` and their equivalent options in MELTING 5 command line.
 ```{r, echo=FALSE}
-options <- read_excel("Tables.xlsx", sheet = "commands", col_names = T)[1:34, c(2,1)]
+options <- read_excel("Tables.xlsx", sheet = "commands", col_names = TRUE)[1:34, c(2,1)]
 options$`MELTING 5` <- paste("-", options$`MELTING 5`, sep = "")
 options$rmelting <- paste("`", options$rmelting, "`", sep = "")
 colnames(options) <- c("`rmelting`", "MELTING 5 (command line)")
