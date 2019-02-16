@@ -78,16 +78,17 @@ meltingBatch <- function(sequence, comp.sequence = NULL,
       stop("'sequence' and 'comp.sequence' are not of equal length.")
     }
 
-    out <- t(data.frame(lapply(mapply(melting, sequence = sequence,
-                                      comp.sequence = comp.sequence,
-                                      MoreArgs = ..., SIMPLIFY = FALSE),
-                               function(x) unlist(x[subs]))))
+    melted <- mapply(melting, sequence = sequence,
+                     comp.sequence = comp.sequence,
+                     MoreArgs = ..., SIMPLIFY = FALSE)
+    unlisted <- lapply(melted, function(x) unlist(x[subs]))
 
   } else { # with one 'sequence'
-    out <- t(data.frame(lapply(sequence,
-                               function(x) unlist(melting(sequence = x,
-                                                          ...)[subs]))))
+    melted <- melting(sequence = x, ...)[subs]
+    unlisted <- lapply(sequence,function(x) unlist())
   }
+
+  out <- t(data.frame(unlisted))
 
   rownames(out) <- NULL
   return(out)
