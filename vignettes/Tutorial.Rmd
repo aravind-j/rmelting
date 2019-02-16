@@ -129,24 +129,29 @@ The `R` package `rmelting` is an interface to the [MELTING 5](https://www.ebi.ac
 Melting temperatures are computed by Nearest-neighbour methods for short sequences or approximative estimation formulae for long sequences. Apart from these, several corrections are available to take into account the presence of Cations (Na, Tris, K and Mg) or denaturing agents (DMSO and formamide).
 
 # Installation
-The package can be installed using the following functions:
+The package can be installed from Bioconductor as follows.
 
 ```{r, eval=FALSE}
-# Install development version from Github
-if (!require('devtools')) install.packages('devtools')
-devtools::install_github("aravind-j/rmelting")
-
+if (!"BiocManager" %in% rownames(installed.packages())) 
+  install.packages("BiocManager")
+BiocManager::install("rmelting")
 ```
 
-Then the package can be loaded using the function
+The development version can be installed from github as follows.
+
+```{r, eval=FALSE}
+if (!require('devtools')) install.packages('devtools')
+devtools::install_github("aravind-j/rmelting")
+```
+
+Then the package can be loaded as follows.
 ```{r, message=FALSE}
 library(rmelting)
 ```
 
 # Basic usage
 
-Melting temperatures are computed in `rmelting` through the core function `melting` which takes a number of arguments (see `?melting`). The following are the essential arguments which are
-mandatory for computation.
+Melting temperatures are computed in `rmelting` through the core function `melting` which takes a number of arguments (see `?melting`). The following are the essential arguments which are mandatory for computation.
 
 * `sequence`
     + 5' to 3' sequence of one strand of the nucleic acid duplex as a character string.  Recognises A, C, G, T, U, I, X_C, X_T, A*, AL, TL, GL and CL (**Table 1**). U and T are not considered identical.
