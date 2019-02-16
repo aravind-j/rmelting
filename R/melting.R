@@ -762,8 +762,8 @@ melting <- function(sequence, comp.sequence = NULL,
     i.check <- grepl("i", sequence, ignore.case = TRUE)
     ha.check <- grepl("a\\*", sequence, ignore.case = TRUE)
     if (TRUE %in% c(i.check, ha.check)) {
-      stop(paste("The argument 'comp.sequence' is required if there are",
-                 "inosine(s) [I] or hydroxyadenine(s) [A*] in the 'sequence'"))
+      stop("The argument 'comp.sequence' is required if there are",
+                 "inosine(s) [I] or hydroxyadenine(s) [A*] in the 'sequence'")
     }
   }
 
@@ -773,9 +773,9 @@ melting <- function(sequence, comp.sequence = NULL,
   ion.check <- c(missing(Na.conc), missing(Mg.conc), missing(Tris.conc),
                  missing(K.conc))
   if (!(FALSE %in% ion.check)) {
-    stop(paste("At least one of these arguments specifying ion concentration",
+    stop("At least one of these arguments specifying ion concentration",
                "should be provided:",
-               "\n'Na.conc', 'Mg.conc', 'Tris.conc', 'K.conc'"))
+               "\n'Na.conc', 'Mg.conc', 'Tris.conc', 'K.conc'")
   }
 
   # Check if argument nucleic.acid.conc is of type numeric with unit length
