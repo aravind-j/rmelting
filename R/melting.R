@@ -1024,7 +1024,8 @@ melting <- function(sequence, comp.sequence = NULL,
                      eval = c(missing2(Na.conc), missing2(Mg.conc),
                               missing2(Tris.conc), missing2(K.conc),
                               missing2(dNTP.conc), missing2(DMSO.conc),
-                              missing2(formamide.conc)))
+                              missing2(formamide.conc)),
+                     stringsAsFactors = FALSE)
 
   # eopt <- data.frame(ion_agent = c("Na", "Mg", "Tris", "K",
   #                                  "dNTP", "DMSO", "formamide"),
