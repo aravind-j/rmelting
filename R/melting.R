@@ -1198,7 +1198,7 @@ melting <- function(sequence, comp.sequence = NULL,
     meltj$getMeltingResults(opts, optionManager),
 
     error = function(e) e,
-    warning = function(c) w)
+    warning = function(w) w)
 
   # Catch error message
   if (inherits(possibleError, "error")) {
