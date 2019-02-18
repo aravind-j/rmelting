@@ -126,7 +126,7 @@ rmeltingtables <- function(file, sheet, def="default",
 
 The `R` package `rmelting` is an interface to the [MELTING 5](https://www.ebi.ac.uk/biomodels/tools/melting/) program [@le_novere_melting_2001; @dumousseau_melting_2012]  to compute melting temperatures of nucleic acid duplexes (DNA/DNA, DNA/RNA, RNA/RNA or 2'-O-MeRNA/RNA) along with other thermodynamic parameters such as hybridisation enthalpy and entropy.
 
-Melting temperatures are computed by Nearest-neighbour methods for short sequences or approximative estimation formulae for long sequences. Apart from these, several corrections are available to take into account the presence of Cations (Na, Tris, K and Mg) or denaturing agents (DMSO and formamide).
+Melting temperatures are computed by Nearest-neighbour methods for short sequences or approximative estimation formulae for long sequences. Apart from these, multiple corrections are available to take into account the presence of Cations (Na, Tris, K and Mg) or denaturing agents (DMSO and formamide).
 
 # Installation
 The package can be installed from Bioconductor as follows.
