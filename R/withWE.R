@@ -24,7 +24,7 @@
 #'
 #' foo <- function(){
 #'   warning("oops")
-#   log("a")}
+#'   log("a")}
 #'
 withWE <- function(expr) {
   myWarnings <- NULL

@@ -12,4 +12,19 @@ withWE(expr)
 \description{
 Not exported. Strictly internal
 }
+\examples{
+foo <- function(){
+  warning("oops")
+  1}
+
+foo <- function(){
+  warning("oops")
+  warning("again oops")
+  1}
+
+foo <- function(){
+  warning("oops")
+  log("a")}
+
+}
 \keyword{internal}
