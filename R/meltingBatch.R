@@ -66,26 +66,50 @@ meltingBatch <- function(sequence, comp.sequence = NULL,
             "Results", "Message")[c(environment.out, options.out,
                                     TRUE, message.out)]
 
-  if (!is.null(comp.sequence)) { # with both 'sequence' and 'comp.sequence'
+  if(length(sequence) > 1) { # For multiple sequences
+    if (!is.null(comp.sequence)) { # with both 'sequence' and 'comp.sequence'
 
-    # Check if complementary sequence is of type character
-    if (!is.character(comp.sequence)) {
-      stop("'comp.sequence' should be a character vector.")
+      # Check if complementary sequence is of type character
+      if (!is.character(comp.sequence)) {
+        stop("'comp.sequence' should be a character vector.")
+      }
+
+      # Check if sequence and complementary sequence are of equal length
+      if (length(comp.sequence) != length(sequence)) {
+        stop("'sequence' and 'comp.sequence' are not of equal length.")
+      }
+
+      melted <- mapply(melting, sequence = sequence,
+                       comp.sequence = comp.sequence,
+                       MoreArgs = ..., SIMPLIFY = FALSE)
+
+    } else { # with only 'sequence'
+
+      melted <- mapply(melting, sequence = sequence,
+                       MoreArgs = ..., SIMPLIFY = FALSE)
     }
 
-    # Check if sequence and complementary sequence are of equal length
-    if (length(comp.sequence) != length(sequence)) {
-      stop("'sequence' and 'comp.sequence' are not of equal length.")
-    }
-
-    melted <- mapply(melting, sequence = sequence,
-                     comp.sequence = comp.sequence,
-                     MoreArgs = ..., SIMPLIFY = FALSE)
     unlisted <- lapply(melted, function(x) unlist(x[subs]))
+  }
 
-  } else { # with one 'sequence'
-    melted <- melting(sequence = x, ...)[subs]
-    unlisted <- lapply(sequence,function(x) unlist())
+  if(length(sequence) == 1) {# For one 'sequence'
+
+    if (!is.null(comp.sequence)) { # with both 'sequence' and 'comp.sequence'
+
+      # Check if sequence and complementary sequence are of equal length
+      if (length(comp.sequence) != length(sequence)) {
+        stop("'sequence' and 'comp.sequence' are not of equal length.")
+      }
+
+      melted <- melting(sequence = sequence,
+                        comp.sequence = comp.sequence)[subs]
+
+    } else { # with only 'sequence'
+
+      melted <- melting(sequence = sequence, ...)[subs]
+    }
+
+    unlisted <- unlist(melted)
   }
 
   out <- t(data.frame(unlisted))
