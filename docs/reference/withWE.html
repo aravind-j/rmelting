@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • rmelting</title>
+<title>Evaluate expression and capture all warnings and errors if any along with results — withWE • rmelting</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,7 +36,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Evaluate expression and capture all warnings and errors if any along with results — withWE" />
+
+<meta property="og:description" content="Not exported. Strictly internal" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -63,7 +66,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -138,85 +141,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/aravind-j/rmelting/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Evaluate expression and capture all warnings and errors if any along with results</h1>
+    <small class="dont-index">Source: <a href='https://github.com/aravind-j/rmelting/blob/master/R/withWE.R'><code>R/withWE.R</code></a></small>
+    <div class="hidden name"><code>withWE.Rd</code></div>
     </div>
 
-    <div id="rmelting-0-99-6" class="section level1">
-<h1 class="page-header">
-<a href="#rmelting-0-99-6" class="anchor"></a>rmelting 0.99.6</h1>
-<ul>
-<li>Removed vignette build products from git repository.</li>
-<li>Updated installation instructions.</li>
-<li>Fixed all instances of <code><a href="https://www.rdocumentation.org/packages/base/topics/stop">stop(paste(...))</a></code>.</li>
-<li>Added <code>stringsAsFactors = FALSE</code> to the <code>eopts</code> data frame.</li>
-<li>Expanded the nested functions in <code>meltingBatch</code>.</li>
-<li>Updated error and/or warning(s) handling by implementing internal function <code>withWE</code>.</li>
-<li>Fixed issue with single sequence input in <code>meltingBatch</code>.</li>
-</ul>
-</div>
-    <div id="rmelting-0-99-5" class="section level1">
-<h1 class="page-header">
-<a href="#rmelting-0-99-5" class="anchor"></a>rmelting 0.99.5</h1>
-<ul>
-<li>For first review.</li>
-<li>Changed R and rjava dependency.</li>
-</ul>
-</div>
-    <div id="rmelting-0-99-4" class="section level1">
-<h1 class="page-header">
-<a href="#rmelting-0-99-4" class="anchor"></a>rmelting 0.99.4</h1>
-<ul>
-<li>Converted T/F to TRUE/FALSE.</li>
-<li>Documented return for melting.</li>
-</ul>
-</div>
-    <div id="rmelting-0-99-3" class="section level1">
-<h1 class="page-header">
-<a href="#rmelting-0-99-3" class="anchor"></a>rmelting 0.99.3</h1>
-<ul>
-<li>Fixed minor BiocCheck warnings.</li>
-<li>Subscribed to mailing list.</li>
-</ul>
-</div>
-    <div id="rmelting-0-99-3-1" class="section level1">
-<h1 class="page-header">
-<a href="#rmelting-0-99-3-1" class="anchor"></a>rmelting 0.99.3</h1>
-<ul>
-<li>Fixed gitignore issue</li>
-</ul>
-</div>
-    <div id="rmelting-0-99-2" class="section level1">
-<h1 class="page-header">
-<a href="#rmelting-0-99-2" class="anchor"></a>rmelting 0.99.2</h1>
-<ul>
-<li>Fixed missing Tables.xlsx</li>
-</ul>
-</div>
-    <div id="rmelting-0-99-1" class="section level1">
-<h1 class="page-header">
-<a href="#rmelting-0-99-1" class="anchor"></a>rmelting 0.99.1</h1>
-<ul>
-<li>First BioC submission</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    
+    <p>Not exported. Strictly internal</p>
+    
+    </div>
 
+    <pre class="usage"><span class='fu'>withWE</span>(<span class='no'>expr</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>expr</th>
+      <td><p>The expression to be evaluated.</p></td>
+    </tr>
+    </table>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>foo</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(){
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>warning</a></span>(<span class='st'>"oops"</span>)
+  <span class='fl'>1</span>}
+
+<span class='no'>foo</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(){
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>warning</a></span>(<span class='st'>"oops"</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>warning</a></span>(<span class='st'>"again oops"</span>)
+  <span class='fl'>1</span>}
+
+<span class='no'>foo</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(){
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/warning'>warning</a></span>(<span class='st'>"oops"</span>)
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Log'>log</a></span>(<span class='st'>"a"</span>)}</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#rmelting-0-99-6">0.99.6</a></li>
-        <li><a href="#rmelting-0-99-5">0.99.5</a></li>
-        <li><a href="#rmelting-0-99-4">0.99.4</a></li>
-        <li><a href="#rmelting-0-99-3">0.99.3</a></li>
-        <li><a href="#rmelting-0-99-3-1">0.99.3</a></li>
-        <li><a href="#rmelting-0-99-2">0.99.2</a></li>
-        <li><a href="#rmelting-0-99-1">0.99.1</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
+  </div>
 </div>
 
       <footer>

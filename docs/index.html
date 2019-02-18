@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rmelting</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.5</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.99.6</span>
       </span>
     </div>
 
@@ -109,8 +109,8 @@
 <h2 class="hasAnchor">
 <a href="#rmelting-r-interface-to-melting-5" class="anchor"></a><code>rmelting</code>: R Interface to MELTING 5 <img src="https://raw.githubusercontent.com/aravind-j/rmelting/master/inst/extdata/rmelting.png" align="right" alt="logo" width="173" height="200" style="padding: 10px; border: none; float: right;">
 </h2>
-<div id="version-0-99-5-license-gpl-2gpl-3" class="section level6">
-<h6>Version : <a href="https://aravind-j.github.io/rmelting/">0.99.5</a>; License: <a href="https://www.r-project.org/Licenses/">GPL-2|GPL-3</a>
+<div id="version-0-99-6-license-gpl-2gpl-3" class="section level6">
+<h6>Version : <a href="https://aravind-j.github.io/rmelting/">0.99.6</a>; License: <a href="https://www.r-project.org/Licenses/">GPL-2|GPL-3</a>
 </h6>
 </div>
 <div id="aravind-j-1-and-krishna-g--k-2" class="section level5">
@@ -133,28 +133,25 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<!-- The package can be installed from CRAN as follows:
-
-
-```r
-install.packages('rmelting', dependencies=TRUE)
-```
--->
-<p>The development version can be installed from github as follows:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">require</a></span>(<span class="st">'devtools'</span>)) <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">'devtools'</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"aravind-j/rmelting"</span>)</a></code></pre></div>
+<p>The package can be installed from Bioconductor as follows.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="cf">if</span> (<span class="op">!</span><span class="st">"BiocManager"</span> <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/colnames">rownames</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/installed.packages">installed.packages</a></span>())) </a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"BiocManager"</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">BiocManager<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"rmelting"</span>)</a></code></pre></div>
+<p>The development version can be installed from github as follows.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">require</a></span>(<span class="st">'devtools'</span>)) <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">'devtools'</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"aravind-j/rmelting"</span>)</a></code></pre></div>
 </div>
 <div id="detailed-tutorial" class="section level2">
 <h2 class="hasAnchor">
 <a href="#detailed-tutorial" class="anchor"></a>Detailed tutorial</h2>
 <p>For a detailed tutorial on how to used this package type:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/browseVignettes">browseVignettes</a></span>(<span class="dt">package =</span> <span class="st">'rmelting'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/browseVignettes">browseVignettes</a></span>(<span class="dt">package =</span> <span class="st">'rmelting'</span>)</a></code></pre></div>
 </div>
 <div id="whats-new" class="section level2">
 <h2 class="hasAnchor">
 <a href="#whats-new" class="anchor"></a>What’s new</h2>
 <p>To know whats new in this version type:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/news">news</a></span>(<span class="dt">package=</span><span class="st">'rmelting'</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/news">news</a></span>(<span class="dt">package=</span><span class="st">'rmelting'</span>)</a></code></pre></div>
 </div>
 <div id="links" class="section level2">
 <h2 class="hasAnchor">
@@ -169,12 +166,12 @@ install.packages('rmelting', dependencies=TRUE)
 <a href="#citing-rmelting" class="anchor"></a>Citing <code>rmelting</code>
 </h2>
 <p>To cite the methods in the package use:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/citation">citation</a></span>(<span class="st">"rmelting"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/citation">citation</a></span>(<span class="st">"rmelting"</span>)</a></code></pre></div>
 <pre><code>
 To cite the R package 'rmelting' in publications use:
 
   Aravind, J. and Krishna, G. K. (2019).  rmelting: R Interface to
-  MELTING 5. R package version 0.99.5,
+  MELTING 5. R package version 0.99.6,
   https://aravind-j.github.io/rmelting/.
 
 A BibTeX entry for LaTeX users is
@@ -183,7 +180,7 @@ A BibTeX entry for LaTeX users is
     title = {rmelting: R Interface to MELTING 5},
     author = {J. Aravind and G. K. Krishna},
     year = {2019},
-    note = {R package version 0.99.5},
+    note = {R package version 0.99.6},
     note = {https://aravind-j.github.io/rmelting/},
   }
 
@@ -231,10 +228,10 @@ project by citing the package.</code></pre>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-3.6-6666ff.svg" alt="minimal R version"></a></li>
 <li><a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" alt="License: GPL v3"></a></li>
-<li><a href="https://github.com/aravind-j/rmelting"><img src="https://img.shields.io/badge/devel%20version-0.99.5-orange.svg" alt="develVersion"></a></li>
+<li><a href="https://github.com/aravind-j/rmelting"><img src="https://img.shields.io/badge/devel%20version-0.99.6-orange.svg" alt="develVersion"></a></li>
 <li><a href="http://www.repostatus.org/#wip"><img src="http://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
-<li><a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--01--16-yellowgreen.svg" alt="Last-changedate"></a></li>
+<li><a href="/commits/master"><img src="https://img.shields.io/badge/last%20change-2019--02--18-yellowgreen.svg" alt="Last-changedate"></a></li>
 <li><a href="https://github.com/aravind-j/google-analytics-beacon"><img src="https://pro-pulsar-193905.appspot.com/UA-116683292-1/welcome-page" alt="Analytics"></a></li>
 </ul>
 </div>

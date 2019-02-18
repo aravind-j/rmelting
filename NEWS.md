@@ -3,8 +3,9 @@
 * Updated installation instructions.
 * Fixed all instances of `stop(paste(...))`.
 * Added `stringsAsFactors = FALSE` to the `eopts` data frame.
-* Expanded the nested functions in meltingBatch.
+* Expanded the nested functions in `meltingBatch`.
 * Updated error and/or warning(s) handling by implementing internal function `withWE`.
+* Fixed issue with single sequence input in `meltingBatch`.
 
 
 # rmelting  0.99.5
