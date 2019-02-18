@@ -763,7 +763,7 @@ melting <- function(sequence, comp.sequence = NULL,
     ha.check <- grepl("a\\*", sequence, ignore.case = TRUE)
     if (TRUE %in% c(i.check, ha.check)) {
       stop("The argument 'comp.sequence' is required if there are",
-                 "inosine(s) [I] or hydroxyadenine(s) [A*] in the 'sequence'")
+           "inosine(s) [I] or hydroxyadenine(s) [A*] in the 'sequence'")
     }
   }
 
@@ -774,8 +774,8 @@ melting <- function(sequence, comp.sequence = NULL,
                  missing(K.conc))
   if (!(FALSE %in% ion.check)) {
     stop("At least one of these arguments specifying ion concentration",
-               "should be provided:",
-               "\n'Na.conc', 'Mg.conc', 'Tris.conc', 'K.conc'")
+         "should be provided:",
+         "\n'Na.conc', 'Mg.conc', 'Tris.conc', 'K.conc'")
   }
 
   # Check if argument nucleic.acid.conc is of type numeric with unit length
@@ -1036,6 +1036,7 @@ melting <- function(sequence, comp.sequence = NULL,
 
   eopt <- eopt[eopt$echeck == FALSE, ]
 
+  # Generate input for -E
   eopts <- paste(paste0(eopt$ion_agent, "=", eopt$eval), collapse = ":")
 
   # Mandatory options 1
@@ -1190,25 +1191,74 @@ melting <- function(sequence, comp.sequence = NULL,
   optionManager <- rJava::new(J("melting.configuration.OptionManagement"))
 
   #results <- meltj$getMeltingResults(opts, optionManager)
-  msge <- ""
-  msgw <- ""
 
-  # Check for error
-  possibleError <- tryCatch(
+  # Check for error and/or warning(s) and Fetch result
+  pResults <- withWE(meltj$getMeltingResults(opts, optionManager))
 
-    meltj$getMeltingResults(opts, optionManager),
+  # Check for error and/or warning(s) and Fetch environment
+  pEnv <- withWE(optionManager$createEnvironment(opts))
 
-    error = function(e) e,
-    warning = function(w) w)
 
-  # Catch error message
-  if (inherits(possibleError, "error")) {
-    msge <- possibleError$message
+  if (isS4(pEnv$value) && .jinstanceof(pEnv$value,
+                   J("melting.Environment"))) {
 
-    if (msge != "") {
-      msge <- paste("ERROR:", msge)
+    # Get environment
+    env <- pEnv$value
+    envir_melt <- list(`Sequence` = env$getSequences()$getSequence(),
+                       `Complementary sequence` = env$getSequences()$getComplementary(),
+                       `Nucleic acid concentration (M)` = env$getNucleotides(),
+                       `Hybridization type` = env$getHybridization(),
+                       `Na concentration (M)` = env$getNa(),
+                       `Mg concentration (M)` = env$getMg(),
+                       `Tris concentration (M)` = env$getTris(),
+                       `K concentration (M)` = env$getK(),
+                       `dNTP concentration (M)` = env$getDNTP(),
+                       `DMSO concentration (%)` = env$getDMSO(),
+                       `Formamide concentration (M or %)` = env$getFormamide(),
+                       `Self complementarity` = env$isSelfComplementarity(),
+                       `Correction factor` = env$getFactor())
+
+    # Get options
+    opt_names <- c("-tan", "-P",  "-S", "-T", "-DMSO", "-secDE", "-ino",
+                   "-sinBU", "-lonDE", "-lck",  "-self", "-am", "-sinDE",
+                   "-azo", "-lonBU", "-naeq", "-intLP",  "-ha", "-for", "-nn",
+                   "-NNPath", "-C", "-E", "-F", "-sinMM", "-H", "-mode", "-GU",
+                   "-CNG", "-ion")
+    opt_names <- setdiff(opt_names, "-NNPath")
+    opts_melt <- env$getOptions()
+    keySet <- .jrcall(opts_melt, "keySet")
+    opts_iter <- .jrcall(keySet, "iterator")
+    # opts_melt2 <- list()
+    opts_melt2 <- vector(length = length(opt_names), mode = "list")
+    names(opts_melt2) <- opt_names
+
+    while (.jrcall(opts_iter, "hasNext")) {
+      key <- .jrcall(opts_iter, "next")
+      opts_melt2[[key]] <- .jrcall(opts_melt, "get", key)
     }
 
+    options_melt <- list(`Approximative formula` = opts_melt2$`-am`,
+                         `Nearest neighbour model` = opts_melt2$`-nn`,
+                         `GU model` = opts_melt2$`-GU`,
+                         `Single mismatch model` = opts_melt2$`-sinMM`,
+                         `Tandem mismatch model` = opts_melt2$`-tan`,
+                         `Single dangling end model` = opts_melt2$`-sinDE`,
+                         `Double dangling end model` = opts_melt2$`-secDE`,
+                         `Long dangling end model` = opts_melt2$`-lonDE`,
+                         `Internal loop model` = opts_melt2$`-intLP`,
+                         `Single bulge loop model` = opts_melt2$`-sinBU`,
+                         `Long bulge loop model` = opts_melt2$`-lonBU`,
+                         `CNG repeats model` = opts_melt2$CNG,
+                         `Inosine bases model` = opts_melt2$`-ino`,
+                         `Hydroxyadenine bases model` = opts_melt2$`-ha`,
+                         `Azobenzenes model` = opts_melt2$`-azo`,
+                         `Locked nucleic acids model` = opts_melt2$`-lck`,
+                         `Ion correction method` = opts_melt2$`-ion`,
+                         `Na equivalence correction method` = opts_melt2$`-naeq`,
+                         `DMSO correction method` = opts_melt2$`-DMSO`,
+                         `Formamide correction method` = opts_melt2$`-for`,
+                         Mode = opts_melt2$`-mode`)
+  } else {
     envir_melt <- list(`Sequence` = NA,
                        `Complementary sequence` = NA,
                        `Nucleic acid concentration (M)` = NA,
@@ -1244,98 +1294,22 @@ melting <- function(sequence, comp.sequence = NULL,
                          `DMSO correction method` = NA,
                          `Formamide correction method` = NA,
                          Mode = NA)
-
-    results_melt <- list(`Enthalpy (cal)` = NA,
-                         `Entropy (cal)` = NA,
-                         `Enthalpy (J)` = NA,
-                         `Entropy (J)` = NA,
-                         `Melting temperature (C)` = NA)
   }
 
-  # Catch warning message
-  if (inherits(possibleError, "warning")) {
-    msgw <- possibleError$message
-
-    if (msgw != "") {
-      msgw <- paste("WARNING:", msgw)
-    }
-  }
-
-  if (inherits(possibleError, "error") | inherits(possibleError, "warning")) {
-    msg <- paste(msge, msgw, sep = "\n")
-
-  } else {
-    results <- possibleError
-
-    # Get environment
-    env <- optionManager$createEnvironment(opts)
-    envir_melt <- list(`Sequence` = env$getSequences()$getSequence(),
-                       `Complementary sequence` = env$getSequences()$getComplementary(),
-                       `Nucleic acid concentration (M)` = env$getNucleotides(),
-                       `Hybridization type` = env$getHybridization(),
-                       `Na concentration (M)` = env$getNa(),
-                       `Mg concentration (M)` = env$getMg(),
-                       `Tris concentration (M)` = env$getTris(),
-                       `K concentration (M)` = env$getK(),
-                       `dNTP concentration (M)` = env$getDNTP(),
-                       `DMSO concentration (%)` = env$getDMSO(),
-                       `Formamide concentration (M or %)` = env$getFormamide(),
-                       `Self complementarity` = env$isSelfComplementarity(),
-                       `Correction factor` = env$getFactor())
-
-    # Get options
-    opt_names <- c("-tan", "-P",  "-S", "-T", "-DMSO", "-secDE", "-ino",
-                   "-sinBU", "-lonDE", "-lck",  "-self", "-am", "-sinDE",
-                   "-azo", "-lonBU", "-naeq", "-intLP",  "-ha", "-for", "-nn",
-                   "-NNPath", "-C", "-E", "-F", "-sinMM", "-H", "-mode", "-GU",
-                   "-CNG", "-ion")
-    opt_names <- setdiff(opt_names, "-NNPath")
-    opts_melt <- env$getOptions()
-    keySet <- .jrcall(opts_melt, "keySet")
-    opts_iter <- .jrcall(keySet, "iterator")
-    # opts_melt2 <- list()
-    opts_melt2 <- vector(length = length(opt_names), mode = "list")
-    names(opts_melt2) <- opt_names
-
-    while (.jrcall(opts_iter, "hasNext")) {
-      key <- .jrcall(opts_iter, "next")
-      opts_melt2[[key]] <- .jrcall(opts_melt, "get", key)
-    }
-
+ # Get Results
+  if (isS4(pResults$value) && .jinstanceof(pResults$value,
+                   J("melting.ThermoResult"))) {
+    results <- pResults$value
 
     # Fetch calculation method
     calculMethod <- results$getCalculMethod()
 
     if (.jinstanceof(calculMethod,
                      J("melting.nearestNeighborModel.NearestNeighborMode"))) {
-      am <- NA_character_
-      nn <- opts_melt2$`-nn`
+      options_melt$`Approximative formula` <- NA_character_
     } else {
-      am <- opts_melt2$`-am`
-      nn <- NA_character_
+      options_melt$`Nearest neighbour model` <- NA_character_
     }
-
-    options_melt <- list(`Approximative formula` = am,
-                         `Nearest neighbour model` = nn,
-                         `GU model` = opts_melt2$`-GU`,
-                         `Single mismatch model` = opts_melt2$`-sinMM`,
-                         `Tandem mismatch model` = opts_melt2$`-tan`,
-                         `Single dangling end model` = opts_melt2$`-sinDE`,
-                         `Double dangling end model` = opts_melt2$`-secDE`,
-                         `Long dangling end model` = opts_melt2$`-lonDE`,
-                         `Internal loop model` = opts_melt2$`-intLP`,
-                         `Single bulge loop model` = opts_melt2$`-sinBU`,
-                         `Long bulge loop model` = opts_melt2$`-lonBU`,
-                         `CNG repeats model` = opts_melt2$CNG,
-                         `Inosine bases model` = opts_melt2$`-ino`,
-                         `Hydroxyadenine bases model` = opts_melt2$`-ha`,
-                         `Azobenzenes model` = opts_melt2$`-azo`,
-                         `Locked nucleic acids model` = opts_melt2$`-lck`,
-                         `Ion correction method` = opts_melt2$`-ion`,
-                         `Na equivalence correction method` = opts_melt2$`-naeq`,
-                         `DMSO correction method` = opts_melt2$`-DMSO`,
-                         `Formamide correction method` = opts_melt2$`-for`,
-                         Mode = opts_melt2$`-mode`)
 
     # Fetch enthalpy and entropy for nearest-neighbour methods
     if (.jinstanceof(calculMethod,
@@ -1361,11 +1335,19 @@ melting <- function(sequence, comp.sequence = NULL,
                          `Enthalpy (J)` = enthalpy_J,
                          `Entropy (J)` = entropy_J,
                          `Melting temperature (C)` = melting_temp_C)
-
-    msg <- paste(msge, msgw, sep = "\n")
+  } else {
+    results_melt <- list(`Enthalpy (cal)` = NA,
+                         `Entropy (cal)` = NA,
+                         `Enthalpy (J)` = NA,
+                         `Entropy (J)` = NA,
+                         `Melting temperature (C)` = NA)
   }
 
-  if (msg == "\n") {
+
+  msg <- c(pEnv$message, pResults$message)
+  if(!all(is.na(msg))) {
+    msg <- paste(setdiff(msg, NA), collapse = "\n")
+  } else {
     msg <- NA
   }
 
