@@ -1,3 +1,20 @@
+# rmelting  0.99.6
+* Removed vignette build products from git repository.
+* Updated installation instructions.
+* Fixed all instances of `stop(paste(...))`.
+* Added `stringsAsFactors = FALSE` to the `eopts` data frame.
+* Expanded the nested functions in meltingBatch.
+* Updated error and/or warning(s) handling by implementing internal function `withWE`.
+
+
+# rmelting  0.99.5
+* For first review.
+* Changed R and rjava dependency.
+
+# rmelting  0.99.4
+* Converted T/F to TRUE/FALSE.
+* Documented return for melting.
+
 # rmelting  0.99.3
 
 * Fixed minor BiocCheck warnings.
