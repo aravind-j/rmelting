@@ -2,15 +2,14 @@
 #'
 #' Not exported. Strictly internal
 #'
-#' @section Warning(s)
-#' Returns the value along with the warning message(s).
-#'
-#' @section Error
-#' Returns NA as the value along with the error message.
-#'
 #' @keywords internal
 #'
 #' @param expr The expression to be evaluated.
+#'
+#' @return \itemize{
+#'  \item{In cas of Warning(s)}{Returns the value along with the warning message(s).}
+#'  \item{In cas of Error}{Returns NA as the value along with the error message.}
+#' }
 #'
 #' @examples
 #' foo <- function(){

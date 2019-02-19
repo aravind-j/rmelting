@@ -9,6 +9,12 @@ withWE(expr)
 \arguments{
 \item{expr}{The expression to be evaluated.}
 }
+\value{
+\itemize{
+ \item{In cas of Warning(s)}{Returns the value along with the warning message(s).}
+ \item{In cas of Error}{Returns NA as the value along with the error message.}
+}
+}
 \description{
 Not exported. Strictly internal
 }
