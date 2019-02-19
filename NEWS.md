@@ -1,3 +1,6 @@
+# rmelting  0.99.7
+* Fixed missing value in `withWE`.
+
 # rmelting  0.99.6
 * Removed vignette build products from git repository.
 * Updated installation instructions.
