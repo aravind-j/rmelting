@@ -14,6 +14,7 @@
 
 [![minimal R
 version](https://img.shields.io/badge/R%3E%3D-3.6-6666ff.svg)](https://cran.r-project.org/)
+[![biocVersion](https://img.shields.io/badge/Bioc%20version-Development\(3.9\)-orange.svg)](https://doi.org/doi:10.18129/B9.bioc.rmelting)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <!-- [[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-last-release/rmelting)](https://cran.r-project.org/package=rmelting) -->
@@ -22,12 +23,21 @@ v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org
 [![develVersion](https://img.shields.io/badge/devel%20version-0.99.7-orange.svg)](https://github.com/aravind-j/rmelting)
 <!-- [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/aravind-j/rmelting/total.svg)] -->
 [![Project Status:
-WIP](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2019--02--19-yellowgreen.svg)](/commits/master)
+WIP](https://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2019--02--22-yellowgreen.svg)](/commits/master)
 <!-- [![Rdoc](http://www.rdocumentation.org/badges/version/rmelting)](http://www.rdocumentation.org/packages/rmelting) -->
 <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.841963.svg)](https://doi.org/10.5281/zenodo.841963) -->
 [![Analytics](https://pro-pulsar-193905.appspot.com/UA-116683292-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon)
+[![Bioc Download
+rank](https://bioconductor.org/shields/downloads/devel/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)
+[![in
+Bioc](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html#since)
+[![Bioc build
+status](https://bioconductor.org/shields/build/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)
+[![Bioc
+updated](https://bioconductor.org/shields/lastcommit/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)
+<!-- [![](https://bioconductor.org/images/shields/availability/unknown-build.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html#archives) -->
 
 -----
 
@@ -73,7 +83,7 @@ news(package='rmelting')
 
 ## Links
 
-<!-- [CRAN page](https://cran.r-project.org/package=rmelting) -->
+[Bioconductor page](https://doi.org/doi:10.18129/B9.bioc.rmelting)
 
 [Github page](https://github.com/aravind-j/rmelting)
 
