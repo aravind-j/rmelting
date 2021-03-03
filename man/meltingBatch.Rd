@@ -4,8 +4,14 @@
 \alias{meltingBatch}
 \title{Compute melting temperature of multiple nucleic acid duplexes in batch}
 \usage{
-meltingBatch(sequence, comp.sequence = NULL, environment.out = TRUE,
-  options.out = TRUE, message.out = TRUE, ...)
+meltingBatch(
+  sequence,
+  comp.sequence = NULL,
+  environment.out = TRUE,
+  options.out = TRUE,
+  message.out = TRUE,
+  ...
+)
 }
 \arguments{
 \item{sequence}{A character vector of 5' to 3' sequences of one strand of the
