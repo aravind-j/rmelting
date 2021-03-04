@@ -6,11 +6,11 @@ on:
   schedule:
     - cron:  '0 0 * * 0'
 
-name: Render Readme
+name: Render Badges
 
 jobs:
   render:
-    name: Render Readme
+    name: Render Badges
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
