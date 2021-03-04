@@ -91,9 +91,6 @@ jobs:
         if: runner.os != 'Linux'
         uses: r-lib/actions/setup-pandoc@master
 
-      - name: Setup tinytex from r-lib
-        uses: r-lib/actions/setup-tinytex@v1
-
       - name: Query dependencies
         run: |
           install.packages('remotes')
@@ -201,6 +198,12 @@ jobs:
         if: github.ref == 'refs/heads/master' && env.run_pkgdown == 'true' && runner.os == 'Linux'
         run: |
           remotes::install_github("r-lib/pkgdown")
+        shell: Rscript {0}
+
+      - name: Install tinytex
+        run: |
+          install.packages('tinytex')
+          tinytex::install_tinytex()
         shell: Rscript {0}
 
       - name: Session info
