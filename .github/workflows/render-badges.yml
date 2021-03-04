@@ -50,5 +50,5 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add badges/\*
           git commit -m "Re-build badges on `date +'%Y-%m-%d %H:%M:%S'`" || echo "No changes to commit"
-          git push origin master || echo "No changes to commit"
+          git push -f origin master || echo "No changes to commit"
 
