@@ -1,3 +1,6 @@
+# rmelting  1.7.1
+* Fix minor error in links.
+
 # rmelting  0.99.7
 * Fixed missing value in `withWE`.
 
