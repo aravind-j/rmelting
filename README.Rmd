@@ -113,7 +113,7 @@ c(
 "[![Bioc updated](https://bioconductor.org/shields/lastcommit/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)",
 "[![Bioc Download rank](https://bioconductor.org/shields/downloads/devel/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)"))
 
-knitr::kable(badgedf, col.names = NULL)
+knitr::kable(badgedf, col.names = NULL, format = "html")
 ```
 
 ## Citing `rmelting`
