@@ -53,7 +53,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add README.md
           git commit -m "Re-build README.md" || echo "No changes to commit"
-          git push origin master || echo "No changes to commit"
+          git push -f origin master || echo "No changes to commit"
 
       - name: Trigger pkgdown workflow
         if: success()
