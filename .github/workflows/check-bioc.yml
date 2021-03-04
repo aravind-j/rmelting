@@ -154,6 +154,12 @@ jobs:
           BiocManager::install(version = "${{ matrix.config.bioc }}", ask = FALSE)
         shell: Rscript {0}
 
+      - name: Install tinytex
+        run: |
+          install.packages('tinytex')
+          tinytex::install_tinytex()
+        shell: Rscript {0}
+
       - name: Install dependencies pass 1
         run: |
           ## Try installing the package dependencies in steps. First the local
@@ -198,12 +204,6 @@ jobs:
         if: github.ref == 'refs/heads/master' && env.run_pkgdown == 'true' && runner.os == 'Linux'
         run: |
           remotes::install_github("r-lib/pkgdown")
-        shell: Rscript {0}
-
-      - name: Install tinytex
-        run: |
-          install.packages('tinytex')
-          tinytex::install_tinytex()
         shell: Rscript {0}
 
       - name: Session info
