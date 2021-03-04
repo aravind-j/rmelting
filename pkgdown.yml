@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   Tutorial: Tutorial.html
-last_built: 2021-03-04T21:38Z
+last_built: 2021-03-04T23:27Z
 urls:
   reference: https://aravind-j.github.io/rmelting//reference
   article: https://aravind-j.github.io/rmelting//articles
