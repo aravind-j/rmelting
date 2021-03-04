@@ -43,22 +43,6 @@ cat(paste("[![develVersion](https://shields.io/badge/devel%20version-", dver, "-
 
 ***
 
-[![Bioc release version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcr_badge.svg)](https://bioconductor.org/install/)
-[![Pkg Bioc release version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgr_badge.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html)
-[![in Bioc release](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html#since)
-[![Bioc release status](https://bioconductor.org/shields/build/release/bioc/rmelting.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/)
-[![Bioc updated](https://bioconductor.org/shields/lastcommit/release/bioc/rmelting.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/)
-[![Bioc Download rank](https://bioconductor.org/shields/downloads/release/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)
-
-[![Bioc devel version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcd_badge.svg)](https://bioconductor.org/install/)
-[![Pkg Bioc devel version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgd_badge.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html)
-[![in Bioc devel](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html#since)
-[![Bioc dev status](https://bioconductor.org/shields/build/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)
-[![Bioc updated](https://bioconductor.org/shields/lastcommit/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)
-[![Bioc Download rank](https://bioconductor.org/shields/downloads/devel/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)
-
-***
-
 <!-- [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/aravind-j/rmelting/total.svg)] -->
 <!-- [![Rdoc](http://www.rdocumentation.org/badges/version/rmelting)](http://www.rdocumentation.org/packages/rmelting) -->
 <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.841963.svg)](https://doi.org/10.5281/zenodo.841963) -->
@@ -109,6 +93,28 @@ news(package='rmelting')
 [Documentation website](https://aravind-j.github.io/rmelting/)
 
 <!-- [Zenodo DOI](https://doi.org/10.5281/zenodo.1219630) -->
+
+## Bioconductor checks and metrics
+
+```{r, results='asis', echo=FALSE, warning=FALSE}
+badgedf <- rbind(c(
+"[![Bioc release version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcr_badge.svg)](https://bioconductor.org/install/)",
+"[![Pkg Bioc release version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgr_badge.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html)",
+"[![in Bioc release](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html#since)",
+"[![Bioc release status](https://bioconductor.org/shields/build/release/bioc/rmelting.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/)",
+"[![Bioc updated](https://bioconductor.org/shields/lastcommit/release/bioc/rmelting.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/)",
+"[![Bioc Download rank](https://bioconductor.org/shields/downloads/release/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)"),
+
+c(
+"[![Bioc devel version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcd_badge.svg)](https://bioconductor.org/install/)",
+"[![Pkg Bioc devel version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgd_badge.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html)",
+"[![in Bioc devel](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html#since)",
+"[![Bioc dev status](https://bioconductor.org/shields/build/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)",
+"[![Bioc updated](https://bioconductor.org/shields/lastcommit/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)",
+"[![Bioc Download rank](https://bioconductor.org/shields/downloads/devel/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)"))
+
+knitr::kable(badgedf, col.names = NULL)
+```
 
 ## Citing `rmelting`
 To cite the methods in the package use:
