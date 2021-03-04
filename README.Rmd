@@ -47,8 +47,8 @@ dver <- ifelse(test = as.numeric(gsub("(.\\.)(\\d+)(\\..)", "\\2", getNamespaceV
 cat(paste("[![develVersion](https://img.shields.io/badge/devel%20version-", dver, "-orange.svg)](https://github.com/aravind-j/rmelting)", sep = ""))
 ```
 [![Github Code Size](https://img.shields.io/github/languages/code-size/aravind-j/rmelting.svg)](https://github.com/aravind-j/rmelting)
-[![Project Status: WIP](https://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+[![Project Status: WIP](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
 [![Website - pkgdown](https://img.shields.io/website-up-down-green-red/https/aravind-j.github.io/rmelting.svg)](https://aravind-j.github.io/rmelting/)
 [![.](https://pro-pulsar-193905.appspot.com/UA-116683292-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon)
