@@ -28,12 +28,28 @@ devtools::load_all(".")
 
 [![minimal R version](https://img.shields.io/badge/R>%3D-3.6-6666ff.svg)](https://cran.r-project.org/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+```{r, results='asis', echo=FALSE}
+dver <- ifelse(test = as.numeric(gsub("(.\\.)(\\d+)(\\..)", "\\2", getNamespaceVersion("rmelting"))) %% 2 != 0, yes = getNamespaceVersion("rmelting"), no = gsub("Version:\\s*", "", readLines(paste0("https://raw.githubusercontent.com/", "aravind-j/rmelting", "/master/DESCRIPTION"))[grep("Version:", readLines(paste0("https://raw.githubusercontent.com/", "aravind-j/rmelting", "/master/DESCRIPTION")))]))
+
+cat(paste("[![develVersion](https://shields.io/badge/devel%20version-", dver, "-orange?logo=github&style=flat)](https://github.com/aravind-j/rmelting)", sep = ""))
+```
+[![Github Code Size](https://img.shields.io/github/languages/code-size/aravind-j/rmelting.svg)](https://github.com/aravind-j/rmelting)
+[![R-CMD-check-bioc](https://github.com/aravind-j/rmelting/actions/workflows/check-bioc.yml/badge.svg)](https://github.com/aravind-j/rmelting/actions/workflows/check-bioc.yml)
+[![Project Status: WIP](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
+[![Website - pkgdown](https://img.shields.io/website-up-down-green-red/https/aravind-j.github.io/rmelting.svg)](https://aravind-j.github.io/rmelting/)
+[![.](https://pro-pulsar-193905.appspot.com/UA-116683292-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon)
+
+***
+
 [![Bioc release version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcr_badge.svg)](https://bioconductor.org/install/)
 [![Pkg Bioc release version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgr_badge.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html)
 [![in Bioc release](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html#since)
 [![Bioc release status](https://bioconductor.org/shields/build/release/bioc/rmelting.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/)
 [![Bioc updated](https://bioconductor.org/shields/lastcommit/release/bioc/rmelting.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/)
 [![Bioc Download rank](https://bioconductor.org/shields/downloads/release/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)
+
 [![Bioc devel version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcd_badge.svg)](https://bioconductor.org/install/)
 [![Pkg Bioc devel version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgd_badge.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html)
 [![in Bioc devel](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html#since)
@@ -41,17 +57,8 @@ devtools::load_all(".")
 [![Bioc updated](https://bioconductor.org/shields/lastcommit/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)
 [![Bioc Download rank](https://bioconductor.org/shields/downloads/devel/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)
 
-```{r, results='asis', echo=FALSE}
-dver <- ifelse(test = as.numeric(gsub("(.\\.)(\\d+)(\\..)", "\\2", getNamespaceVersion("rmelting"))) %% 2 != 0, yes = getNamespaceVersion("rmelting"), no = gsub("Version:\\s*", "", readLines(paste0("https://raw.githubusercontent.com/", "aravind-j/rmelting", "/master/DESCRIPTION"))[grep("Version:", readLines(paste0("https://raw.githubusercontent.com/", "aravind-j/rmelting", "/master/DESCRIPTION")))]))
+***
 
-cat(paste("[![develVersion](https://img.shields.io/badge/devel%20version-", dver, "-orange.svg)](https://github.com/aravind-j/rmelting)", sep = ""))
-```
-[![Github Code Size](https://img.shields.io/github/languages/code-size/aravind-j/rmelting.svg)](https://github.com/aravind-j/rmelting)
-[![Project Status: WIP](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
-[![Last-changedate](https://img.shields.io/badge/last%20change-`r gsub('-', '--', Sys.Date())`-yellowgreen.svg)](/commits/master)
-[![Website - pkgdown](https://img.shields.io/website-up-down-green-red/https/aravind-j.github.io/rmelting.svg)](https://aravind-j.github.io/rmelting/)
-[![.](https://pro-pulsar-193905.appspot.com/UA-116683292-1/welcome-page)](https://github.com/aravind-j/google-analytics-beacon)
 <!-- [![GitHub Download Count](https://github-basic-badges.herokuapp.com/downloads/aravind-j/rmelting/total.svg)] -->
 <!-- [![Rdoc](http://www.rdocumentation.org/badges/version/rmelting)](http://www.rdocumentation.org/packages/rmelting) -->
 <!-- [![Zenodo DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.841963.svg)](https://doi.org/10.5281/zenodo.841963) -->
@@ -59,8 +66,6 @@ cat(paste("[![develVersion](https://img.shields.io/badge/devel%20version-", dver
 <!-- [[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-last-release/rmelting)](https://cran.r-project.org/package=rmelting) -->
 <!-- [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmelting?color=green)](https://CRAN.R-project.org/package=rmelting) -->
 <!-- [![packageversion](https://img.shields.io/badge/Package%20version-0.2.3.3-orange.svg)](https://github.com/aravind-j/rmelting) -->
-
-***
 
 ## Description
 `r gsub("\\n", " ", packageDescription("rmelting", fields = "Description"))`
