@@ -147,6 +147,8 @@ jobs:
           ## For installing usethis's dependency gert
           brew install libgit2
 
+          brew install ghostscript
+
       - name: Install Windows system dependencies
         if: runner.os == 'Windows'
         run: |
@@ -168,6 +170,7 @@ jobs:
         run: |
           install.packages('tinytex')
           tinytex::install_tinytex()
+          tinytex::tlmgr_install("pdfcrop")
         shell: Rscript {0}
 
       - name: Install dependencies pass 1 # for linux and macOS
