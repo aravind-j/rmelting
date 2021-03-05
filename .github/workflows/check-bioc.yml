@@ -147,6 +147,8 @@ jobs:
           ## For installing usethis's dependency gert
           brew install libgit2
 
+          brew cask install xquartz
+
           brew install ghostscript
 
       - name: Install Windows system dependencies
