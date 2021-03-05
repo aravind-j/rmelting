@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          lfs: 'true'
           ref: ${{ github.event.client_payload.sha }}
 
       - uses: r-lib/actions/setup-r@v1
@@ -45,4 +46,4 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          Rscript -e 'pkgdown::deploy_to_branch(clean = TRUE, new_process = TRUE)'
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = FALSE)'
