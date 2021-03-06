@@ -210,8 +210,8 @@ A list with the following components: \item{\code{Environment}}{A
 \description{
 Compute the enthalpy and entropy of helix-coil transition, and then the
 melting temperature of a nucleic acid duplex with the
-\href{https://www.ebi.ac.uk/biomodels/tools/melting/}{MELTING 5 software} (Le
-Novère, 2001; Dumousseau et al., 2012).
+\href{https://www.ebi.ac.uk/biomodels-static/tools/melting/}{MELTING 5
+software} (Le Novère, 2001; Dumousseau et al., 2012).
 }
 \section{Mandatory arguments}{
  The following are the arguments which are
