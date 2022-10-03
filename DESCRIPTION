@@ -31,7 +31,7 @@ Depends:
     R (>= 3.6)
 Imports:
     Rdpack,
-    rJava (>= 0.5-0)
+    rJava (>= 0.9-8)
 Suggests:
     readxl,
     knitr,
@@ -39,12 +39,12 @@ Suggests:
     reshape2,
     pander,
     testthat
-SystemRequirements: Java
+SystemRequirements: Java (>= 1.7)
 biocViews: BiomedicalInformatics, Cheminformatics,
 License: GPL-2 | GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 RdMacros: Rdpack
 URL: https://github.com/aravind-j/rmelting,
      https://aravind-j.github.io/rmelting/
