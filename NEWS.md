@@ -1,3 +1,7 @@
+# rmelting  1.13.1
+* Update from MELTING 5.1.1 to MELTING 5.2.0
+* Added options for consecutive locked nucleic acids (`method.consecutive.locked` and `method.consecutive.locked.singleMM`).
+
 # rmelting  1.7.1
 * Fix minor error in links.
 

@@ -1112,13 +1112,13 @@ melting(sequence = "CTX_CTTAAX_CGAAGX_CGAGAX_CTATAX_CCC",
         Na.conc = 1, method.azobenzenes = "asa05")
 ```
 
-### Locked nucleic acids effect
+### Single Locked nucleic acid effect
 
-The nearest neighbour model for computation in case of sequences with locked nucleic acids can be specified by the argument `method.locked`. The available methods are given in **Table 18**.
+The nearest neighbour model for computation in case of sequences with single locked nucleic acids can be specified by the argument `method.locked`. The available methods are given in **Table 18**.
 
-**Table 18**: Details of methods for sequences with locked nucleic acids
+**Table 18**: Details of methods for sequences with single locked nucleic acids
 ```{r, echo=FALSE}
-rmeltingtables(file = "Tables.xlsx", sheet = "locked.methods",
+rmeltingtables(file = "Tables.xlsx", sheet = "single.locked.methods",
                def = "default", code = "Model", ref = "Reference")
 ```
 
@@ -1137,15 +1137,92 @@ _**Examples**_
 ```
 
 ```{r}
-# Locked nucleic acids effect - default (DNA/DNA)
+# Single locked nucleic acids effect - default (DNA/DNA)
 melting(sequence = "CCATTLGCTACC",
         nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
         Na.conc = 1)
 
-# Locked nucleic acids effect - sug01 (DNA/DNA)
+# Single locked nucleic acids effect - mct04 (DNA/DNA)
 melting(sequence = "CCATTLGCTACC",
         nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
         Na.conc = 1, method.locked = "mct04")
+
+# Single locked nucleic acids effect - owc11 (DNA/DNA)
+melting(sequence = "CCATTLGCTACC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.locked = "owc11")
+```
+## Consecutive Locked nucleic acids effect
+
+The nearest neighbour model for computation in case of sequences with consecutive locked nucleic acids can be specified by the argument `method.consecutive.locked`. The available methods are given in **Table 19**.
+
+**Table 19**: Details of methods for sequences with single locked nucleic acids
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "consq.locked.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+          LL  
+    DNA:GACC
+        ||||
+    DNA:CTGG
+```
+
+```{r}
+# Consecutive locked nucleic acids effect - default (DNA/DNA)
+melting(sequence = "GALCLC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Consecutive locked nucleic acids effect - owc11 (DNA/DNA)
+melting(sequence = "GALCLC",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.consecutive.locked = "owc11")
+```
+
+## Consecutive Locked nucleic acids with a single mismatch effect
+
+
+The nearest neighbour model for computation in case of sequences with consecutive locked nucleic acids with single mismatch can be specified by the argument `method.consecutive.locked.singleMM`. The available methods are given in **Table 20**.
+
+**Table 20**: Details of methods for sequences with single locked nucleic acids
+```{r, echo=FALSE}
+rmeltingtables(file = "Tables.xlsx", sheet = "consq.locked.SMM.methods",
+               def = "default", code = "Model", ref = "Reference")
+```
+
+\* Default method for computation.
+\begin{center}
+\vspace{2pt}
+\end{center}
+
+_**Examples**_
+
+```
+          LLL  
+    DNA:GACGC
+        || ||
+    DNA:CTTCG
+```
+
+```{r}
+# Consecutive locked nucleic acids effect - default (DNA/DNA)
+melting(sequence = "GALCLGLC", comp.sequence = "CTTCG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1)
+
+# Consecutive locked nucleic acids effect - owc11 (DNA/DNA)
+melting(sequence = "GALCLGLC", comp.sequence = "CTTCG",
+        nucleic.acid.conc = 0.0001, hybridisation.type = "dnadna",
+        Na.conc = 1, method.consecutive.locked.singleMM = "owc11")
 ```
 
 # Corrections
@@ -1164,9 +1241,9 @@ Th correction methods for cation concentration can be specified by the argument 
 
 ### Sodium corrections
 
-The available correction methods for sodium concentration are given in **Table 19**.
+The available correction methods for sodium concentration are given in **Table 21**.
 
-**Table 19**: Details of the corrections for sodium concentration
+**Table 21**: Details of the corrections for sodium concentration
 ```{r, echo=FALSE}
 rmeltingtables(file = "Tables.xlsx", sheet = "na.correction",
                def = "default", code = "Correction", ref = "Reference")
@@ -1281,9 +1358,9 @@ melting(sequence = "CCAGCCAGTCTCTCC",
 
 ### Magnesium corrections
 
-The available correction methods for magnesium concentration are given in **Table 20**.
+The available correction methods for magnesium concentration are given in **Table 22**.
 
-**Table 20**: Details of the corrections for magnesium concentration
+**Table 22**: Details of the corrections for magnesium concentration
 ```{r, echo=FALSE}
 rmeltingtables(file = "Tables.xlsx", sheet = "mg.correction",
                def = "default", code = "Correction", ref = "Reference")
@@ -1333,9 +1410,9 @@ melting(sequence = "UACGCGUCAAUAACGCUA",
 
 ### Mixed Sodium and Magnesium corrections
 
-The available correction methods for mixed sodium magnesium concentration are given in **Table 21**.
+The available correction methods for mixed sodium magnesium concentration are given in **Table 23**.
 
-**Table 21**: Details of the corrections for mixed sodium and magnesium concentration
+**Table 23**: Details of the corrections for mixed sodium and magnesium concentration
 ```{r, echo=FALSE}
 rmeltingtables(file = "Tables.xlsx", sheet = "NaMg.correction",
                def = "default", code = "Correction", ref = "Reference")
@@ -1396,9 +1473,9 @@ Note that $[\textrm{Tris}^{+}]$ is about half of the total tris buffer concentra
 
 ### Sodium equivalent concentration methods
 
-The available correction methods for mixed sodium magnesium concentration are given in **Table 22**.
+The available correction methods for mixed sodium magnesium concentration are given in **Table 24**.
 
-**Table 22**: Details of the methods for computation of sodium equivalent concentration in the presence of other ions
+**Table 24**: Details of the methods for computation of sodium equivalent concentration in the presence of other ions
 ```{r, echo=FALSE}
 rmeltingtables(file = "Tables.xlsx", sheet = "Naeq.methods",
                def = "default", code = "Correction", ref = "Reference")
@@ -1437,9 +1514,9 @@ These include melting temperature corrections for concentration of formamide and
 
 ### DMSO corrections
 
-The available correction methods for DMSO concentration are given in **Table 23**.
+The available correction methods for DMSO concentration are given in **Table 25**.
 
-**Table 23**: Details of the corrections for DMSO concentration
+**Table 25**: Details of the corrections for DMSO concentration
 ```{r, echo=FALSE}
 rmeltingtables(file = "Tables.xlsx", sheet = "DMSO.methods",
                def = "default", code = "Correction", ref = "Reference")
@@ -1479,9 +1556,9 @@ melting(sequence = "CAGCCTCGTCGCAGC",
 
 ### Formamide corrections
 
-The available correction methods for formamide concentration are given in **Table 24**.
+The available correction methods for formamide concentration are given in **Table 26**.
 
-**Table 24**: Details of the corrections for formamide concentration
+**Table 26**: Details of the corrections for formamide concentration
 ```{r, echo=FALSE}
 rmeltingtables(file = "Tables.xlsx", sheet = "formamide.methods",
                def = "default", code = "Correction", ref = "Reference")
@@ -1511,9 +1588,9 @@ melting(sequence = "CAGCCTCGTCGCAGC",
 
 # Equivalent options in MELTING 5
 
-The options in MELTING 5 command line equivalent to the arguments in `rmelting` are given in **Table 25**.
+The options in MELTING 5 command line equivalent to the arguments in `rmelting` are given in **Table 27**.
 
-**Table 24**: Arguments in `rmelting` and their equivalent options in MELTING 5 command line.
+**Table 27**: Arguments in `rmelting` and their equivalent options in MELTING 5 command line.
 ```{r, echo=FALSE}
 options <- read_excel("Tables.xlsx", sheet = "commands", col_names = TRUE)[1:34, c(2,1)]
 options$`MELTING 5` <- paste("-", options$`MELTING 5`, sep = "")
@@ -1556,7 +1633,7 @@ meltingBatch(sequence = seq, comp.seq = comp.seq, nucleic.acid.conc = 0.0004,
 
 # Further reading
 
-Further details about algorithm, formulae and methods are available in the [MELTING 5 documentation](https://www.ebi.ac.uk/biomodels-static/tools/melting/melting5-doc/melting.html).
+Further details about algorithm, formulae and methods are available in the [MELTING 5 documentation](https://www.ebi.ac.uk/biomodels/tools/melting/melting5-doc/melting.html).
 
 # Citing `rmelting`
 

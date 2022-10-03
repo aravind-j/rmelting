@@ -30,7 +30,9 @@ melting(sequence, comp.sequence = NULL,
         method.inosine = c("san05", "zno07"),
         method.hydroxyadenine = c("sug01"),
         method.azobenzenes = c("asa05"),
-        method.locked = c("mct04"),
+        method.locked = c("owc11", "mct04"),
+        method.consecutive.locked = c("owc11"),
+        method.consecutive.locked.singleMM = c("owc11"),
         correction.ion = c("ahs01", "kam71", "marschdot",
                            "owc1904", "owc2004", "owc2104",
                            "owc2204", "san96", "san04", "schlif",
@@ -170,9 +172,21 @@ azobenzenes) to the thermodynamic of helix-coil transition. Available
 method is \code{"asa05"} (see \strong{Azobenzenes effect}).}
 
 \item{method.locked}{Specify the nearest neighbor model to compute the
-contribution of locked nucleic acids (AL, GL, TL and CL) to the
-thermodynamic of helix-coil transition. Available method is \code{"mct04"}
-(see \strong{Locked nucleic acids effect}).}
+contribution of single locked nucleic acids (AL, GL, TL and CL) to the
+thermodynamic of helix-coil transition. Either \code{"owc11"} or
+\code{"mct04"} (see \strong{Single locked nucleic acids effect}).}
+
+\item{method.consecutive.locked}{Specify the nearest neighbor model to
+compute the contribution of consecutive locked nucleic acids (AL, GL, TL
+and CL) to the thermodynamic of helix-coil transition. Available
+method is \code{"owc11"} (see \strong{Consecutive locked nucleic acids
+effect}).}
+
+\item{method.consecutive.locked.singleMM}{Specify the nearest neighbor model
+to compute the contribution of consecutive locked nucleic acids (AL, GL, TL
+and CL) with a single mismatch to the thermodynamic of helix-coil
+transition. Available method is \code{"owc11"} (see \strong{Consecutive
+locked nucleic acids with single mismatch effect}).}
 
 \item{correction.ion}{Specify the correction method for ions. Either one of
 the following: \itemize{\item{Na corrections}{\code{"ahs01"},
@@ -210,7 +224,7 @@ A list with the following components: \item{\code{Environment}}{A
 \description{
 Compute the enthalpy and entropy of helix-coil transition, and then the
 melting temperature of a nucleic acid duplex with the
-\href{https://www.ebi.ac.uk/biomodels-static/tools/melting/}{MELTING 5
+\href{https://www.ebi.ac.uk/biomodels/tools/melting/}{MELTING 5
 software} (Le Novère, 2001; Dumousseau et al., 2012).
 }
 \section{Mandatory arguments}{
@@ -464,10 +478,28 @@ software} (Le Novère, 2001; Dumousseau et al., 2012).
   Azobenzenes (X_T for trans azobenzenes and X_C for cis azobenzenes) are not
   taken into account by the approximative mode.}
 
-  \subsection{Locked nucleic acids effect}{\tabular{llll}{ \strong{Model}
-  \tab \strong{Type} \tab \strong{Limits/Remarks} \tab \strong{Reference} \cr
-  \code{mct04}* \tab DNA \tab \tab McTigue et al., 2004 } * Default model for
-  computation.
+  \subsection{Single locked nucleic acids effect}{\tabular{llll}{
+  \strong{Model} \tab \strong{Type} \tab \strong{Limits.Remarks} \tab
+  \strong{Reference} \cr \code{mct04}   \tab DNA\tab  \tab McTigue, Peterson,
+  and Kahn,\cr \tab\tab  \tab 2004\cr \code{owc11}*  \tab DNA\tab  \tab
+  Owczarzy, You, Groth, and   \cr \tab\tab  \tab Tataurov, 2011  } * Default
+  model for computation.
+
+  Locked nucleic acids (AL, GL, TL and CL) are not taken into account by the
+  approximative mode.}
+
+  \subsection{Consecutive locked nucleic acids effect}{\tabular{llll}{
+  \strong{Model} \tab \strong{Type} \tab \strong{Limits.Remarks} \tab
+  \strong{Reference} \cr \code{owc11}* \tab DNA \tab \tab Owczarzy et al.,
+  2011 } * Default model for computation.
+
+  Locked nucleic acids (AL, GL, TL and CL) are not taken into account by the
+  approximative mode.}
+
+  \subsection{Consecutive locked nucleic acids with single mismatch
+  effect}{\tabular{llll}{ \strong{Model} \tab \strong{Type} \tab
+  \strong{Limits.Remarks} \tab \strong{Reference}  \cr \code{owc11}*  \tab
+  DNA   \tab  \tab Owczarzy et al., 2011 } * Default model for computation.
 
   Locked nucleic acids (AL, GL, TL and CL) are not taken into account by the
   approximative mode.}
@@ -681,6 +713,8 @@ browseVignettes(package = 'rmelting')
 \insertRef{tanaka_thermodynamic_2004}{rmelting}
 
 \insertRef{mctigue_sequence-dependent_2004}{rmelting}
+
+\insertRef{owczarzy_stability_2011}{rmelting}
 
 \insertRef{owczarzy_effects_2004}{rmelting}
 
