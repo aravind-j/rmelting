@@ -2,21 +2,21 @@
   "index_name": "rmelting",
   "start_urls": [
     {
-      "url": "https://aravind-j.github.io/rmelting//index.html",
+      "url": "https://aravind-j.github.io/rmelting/index.html",
       "selectors_key": "homepage",
       "tags": [
         "homepage"
       ]
     },
     {
-      "url": "https://aravind-j.github.io/rmelting//reference",
+      "url": "https://aravind-j.github.io/rmelting/reference",
       "selectors_key": "reference",
       "tags": [
         "reference"
       ]
     },
     {
-      "url": "https://aravind-j.github.io/rmelting//articles",
+      "url": "https://aravind-j.github.io/rmelting/articles",
       "selectors_key": "articles",
       "tags": [
         "articles"
@@ -30,7 +30,7 @@
     "/articles/index.html"
   ],
   "sitemap_urls": [
-    "https://aravind-j.github.io/rmelting//sitemap.xml"
+    "https://aravind-j.github.io/rmelting/sitemap.xml"
   ],
   "selectors": {
     "homepage": {
