@@ -21,4 +21,6 @@ vignettes/Tutorial.log
 rmelting.pdf
 bioc-comments.md
 docs/
+.DS_Store
+.httr-oauth
 
