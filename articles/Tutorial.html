@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rmelting</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.13.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.13.1</span>
       </span>
     </div>
 
@@ -390,7 +390,7 @@
 <span><span class="co">## [1] "asa05"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`Locked nucleic acids model`</span></span>
-<span><span class="co">## [1] "mct04"</span></span>
+<span><span class="co">## [1] "owc11"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`Ion correction method`</span></span>
 <span><span class="co">## [1] NA</span></span>
@@ -1803,10 +1803,10 @@
 <pre><code><span><span class="co">## [1] 47.85385</span></span></code></pre>
 </div>
 <div class="section level4">
-<h4 id="locked-nucleic-acids-effect">Locked nucleic acids effect<a class="anchor" aria-label="anchor" href="#locked-nucleic-acids-effect"></a>
+<h4 id="single-locked-nucleic-acid-effect">Single Locked nucleic acid effect<a class="anchor" aria-label="anchor" href="#single-locked-nucleic-acid-effect"></a>
 </h4>
-<p>The nearest neighbour model for computation in case of sequences with locked nucleic acids can be specified by the argument <code>method.locked</code>. The available methods are given in <strong>Table 18</strong>.</p>
-<p><strong>Table 18</strong>: Details of methods for sequences with locked nucleic acids</p>
+<p>The nearest neighbour model for computation in case of sequences with single locked nucleic acids can be specified by the argument <code>method.locked</code>. The available methods are given in <strong>Table 18</strong>.</p>
+<p><strong>Table 18</strong>: Details of methods for sequences with single locked nucleic acids</p>
 <table style="width:97%;" class="table">
 <colgroup>
 <col width="15%">
@@ -1820,13 +1820,21 @@
 <th align="left">Limits/Remarks</th>
 <th align="left">Reference</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="left">
-<code>mct04</code>*</td>
+<tbody>
+<tr class="odd">
+<td align="left"><code>mct04</code></td>
 <td align="left">DNA</td>
 <td align="left"></td>
 <td align="left"><span class="citation">McTigue et al. (2004)</span></td>
-</tr></tbody>
+</tr>
+<tr class="even">
+<td align="left">
+<code>owc11</code>*</td>
+<td align="left">DNA</td>
+<td align="left"></td>
+<td align="left"><span class="citation">Owczarzy et al. (2011)</span></td>
+</tr>
+</tbody>
 </table>
 * Default method for computation.
 
@@ -1836,18 +1844,116 @@
         |||||||||||
     DNA:GGTAACGATGG</code></pre>
 <div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Locked nucleic acids effect - default (DNA/DNA)</span></span>
+<code class="sourceCode R"><span><span class="co"># Single locked nucleic acids effect - default (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCATTLGCTACC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.0001</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 63.61426</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 63.48299</span></span></code></pre>
 <div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Locked nucleic acids effect - sug01 (DNA/DNA)</span></span>
+<code class="sourceCode R"><span><span class="co"># Single locked nucleic acids effect - mct04 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCATTLGCTACC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.0001</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, method.locked <span class="op">=</span> <span class="st">"mct04"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 63.61426</span></span></code></pre>
+<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Single locked nucleic acids effect - owc11 (DNA/DNA)</span></span>
+<span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCATTLGCTACC"</span>,</span>
+<span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.0001</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
+<span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, method.locked <span class="op">=</span> <span class="st">"owc11"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 63.48299</span></span></code></pre>
 </div>
+</div>
+<div class="section level3">
+<h3 id="consecutive-locked-nucleic-acids-effect">Consecutive Locked nucleic acids effect<a class="anchor" aria-label="anchor" href="#consecutive-locked-nucleic-acids-effect"></a>
+</h3>
+<p>The nearest neighbour model for computation in case of sequences with consecutive locked nucleic acids can be specified by the argument <code>method.consecutive.locked</code>. The available methods are given in <strong>Table 19</strong>.</p>
+<p><strong>Table 19</strong>: Details of methods for sequences with single locked nucleic acids</p>
+<table style="width:86%;" class="table">
+<colgroup>
+<col width="15%">
+<col width="9%">
+<col width="23%">
+<col width="37%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Model</th>
+<th align="left">Type</th>
+<th align="left">Limits/Remarks</th>
+<th align="left">Reference</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">
+<code>owc11</code>*</td>
+<td align="left">DNA</td>
+<td align="left"></td>
+<td align="left"><span class="citation">Owczarzy et al. (2011)</span></td>
+</tr></tbody>
+</table>
+* Default method for computation.
+
+<p><em><strong>Examples</strong></em></p>
+<pre><code>          LL  
+    DNA:GACC
+        ||||
+    DNA:CTGG</code></pre>
+<div class="sourceCode" id="cb222"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Consecutive locked nucleic acids effect - default (DNA/DNA)</span></span>
+<span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"GALCLC"</span>,</span>
+<span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.0001</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
+<span>        Na.conc <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 12.94323</span></span></code></pre>
+<div class="sourceCode" id="cb224"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Consecutive locked nucleic acids effect - owc11 (DNA/DNA)</span></span>
+<span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"GALCLC"</span>,</span>
+<span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.0001</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
+<span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, method.consecutive.locked <span class="op">=</span> <span class="st">"owc11"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 12.94323</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="consecutive-locked-nucleic-acids-with-a-single-mismatch-effect">Consecutive Locked nucleic acids with a single mismatch effect<a class="anchor" aria-label="anchor" href="#consecutive-locked-nucleic-acids-with-a-single-mismatch-effect"></a>
+</h3>
+<p>The nearest neighbour model for computation in case of sequences with consecutive locked nucleic acids with single mismatch can be specified by the argument <code>method.consecutive.locked.singleMM</code>. The available methods are given in <strong>Table 20</strong>.</p>
+<p><strong>Table 20</strong>: Details of methods for sequences with single locked nucleic acids</p>
+<table style="width:86%;" class="table">
+<colgroup>
+<col width="15%">
+<col width="9%">
+<col width="23%">
+<col width="37%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Model</th>
+<th align="left">Type</th>
+<th align="left">Limits/Remarks</th>
+<th align="left">Reference</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">
+<code>owc11</code>*</td>
+<td align="left">DNA</td>
+<td align="left"></td>
+<td align="left"><span class="citation">Owczarzy et al. (2011)</span></td>
+</tr></tbody>
+</table>
+* Default method for computation.
+
+<p><em><strong>Examples</strong></em></p>
+<pre><code>          LLL  
+    DNA:GACGC
+        || ||
+    DNA:CTTCG</code></pre>
+<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Consecutive locked nucleic acids effect - default (DNA/DNA)</span></span>
+<span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"GALCLGLC"</span>, comp.sequence <span class="op">=</span> <span class="st">"CTTCG"</span>,</span>
+<span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.0001</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
+<span>        Na.conc <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.2520424</span></span></code></pre>
+<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Consecutive locked nucleic acids effect - owc11 (DNA/DNA)</span></span>
+<span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"GALCLGLC"</span>, comp.sequence <span class="op">=</span> <span class="st">"CTTCG"</span>,</span>
+<span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.0001</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
+<span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, method.consecutive.locked.singleMM <span class="op">=</span> <span class="st">"owc11"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.2520424</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -1867,8 +1973,8 @@
 <div class="section level4">
 <h4 id="sodium-corrections">Sodium corrections<a class="anchor" aria-label="anchor" href="#sodium-corrections"></a>
 </h4>
-<p>The available correction methods for sodium concentration are given in <strong>Table 19</strong>.</p>
-<p><strong>Table 19</strong>: Details of the corrections for sodium concentration</p>
+<p>The available correction methods for sodium concentration are given in <strong>Table 21</strong>.</p>
+<p><strong>Table 21</strong>: Details of the corrections for sodium concentration</p>
 <table class="table">
 <colgroup>
 <col width="14%">
@@ -1971,121 +2077,121 @@
 </table>
 * Default method for computation.
 
-<div class="sourceCode" id="cb219"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - default (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 56.70492</span></span></code></pre>
-<div class="sourceCode" id="cb221"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - owc2204 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"owc2204"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 56.70492</span></span></code></pre>
-<div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - ahs01 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"ahs01"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 54.1569</span></span></code></pre>
-<div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - kam71 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"kam71"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 51.72963</span></span></code></pre>
-<div class="sourceCode" id="cb227"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - marschdot (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"marschdot"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 49.18075</span></span></code></pre>
-<div class="sourceCode" id="cb229"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - owc1904 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"owc1904"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 56.18571</span></span></code></pre>
-<div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - owc2004 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"owc2004"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 56.67553</span></span></code></pre>
-<div class="sourceCode" id="cb233"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - owc2104 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"owc2104"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 56.63967</span></span></code></pre>
-<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - san96 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"san96"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 53.01651</span></span></code></pre>
-<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - san04 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"san04"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 54.15157</span></span></code></pre>
-<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - schlif (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"schlif"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 48.25579</span></span></code></pre>
-<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - tanna06 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"tanna06"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 55.26711</span></span></code></pre>
-<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - wet91 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"wet91"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 51.74573</span></span></code></pre>
-<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - default (RNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGUCUCUCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"rnarna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 75.1552</span></span></code></pre>
-<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction -  tanna07 (RNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGUCUCUCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"rnarna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"tanna07"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 75.1552</span></span></code></pre>
-<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction -  wet91 (RNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGUCUCUCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"rnarna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"wet91"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 69.55572</span></span></code></pre>
-<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - default (mRNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"UACGCGUCAAUAACGCUA"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"mrnarna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 81.57763</span></span></code></pre>
-<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction -  tanna07 (mRNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"UACGCGUCAAUAACGCUA"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"mrnarna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, correction.ion <span class="op">=</span> <span class="st">"tanna07"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 81.57763</span></span></code></pre>
-<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - default (DNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnarna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 62.08869</span></span></code></pre>
-<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na correction - wet91 (DNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CCAGCCAGTCTCTCC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnarna"</span>,</span>
@@ -2095,8 +2201,8 @@
 <div class="section level4">
 <h4 id="magnesium-corrections">Magnesium corrections<a class="anchor" aria-label="anchor" href="#magnesium-corrections"></a>
 </h4>
-<p>The available correction methods for magnesium concentration are given in <strong>Table 20</strong>.</p>
-<p><strong>Table 20</strong>: Details of the corrections for magnesium concentration</p>
+<p>The available correction methods for magnesium concentration are given in <strong>Table 22</strong>.</p>
+<p><strong>Table 22</strong>: Details of the corrections for magnesium concentration</p>
 <table class="table">
 <colgroup>
 <col width="16%">
@@ -2135,43 +2241,43 @@
 </table>
 * Default method for computation.
 
-<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mg correction - default (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Mg.conc <span class="op">=</span> <span class="fl">0.0015</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 65.52043</span></span></code></pre>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mg correction - owcmg08 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Mg.conc <span class="op">=</span> <span class="fl">0.0015</span>, correction.ion <span class="op">=</span> <span class="st">"owcmg08"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 65.52043</span></span></code></pre>
-<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mg correction - tanmg06 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Mg.conc <span class="op">=</span> <span class="fl">0.0015</span>, correction.ion <span class="op">=</span> <span class="st">"tanmg06"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 64.88082</span></span></code></pre>
-<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mg correction - default (RNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCUCGUCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"rnarna"</span>,</span>
 <span>        Mg.conc <span class="op">=</span> <span class="fl">0.0015</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 82.0796</span></span></code></pre>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mg correction -  tanmg07 (RNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCUCGUCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"rnarna"</span>,</span>
 <span>        Mg.conc <span class="op">=</span> <span class="fl">0.0015</span>, correction.ion <span class="op">=</span> <span class="st">"tanmg07"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 82.0796</span></span></code></pre>
-<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mg correction - default (mRNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"UACGCGUCAAUAACGCUA"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"mrnarna"</span>,</span>
 <span>        Mg.conc <span class="op">=</span> <span class="fl">0.0015</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 90.06842</span></span></code></pre>
-<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mg correction -  tanmg07 (mRNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"UACGCGUCAAUAACGCUA"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"mrnarna"</span>,</span>
@@ -2181,8 +2287,8 @@
 <div class="section level4">
 <h4 id="mixed-sodium-and-magnesium-corrections">Mixed Sodium and Magnesium corrections<a class="anchor" aria-label="anchor" href="#mixed-sodium-and-magnesium-corrections"></a>
 </h4>
-<p>The available correction methods for mixed sodium magnesium concentration are given in <strong>Table 21</strong>.</p>
-<p><strong>Table 21</strong>: Details of the corrections for mixed sodium and magnesium concentration</p>
+<p>The available correction methods for mixed sodium magnesium concentration are given in <strong>Table 23</strong>.</p>
+<p><strong>Table 23</strong>: Details of the corrections for mixed sodium and magnesium concentration</p>
 <table class="table">
 <colgroup>
 <col width="17%">
@@ -2214,43 +2320,43 @@
 </table>
 * Default method for computation.
 
-<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mixed Na &amp; Mg correction - default (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, Mg.conc <span class="op">=</span> <span class="fl">0.0015</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 65.83371</span></span></code></pre>
-<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mixed Na &amp; Mg correction - owcmix08 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, Mg.conc <span class="op">=</span> <span class="fl">0.0015</span>, correction.ion <span class="op">=</span> <span class="st">"owcmix08"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 65.83371</span></span></code></pre>
-<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mixed Na &amp; Mg correction - tanmix07 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, Mg.conc <span class="op">=</span> <span class="fl">0.0015</span>, correction.ion <span class="op">=</span> <span class="st">"tanmix07"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 63.21723</span></span></code></pre>
-<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mixed Na &amp; Mg correction - default (RNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCUCGUCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"rnarna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, Mg.conc <span class="op">=</span> <span class="fl">0.0015</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 79.40119</span></span></code></pre>
-<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mixed Na &amp; Mg correction - tanmix07 (RNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCUCGUCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"rnarna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, Mg.conc <span class="op">=</span> <span class="fl">0.0015</span>, correction.ion <span class="op">=</span> <span class="st">"tanmix07"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 79.40119</span></span></code></pre>
-<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mixed Na &amp; Mg correction - default (mRNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"UACGCGUCAAUAACGCUA"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"mrnarna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, Mg.conc <span class="op">=</span> <span class="fl">0.0015</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 96.46186</span></span></code></pre>
-<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Mixed Na &amp; Mg correction - tanmix07 (mRNA/RNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"UACGCGUCAAUAACGCUA"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"mrnarna"</span>,</span>
@@ -2270,8 +2376,8 @@
 <div class="section level4">
 <h4 id="sodium-equivalent-concentration-methods">Sodium equivalent concentration methods<a class="anchor" aria-label="anchor" href="#sodium-equivalent-concentration-methods"></a>
 </h4>
-<p>The available correction methods for mixed sodium magnesium concentration are given in <strong>Table 22</strong>.</p>
-<p><strong>Table 22</strong>: Details of the methods for computation of sodium equivalent concentration in the presence of other ions</p>
+<p>The available correction methods for mixed sodium magnesium concentration are given in <strong>Table 24</strong>.</p>
+<p><strong>Table 24</strong>: Details of the methods for computation of sodium equivalent concentration in the presence of other ions</p>
 <table style="width:99%;" class="table">
 <colgroup>
 <col width="18%">
@@ -2309,25 +2415,25 @@
 </table>
 * Default method for computation.
 
-<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na equivalent concentration method - default (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, Mg.conc <span class="op">=</span> <span class="fl">0.0015</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 65.83371</span></span></code></pre>
-<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na equivalent concentration method - ahs01 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, Mg.conc <span class="op">=</span> <span class="fl">0.0015</span>, method.Naeq <span class="op">=</span> <span class="st">"ahs01"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 65.83371</span></span></code></pre>
-<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na equivalent concentration method - mit96 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">0.069</span>, Mg.conc <span class="op">=</span> <span class="fl">0.0015</span>, method.Naeq <span class="op">=</span> <span class="st">"mit96"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 65.83371</span></span></code></pre>
-<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Na equivalent concentration method - pey00 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
@@ -2342,8 +2448,8 @@
 <div class="section level4">
 <h4 id="dmso-corrections">DMSO corrections<a class="anchor" aria-label="anchor" href="#dmso-corrections"></a>
 </h4>
-<p>The available correction methods for DMSO concentration are given in <strong>Table 23</strong>.</p>
-<p><strong>Table 23</strong>: Details of the corrections for DMSO concentration</p>
+<p>The available correction methods for DMSO concentration are given in <strong>Table 25</strong>.</p>
+<p><strong>Table 25</strong>: Details of the corrections for DMSO concentration</p>
 <table class="table">
 <colgroup>
 <col width="18%">
@@ -2387,31 +2493,31 @@
 </table>
 * Default method for computation.
 
-<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># DMSO correction - default (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, DMSO.conc <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 65.40154</span></span></code></pre>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># DMSO correction - ahs01 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, DMSO.conc <span class="op">=</span> <span class="fl">10</span>, correction.DMSO <span class="op">=</span> <span class="st">"ahs01"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 65.40154</span></span></code></pre>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># DMSO correction - cul76 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, DMSO.conc <span class="op">=</span> <span class="fl">10</span>, correction.DMSO <span class="op">=</span> <span class="st">"cul76"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 67.90154</span></span></code></pre>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># DMSO correction - esc80 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, DMSO.conc <span class="op">=</span> <span class="fl">10</span>, correction.DMSO <span class="op">=</span> <span class="st">"esc80"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 66.15154</span></span></code></pre>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># DMSO correction - mus80 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
@@ -2421,8 +2527,8 @@
 <div class="section level4">
 <h4 id="formamide-corrections">Formamide corrections<a class="anchor" aria-label="anchor" href="#formamide-corrections"></a>
 </h4>
-<p>The available correction methods for formamide concentration are given in <strong>Table 24</strong>.</p>
-<p><strong>Table 24</strong>: Details of the corrections for formamide concentration</p>
+<p>The available correction methods for formamide concentration are given in <strong>Table 26</strong>.</p>
+<p><strong>Table 26</strong>: Details of the corrections for formamide concentration</p>
 <table style="width:97%;" class="table">
 <colgroup>
 <col width="18%">
@@ -2456,19 +2562,19 @@
 </table>
 * Default method for computation.
 
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Formamide correction - default (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, formamide.conc <span class="op">=</span> <span class="fl">0.06</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 72.74867</span></span></code></pre>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Formamide correction - bla96 (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
 <span>        Na.conc <span class="op">=</span> <span class="fl">1</span>, formamide.conc <span class="op">=</span> <span class="fl">0.06</span>, correction.formamide <span class="op">=</span> <span class="st">"bla96"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 72.74867</span></span></code></pre>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Formamide correction - lincorr (DNA/DNA)</span></span>
 <span><span class="fu"><a href="../reference/melting.html">melting</a></span><span class="op">(</span>sequence <span class="op">=</span> <span class="st">"CAGCCTCGTCGCAGC"</span>,</span>
 <span>        nucleic.acid.conc <span class="op">=</span> <span class="fl">0.000002</span>, hybridisation.type <span class="op">=</span> <span class="st">"dnadna"</span>,</span>
@@ -2480,11 +2586,8 @@
 <div class="section level2">
 <h2 id="equivalent-options-in-melting-5">Equivalent options in MELTING 5<a class="anchor" aria-label="anchor" href="#equivalent-options-in-melting-5"></a>
 </h2>
-<p>The options in MELTING 5 command line equivalent to the arguments in <code>rmelting</code> are given in <strong>Table 25</strong>.</p>
-<p><strong>Table 24</strong>: Arguments in <code>rmelting</code> and their equivalent options in MELTING 5 command line.</p>
-<pre><code><span><span class="co">## New names:</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">•</span> `` -&gt; `...3`</span></span>
-<span><span class="co">## <span style="color: #00BBBB;">•</span> `` -&gt; `...4`</span></span></code></pre>
+<p>The options in MELTING 5 command line equivalent to the arguments in <code>rmelting</code> are given in <strong>Table 27</strong>.</p>
+<p><strong>Table 27</strong>: Arguments in <code>rmelting</code> and their equivalent options in MELTING 5 command line.</p>
 <table class="table">
 <thead><tr class="header">
 <th align="left"><code>rmelting</code></th>
@@ -2612,20 +2715,20 @@
 <td align="left">-lck</td>
 </tr>
 <tr class="odd">
+<td align="left"><code>method.consecutive.locked</code></td>
+<td align="left">-tanLck</td>
+</tr>
+<tr class="even">
+<td align="left"><code>method.consecutive.locked.singleMM</code></td>
+<td align="left">-sinMMLck</td>
+</tr>
+<tr class="odd">
 <td align="left"><code>correction.ion</code></td>
 <td align="left">-ion</td>
 </tr>
 <tr class="even">
 <td align="left"><code>method.Naeq</code></td>
 <td align="left">-naeq</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>correction.DMSO</code></td>
-<td align="left">-DMSO</td>
-</tr>
-<tr class="even">
-<td align="left"><code>correction.formamide</code></td>
-<td align="left">-for</td>
 </tr>
 </tbody>
 </table>
@@ -2634,7 +2737,7 @@
 <h2 id="batch-computation">Batch computation<a class="anchor" aria-label="anchor" href="#batch-computation"></a>
 </h2>
 <p>Melting temperature for multiple nucleic acid duplexes can be computed using the <code>meltingBatch</code> function.</p>
-<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sequence</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CAAAAAG"</span>, <span class="st">"CAAAAAAG"</span>, <span class="st">"TTTTATAATAAA"</span>, <span class="st">"CCATCGCTACC"</span>,</span>
 <span>              <span class="st">"CAAACAAAG"</span>, <span class="st">"CCATTGCTACC"</span>, <span class="st">"CAAAAAAAG"</span>, <span class="st">"GTGAAC"</span>, <span class="st">"AAAAAAAA"</span>,</span>
 <span>              <span class="st">"CAACTTGATATTATTA"</span>, <span class="st">"CAAATAAAG"</span>, <span class="st">"GCGAGC"</span>, <span class="st">"GGGACC"</span>,</span>
@@ -2881,22 +2984,22 @@
 <span><span class="co">## [15,] "san05"                     "sug01"                           </span></span>
 <span><span class="co">## [16,] "san05"                     "sug01"                           </span></span>
 <span><span class="co">##       Options.Azobenzenes model Options.Locked nucleic acids model</span></span>
-<span><span class="co">##  [1,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">##  [2,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">##  [3,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">##  [4,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">##  [5,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">##  [6,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">##  [7,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">##  [8,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">##  [9,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">## [10,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">## [11,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">## [12,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">## [13,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">## [14,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">## [15,] "asa05"                   "mct04"                           </span></span>
-<span><span class="co">## [16,] "asa05"                   "mct04"                           </span></span>
+<span><span class="co">##  [1,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">##  [2,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">##  [3,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">##  [4,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">##  [5,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">##  [6,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">##  [7,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">##  [8,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">##  [9,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">## [10,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">## [11,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">## [12,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">## [13,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">## [14,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">## [15,] "asa05"                   "owc11"                           </span></span>
+<span><span class="co">## [16,] "asa05"                   "owc11"                           </span></span>
 <span><span class="co">##       Options.Ion correction method Options.Na equivalence correction method</span></span>
 <span><span class="co">##  [1,] NA                            "ahs01"                                 </span></span>
 <span><span class="co">##  [2,] NA                            "ahs01"                                 </span></span>
@@ -2983,7 +3086,7 @@
 <span><span class="co">## [15,] NA     </span></span>
 <span><span class="co">## [16,] NA</span></span></code></pre>
 <p>Complementary sequences are computed by default, but need to be specified in case of mismatches, inosine(s) or hydroxyadenine(s) between the two strands.</p>
-<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GCAUACG"</span>, <span class="st">"CAGUAGGUC"</span>, <span class="st">"CGCUCGC"</span>, <span class="st">"GAGUGGAG"</span>, <span class="st">"GACAGGCUG"</span>,</span>
 <span>         <span class="st">"CAGUACGUC"</span>, <span class="st">"GACAUCCUG"</span>, <span class="st">"GACCACCUG"</span>, <span class="st">"CAGAAUGUC"</span>, <span class="st">"GCGUCGC"</span>,</span>
 <span>         <span class="st">"CGUCCGG"</span>, <span class="st">"GACUCUCUG"</span>, <span class="st">"CAGCUGGUC"</span>, <span class="st">"GACUAGCUG"</span>, <span class="st">"CUCUGCUC"</span>,</span>
@@ -3421,7 +3524,7 @@
 <div class="section level2">
 <h2 id="further-reading">Further reading<a class="anchor" aria-label="anchor" href="#further-reading"></a>
 </h2>
-<p>Further details about algorithm, formulae and methods are available in the <a href="https://www.ebi.ac.uk/biomodels-static/tools/melting/melting5-doc/melting.html" class="external-link">MELTING 5 documentation</a>.</p>
+<p>Further details about algorithm, formulae and methods are available in the <a href="https://www.ebi.ac.uk/biomodels/tools/melting/melting5-doc/melting.html" class="external-link">MELTING 5 documentation</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="citing-rmelting">Citing <code>rmelting</code><a class="anchor" aria-label="anchor" href="#citing-rmelting"></a>
@@ -3430,7 +3533,7 @@
 <span><span class="co">## To cite the R package 'rmelting' in publications use:</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   Aravind, J. and Krishna, G. K. (2022).  rmelting: R Interface to</span></span>
-<span><span class="co">##   MELTING 5. R package version 1.13.0,</span></span>
+<span><span class="co">##   MELTING 5. R package version 1.13.1,</span></span>
 <span><span class="co">##   https://aravind-j.github.io/rmelting/.</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## A BibTeX entry for LaTeX users is</span></span>
@@ -3439,7 +3542,7 @@
 <span><span class="co">##     title = {rmelting: R Interface to MELTING 5},</span></span>
 <span><span class="co">##     author = {J. Aravind and G. K. Krishna},</span></span>
 <span><span class="co">##     year = {2022},</span></span>
-<span><span class="co">##     note = {R package version 1.13.0},</span></span>
+<span><span class="co">##     note = {R package version 1.13.1},</span></span>
 <span><span class="co">##     note = {https://aravind-j.github.io/rmelting/},</span></span>
 <span><span class="co">##   }</span></span>
 <span><span class="co">## </span></span>
@@ -3450,7 +3553,7 @@
 <div class="section level2">
 <h2 id="session-info">Session Info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
-<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## R version 4.2.1 (2022-06-23)</span></span>
 <span><span class="co">## Platform: x86_64-apple-darwin17.0 (64-bit)</span></span>
@@ -3467,7 +3570,7 @@
 <span><span class="co">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
-<span><span class="co">## [1] rmelting_1.13.0 readxl_1.4.1   </span></span>
+<span><span class="co">## [1] rmelting_1.13.1 readxl_1.4.1   </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
 <span><span class="co">##  [1] Rcpp_1.0.9        highr_0.9         bslib_0.4.0       compiler_4.2.1   </span></span>
@@ -3609,6 +3712,9 @@
 </div>
 <div id="ref-owczarzy_predicting_2008">
 <p>Owczarzy, R., Moreira, B. G., You, Y., Behlke, M. A., and Walder, J. A. (2008). Predicting stability of DNA duplexes in solutions containing magnesium and monovalent cations. <em>Biochemistry</em> 47, 5336–5353. doi:<a href="https://doi.org/10.1021/bi702363u" class="external-link">10.1021/bi702363u</a>.</p>
+</div>
+<div id="ref-owczarzy_stability_2011">
+<p>Owczarzy, R., You, Y., Groth, C. L., and Tataurov, A. V. (2011). Stability and mismatch discrimination of locked nucleic acid–DNA duplexes. <em>Biochemistry</em> 50, 9352–9367. doi:<a href="https://doi.org/10.1021/bi200904e" class="external-link">10.1021/bi200904e</a>.</p>
 </div>
 <div id="ref-owczarzy_effects_2004">
 <p>Owczarzy, R., You, Y., Moreira, B. G., Manthey, J. A., Huang, L., Behlke, M. A., et al. (2004). Effects of sodium ions on DNA duplex oligomers: Improved predictions of melting temperatures. <em>Biochemistry</em> 43, 3537–3554. doi:<a href="https://doi.org/10.1021/bi034621r" class="external-link">10.1021/bi034621r</a>.</p>

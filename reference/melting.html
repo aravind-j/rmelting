@@ -26,7 +26,7 @@ software (Le Novère, 2001; Dumousseau et al., 2012)."><!-- mathjax --><script s
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rmelting</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.13.0</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">1.13.1</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@ software (Le Novère, 2001; Dumousseau et al., 2012)."><!-- mathjax --><script s
     <div class="ref-description">
     <p>Compute the enthalpy and entropy of helix-coil transition, and then the
 melting temperature of a nucleic acid duplex with the
-<a href="https://www.ebi.ac.uk/biomodels-static/tools/melting/" class="external-link">MELTING 5
+<a href="https://www.ebi.ac.uk/biomodels/tools/melting/" class="external-link">MELTING 5
 software</a> (Le Novère, 2001; Dumousseau et al., 2012).</p>
     </div>
 
@@ -118,7 +118,9 @@ software</a> (Le Novère, 2001; Dumousseau et al., 2012).</p>
 <span>        method.inosine <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"san05"</span>, <span class="st">"zno07"</span><span class="op">)</span>,</span>
 <span>        method.hydroxyadenine <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sug01"</span><span class="op">)</span>,</span>
 <span>        method.azobenzenes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"asa05"</span><span class="op">)</span>,</span>
-<span>        method.locked <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"mct04"</span><span class="op">)</span>,</span>
+<span>        method.locked <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"owc11"</span>, <span class="st">"mct04"</span><span class="op">)</span>,</span>
+<span>        method.consecutive.locked <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"owc11"</span><span class="op">)</span>,</span>
+<span>        method.consecutive.locked.singleMM <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"owc11"</span><span class="op">)</span>,</span>
 <span>        correction.ion <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ahs01"</span>, <span class="st">"kam71"</span>, <span class="st">"marschdot"</span>,</span>
 <span>                           <span class="st">"owc1904"</span>, <span class="st">"owc2004"</span>, <span class="st">"owc2104"</span>,</span>
 <span>                           <span class="st">"owc2204"</span>, <span class="st">"san96"</span>, <span class="st">"san04"</span>, <span class="st">"schlif"</span>,</span>
@@ -319,9 +321,25 @@ method is <code>"asa05"</code> (see <strong>Azobenzenes effect</strong>).</p></d
 
 <dt>method.locked</dt>
 <dd><p>Specify the nearest neighbor model to compute the
-contribution of locked nucleic acids (AL, GL, TL and CL) to the
-thermodynamic of helix-coil transition. Available method is <code>"mct04"</code>
-(see <strong>Locked nucleic acids effect</strong>).</p></dd>
+contribution of single locked nucleic acids (AL, GL, TL and CL) to the
+thermodynamic of helix-coil transition. Either <code>"owc11"</code> or
+<code>"mct04"</code> (see <strong>Single locked nucleic acids effect</strong>).</p></dd>
+
+
+<dt>method.consecutive.locked</dt>
+<dd><p>Specify the nearest neighbor model to
+compute the contribution of consecutive locked nucleic acids (AL, GL, TL
+and CL) to the thermodynamic of helix-coil transition. Available
+method is <code>"owc11"</code> (see <strong>Consecutive locked nucleic acids
+effect</strong>).</p></dd>
+
+
+<dt>method.consecutive.locked.singleMM</dt>
+<dd><p>Specify the nearest neighbor model
+to compute the contribution of consecutive locked nucleic acids (AL, GL, TL
+and CL) with a single mismatch to the thermodynamic of helix-coil
+transition. Available method is <code>"owc11"</code> (see <strong>Consecutive
+locked nucleic acids with single mismatch effect</strong>).</p></dd>
 
 
 <dt>correction.ion</dt>
@@ -582,9 +600,26 @@ Specify the correction method for formamide Either <code>"bla96"</code> or
 </div>
 
 <p></p><div class="section">
-<h3 id="locked-nucleic-acids-effect">Locked nucleic acids effect<a class="anchor" aria-label="anchor" href="#locked-nucleic-acids-effect"></a></h3>
-<table class="table table"><tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits/Remarks</strong></td><td><strong>Reference</strong></td></tr><tr><td><code>mct04</code>*</td><td>DNA</td><td></td><td>McTigue et al., 2004</td></tr></table><p>* Default model for
-  computation.</p>
+<h3 id="single-locked-nucleic-acids-effect">Single locked nucleic acids effect<a class="anchor" aria-label="anchor" href="#single-locked-nucleic-acids-effect"></a></h3>
+<table class="table table"><tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits.Remarks</strong></td><td><strong>Reference</strong></td></tr><tr><td><code>mct04</code></td><td>DNA</td><td></td><td>McTigue, Peterson,
+  and Kahn,</td></tr><tr><td></td><td></td><td></td><td>2004</td></tr><tr><td><code>owc11</code>*</td><td>DNA</td><td></td><td>Owczarzy, You, Groth, and</td></tr><tr><td></td><td></td><td></td><td>Tataurov, 2011</td></tr></table><p>* Default
+  model for computation.</p>
+<p>Locked nucleic acids (AL, GL, TL and CL) are not taken into account by the
+  approximative mode.</p>
+</div>
+
+<p></p><div class="section">
+<h3 id="consecutive-locked-nucleic-acids-effect">Consecutive locked nucleic acids effect<a class="anchor" aria-label="anchor" href="#consecutive-locked-nucleic-acids-effect"></a></h3>
+<table class="table table"><tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits.Remarks</strong></td><td><strong>Reference</strong></td></tr><tr><td><code>owc11</code>*</td><td>DNA</td><td></td><td>Owczarzy et al.,
+  2011</td></tr></table><p>* Default model for computation.</p>
+<p>Locked nucleic acids (AL, GL, TL and CL) are not taken into account by the
+  approximative mode.</p>
+</div>
+
+<p></p><div class="section">
+<h3 id="consecutive-locked-nucleic-acids-with-single-mismatch-effect">Consecutive locked nucleic acids with single mismatch
+  effect<a class="anchor" aria-label="anchor" href="#consecutive-locked-nucleic-acids-with-single-mismatch-effect"></a></h3>
+<table class="table table"><tr><td><strong>Model</strong></td><td><strong>Type</strong></td><td><strong>Limits.Remarks</strong></td><td><strong>Reference</strong></td></tr><tr><td><code>owc11</code>*</td><td>DNA</td><td></td><td>Owczarzy et al., 2011</td></tr></table><p>* Default model for computation.</p>
 <p>Locked nucleic acids (AL, GL, TL and CL) are not taken into account by the
   approximative mode.</p>
 </div>
@@ -815,6 +850,9 @@ Ph.D. Thesis, Wayne State University, Detroit, MI.</p>
 <p>McTigue PM, Peterson RJ, Kahn JD (2004).
 “Sequence-dependent thermodynamic parameters for locked nucleic acid (LNA)-DNA duplex formation.”
 <em>Biochemistry</em>, <b>43</b>(18), 5388--5405.</p>
+<p>Owczarzy R, You Y, Groth CL, Tataurov AV (2011).
+“Stability and mismatch discrimination of locked nucleic acid-DNA duplexes.”
+<em>Biochemistry</em>, <b>50</b>(43), 9352--9367.</p>
 <p>Owczarzy R, You Y, Moreira BG, Manthey JA, Huang L, Behlke MA, Walder JA (2004).
 “Effects of sodium ions on DNA duplex oligomers: Improved predictions of melting temperatures.”
 <em>Biochemistry</em>, <b>43</b>(12), 3537--3554.</p>
