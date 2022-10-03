@@ -24,7 +24,7 @@ Authors@R: c(
            role=c("ctb"),
            comment="MELTING 5 Java Library"))
 Description: R interface to the MELTING 5 program
-    (https://www.ebi.ac.uk/biomodels-static/tools/melting/) to compute melting
+    (https://www.ebi.ac.uk/biomodels/tools/melting/) to compute melting
     temperatures of nucleic acid duplexes along with other thermodynamic
     parameters.
 Depends:
