@@ -1,8 +1,6 @@
 
 ## `rmelting`: R Interface to MELTING 5 <img src="https://raw.githubusercontent.com/aravind-j/rmelting/master/inst/extdata/rmelting.png" align="right" alt="logo" width="173" height = "200" style = "padding: 10px; border: none; float: right;">
 
-    Warning: package 'testthat' was built under R version 4.1.3
-
 ###### Version : [1.13.1](https://aravind-j.github.io/rmelting/); License: [GPL-2|GPL-3](https://www.r-project.org/Licenses/)
 
 ##### *Aravind, J.<sup>1</sup> and Krishna, G. K.<sup>2</sup>*
@@ -107,14 +105,14 @@ news(package='rmelting')
 <td style="text-align:left;">
 
 [![Bioc release
-version](https://img.shields.io/badge/Bioconductor%20release-3.15-brightgreen.svg)](https://bioconductor.org/install/)
+version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcr_badge.svg)](https://bioconductor.org/install/)
 
 </td>
 
 <td style="text-align:left;">
 
 [![Pkg Bioc release
-version](https://img.shields.io/badge/BioC%20release-1.12.0-brightgreen.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html)
+version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgr_badge.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html)
 
 </td>
 
@@ -134,6 +132,13 @@ status](https://bioconductor.org/shields/build/release/bioc/rmelting.svg)](http:
 
 <td style="text-align:left;">
 
+[![Bioc
+updated](https://bioconductor.org/shields/lastcommit/release/bioc/rmelting.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/)
+
+</td>
+
+<td style="text-align:left;">
+
 [![Bioc Download
 rank](https://bioconductor.org/shields/downloads/release/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)
 
@@ -146,14 +151,14 @@ rank](https://bioconductor.org/shields/downloads/release/rmelting.svg)](http://b
 <td style="text-align:left;">
 
 [![Bioc devel
-version](https://img.shields.io/badge/Bioconductor%20devel-3.16-orange.svg)](https://bioconductor.org/install/)
+version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcd_badge.svg)](https://bioconductor.org/install/)
 
 </td>
 
 <td style="text-align:left;">
 
 [![Pkg Bioc devel
-version](https://img.shields.io/badge/BioC%20devel-1.13.1-orange.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html)
+version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgd_badge.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html)
 
 </td>
 
@@ -166,8 +171,15 @@ devel](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bio
 
 <td style="text-align:left;">
 
-[![Bioc devel
+[![Bioc dev
 status](https://bioconductor.org/shields/build/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)
+
+</td>
+
+<td style="text-align:left;">
+
+[![Bioc
+updated](https://bioconductor.org/shields/lastcommit/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)
 
 </td>
 
@@ -196,8 +208,8 @@ citation("rmelting")
 
 To cite the R package 'rmelting' in publications use:
 
-  Aravind, J. and Krishna, G. K. (2021).  rmelting: R Interface to
-  MELTING 5. R package version 1.10.0,
+  Aravind, J. and Krishna, G. K. (2022).  rmelting: R Interface to
+  MELTING 5. R package version 1.13.1,
   https://aravind-j.github.io/rmelting/.
 
 A BibTeX entry for LaTeX users is
@@ -205,8 +217,8 @@ A BibTeX entry for LaTeX users is
   @Manual{,
     title = {rmelting: R Interface to MELTING 5},
     author = {J. Aravind and G. K. Krishna},
-    year = {2021},
-    note = {R package version 1.10.0},
+    year = {2022},
+    note = {R package version 1.13.1},
     note = {https://aravind-j.github.io/rmelting/},
   }
 
