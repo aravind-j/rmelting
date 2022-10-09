@@ -41,7 +41,8 @@ jobs:
           remotes::install_local(".")
           remotes::install_cran("rmarkdown")
           remotes::install_cran("devtools")
-          # remotes::install_cran("kableExtra")
+          remotes::install_cran("RCurl")
+          remotes::install_cran("kableExtra")
         shell: Rscript {0}
 
       - name: Render README.md using rmarkdown
@@ -51,9 +52,9 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add README.md
+          git add README.md README.html
           git commit -m "Re-build README.md" || echo "No changes to commit"
-          git push -f origin master || echo "No changes to commit"
+          git push origin master || echo "No changes to commit"
 
       - name: Trigger pkgdown workflow
         if: success()
