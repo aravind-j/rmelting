@@ -97,21 +97,82 @@ news(package='rmelting')
 ## Bioconductor checks and metrics
 
 ```{r, results='asis', echo=FALSE, warning=FALSE}
-badgedf <- rbind(c(
-"[![Bioc release version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcr_badge.svg)](https://bioconductor.org/install/)",
-"[![Pkg Bioc release version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgr_badge.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html)",
-"[![in Bioc release](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bioconductor.org/packages/release/bioc/html/rmelting.html#since)",
-"[![Bioc release status](https://bioconductor.org/shields/build/release/bioc/rmelting.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/)",
-"[![Bioc updated](https://bioconductor.org/shields/lastcommit/release/bioc/rmelting.svg)](http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/)",
-"[![Bioc Download rank](https://bioconductor.org/shields/downloads/release/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)"),
 
-c(
-"[![Bioc devel version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/bcd_badge.svg)](https://bioconductor.org/install/)",
-"[![Pkg Bioc devel version](https://raw.githubusercontent.com/aravind-j/rmelting/master/badges/pkgd_badge.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html)",
-"[![in Bioc devel](https://bioconductor.org/shields/years-in-bioc/rmelting.svg)](https://bioconductor.org/packages/devel/bioc/html/rmelting.html#since)",
-"[![Bioc dev status](https://bioconductor.org/shields/build/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)",
-"[![Bioc updated](https://bioconductor.org/shields/lastcommit/devel/bioc/rmelting.svg)](http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/)",
-"[![Bioc Download rank](https://bioconductor.org/shields/downloads/devel/rmelting.svg)](http://bioconductor.org/packages/stats/bioc/rmelting/)"))
+
+pkg <- "rmelting"
+
+pkgr <- "missing"
+pkgd <- "missing"
+
+page <- httr::GET("https://www.bioconductor.org/install/")
+page <- httr::content(page, as = 'text', encoding = "UTF-8")
+
+bcr <- sub('.*(<p>The current release of <em>Bioconductor</em> is version\n.*?;).*', '\\1', page)
+bcd <- sub('.*(<p>The development version of <em>Bioconductor</em> is version\n.*?;).*', '\\1', page)
+
+bcr <- gsub(".*\n(.+);$", "\\1", bcr)
+bcd <- gsub(".*\n(.+);$", "\\1", bcd)
+
+rpr <- as.data.frame(available.packages(repos = paste("https://bioconductor.org/packages/",
+                                                      bcr, "/bioc", sep = "")))
+rpd <- as.data.frame(available.packages(repos = paste("https://bioconductor.org/packages/",
+                                                      bcd, "/bioc", sep = "")))
+pkgr <- rpr[rpr$Package == "rmelting", ]$Version
+pkgd <- rpd[rpd$Package == "rmelting", ]$Version
+
+colr <- ifelse(pkgr == "missing", "lightgrey", "brightgreen")
+cold <- ifelse(pkgd == "missing", "lightgrey", "orange")
+
+bcr_badge <- paste0("https://img.shields.io/badge/",
+                    "Bioconductor%20release", "-", bcr, "-", colr, ".svg")
+
+bcd_badge <- paste0("https://img.shields.io/badge/",
+                    "Bioconductor%20devel", "-", bcd, "-", cold, ".svg")
+
+pkgr_badge <- paste0("https://img.shields.io/badge/",
+                     "BioC%20release", "-", pkgr, "-", colr, ".svg")
+
+pkgd_badge <- paste0("https://img.shields.io/badge/",
+                     "BioC%20devel", "-", pkgd, "-", cold, ".svg")
+
+badgedf1 <- rbind(c(name = "Bioc release version",
+                    svg = bcr_badge,
+                    link = "https://bioconductor.org/install/"),
+                  c(name = "Pkg Bioc release version",
+                    svg = pkgr_badge,
+                    link = "https://bioconductor.org/packages/release/bioc/html/rmelting.html"),
+                  c(name = "in Bioc release",
+                    svg = "https://bioconductor.org/shields/years-in-bioc/rmelting.svg",
+                    link = "https://bioconductor.org/packages/release/bioc/html/rmelting.html#since"),
+                  c(name = "Bioc release status",
+                    svg = "https://bioconductor.org/shields/build/release/bioc/rmelting.svg",
+                    link = "http://bioconductor.org/checkResults/release/bioc-LATEST/rmelting/"),
+                  c(name = "Bioc Download rank",
+                    svg = "https://bioconductor.org/shields/downloads/release/rmelting.svg",
+                    link = "http://bioconductor.org/packages/stats/bioc/rmelting/"))
+badgedf2 <- rbind(c(name = "Bioc devel version",
+                    svg = bcd_badge,
+                    link = "https://bioconductor.org/install/"),
+                  c(name = "Pkg Bioc devel version",
+                    svg = pkgd_badge,
+                    link = "https://bioconductor.org/packages/devel/bioc/html/rmelting.html"),
+                  c(name = "in Bioc devel",
+                    svg = "https://bioconductor.org/shields/years-in-bioc/rmelting.svg",
+                    link = "https://bioconductor.org/packages/devel/bioc/html/rmelting.html#since"),
+                  c(name = "Bioc devel status",
+                    svg = "https://bioconductor.org/shields/build/devel/bioc/rmelting.svg",
+                    link = "http://bioconductor.org/checkResults/devel/bioc-LATEST/rmelting/"),
+                  c(name = "Bioc Download rank",
+                    svg = "https://bioconductor.org/shields/downloads/devel/rmelting.svg",
+                    link = "http://bioconductor.org/packages/stats/bioc/rmelting/"))
+
+
+badgedf1 <- as.data.frame(badgedf1)
+badgedf2 <- as.data.frame(badgedf2)
+
+badgedf <- rbind(paste("[![", badgedf1$name, "](", badgedf1$svg, ")](", badgedf1$link, ")"),
+                 paste("[![", badgedf2$name, "](", badgedf2$svg, ")](", badgedf2$link, ")"))
+
 
 knitr::kable(badgedf, col.names = NULL, format = "html")
 ```
