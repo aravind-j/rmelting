@@ -1,6 +1,6 @@
 Package: rmelting
 Title: R Interface to MELTING 5
-Version: 1.13.2
+Version: 1.13.3
 Authors@R: c(
     person(given = "J.", family = "Aravind", 
            email = "j.aravind@icar.gov.in",
@@ -39,7 +39,7 @@ Suggests:
     reshape2,
     pander,
     testthat
-SystemRequirements: Java (>= 11)
+SystemRequirements: Java
 biocViews: BiomedicalInformatics, Cheminformatics,
 License: GPL-2 | GPL-3
 Encoding: UTF-8

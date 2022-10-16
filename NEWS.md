@@ -1,3 +1,6 @@
+# rmelting  1.13.3
+* Revert the Java (>= 11) as `SystemRequirements`. Removed access to private KeySet in the code.
+
 # rmelting  1.13.2
 * Added Java (>= 11) as `SystemRequirements`.
 

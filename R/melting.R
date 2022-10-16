@@ -1286,16 +1286,16 @@ melting <- function(sequence, comp.sequence = NULL,
                    "-CNG", "-ion")
     opt_names <- setdiff(opt_names, "-NNPath")
     opts_melt <- env$getOptions()
-    keySet <- .jrcall(opts_melt, "keySet")
-    opts_iter <- .jrcall(keySet, "iterator")
+    # keySet <- .jrcall(opts_melt, "keySet")
+    # opts_iter <- .jrcall(keySet, "iterator")
     # opts_melt2 <- list()
     opts_melt2 <- vector(length = length(opt_names), mode = "list")
     names(opts_melt2) <- opt_names
 
-    while (.jrcall(opts_iter, "hasNext")) {
-      key <- .jrcall(opts_iter, "next")
-      opts_melt2[[key]] <- .jrcall(opts_melt, "get", key)
-    }
+    # while (.jrcall(opts_iter, "hasNext")) {
+    #   key <- .jrcall(opts_iter, "next")
+    #   opts_melt2[[key]] <- .jrcall(opts_melt, "get", key)
+    # }
 
     options_melt <- list(`Approximative formula` = opts_melt2$`-am`,
                          `Nearest neighbour model` = opts_melt2$`-nn`,
