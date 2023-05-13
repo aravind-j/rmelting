@@ -351,7 +351,7 @@
 #'   to the \ifelse{html}{\out{[Mg<sup>2+</sup>]<sup>0.5</sup> &frasl;
 #'   [Mon<sup>+</sup>]}}{\eqn{\frac{[\textnormal{Mg}^{2+}]^{0.5}}{[\textnormal{Mon}^{+}]}}}
 #'    ratio, where \ifelse{html}{\out{[Mon<sup>+</sup>] = [Na<sup>+</sup>]
-#'   &plus; [Tris<sup>+</sup>] &plus; [K<sup>+</sup>]
+#'   + [Tris<sup>+</sup>] + [K<sup>+</sup>]
 #'   }}{\eqn{[\textnormal{Mon}^{+}] =
 #'   [\textnormal{Na}^{+}]+[\textnormal{Tris}^{+}]+[\textnormal{K}^{+}]}}.
 #'

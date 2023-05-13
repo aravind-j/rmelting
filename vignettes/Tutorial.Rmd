@@ -1130,7 +1130,7 @@ rmeltingtables(file = "Tables.xlsx", sheet = "single.locked.methods",
 _**Examples**_
 
 ```
-             L  
+            L  
     DNA:CCATTGCTACC
         |||||||||||
     DNA:GGTAACGATGG
@@ -1170,7 +1170,7 @@ rmeltingtables(file = "Tables.xlsx", sheet = "consq.locked.methods",
 _**Examples**_
 
 ```
-          LL  
+         LL  
     DNA:GACC
         ||||
     DNA:CTGG
@@ -1190,7 +1190,6 @@ melting(sequence = "GALCLC",
 
 ## Consecutive Locked nucleic acids with a single mismatch effect
 
-
 The nearest neighbour model for computation in case of sequences with consecutive locked nucleic acids with single mismatch can be specified by the argument `method.consecutive.locked.singleMM`. The available methods are given in **Table 20**.
 
 **Table 20**: Details of methods for sequences with single locked nucleic acids
@@ -1207,7 +1206,7 @@ rmeltingtables(file = "Tables.xlsx", sheet = "consq.locked.SMM.methods",
 _**Examples**_
 
 ```
-          LLL  
+         LLL  
     DNA:GACGC
         || ||
     DNA:CTTCG
